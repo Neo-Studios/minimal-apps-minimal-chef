@@ -15,8 +15,6 @@ import {
 
 const cuisineTypes = ['All', 'Italian', 'Indian', 'Japanese', 'Mexican', 'French', 'Thai', 'Chinese', 'Korean', 'Greek', 'Moroccan', 'Spanish', 'Turkish', 'Brazilian', 'Vietnamese', 'Peruvian', 'Lebanese'];
 
-import { getAllRecipes, getCountries } from '../utils/recipeDatabase';
-
 const discoverRecipes = getAllRecipes().map(recipe => ({
   id: recipe.id,
   title: recipe.name,
