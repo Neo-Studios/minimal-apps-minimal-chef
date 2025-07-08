@@ -21,12 +21,18 @@ A minimalist cooking companion app built with React and Material-UI.
 
 ## Getting Started
 
-1. Install dependencies:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/minimal-chef.git
+   cd minimal-chef
+   ```
+
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Set up environment variables:
+3. Set up environment variables:
    ```bash
    cp .env.example .env
    ```
@@ -35,12 +41,29 @@ A minimalist cooking companion app built with React and Material-UI.
    REACT_APP_ANTHROPIC_API_KEY=your_actual_api_key_here
    ```
 
-3. Start the development server:
+4. Start the development server:
    ```bash
    npm start
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.n
+5. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Deployment
+
+This app is configured for automatic deployment to GitHub Pages:
+
+1. Fork this repository
+2. Update the `homepage` field in `package.json` with your GitHub username
+3. Push to the `main` branch
+4. Enable GitHub Pages in your repository settings
+5. Your app will be available at `https://yourusername.github.io/minimal-chef`
+
+### Manual Deployment
+
+To deploy manually:
+```bash
+npm run deploy
+```
 
 ## API Configuration
 
@@ -48,6 +71,8 @@ To use AI recipe generation, you need a Claude API key from Anthropic:
 1. Sign up at [console.anthropic.com](https://console.anthropic.com)
 2. Create an API key
 3. Add it to your `.env` file as `REACT_APP_ANTHROPIC_API_KEY`
+
+**Note**: For production deployment, API keys should be configured as environment variables in your hosting platform.
 
 ## Features
 
