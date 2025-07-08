@@ -2,7 +2,7 @@
 
 A minimalist cooking companion app built with React and Material-UI.
 
-## Features
+## Featuresb 
 
 - **Recipe Management**: Browse and search your recipe collection
 - **Discover**: Explore new recipes from various cuisines
