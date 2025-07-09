@@ -1,0 +1,302 @@
+{
+  "italian": [
+    { "id": 1, "name": "Risotto alla Milanese", "region": "Lombardy", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400", "description": "A creamy, golden risotto from Milan made with saffron and Parmesan cheese.", "prepTime": "10 min", "servings": 4, "calories": 420, "ingredients": ["1½ cups Arborio rice", "4 cups warm chicken stock", "½ cup dry white wine", "1 large onion, finely chopped", "3 tbsp butter", "½ cup grated Parmesan", "Pinch of saffron threads", "2 tbsp olive oil", "Salt and pepper to taste"], "instructions": ["Heat the stock in a saucepan and keep warm. Soak saffron in 2 tbsp warm stock.", "Heat olive oil and 1 tbsp butter in a heavy-bottomed pan. Add onion and cook until soft.", "Add rice and stir for 2 minutes until grains are coated and translucent.", "Pour in wine and stir until absorbed.", "Add warm stock one ladle at a time, stirring constantly until absorbed before adding more.", "After 18-20 minutes, rice should be creamy but still have bite. Stir in saffron mixture.", "Remove from heat, add remaining butter and Parmesan. Season and serve immediately."], "nutrition": { "calories": 420, "protein": "12g", "carbs": "65g", "fat": "14g", "fiber": "2g" } },
+    { "id": 2, "name": "Osso Buco", "region": "Lombardy", "difficulty": "Hard", "cookTime": "2.5 hours", "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400", "description": "Braised veal shanks in a rich tomato and wine sauce, a classic Milanese dish.", "prepTime": "30 min", "servings": 6, "calories": 580, "ingredients": ["6 veal shanks (osso buco cut)", "½ cup all-purpose flour", "4 tbsp olive oil", "1 onion, diced", "2 carrots, diced", "2 celery stalks, diced", "3 cloves garlic, minced", "1 cup white wine", "1 can (14oz) crushed tomatoes", "2 cups beef stock", "2 bay leaves", "Fresh thyme", "Salt and pepper"], "instructions": ["Preheat oven to 350°F. Season veal shanks and dredge in flour.", "Heat oil in Dutch oven, brown shanks on all sides. Remove and set aside.", "Add vegetables to same pot, cook until softened, about 8 minutes.", "Add garlic, cook 1 minute. Pour in wine, scraping up browned bits.", "Add tomatoes, stock, herbs. Return shanks to pot.", "Cover and braise in oven for 2-2.5 hours until meat is fork-tender.", "Serve with risotto or polenta, garnished with gremolata."], "nutrition": { "calories": 580, "protein": "45g", "carbs": "12g", "fat": "35g", "fiber": "3g" } },
+    { "id": 3, "name": "Cacio e Pepe", "region": "Rome", "difficulty": "Easy", "cookTime": "15 min", "image": "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400" },
+    { "id": 4, "name": "Carbonara", "region": "Rome", "difficulty": "Medium", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1588013273468-315900bafd4d?w=400" },
+    { "id": 5, "name": "Margherita Pizza", "region": "Naples", "difficulty": "Medium", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" },
+    { "id": 6, "name": "Lasagna", "region": "Emilia-Romagna", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=400" },
+    { "id": 7, "name": "Tiramisu", "region": "Veneto", "difficulty": "Medium", "cookTime": "4 hours", "image": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400" },
+    { "id": 8, "name": "Bruschetta", "region": "Central Italy", "difficulty": "Easy", "cookTime": "10 min", "image": "https://images.unsplash.com/photo-1572441713132-51c75654db73?w=400" }
+  ],
+  "indian": [
+    { "id": 9, "name": "Butter Chicken", "region": "Punjab", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400", "description": "Tender chicken in a rich, creamy tomato-based curry sauce with aromatic spices.", "prepTime": "20 min", "servings": 4, "calories": 520, "ingredients": ["2 lbs boneless chicken, cubed", "1 cup plain yogurt", "2 tsp garam masala", "1 tsp cumin", "1 tsp coriander", "3 cloves garlic, minced", "1 inch ginger, grated", "1 can (14oz) crushed tomatoes", "½ cup heavy cream", "4 tbsp butter", "1 onion, finely chopped", "2 tsp paprika", "1 tsp turmeric", "Salt to taste", "Fresh cilantro"], "instructions": ["Marinate chicken in yogurt, half the garam masala, cumin, coriander, garlic, and ginger for 30 minutes.", "Heat 2 tbsp butter in large pan. Cook marinated chicken until done. Remove and set aside.", "In same pan, add remaining butter and onion. Cook until golden.", "Add remaining spices, cook for 1 minute until fragrant.", "Add tomatoes, simmer for 10 minutes until thickened.", "Stir in cream and cooked chicken. Simmer 5 minutes.", "Garnish with cilantro and serve with basmati rice and naan."], "nutrition": { "calories": 520, "protein": "38g", "carbs": "15g", "fat": "32g", "fiber": "4g" } },
+    { "id": 10, "name": "Chicken Biryani", "region": "Hyderabad", "difficulty": "Hard", "cookTime": "1.5 hours", "image": "https://images.unsplash.com/photo-1563379091339-03246963d51a?w=400" },
+    { "id": 11, "name": "Dal Tadka", "region": "North India", "difficulty": "Easy", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400" },
+    { "id": 12, "name": "Palak Paneer", "region": "North India", "difficulty": "Medium", "cookTime": "35 min", "image": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400" },
+    { "id": 13, "name": "Masala Dosa", "region": "South India", "difficulty": "Hard", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1630383249896-424e482df921?w=400" },
+    { "id": 14, "name": "Tandoori Chicken", "region": "Punjab", "difficulty": "Medium", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400" },
+    { "id": 15, "name": "Samosa", "region": "North India", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400" },
+    { "id": 16, "name": "Chole Bhature", "region": "Punjab", "difficulty": "Hard", "cookTime": "1.5 hours", "image": "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=400" }
+  ],
+  "japanese": [
+    { "id": 17, "name": "Ramen", "region": "Tokyo", "difficulty": "Hard", "cookTime": "3 hours", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400", "description": "Rich, flavorful Japanese noodle soup with tender pork, soft-boiled eggs, and fresh toppings.", "prepTime": "45 min", "servings": 4, "calories": 650, "ingredients": ["4 portions fresh ramen noodles", "2 lbs pork bones", "1 lb pork belly", "4 soft-boiled eggs", "4 green onions, sliced", "2 sheets nori seaweed", "1 cup bamboo shoots", "4 cloves garlic", "2 inch ginger", "2 tbsp miso paste", "2 tbsp soy sauce", "1 tbsp sake", "Salt to taste"], "instructions": ["Make broth: Boil pork bones for 12+ hours with garlic and ginger until rich and creamy.", "Prepare chashu: Braise pork belly in soy sauce, sake, and sugar for 2 hours.", "Soft-boil eggs: Cook for 6.5 minutes, then marinate in soy sauce mixture.", "Prepare toppings: Slice green onions, prepare bamboo shoots and nori.", "Cook noodles according to package directions, drain.", "Assemble: Place noodles in bowl, add hot broth, arrange toppings.", "Serve immediately while hot."], "nutrition": { "calories": 650, "protein": "35g", "carbs": "45g", "fat": "38g", "fiber": "5g" } },
+    { "id": 18, "name": "Teriyaki Chicken", "region": "Kansai", "difficulty": "Easy", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=400" },
+    { "id": 19, "name": "Miso Soup", "region": "Traditional", "difficulty": "Easy", "cookTime": "10 min", "image": "https://images.unsplash.com/photo-1606756790138-261d2b21cd75?w=400" },
+    { "id": 20, "name": "Sushi Rolls", "region": "Tokyo", "difficulty": "Hard", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=400" },
+    { "id": 21, "name": "Tempura", "region": "Edo", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1541529086526-db283c563270?w=400" },
+    { "id": 22, "name": "Yakitori", "region": "Tokyo", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400" },
+    { "id": 23, "name": "Udon", "region": "Kagawa", "difficulty": "Medium", "cookTime": "40 min", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+    { "id": 24, "name": "Katsu Curry", "region": "Modern", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400" }
+  ],
+  "mexican": [
+    { "id": 25, "name": "Mole Poblano", "region": "Puebla", "difficulty": "Hard", "cookTime": "3 hours", "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400" },
+    { "id": 26, "name": "Tacos al Pastor", "region": "Mexico City", "difficulty": "Medium", "cookTime": "40 min", "image": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400" },
+    { "id": 27, "name": "Guacamole", "region": "Traditional", "difficulty": "Easy", "cookTime": "10 min", "image": "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400" },
+    { "id": 28, "name": "Chiles Rellenos", "region": "Puebla", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=400" },
+    { "id": 29, "name": "Pozole", "region": "Jalisco", "difficulty": "Medium", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400" },
+    { "id": 30, "name": "Enchiladas", "region": "Traditional", "difficulty": "Medium", "cookTime": "35 min", "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400" },
+    { "id": 31, "name": "Quesadillas", "region": "Traditional", "difficulty": "Easy", "cookTime": "15 min", "image": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400" },
+    { "id": 32, "name": "Tamales", "region": "Traditional", "difficulty": "Hard", "cookTime": "3 hours", "image": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400" }
+  ],
+  "french": [
+    { "id": 33, "name": "Coq au Vin", "region": "Burgundy", "difficulty": "Medium", "cookTime": "1.5 hours", "image": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=400" },
+    { "id": 34, "name": "Bouillabaisse", "region": "Provence", "difficulty": "Hard", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400" },
+    { "id": 35, "name": "Crème Brûlée", "region": "Traditional", "difficulty": "Medium", "cookTime": "4 hours", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 36, "name": "Ratatouille", "region": "Provence", "difficulty": "Easy", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1572441713132-51c75654db73?w=400" },
+    { "id": 37, "name": "Beef Bourguignon", "region": "Burgundy", "difficulty": "Hard", "cookTime": "3 hours", "image": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=400" },
+    { "id": 38, "name": "French Onion Soup", "region": "Paris", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+    { "id": 39, "name": "Croissant", "region": "Traditional", "difficulty": "Hard", "cookTime": "12 hours", "image": "https://images.unsplash.com/photo-1555507036-ab794f4afe5e?w=400" },
+    { "id": 40, "name": "Quiche Lorraine", "region": "Lorraine", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400" }
+  ],
+  "thai": [
+    { "id": 41, "name": "Pad Thai", "region": "Central Thailand", "difficulty": "Medium", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1559314809-0f31657def5e?w=400" },
+    { "id": 42, "name": "Tom Yum Goong", "region": "Central Thailand", "difficulty": "Easy", "cookTime": "15 min", "image": "https://images.unsplash.com/photo-1569562211093-4ed0d0758f12?w=400" },
+    { "id": 43, "name": "Green Curry", "region": "Central Thailand", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=400" },
+    { "id": 44, "name": "Massaman Curry", "region": "Southern Thailand", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400" },
+    { "id": 45, "name": "Som Tam", "region": "Northeast Thailand", "difficulty": "Easy", "cookTime": "10 min", "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" },
+    { "id": 46, "name": "Pad See Ew", "region": "Central Thailand", "difficulty": "Medium", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1559314809-0f31657def5e?w=400" },
+    { "id": 47, "name": "Mango Sticky Rice", "region": "Traditional", "difficulty": "Easy", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 48, "name": "Thai Basil Chicken", "region": "Central Thailand", "difficulty": "Easy", "cookTime": "15 min", "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400" }
+  ],
+  "chinese": [
+    { "id": 49, "name": "Kung Pao Chicken", "region": "Sichuan", "difficulty": "Medium", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400" },
+    { "id": 50, "name": "Peking Duck", "region": "Beijing", "difficulty": "Hard", "cookTime": "4 hours", "image": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=400" },
+    { "id": 51, "name": "Mapo Tofu", "region": "Sichuan", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400" },
+    { "id": 52, "name": "Xiaolongbao", "region": "Shanghai", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=400" },
+    { "id": 53, "name": "Sweet and Sour Pork", "region": "Guangdong", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400" },
+    { "id": 54, "name": "Fried Rice", "region": "Traditional", "difficulty": "Easy", "cookTime": "15 min", "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400" },
+    { "id": 55, "name": "Hot Pot", "region": "Sichuan", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+    { "id": 56, "name": "Dim Sum", "region": "Guangdong", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=400" }
+  ],
+  "korean": [
+    { "id": 57, "name": "Kimchi Jjigae", "region": "Traditional", "difficulty": "Easy", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400" },
+    { "id": 58, "name": "Bulgogi", "region": "Traditional", "difficulty": "Medium", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=400" },
+    { "id": 59, "name": "Bibimbap", "region": "Traditional", "difficulty": "Medium", "cookTime": "40 min", "image": "https://images.unsplash.com/photo-1498654200943-1088dd4438ae?w=400" },
+    { "id": 60, "name": "Korean Fried Chicken", "region": "Modern", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400" },
+    { "id": 61, "name": "Japchae", "region": "Traditional", "difficulty": "Easy", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=400" },
+    { "id": 62, "name": "Korean BBQ", "region": "Traditional", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=400" },
+    { "id": 63, "name": "Tteokbokki", "region": "Seoul", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400" },
+    { "id": 64, "name": "Kimchi", "region": "Traditional", "difficulty": "Medium", "cookTime": "3 days", "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" }
+  ],
+  "greek": [
+    { "id": 65, "name": "Moussaka", "region": "Traditional", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400" },
+    { "id": 66, "name": "Greek Salad", "region": "Traditional", "difficulty": "Easy", "cookTime": "10 min", "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" },
+    { "id": 67, "name": "Souvlaki", "region": "Traditional", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400" },
+    { "id": 68, "name": "Spanakopita", "region": "Traditional", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400" },
+    { "id": 69, "name": "Tzatziki", "region": "Traditional", "difficulty": "Easy", "cookTime": "15 min", "image": "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400" },
+    { "id": 70, "name": "Dolmades", "region": "Traditional", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" },
+    { "id": 71, "name": "Baklava", "region": "Traditional", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 72, "name": "Greek Lemon Soup", "region": "Traditional", "difficulty": "Easy", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" }
+  ],
+  "british": [
+    { "id": 73, "name": "Fish and Chips", "region": "Traditional", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400" },
+    { "id": 74, "name": "Beef Wellington", "region": "Traditional", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=400" },
+    { "id": 75, "name": "Bangers and Mash", "region": "Traditional", "difficulty": "Easy", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400" },
+    { "id": 76, "name": "Shepherd's Pie", "region": "Traditional", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=400" },
+    { "id": 77, "name": "Full English Breakfast", "region": "Traditional", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400" },
+    { "id": 78, "name": "Chicken Tikka Masala", "region": "Modern British", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400" },
+    { "id": 79, "name": "Sunday Roast", "region": "Traditional", "difficulty": "Hard", "cookTime": "3 hours", "image": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=400" },
+    { "id": 80, "name": "Cornish Pasty", "region": "Cornwall", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400" }
+  ],
+  "american": [
+    { "id": 81, "name": "BBQ Ribs", "region": "Southern", "difficulty": "Medium", "cookTime": "3 hours", "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400", "description": "Tender, fall-off-the-bone pork ribs with a smoky, sweet barbecue glaze.", "prepTime": "30 min", "servings": 6, "calories": 720, "ingredients": ["2 racks baby back ribs", "2 tbsp brown sugar", "2 tbsp paprika", "1 tbsp garlic powder", "1 tbsp onion powder", "1 tsp cumin", "1 tsp chili powder", "1 cup BBQ sauce", "2 tbsp apple cider vinegar", "1 tbsp Worcestershire sauce", "Salt and pepper"], "instructions": ["Remove membrane from back of ribs. Mix all dry spices for rub.", "Coat ribs generously with spice rub, let sit 30 minutes.", "Preheat oven to 275°F. Wrap ribs in foil with a splash of apple juice.", "Bake for 2.5 hours until tender.", "Remove foil, brush with BBQ sauce.", "Increase heat to 400°F, bake 15 minutes until caramelized.", "Let rest 10 minutes before cutting. Serve with extra sauce."], "nutrition": { "calories": 720, "protein": "42g", "carbs": "25g", "fat": "48g", "fiber": "2g" } },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    { "id": 82, "name": "Mac and Cheese", "region": "Traditional", "difficulty": "Easy", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400" },
+    { "id": 83, "name": "Buffalo Wings", "region": "New York", "difficulty": "Easy", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400" },
+    { "id": 84, "name": "Apple Pie", "region": "Traditional", "difficulty": "Medium", "cookTime": "1.5 hours", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 85, "name": "Clam Chowder", "region": "New England", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+    { "id": 86, "name": "Hamburger", "region": "Traditional", "difficulty": "Easy", "cookTime": "15 min", "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400" },
+    { "id": 87, "name": "Fried Chicken", "region": "Southern", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400" },
+    { "id": 88, "name": "Pancakes", "region": "Traditional", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400" }
+  ],
+  "spanish": [
+    { "id": 89, "name": "Paella Valenciana", "region": "Valencia", "difficulty": "Hard", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=400" },
+    { "id": 90, "name": "Gazpacho", "region": "Andalusia", "difficulty": "Easy", "cookTime": "15 min", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+    { "id": 91, "name": "Tortilla Española", "region": "Traditional", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400" },
+    { "id": 92, "name": "Jamón Ibérico", "region": "Extremadura", "difficulty": "Easy", "cookTime": "5 min", "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400" },
+    { "id": 93, "name": "Churros con Chocolate", "region": "Madrid", "difficulty": "Medium", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 94, "name": "Patatas Bravas", "region": "Madrid", "difficulty": "Easy", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400" },
+    { "id": 95, "name": "Sangria", "region": "Traditional", "difficulty": "Easy", "cookTime": "10 min", "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" },
+    { "id": 96, "name": "Croquetas", "region": "Traditional", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400" }
+  ],
+  "moroccan": [
+    { "id": 97, "name": "Chicken Tagine", "region": "Traditional", "difficulty": "Medium", "cookTime": "1.5 hours", "image": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=400" },
+    { "id": 98, "name": "Couscous", "region": "Traditional", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400" },
+    { "id": 99, "name": "Harira Soup", "region": "Traditional", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+    { "id": 100, "name": "Pastilla", "region": "Fez", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400" },
+    { "id": 101, "name": "Mint Tea", "region": "Traditional", "difficulty": "Easy", "cookTime": "5 min", "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" },
+    { "id": 102, "name": "Lamb Tagine", "region": "Traditional", "difficulty": "Medium", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=400" },
+    { "id": 103, "name": "Moroccan Bread", "region": "Traditional", "difficulty": "Medium", "cookTime": "3 hours", "image": "https://images.unsplash.com/photo-1555507036-ab794f4afe5e?w=400" },
+    { "id": 104, "name": "Zaalouk", "region": "Traditional", "difficulty": "Easy", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1572441713132-51c75654db73?w=400" }
+  ],
+  "turkish": [
+    { "id": 105, "name": "Kebab", "region": "Anatolia", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400" },
+    { "id": 106, "name": "Baklava", "region": "Ottoman", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 107, "name": "Turkish Delight", "region": "Istanbul", "difficulty": "Medium", "cookTime": "3 hours", "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" },
+    { "id": 108, "name": "Dolma", "region": "Traditional", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" },
+    { "id": 109, "name": "Turkish Coffee", "region": "Ottoman", "difficulty": "Easy", "cookTime": "10 min", "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" },
+    { "id": 110, "name": "Lahmacun", "region": "Southeast Turkey", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" },
+    { "id": 111, "name": "Manti", "region": "Central Anatolia", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=400" },
+    { "id": 112, "name": "Pide", "region": "Black Sea", "difficulty": "Medium", "cookTime": "40 min", "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" }
+  ],
+  "brazilian": [
+    { "id": 113, "name": "Feijoada", "region": "Rio de Janeiro", "difficulty": "Hard", "cookTime": "3 hours", "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400" },
+    { "id": 114, "name": "Açaí Bowl", "region": "Amazon", "difficulty": "Easy", "cookTime": "10 min", "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" },
+    { "id": 115, "name": "Brigadeiro", "region": "São Paulo", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 116, "name": "Moqueca", "region": "Bahia", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400" },
+    { "id": 117, "name": "Caipirinha", "region": "Traditional", "difficulty": "Easy", "cookTime": "5 min", "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" },
+    { "id": 118, "name": "Pão de Açúcar", "region": "Minas Gerais", "difficulty": "Medium", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1555507036-ab794f4afe5e?w=400" },
+    { "id": 119, "name": "Coxinha", "region": "São Paulo", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400" },
+    { "id": 120, "name": "Picanha", "region": "Traditional", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400" }
+  ],
+  "vietnamese": [
+    { "id": 121, "name": "Pho", "region": "Hanoi", "difficulty": "Hard", "cookTime": "4 hours", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+    { "id": 122, "name": "Banh Mi", "region": "Saigon", "difficulty": "Medium", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400" },
+    { "id": 123, "name": "Spring Rolls", "region": "Traditional", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=400" },
+    { "id": 124, "name": "Bun Bo Hue", "region": "Hue", "difficulty": "Hard", "cookTime": "3 hours", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+    { "id": 125, "name": "Vietnamese Coffee", "region": "Traditional", "difficulty": "Easy", "cookTime": "10 min", "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" },
+    { "id": 126, "name": "Cao Lau", "region": "Hoi An", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+    { "id": 127, "name": "Banh Xeo", "region": "Southern Vietnam", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400" },
+    { "id": 128, "name": "Com Tam", "region": "Saigon", "difficulty": "Easy", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400" }
+  ],
+  "peruvian": [
+    { "id": 129, "name": "Ceviche", "region": "Lima", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400" },
+    { "id": 130, "name": "Lomo Saltado", "region": "Lima", "difficulty": "Medium", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400" },
+    { "id": 131, "name": "Aji de Gallina", "region": "Lima", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400" },
+    { "id": 132, "name": "Anticuchos", "region": "Traditional", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400" },
+    { "id": 133, "name": "Pisco Sour", "region": "Lima", "difficulty": "Easy", "cookTime": "5 min", "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" },
+    { "id": 134, "name": "Papa Rellena", "region": "Traditional", "difficulty": "Medium", "cookTime": "40 min", "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400" },
+    { "id": 135, "name": "Causa Limeña", "region": "Lima", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" },
+    { "id": 136, "name": "Arroz con Pollo", "region": "Traditional", "difficulty": "Easy", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400" }
+  ],
+  "lebanese": [
+    { "id": 137, "name": "Hummus", "region": "Traditional", "difficulty": "Easy", "cookTime": "15 min", "image": "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400" },
+    { "id": 138, "name": "Tabbouleh", "region": "Traditional", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" },
+    { "id": 139, "name": "Fattoush", "region": "Levant", "difficulty": "Easy", "cookTime": "15 min", "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" },
+    { "id": 140, "name": "Manakish", "region": "Traditional", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" },
+    { "id": 141, "name": "Baklawa", "region": "Traditional", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 142, "name": "Kibbeh", "region": "Traditional", "difficulty": "Hard", "cookTime": "1.5 hours", "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400" },
+    { "id": 143, "name": "Shawarma", "region": "Traditional", "difficulty": "Medium", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400" },
+    { "id": 144, "name": "Labneh", "region": "Traditional", "difficulty": "Easy", "cookTime": "12 hours", "image": "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400" }
+  ],
+  "german": [
+    { "id": 145, "name": "Sauerbraten", "region": "Rhineland", "difficulty": "Hard", "cookTime": "4 hours", "image": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=400" },
+    { "id": 146, "name": "Schnitzel", "region": "Austria/Germany", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400" },
+    { "id": 147, "name": "Bratwurst", "region": "Traditional", "difficulty": "Easy", "cookTime": "15 min", "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400" },
+    { "id": 148, "name": "Sauerkraut", "region": "Traditional", "difficulty": "Easy", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" },
+    { "id": 149, "name": "Black Forest Cake", "region": "Black Forest", "difficulty": "Hard", "cookTime": "3 hours", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 150, "name": "Pretzel", "region": "Bavaria", "difficulty": "Medium", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1555507036-ab794f4afe5e?w=400" },
+    { "id": 151, "name": "Currywurst", "region": "Berlin", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400" },
+    { "id": 152, "name": "Spätzle", "region": "Swabia", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400" }
+  ],
+  "russian": [
+    { "id": 153, "name": "Borscht", "region": "Traditional", "difficulty": "Medium", "cookTime": "1.5 hours", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+    { "id": 154, "name": "Beef Stroganoff", "region": "Traditional", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=400" },
+    { "id": 155, "name": "Pelmeni", "region": "Siberia", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=400" },
+    { "id": 156, "name": "Blini", "region": "Traditional", "difficulty": "Easy", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400" },
+    { "id": 157, "name": "Olivier Salad", "region": "Traditional", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" },
+    { "id": 158, "name": "Caviar", "region": "Traditional", "difficulty": "Easy", "cookTime": "5 min", "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400" },
+    { "id": 159, "name": "Vodka", "region": "Traditional", "difficulty": "Easy", "cookTime": "2 min", "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" },
+    { "id": 160, "name": "Chicken Kiev", "region": "Traditional", "difficulty": "Hard", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400" }
+  ],
+  "ethiopian": [
+    { "id": 161, "name": "Injera", "region": "Traditional", "difficulty": "Hard", "cookTime": "3 days", "image": "https://images.unsplash.com/photo-1555507036-ab794f4afe5e?w=400" },
+    { "id": 162, "name": "Doro Wat", "region": "Traditional", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400" },
+    { "id": 163, "name": "Kitfo", "region": "Traditional", "difficulty": "Easy", "cookTime": "15 min", "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400" },
+    { "id": 164, "name": "Shiro", "region": "Traditional", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400" },
+    { "id": 165, "name": "Tibs", "region": "Traditional", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400" },
+    { "id": 166, "name": "Berbere Spice", "region": "Traditional", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400" },
+    { "id": 167, "name": "Ethiopian Coffee", "region": "Traditional", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" },
+    { "id": 168, "name": "Gomen", "region": "Traditional", "difficulty": "Easy", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400" }
+  ],
+  "nigerian": [
+    { "id": 169, "name": "Jollof Rice", "region": "Traditional", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400" },
+    { "id": 170, "name": "Egusi Soup", "region": "Traditional", "difficulty": "Hard", "cookTime": "1.5 hours", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+    { "id": 171, "name": "Suya", "region": "Northern Nigeria", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400" },
+    { "id": 172, "name": "Pounded Yam", "region": "Traditional", "difficulty": "Medium", "cookTime": "40 min", "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400" },
+    { "id": 173, "name": "Pepper Soup", "region": "Traditional", "difficulty": "Easy", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+    { "id": 174, "name": "Akara", "region": "Traditional", "difficulty": "Medium", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400" },
+    { "id": 175, "name": "Moi Moi", "region": "Traditional", "difficulty": "Hard", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400" },
+    { "id": 176, "name": "Chin Chin", "region": "Traditional", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" }
+  ],
+  "jamaican": [
+    { "id": 177, "name": "Jerk Chicken", "region": "Traditional", "difficulty": "Medium", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400" },
+    { "id": 178, "name": "Ackee and Saltfish", "region": "Traditional", "difficulty": "Medium", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400" },
+    { "id": 179, "name": "Curry Goat", "region": "Traditional", "difficulty": "Hard", "cookTime": "2.5 hours", "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400" },
+    { "id": 180, "name": "Rice and Peas", "region": "Traditional", "difficulty": "Easy", "cookTime": "35 min", "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400" },
+    { "id": 181, "name": "Patties", "region": "Traditional", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400" },
+    { "id": 182, "name": "Rum Punch", "region": "Traditional", "difficulty": "Easy", "cookTime": "5 min", "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" },
+    { "id": 183, "name": "Bammy", "region": "Traditional", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1555507036-ab794f4afe5e?w=400" },
+    { "id": 184, "name": "Festival", "region": "Traditional", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1555507036-ab794f4afe5e?w=400" }
+  ],
+  "argentinian": [
+    { "id": 185, "name": "Asado", "region": "Traditional", "difficulty": "Medium", "cookTime": "3 hours", "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400" },
+    { "id": 186, "name": "Empanadas", "region": "Traditional", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400" },
+    { "id": 187, "name": "Milanesa", "region": "Traditional", "difficulty": "Easy", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400" },
+    { "id": 188, "name": "Chimichurri", "region": "Traditional", "difficulty": "Easy", "cookTime": "10 min", "image": "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400" },
+    { "id": 189, "name": "Dulce de Leche", "region": "Traditional", "difficulty": "Medium", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 190, "name": "Mate", "region": "Traditional", "difficulty": "Easy", "cookTime": "5 min", "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" },
+    { "id": 191, "name": "Locro", "region": "Traditional", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400" },
+    { "id": 192, "name": "Alfajores", "region": "Traditional", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" }
+  ],
+  "australian": [
+    { "id": 193, "name": "Meat Pie", "region": "Traditional", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400" },
+    { "id": 194, "name": "Lamington", "region": "Traditional", "difficulty": "Medium", "cookTime": "1 hour", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 195, "name": "Pavlova", "region": "Traditional", "difficulty": "Hard", "cookTime": "3 hours", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 196, "name": "Vegemite Toast", "region": "Traditional", "difficulty": "Easy", "cookTime": "5 min", "image": "https://images.unsplash.com/photo-1555507036-ab794f4afe5e?w=400" },
+    { "id": 197, "name": "Barramundi", "region": "Traditional", "difficulty": "Medium", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400" },
+    { "id": 198, "name": "Anzac Biscuits", "region": "Traditional", "difficulty": "Easy", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 199, "name": "Damper Bread", "region": "Traditional", "difficulty": "Easy", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1555507036-ab794f4afe5e?w=400" },
+    { "id": 200, "name": "Tim Tam Slam", "region": "Modern", "difficulty": "Easy", "cookTime": "2 min", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" }
+  ],
+  "canadian": [
+    { "id": 201, "name": "Poutine", "region": "Quebec", "difficulty": "Easy", "cookTime": "20 min", "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400" },
+    { "id": 202, "name": "Tourtière", "region": "Quebec", "difficulty": "Hard", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400" },
+    { "id": 203, "name": "Butter Tarts", "region": "Traditional", "difficulty": "Medium", "cookTime": "45 min", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 204, "name": "Maple Syrup Cookies", "region": "Traditional", "difficulty": "Easy", "cookTime": "25 min", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 205, "name": "Bannock", "region": "Indigenous", "difficulty": "Easy", "cookTime": "30 min", "image": "https://images.unsplash.com/photo-1555507036-ab794f4afe5e?w=400" },
+    { "id": 206, "name": "Nanaimo Bars", "region": "British Columbia", "difficulty": "Medium", "cookTime": "2 hours", "image": "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=400" },
+    { "id": 207, "name": "Montreal Bagels", "region": "Quebec", "difficulty": "Hard", "cookTime": "4 hours", "image": "https://images.unsplash.com/photo-1555507036-ab794f4afe5e?w=400" },
+    { "id": 208, "name": "Caesar Cocktail", "region": "Traditional", "difficulty": "Easy", "cookTime": "5 min", "image": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400" }
+  ]
+}

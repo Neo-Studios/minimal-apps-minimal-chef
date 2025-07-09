@@ -15,11 +15,11 @@
 		- paste in a url and it simplifys it nto just the recipe with severing ajustment, option to add the ingrediants to the shopping list
 		- simular to justtherecipe.com but in app and free
 - Uses a Minimalist + Material 3 design
-- for light mode the base colour is`#EADDCB` 
+- for light mode the base colour is #EADDCB
 - use the font times new roman for tiles and headings and subheadings
 - noto sans for all other text
 - no emojis
--  `#203141` for darkmode base colour
+-  #203141 for darkmode base colour
 - nice layout for desktop and tablet (hideable sidebar on the left with a settings button a the bottom of the sidebar and a plus (+) button in the bottom right to add recipe )
 - nice layout for mobile (at the bottom tab style and in the middle a plus (+) button in the bottom right to add recipes and settings in top right corner)
 - on mobile and desktop the + button is a FAB (floating action button) that shows

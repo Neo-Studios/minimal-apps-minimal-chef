@@ -11,7 +11,7 @@ import {
   Chip,
 } from '@mui/material';
 import { Search } from '@mui/icons-material';
-import { getAllRecipes } from '../utils/recipeDatabase';
+import { getAllRecipes, internationalRecipes } from '../utils/recipeDatabase';
 import { useNavigate } from 'react-router-dom';
 
 const recipes = getAllRecipes().map(recipe => ({
@@ -29,9 +29,9 @@ const recipes = getAllRecipes().map(recipe => ({
 const Recipes = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
-  const [recipes] = useState(recipes);
+  const [allRecipes] = useState(recipes);
 
-  const filteredRecipes = recipes.filter(recipe =>
+  const filteredRecipes = allRecipes.filter(recipe =>
     recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     recipe.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
   );

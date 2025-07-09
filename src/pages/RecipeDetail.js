@@ -26,8 +26,8 @@ import {
   VolumeUp,
 } from '@mui/icons-material';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getRecipeDetails } from '../data/realRecipes';
-import { getAllRecipes } from '../utils/recipeDatabase';
+
+import { getRecipeDetails } from '../utils/recipeDetailService';
 
 const RecipeDetail = () => {
   const navigate = useNavigate();
@@ -35,36 +35,20 @@ const RecipeDetail = () => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [rating, setRating] = useState(4.5);
 
-  // Get recipe details from database or fallback to basic info
-  const detailedRecipe = getRecipeDetails(parseInt(id));
-  const basicRecipe = getAllRecipes().find(r => r.id === parseInt(id));
-  
-  const recipe = detailedRecipe || {
+  const recipe = getRecipeDetails(parseInt(id)) || {
     id: parseInt(id),
-    title: basicRecipe?.name || 'Recipe Not Found',
-    image: basicRecipe?.image || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800',
-    description: `A delicious ${basicRecipe?.region} recipe with ${basicRecipe?.difficulty.toLowerCase()} difficulty.`,
-    cookTime: basicRecipe?.cookTime || '30 min',
+    title: 'Recipe Not Found',
+    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800',
+    description: 'This recipe could not be found.',
+    cookTime: '30 min',
     prepTime: '15 min',
     servings: 4,
-    difficulty: basicRecipe?.difficulty || 'Medium',
+    difficulty: 'Medium',
     calories: 400,
-    tags: [basicRecipe?.region || 'International', basicRecipe?.difficulty || 'Medium'],
-    ingredients: [
-      'Ingredients will be added soon',
-      'Check back later for full recipe details'
-    ],
-    instructions: [
-      'Full instructions coming soon',
-      'This recipe is being developed'
-    ],
-    nutrition: {
-      calories: 400,
-      protein: '20g',
-      carbs: '45g',
-      fat: '15g',
-      fiber: '4g'
-    }
+    tags: ['Unknown'],
+    ingredients: ['Recipe not found'],
+    instructions: ['Recipe not found'],
+    nutrition: { calories: 400, protein: '20g', carbs: '45g', fat: '15g', fiber: '4g' }
   };
 
   const speakInstructions = () => {

@@ -1,0 +1,263 @@
+{
+  "1": {
+    "description": "A creamy, golden risotto from Milan made with saffron and Parmesan cheese.",
+    "prepTime": "10 min",
+    "servings": 4,
+    "calories": 420,
+    "ingredients": ["1½ cups Arborio rice", "4 cups warm chicken stock", "½ cup dry white wine", "1 large onion, finely chopped", "3 tbsp butter", "½ cup grated Parmesan", "Pinch of saffron threads", "2 tbsp olive oil", "Salt and pepper to taste"],
+    "instructions": ["Heat the stock in a saucepan and keep warm. Soak saffron in 2 tbsp warm stock.", "Heat olive oil and 1 tbsp butter in a heavy-bottomed pan. Add onion and cook until soft.", "Add rice and stir for 2 minutes until grains are coated and translucent.", "Pour in wine and stir until absorbed.", "Add warm stock one ladle at a time, stirring constantly until absorbed before adding more.", "After 18-20 minutes, rice should be creamy but still have bite. Stir in saffron mixture.", "Remove from heat, add remaining butter and Parmesan. Season and serve immediately."],
+    "nutrition": {"calories": 420, "protein": "12g", "carbs": "65g", "fat": "14g", "fiber": "2g"}
+  },
+  "2": {
+    "description": "Braised veal shanks in a rich tomato and wine sauce, a classic Milanese dish.",
+    "prepTime": "30 min",
+    "servings": 6,
+    "calories": 580,
+    "ingredients": ["6 veal shanks (osso buco cut)", "½ cup all-purpose flour", "4 tbsp olive oil", "1 onion, diced", "2 carrots, diced", "2 celery stalks, diced", "3 cloves garlic, minced", "1 cup white wine", "1 can (14oz) crushed tomatoes", "2 cups beef stock", "2 bay leaves", "Fresh thyme", "Salt and pepper"],
+    "instructions": ["Preheat oven to 350°F. Season veal shanks and dredge in flour.", "Heat oil in Dutch oven, brown shanks on all sides. Remove and set aside.", "Add vegetables to same pot, cook until softened, about 8 minutes.", "Add garlic, cook 1 minute. Pour in wine, scraping up browned bits.", "Add tomatoes, stock, herbs. Return shanks to pot.", "Cover and braise in oven for 2-2.5 hours until meat is fork-tender.", "Serve with risotto or polenta, garnished with gremolata."],
+    "nutrition": {"calories": 580, "protein": "45g", "carbs": "12g", "fat": "35g", "fiber": "3g"}
+  },
+  "3": {
+    "description": "Simple Roman pasta with cheese and black pepper - elegance in simplicity.",
+    "prepTime": "5 min",
+    "servings": 4,
+    "calories": 380,
+    "ingredients": ["1 lb spaghetti", "1 cup grated Pecorino Romano", "2 tsp freshly ground black pepper", "Salt for pasta water"],
+    "instructions": ["Bring large pot of salted water to boil. Cook spaghetti until al dente.", "Reserve 1 cup pasta water before draining.", "In large bowl, mix Pecorino and black pepper.", "Add hot pasta and small amount of pasta water, toss vigorously.", "Add more pasta water as needed to create creamy sauce.", "Serve immediately with extra cheese and pepper."],
+    "nutrition": {"calories": 380, "protein": "18g", "carbs": "58g", "fat": "12g", "fiber": "3g"}
+  },
+  "4": {
+    "description": "Classic Roman pasta with eggs, cheese, pancetta, and black pepper.",
+    "prepTime": "10 min",
+    "servings": 4,
+    "calories": 520,
+    "ingredients": ["1 lb spaghetti", "4 large eggs", "1 cup grated Pecorino Romano", "6 oz pancetta, diced", "2 tsp black pepper", "Salt"],
+    "instructions": ["Cook pancetta in large pan until crispy. Remove from heat.", "Beat eggs with cheese and pepper in large bowl.", "Cook spaghetti until al dente, reserve pasta water.", "Add hot pasta to pancetta pan, toss briefly.", "Remove from heat, add egg mixture, toss quickly.", "Add pasta water as needed for creamy consistency.", "Serve immediately with extra cheese."],
+    "nutrition": {"calories": 520, "protein": "24g", "carbs": "58g", "fat": "22g", "fiber": "3g"}
+  },
+  "5": {
+    "description": "The original Neapolitan pizza with tomatoes, mozzarella, and fresh basil.",
+    "prepTime": "20 min",
+    "servings": 4,
+    "calories": 350,
+    "ingredients": ["Pizza dough", "1 can San Marzano tomatoes", "8 oz fresh mozzarella", "Fresh basil leaves", "Extra virgin olive oil", "Salt", "Garlic"],
+    "instructions": ["Preheat oven to 500°F with pizza stone.", "Crush tomatoes with salt and garlic.", "Stretch dough into 12-inch circle.", "Spread thin layer of tomato sauce.", "Add torn mozzarella pieces.", "Drizzle with olive oil.", "Bake 10-12 minutes until crust is golden.", "Top with fresh basil and serve."],
+    "nutrition": {"calories": 350, "protein": "16g", "carbs": "45g", "fat": "14g", "fiber": "3g"}
+  },
+  "9": {
+    "description": "Tender chicken in a rich, creamy tomato-based curry sauce with aromatic spices.",
+    "prepTime": "20 min",
+    "servings": 4,
+    "calories": 520,
+    "ingredients": ["2 lbs boneless chicken, cubed", "1 cup plain yogurt", "2 tsp garam masala", "1 tsp cumin", "1 tsp coriander", "3 cloves garlic, minced", "1 inch ginger, grated", "1 can (14oz) crushed tomatoes", "½ cup heavy cream", "4 tbsp butter", "1 onion, finely chopped", "2 tsp paprika", "1 tsp turmeric", "Salt to taste", "Fresh cilantro"],
+    "instructions": ["Marinate chicken in yogurt, half the garam masala, cumin, coriander, garlic, and ginger for 30 minutes.", "Heat 2 tbsp butter in large pan. Cook marinated chicken until done. Remove and set aside.", "In same pan, add remaining butter and onion. Cook until golden.", "Add remaining spices, cook for 1 minute until fragrant.", "Add tomatoes, simmer for 10 minutes until thickened.", "Stir in cream and cooked chicken. Simmer 5 minutes.", "Garnish with cilantro and serve with basmati rice and naan."],
+    "nutrition": {"calories": 520, "protein": "38g", "carbs": "15g", "fat": "32g", "fiber": "4g"}
+  },
+  "17": {
+    "description": "Rich, flavorful Japanese noodle soup with tender pork, soft-boiled eggs, and fresh toppings.",
+    "prepTime": "45 min",
+    "servings": 4,
+    "calories": 650,
+    "ingredients": ["4 portions fresh ramen noodles", "2 lbs pork bones", "1 lb pork belly", "4 soft-boiled eggs", "4 green onions, sliced", "2 sheets nori seaweed", "1 cup bamboo shoots", "4 cloves garlic", "2 inch ginger", "2 tbsp miso paste", "2 tbsp soy sauce", "1 tbsp sake", "Salt to taste"],
+    "instructions": ["Make broth: Boil pork bones for 12+ hours with garlic and ginger until rich and creamy.", "Prepare chashu: Braise pork belly in soy sauce, sake, and sugar for 2 hours.", "Soft-boil eggs: Cook for 6.5 minutes, then marinate in soy sauce mixture.", "Prepare toppings: Slice green onions, prepare bamboo shoots and nori.", "Cook noodles according to package directions, drain.", "Assemble: Place noodles in bowl, add hot broth, arrange toppings.", "Serve immediately while hot."],
+    "nutrition": {"calories": 650, "protein": "35g", "carbs": "45g", "fat": "38g", "fiber": "5g"}
+  },
+  "25": {
+    "description": "Traditional Mexican sauce with chocolate and chili peppers, served over chicken.",
+    "prepTime": "45 min",
+    "servings": 6,
+    "calories": 480,
+    "ingredients": ["3 lbs chicken pieces", "6 dried chilies (ancho, mulato, pasilla)", "2 oz dark chocolate", "1 onion", "3 cloves garlic", "2 tomatoes", "¼ cup almonds", "2 tbsp sesame seeds", "1 tsp cinnamon", "½ tsp cloves", "2 cups chicken broth", "Salt"],
+    "instructions": ["Toast chilies in dry pan, remove seeds, soak in hot water 30 minutes.", "Blend soaked chilies with soaking liquid until smooth.", "Fry chicken pieces until golden, set aside.", "Sauté onion, garlic, tomatoes until soft.", "Add nuts, seeds, spices, cook 2 minutes.", "Add chili mixture and broth, simmer 30 minutes.", "Add chocolate, stir until melted.", "Return chicken, simmer 20 minutes.", "Serve with rice and tortillas."],
+    "nutrition": {"calories": 480, "protein": "42g", "carbs": "18g", "fat": "28g", "fiber": "6g"}
+  },
+  "41": {
+    "description": "Classic Thai stir-fried noodles with tamarind, fish sauce, and fresh ingredients.",
+    "prepTime": "15 min",
+    "servings": 4,
+    "calories": 420,
+    "ingredients": ["8 oz rice noodles", "2 tbsp tamarind paste", "3 tbsp fish sauce", "2 tbsp palm sugar", "2 eggs", "1 cup bean sprouts", "3 green onions", "¼ cup peanuts", "2 tbsp oil", "Lime wedges", "Chili flakes"],
+    "instructions": ["Soak rice noodles in warm water until soft.", "Mix tamarind paste, fish sauce, and palm sugar for sauce.", "Heat oil in wok over high heat.", "Add drained noodles and sauce, stir-fry 2 minutes.", "Push noodles to one side, scramble eggs.", "Add bean sprouts and green onions, toss everything together.", "Serve with peanuts, lime wedges, and chili flakes."],
+    "nutrition": {"calories": 420, "protein": "12g", "carbs": "68g", "fat": "14g", "fiber": "4g"}
+  },
+  "49": {
+    "description": "Spicy Sichuan chicken dish with peanuts, vegetables, and dried chilies.",
+    "prepTime": "20 min",
+    "servings": 4,
+    "calories": 380,
+    "ingredients": ["1 lb chicken breast, cubed", "½ cup roasted peanuts", "6 dried red chilies", "2 tbsp Sichuan peppercorns", "3 cloves garlic", "1 inch ginger", "2 tbsp soy sauce", "1 tbsp rice wine", "1 tsp sugar", "2 tbsp oil", "Green onions"],
+    "instructions": ["Marinate chicken in soy sauce and rice wine 15 minutes.", "Heat oil in wok, stir-fry chicken until cooked through.", "Remove chicken, add chilies and peppercorns to oil.", "Add garlic and ginger, stir-fry 30 seconds.", "Return chicken, add sugar and remaining soy sauce.", "Toss with peanuts and green onions.", "Serve immediately with rice."],
+    "nutrition": {"calories": 380, "protein": "32g", "carbs": "12g", "fat": "22g", "fiber": "3g"}
+  },
+  "57": {
+    "description": "Korean fermented cabbage stew with kimchi, tofu, and pork.",
+    "prepTime": "10 min",
+    "servings": 4,
+    "calories": 280,
+    "ingredients": ["2 cups aged kimchi", "8 oz pork belly, sliced", "1 block firm tofu", "2 cups water", "1 tbsp gochujang", "2 cloves garlic", "1 green onion", "1 tbsp sesame oil", "Salt to taste"],
+    "instructions": ["Sauté pork belly until fat renders and meat is cooked.", "Add kimchi and garlic, stir-fry 3 minutes.", "Add water and gochujang, bring to boil.", "Add cubed tofu, simmer 10 minutes.", "Season with salt if needed.", "Garnish with green onions and sesame oil.", "Serve hot with rice."],
+    "nutrition": {"calories": 280, "protein": "18g", "carbs": "12g", "fat": "18g", "fiber": "4g"}
+  },
+  "65": {
+    "description": "Layered Greek casserole with eggplant, meat sauce, and béchamel.",
+    "prepTime": "45 min",
+    "servings": 8,
+    "calories": 520,
+    "ingredients": ["3 large eggplants", "1 lb ground lamb", "1 onion, diced", "3 cloves garlic", "1 can crushed tomatoes", "½ cup red wine", "4 tbsp butter", "4 tbsp flour", "2 cups milk", "½ cup Parmesan", "2 eggs", "Olive oil", "Cinnamon", "Salt, pepper"],
+    "instructions": ["Slice eggplants, salt and drain 30 minutes. Pat dry and fry until golden.", "Make meat sauce: sauté onion and garlic, add lamb, cook until browned.", "Add tomatoes, wine, cinnamon, simmer 20 minutes.", "Make béchamel: melt butter, whisk in flour, gradually add milk until thick.", "Beat eggs into cooled béchamel with cheese.", "Layer: eggplant, meat sauce, repeat, top with béchamel.", "Bake at 350°F for 45 minutes until golden.", "Cool 15 minutes before serving."],
+    "nutrition": {"calories": 520, "protein": "28g", "carbs": "22g", "fat": "36g", "fiber": "8g"}
+  },
+  "73": {
+    "description": "Classic British dish of battered fish with thick-cut chips.",
+    "prepTime": "20 min",
+    "servings": 4,
+    "calories": 680,
+    "ingredients": ["4 cod fillets", "2 lbs potatoes", "1 cup flour", "1 cup beer", "1 tsp baking powder", "Oil for frying", "Salt", "Malt vinegar", "Mushy peas"],
+    "instructions": ["Cut potatoes into thick chips, soak in cold water.", "Make batter: whisk flour, beer, baking powder until smooth.", "Heat oil to 350°F. Fry chips until golden, drain.", "Dip fish in flour, then batter, fry until golden and crispy.", "Drain on paper towels.", "Serve immediately with chips, mushy peas, and malt vinegar."],
+    "nutrition": {"calories": 680, "protein": "35g", "carbs": "58g", "fat": "32g", "fiber": "6g"}
+  },
+  "81": {
+    "description": "Tender, fall-off-the-bone pork ribs with a smoky, sweet barbecue glaze.",
+    "prepTime": "30 min",
+    "servings": 6,
+    "calories": 720,
+    "ingredients": ["2 racks baby back ribs", "2 tbsp brown sugar", "2 tbsp paprika", "1 tbsp garlic powder", "1 tbsp onion powder", "1 tsp cumin", "1 tsp chili powder", "1 cup BBQ sauce", "2 tbsp apple cider vinegar", "1 tbsp Worcestershire sauce", "Salt and pepper"],
+    "instructions": ["Remove membrane from back of ribs. Mix all dry spices for rub.", "Coat ribs generously with spice rub, let sit 30 minutes.", "Preheat oven to 275°F. Wrap ribs in foil with a splash of apple juice.", "Bake for 2.5 hours until tender.", "Remove foil, brush with BBQ sauce.", "Increase heat to 400°F, bake 15 minutes until caramelized.", "Let rest 10 minutes before cutting. Serve with extra sauce."],
+    "nutrition": {"calories": 720, "protein": "42g", "carbs": "25g", "fat": "48g", "fiber": "2g"}
+  },
+  "89": {
+    "description": "Traditional Valencian rice dish with saffron, chicken, rabbit, and vegetables.",
+    "prepTime": "30 min",
+    "servings": 6,
+    "calories": 450,
+    "ingredients": ["2 cups Spanish rice", "4 cups chicken stock", "Pinch saffron", "1 chicken, cut up", "1 lb rabbit, cut up", "1 cup green beans", "1 cup lima beans", "2 tomatoes, grated", "4 cloves garlic", "½ cup olive oil", "Rosemary", "Salt"],
+    "instructions": ["Heat olive oil in paella pan, brown chicken and rabbit.", "Add green beans and lima beans, cook 5 minutes.", "Add grated tomato and garlic, cook until thick.", "Add rice, stir to coat with sofrito.", "Add hot stock with saffron, bring to boil.", "Add rosemary, simmer 20 minutes without stirring.", "Let rest 5 minutes before serving."],
+    "nutrition": {"calories": 450, "protein": "32g", "carbs": "48g", "fat": "16g", "fiber": "4g"}
+  },
+  "97": {
+    "description": "Slow-cooked Moroccan stew with chicken, preserved lemons, and olives.",
+    "prepTime": "20 min",
+    "servings": 6,
+    "calories": 380,
+    "ingredients": ["3 lbs chicken pieces", "2 preserved lemons", "1 cup green olives", "1 large onion, sliced", "3 cloves garlic", "1 tsp ginger", "1 tsp turmeric", "½ tsp cinnamon", "¼ cup olive oil", "Fresh cilantro", "Saffron", "Salt"],
+    "instructions": ["Heat olive oil in tagine or heavy pot.", "Brown chicken pieces on all sides.", "Add onions, garlic, ginger, and spices.", "Add small amount of water, cover and simmer 45 minutes.", "Add preserved lemons and olives.", "Continue cooking 15 minutes until chicken is tender.", "Garnish with fresh cilantro and serve with couscous."],
+    "nutrition": {"calories": 380, "protein": "35g", "carbs": "8g", "fat": "22g", "fiber": "2g"}
+  },
+  "105": {
+    "description": "Grilled Turkish meat skewers with yogurt sauce and flatbread.",
+    "prepTime": "30 min",
+    "servings": 4,
+    "calories": 420,
+    "ingredients": ["2 lbs ground lamb", "1 onion, grated", "3 cloves garlic", "2 tsp cumin", "1 tsp paprika", "½ cup parsley", "1 cup Greek yogurt", "2 tbsp olive oil", "Pita bread", "Tomatoes", "Red onion", "Salt, pepper"],
+    "instructions": ["Mix lamb, grated onion, garlic, spices, and parsley.", "Form mixture around skewers.", "Grill over medium-high heat, turning frequently, 12-15 minutes.", "Mix yogurt with olive oil and salt for sauce.", "Warm pita bread on grill.", "Serve kebabs with yogurt sauce, bread, tomatoes, and onion."],
+    "nutrition": {"calories": 420, "protein": "32g", "carbs": "18g", "fat": "24g", "fiber": "3g"}
+  },
+  "113": {
+    "description": "Brazil's national dish - black bean stew with pork and sausage.",
+    "prepTime": "30 min",
+    "servings": 8,
+    "calories": 580,
+    "ingredients": ["2 cups black beans", "1 lb pork shoulder", "8 oz bacon", "8 oz chorizo", "1 onion", "4 cloves garlic", "2 bay leaves", "Orange zest", "Cachaça", "Rice", "Collard greens", "Orange slices"],
+    "instructions": ["Soak beans overnight, then cook with bay leaves until tender.", "Brown pork shoulder, bacon, and chorizo in large pot.", "Add onion and garlic, cook until soft.", "Add cooked beans with cooking liquid.", "Simmer 1 hour, mashing some beans to thicken.", "Add orange zest and splash of cachaça.", "Serve with rice, collard greens, and orange slices."],
+    "nutrition": {"calories": 580, "protein": "38g", "carbs": "42g", "fat": "28g", "fiber": "12g"}
+  },
+  "121": {
+    "description": "Vietnamese noodle soup with aromatic broth, herbs, and meat.",
+    "prepTime": "30 min",
+    "servings": 4,
+    "calories": 420,
+    "ingredients": ["8 oz rice noodles", "2 lbs beef bones", "1 lb beef brisket", "1 onion", "3 inch ginger", "Star anise", "Cinnamon stick", "Fish sauce", "Rock sugar", "Bean sprouts", "Thai basil", "Cilantro", "Lime", "Jalapeños"],
+    "instructions": ["Char onion and ginger over open flame.", "Simmer bones and brisket with charred vegetables and spices 3+ hours.", "Strain broth, season with fish sauce and sugar.", "Cook rice noodles according to package directions.", "Slice cooked brisket thinly.", "Assemble bowls with noodles, meat, and hot broth.", "Serve with herbs, bean sprouts, lime, and jalapeños."],
+    "nutrition": {"calories": 420, "protein": "28g", "carbs": "52g", "fat": "12g", "fiber": "3g"}
+  },
+  "129": {
+    "description": "Fresh Peruvian seafood dish 'cooked' in citrus juices.",
+    "prepTime": "20 min",
+    "servings": 4,
+    "calories": 220,
+    "ingredients": ["2 lbs fresh white fish", "1 cup lime juice", "1 red onion, thinly sliced", "2 aji amarillo peppers", "1 inch ginger", "Cilantro", "Sweet potato", "Corn", "Salt"],
+    "instructions": ["Cut fish into bite-sized cubes.", "Blend lime juice, aji peppers, ginger, and salt.", "Marinate fish in citrus mixture 10-15 minutes until opaque.", "Add sliced red onion in final 2 minutes.", "Garnish with cilantro.", "Serve with boiled sweet potato and corn."],
+    "nutrition": {"calories": 220, "protein": "32g", "carbs": "18g", "fat": "3g", "fiber": "4g"}
+  },
+  "137": {
+    "description": "Creamy Middle Eastern chickpea dip with tahini and olive oil.",
+    "prepTime": "10 min",
+    "servings": 6,
+    "calories": 180,
+    "ingredients": ["2 cups cooked chickpeas", "¼ cup tahini", "3 cloves garlic", "¼ cup lemon juice", "¼ cup olive oil", "1 tsp cumin", "Salt", "Paprika", "Pita bread"],
+    "instructions": ["Blend chickpeas, tahini, garlic, and lemon juice until smooth.", "Add olive oil gradually while blending.", "Season with cumin and salt.", "Adjust consistency with chickpea cooking liquid.", "Serve drizzled with olive oil and sprinkled with paprika.", "Accompany with warm pita bread."],
+    "nutrition": {"calories": 180, "protein": "8g", "carbs": "18g", "fat": "10g", "fiber": "6g"}
+  },
+  "145": {
+    "description": "German pot roast marinated in vinegar and spices.",
+    "prepTime": "24 hours",
+    "servings": 6,
+    "calories": 520,
+    "ingredients": ["4 lbs beef roast", "2 cups red wine vinegar", "2 cups red wine", "2 onions", "2 carrots", "2 bay leaves", "6 cloves", "6 juniper berries", "2 tbsp sugar", "Gingersnap cookies", "Salt, pepper"],
+    "instructions": ["Marinate beef in vinegar, wine, vegetables, and spices 2-3 days.", "Remove beef, strain and reserve marinade.", "Brown beef in Dutch oven on all sides.", "Add strained marinade, bring to boil.", "Cover and braise 2-3 hours until tender.", "Strain cooking liquid, thicken with crushed gingersnaps.", "Slice beef and serve with gravy and red cabbage."],
+    "nutrition": {"calories": 520, "protein": "45g", "carbs": "15g", "fat": "28g", "fiber": "2g"}
+  },
+  "153": {
+    "description": "Traditional Russian beet soup, served hot or cold.",
+    "prepTime": "20 min",
+    "servings": 6,
+    "calories": 180,
+    "ingredients": ["4 large beets", "1 onion", "2 carrots", "2 potatoes", "¼ head cabbage", "6 cups beef stock", "2 tbsp tomato paste", "3 cloves garlic", "2 tbsp vinegar", "Sour cream", "Fresh dill"],
+    "instructions": ["Grate beets, dice onion, carrots, and potatoes.", "Sauté onion until soft, add beets and carrots.", "Add tomato paste and garlic, cook 2 minutes.", "Add stock, potatoes, and cabbage.", "Simmer 30 minutes until vegetables are tender.", "Add vinegar and season with salt and pepper.", "Serve hot with sour cream and fresh dill."],
+    "nutrition": {"calories": 180, "protein": "8g", "carbs": "28g", "fat": "6g", "fiber": "6g"}
+  },
+  "161": {
+    "description": "Ethiopian sourdough flatbread with tangy flavor.",
+    "prepTime": "3 days",
+    "servings": 8,
+    "calories": 120,
+    "ingredients": ["2 cups teff flour", "3 cups water", "Starter culture"],
+    "instructions": ["Mix teff flour with water to make batter.", "Let ferment 3 days at room temperature until bubbly and sour.", "Heat non-stick pan over medium heat.", "Pour batter to make thin crepe-like pancake.", "Cook until surface is covered with holes and edges lift.", "Remove and let cool.", "Serve as base for Ethiopian stews."],
+    "nutrition": {"calories": 120, "protein": "4g", "carbs": "24g", "fat": "1g", "fiber": "4g"}
+  },
+  "169": {
+    "description": "West African rice dish with tomatoes, spices, and meat.",
+    "prepTime": "20 min",
+    "servings": 6,
+    "calories": 380,
+    "ingredients": ["2 cups jasmine rice", "1 can tomato paste", "1 lb chicken pieces", "1 onion", "3 cloves garlic", "2 tsp curry powder", "1 tsp thyme", "2 bay leaves", "3 cups chicken stock", "Scotch bonnet pepper", "Salt"],
+    "instructions": ["Brown chicken pieces, set aside.", "Sauté onion and garlic until soft.", "Add tomato paste, cook until darkened.", "Add spices, cook 1 minute.", "Add rice, stir to coat.", "Add stock and chicken, bring to boil.", "Cover and simmer 20 minutes until rice is tender.", "Let stand 5 minutes before serving."],
+    "nutrition": {"calories": 380, "protein": "25g", "carbs": "48g", "fat": "12g", "fiber": "3g"}
+  },
+  "177": {
+    "description": "Spicy Jamaican grilled chicken with scotch bonnet peppers.",
+    "prepTime": "4 hours",
+    "servings": 4,
+    "calories": 420,
+    "ingredients": ["3 lbs chicken pieces", "4 scotch bonnet peppers", "6 green onions", "3 cloves garlic", "2 inch ginger", "2 tbsp soy sauce", "2 tbsp brown sugar", "2 tbsp lime juice", "2 tsp allspice", "1 tsp thyme", "Salt"],
+    "instructions": ["Blend peppers, onions, garlic, ginger with liquids and spices.", "Marinate chicken in jerk paste 4+ hours.", "Grill over medium heat, turning frequently.", "Cook 25-30 minutes until internal temperature reaches 165°F.", "Baste with remaining marinade while cooking.", "Serve with rice and peas."],
+    "nutrition": {"calories": 420, "protein": "38g", "carbs": "12g", "fat": "24g", "fiber": "2g"}
+  },
+  "185": {
+    "description": "Argentine barbecue featuring various cuts of beef and sausages.",
+    "prepTime": "30 min",
+    "servings": 8,
+    "calories": 650,
+    "ingredients": ["2 lbs ribeye steak", "2 lbs short ribs", "1 lb chorizo", "1 lb morcilla", "Coarse salt", "Chimichurri sauce"],
+    "instructions": ["Light charcoal grill, let coals burn to medium heat.", "Season meats generously with coarse salt.", "Start with thicker cuts like short ribs first.", "Add steaks and sausages as space allows.", "Cook slowly, turning occasionally.", "Serve with chimichurri sauce and crusty bread."],
+    "nutrition": {"calories": 650, "protein": "48g", "carbs": "2g", "fat": "48g", "fiber": "0g"}
+  },
+  "193": {
+    "description": "Classic Australian savory pie with minced meat filling.",
+    "prepTime": "45 min",
+    "servings": 6,
+    "calories": 480,
+    "ingredients": ["2 sheets puff pastry", "1 lb ground beef", "1 onion, diced", "2 tbsp tomato sauce", "2 tbsp Worcestershire sauce", "1 cup beef stock", "2 tbsp flour", "1 egg for wash", "Salt, pepper"],
+    "instructions": ["Brown ground beef and onion in large pan.", "Add sauces and seasonings.", "Mix flour with small amount of stock, add to pan.", "Add remaining stock, simmer until thick.", "Line pie dish with pastry, add filling.", "Cover with second pastry sheet, seal edges.", "Brush with egg wash, cut steam vents.", "Bake at 400°F for 25-30 minutes until golden."],
+    "nutrition": {"calories": 480, "protein": "22g", "carbs": "35g", "fat": "28g", "fiber": "3g"}
+  },
+  "201": {
+    "description": "Quebec's famous dish of fries, gravy, and cheese curds.",
+    "prepTime": "10 min",
+    "servings": 4,
+    "calories": 520,
+    "ingredients": ["2 lbs russet potatoes", "2 cups cheese curds", "2 cups brown gravy", "Oil for frying", "Salt"],
+    "instructions": ["Cut potatoes into thick fries.", "Fry in oil heated to 350°F until golden and crispy.", "Drain and season with salt.", "Place hot fries in serving dish.", "Top with cheese curds.", "Pour hot gravy over top.", "Serve immediately while cheese is melting."],
+    "nutrition": {"calories": 520, "protein": "18g", "carbs": "58g", "fat": "24g", "fiber": "6g"}
+  }
+}

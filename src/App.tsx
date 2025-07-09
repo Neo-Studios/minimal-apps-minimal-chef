@@ -17,7 +17,7 @@ import RecipeDetail from './pages/RecipeDetail';
 import AddShoppingItem from './pages/AddShoppingItem';
 import InstacartIntegration from './pages/InstacartIntegration';
 
-function App() {
+function App(): JSX.Element {
   const { isDarkMode } = useTheme();
 
   return (

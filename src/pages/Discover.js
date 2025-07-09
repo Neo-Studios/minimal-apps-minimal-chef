@@ -13,7 +13,7 @@ import {
   Chip,
 } from '@mui/material';
 
-const cuisineTypes = ['All', 'Italian', 'Indian', 'Japanese', 'Mexican', 'French', 'Thai', 'Chinese', 'Korean', 'Greek', 'Moroccan', 'Spanish', 'Turkish', 'Brazilian', 'Vietnamese', 'Peruvian', 'Lebanese'];
+const cuisineTypes = ['All', 'Italian', 'Indian', 'Japanese', 'Mexican', 'French', 'Thai', 'Chinese', 'Korean', 'Greek', 'Moroccan', 'Spanish', 'Turkish', 'Brazilian', 'Vietnamese', 'Peruvian', 'Lebanese', 'British', 'American', 'German', 'Russian', 'Ethiopian', 'Nigerian', 'Jamaican', 'Argentinian', 'Australian', 'Canadian'];
 
 const discoverRecipes = getAllRecipes().map(recipe => ({
   id: recipe.id,
