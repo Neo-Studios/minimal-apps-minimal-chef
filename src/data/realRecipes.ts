@@ -116,6 +116,6 @@ export const detailedRecipes = {
   }
 };
 
-export const getRecipeDetails = (id) => {
+export const getRecipeDetails = (id: number) => {
   return detailedRecipes[id] || null;
 };
