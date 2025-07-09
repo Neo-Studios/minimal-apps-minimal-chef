@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 
-export const useTheme = () => {
+interface UseThemeReturn {
+  isDarkMode: boolean;
+  toggleTheme: () => void;
+}
+
+export const useTheme = (): UseThemeReturn => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     const saved = localStorage.getItem('darkMode');
     return saved ? JSON.parse(saved) : false;

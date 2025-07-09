@@ -12,6 +12,7 @@ export const getRecipeDetails = (id: number): FullRecipe | null => {
   
   return {
     id: basicRecipe.id,
+    name: basicRecipe.name,
     title: basicRecipe.name,
     image: basicRecipe.image,
     cookTime: basicRecipe.cookTime,

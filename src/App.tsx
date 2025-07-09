@@ -17,7 +17,7 @@ import RecipeDetail from './pages/RecipeDetail';
 import AddShoppingItem from './pages/AddShoppingItem';
 import InstacartIntegration from './pages/InstacartIntegration';
 
-function App(): JSX.Element {
+const App: React.FC = () => {
   const { isDarkMode } = useTheme();
 
   return (
@@ -43,6 +43,6 @@ function App(): JSX.Element {
       </Router>
     </ThemeProvider>
   );
-}
+};
 
 export default App;

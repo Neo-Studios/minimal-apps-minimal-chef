@@ -15,8 +15,15 @@ import {
 } from '@mui/material';
 import { Delete, Add } from '@mui/icons-material';
 
-const ShoppingList = () => {
-  const [items, setItems] = useState([
+interface ShoppingItem {
+  id: number;
+  text: string;
+  checked: boolean;
+  category: string;
+}
+
+const ShoppingList: React.FC = () => {
+  const [items, setItems] = useState<ShoppingItem[]>([
     { id: 1, text: 'Spaghetti pasta', checked: false, category: 'Pantry' },
     { id: 2, text: 'Fresh basil', checked: true, category: 'Produce' },
     { id: 3, text: 'Parmesan cheese', checked: false, category: 'Dairy' },
@@ -36,17 +43,17 @@ const ShoppingList = () => {
     }
   };
 
-  const toggleItem = (id) => {
+  const toggleItem = (id: number) => {
     setItems(items.map(item =>
       item.id === id ? { ...item, checked: !item.checked } : item
     ));
   };
 
-  const deleteItem = (id) => {
+  const deleteItem = (id: number) => {
     setItems(items.filter(item => item.id !== id));
   };
 
-  const groupedItems = items.reduce((acc, item) => {
+  const groupedItems = items.reduce((acc: Record<string, ShoppingItem[]>, item) => {
     if (!acc[item.category]) acc[item.category] = [];
     acc[item.category].push(item);
     return acc;

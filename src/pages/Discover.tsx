@@ -30,7 +30,7 @@ const discoverRecipes = getAllRecipes().map(recipe => ({
   region: recipe.region
 }));
 
-const Discover = () => {
+const Discover: React.FC = () => {
   const navigate = useNavigate();
   const [selectedCuisine, setSelectedCuisine] = useState(0);
 
@@ -42,7 +42,7 @@ const Discover = () => {
       
       <Tabs
         value={selectedCuisine}
-        onChange={(e, newValue) => setSelectedCuisine(newValue)}
+        onChange={(e, newValue) => setSelectedCuisine(newValue as number)}
         sx={{ mb: 3 }}
         variant="scrollable"
         scrollButtons="auto"

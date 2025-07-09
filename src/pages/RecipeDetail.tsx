@@ -29,14 +29,15 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { getRecipeDetails } from '../utils/recipeDetailService';
 
-const RecipeDetail = () => {
+const RecipeDetail: React.FC = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const [isFavorite, setIsFavorite] = useState(false);
   const [rating, setRating] = useState(4.5);
 
-  const recipe = getRecipeDetails(parseInt(id)) || {
-    id: parseInt(id),
+  const recipe = getRecipeDetails(parseInt(id || '0')) || {
+    id: parseInt(id || '0'),
+    name: 'Recipe Not Found',
     title: 'Recipe Not Found',
     image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800',
     description: 'This recipe could not be found.',

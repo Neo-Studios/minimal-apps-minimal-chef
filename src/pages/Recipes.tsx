@@ -26,7 +26,7 @@ const recipes = getAllRecipes().map(recipe => ({
   )
 }));
 
-const Recipes = () => {
+const Recipes: React.FC = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [allRecipes] = useState(recipes);

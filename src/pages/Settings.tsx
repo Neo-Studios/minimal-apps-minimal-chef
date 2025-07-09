@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { useTheme } from '../hooks/useTheme';
 
-const Settings = () => {
+const Settings: React.FC = () => {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
