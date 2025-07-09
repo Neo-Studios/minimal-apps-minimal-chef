@@ -2,7 +2,7 @@
 
 A minimalist cooking companion app built with React and Material-UI.
 
-## Featuresb 
+## Features 
 
 - **Recipe Management**: Browse and search your recipe collection
 - **Discover**: Explore new recipes from various cuisines
@@ -23,7 +23,7 @@ A minimalist cooking companion app built with React and Material-UI.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/minimal-chef.git
+   git clone https://github.com/EthanCoderPenguin2012/minimal-chef.git
    cd minimal-chef
    ```
 
