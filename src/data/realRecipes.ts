@@ -1,5 +1,5 @@
 // Complete recipe details with ingredients and instructions
-export const detailedRecipes = {
+export const detailedRecipes: Record<number, any> = {
   1: {
     title: 'Risotto alla Milanese',
     image: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=800',

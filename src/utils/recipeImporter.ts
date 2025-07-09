@@ -1,5 +1,5 @@
 // Recipe URL import utility
-export const importRecipeFromUrl = async (url) => {
+export const importRecipeFromUrl = async (url: string) => {
   try {
     // Simulate recipe extraction from URL
     const mockRecipe = {
@@ -31,11 +31,11 @@ export const importRecipeFromUrl = async (url) => {
   }
 };
 
-export const adjustServings = (ingredients, originalServings, newServings) => {
+export const adjustServings = (ingredients: string[], originalServings: number, newServings: number) => {
   const ratio = newServings / originalServings;
   
-  return ingredients.map(ingredient => {
-    return ingredient.replace(/(\d+(?:\.\d+)?)/g, (match) => {
+  return ingredients.map((ingredient: string) => {
+    return ingredient.replace(/(\d+(?:\.\d+)?)/g, (match: string) => {
       const num = parseFloat(match);
       const adjusted = (num * ratio).toFixed(2).replace(/\.?0+$/, '');
       return adjusted;

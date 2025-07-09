@@ -15,10 +15,19 @@ import {
 import { AutoAwesome, Restaurant } from '@mui/icons-material';
 import { generateRecipe } from '../utils/anthropic';
 
-const AIRecipe = () => {
+interface GeneratedRecipe {
+  title: string;
+  cookTime: string;
+  servings: number;
+  ingredients: string[];
+  instructions: string[];
+  tags: string[];
+}
+
+const AIRecipe: React.FC = () => {
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
-  const [recipe, setRecipe] = useState(null);
+  const [recipe, setRecipe] = useState<GeneratedRecipe | null>(null);
 
   const handleGenerateRecipe = async () => {
     setLoading(true);

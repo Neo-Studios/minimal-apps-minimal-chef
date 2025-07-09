@@ -1,24 +1,20 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Typography,
-  TextField,
-  Button,
-  Card,
-  CardContent,
-  Grid,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemSecondaryAction,
-  Chip,
-  Input,
-} from '@mui/material';
+import { Box, Typography, TextField, Button, Card, CardContent, Grid, IconButton, List, ListItem, ListItemText, ListItemSecondaryAction, Chip } from '@mui/material';
 import { Add, Delete, PhotoCamera } from '@mui/icons-material';
 
+interface NewRecipeState {
+  title: string;
+  description: string;
+  cookTime: string;
+  servings: string;
+  image: string | null;
+  tags: string[];
+  ingredients: string[];
+  instructions: string[];
+}
+
 const NewRecipe = () => {
-  const [recipe, setRecipe] = useState({
+  const [recipe, setRecipe] = useState<NewRecipeState>({
     title: '',
     description: '',
     cookTime: '',
@@ -34,13 +30,13 @@ const NewRecipe = () => {
     setRecipe({...recipe, ingredients: [...recipe.ingredients, '']});
   };
 
-  const updateIngredient = (index, value) => {
+  const updateIngredient = (index: number, value: string) => {
     const newIngredients = [...recipe.ingredients];
     newIngredients[index] = value;
     setRecipe({...recipe, ingredients: newIngredients});
   };
 
-  const removeIngredient = (index) => {
+  const removeIngredient = (index: number) => {
     const newIngredients = recipe.ingredients.filter((_, i) => i !== index);
     setRecipe({...recipe, ingredients: newIngredients});
   };
@@ -49,13 +45,13 @@ const NewRecipe = () => {
     setRecipe({...recipe, instructions: [...recipe.instructions, '']});
   };
 
-  const updateInstruction = (index, value) => {
+  const updateInstruction = (index: number, value: string) => {
     const newInstructions = [...recipe.instructions];
     newInstructions[index] = value;
     setRecipe({...recipe, instructions: newInstructions});
   };
 
-  const removeInstruction = (index) => {
+  const removeInstruction = (index: number) => {
     const newInstructions = recipe.instructions.filter((_, i) => i !== index);
     setRecipe({...recipe, instructions: newInstructions});
   };
@@ -67,16 +63,18 @@ const NewRecipe = () => {
     }
   };
 
-  const removeTag = (tagToRemove) => {
+  const removeTag = (tagToRemove: string) => {
     setRecipe({...recipe, tags: recipe.tags.filter(tag => tag !== tagToRemove)});
   };
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files && event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setRecipe({...recipe, image: e.target.result});
+        if (e.target && typeof e.target.result === 'string') {
+          setRecipe({...recipe, image: e.target.result});
+        }
       };
       reader.readAsDataURL(file);
     }
@@ -223,11 +221,11 @@ const NewRecipe = () => {
                   <Typography color="text.secondary">No image uploaded</Typography>
                 </Box>
               )}
-              <Input
+              <input
                 type="file"
                 accept="image/*"
                 onChange={handleImageUpload}
-                sx={{ display: 'none' }}
+                style={{ display: 'none' }}
                 id="image-upload"
               />
               <label htmlFor="image-upload">

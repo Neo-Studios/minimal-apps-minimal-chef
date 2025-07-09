@@ -17,7 +17,7 @@ import {
 import { Add, ShoppingCart } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
-const AddShoppingItem = () => {
+const AddShoppingItem: React.FC = () => {
   const navigate = useNavigate();
   const [item, setItem] = useState({
     name: '',
@@ -34,13 +34,13 @@ const AddShoppingItem = () => {
   ];
 
   const priorities = [
-    { value: 'low', label: 'Low', color: 'default' },
-    { value: 'normal', label: 'Normal', color: 'primary' },
-    { value: 'high', label: 'High', color: 'warning' },
-    { value: 'urgent', label: 'Urgent', color: 'error' }
+    { value: 'low', label: 'Low', color: 'default' as const },
+    { value: 'normal', label: 'Normal', color: 'primary' as const },
+    { value: 'high', label: 'High', color: 'warning' as const },
+    { value: 'urgent', label: 'Urgent', color: 'error' as const }
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (item.name && item.category) {
       console.log('Adding item:', item);
@@ -51,7 +51,7 @@ const AddShoppingItem = () => {
     }
   };
 
-  const quickAdd = (itemName, category) => {
+  const quickAdd = (itemName: string, category: string) => {
     setItem({ ...item, name: itemName, category });
   };
 
@@ -197,7 +197,7 @@ const AddShoppingItem = () => {
               </Typography>
               <Chip
                 label={priorities.find(p => p.value === item.priority)?.label}
-                color={priorities.find(p => p.value === item.priority)?.color}
+                color={priorities.find(p => p.value === item.priority)?.color || 'default'}
               />
               <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
                 {item.priority === 'urgent' && 'Need this ASAP!'}

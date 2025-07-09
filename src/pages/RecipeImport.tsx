@@ -17,12 +17,22 @@ import {
 import { Link, ShoppingCart } from '@mui/icons-material';
 import { importRecipeFromUrl, adjustServings } from '../utils/recipeImporter';
 
+interface ImportedRecipe {
+  title: string;
+  originalServings: number;
+  ingredients: string[];
+  instructions: string[];
+  cookTime?: string;
+  prepTime?: string;
+  image?: string;
+}
+
 const RecipeImport = () => {
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
-  const [recipe, setRecipe] = useState(null);
+  const [recipe, setRecipe] = useState<ImportedRecipe | null>(null);
   const [servings, setServings] = useState(4);
-  const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const [selectedIngredients, setSelectedIngredients] = useState<boolean[]>([]);
 
   const importRecipe = async () => {
     setLoading(true);
@@ -66,7 +76,7 @@ const RecipeImport = () => {
   const adjustedIngredients = recipe ? adjustServings(recipe.ingredients, recipe.originalServings, servings) : [];
 
   const addToShoppingList = () => {
-    const selected = adjustedIngredients?.filter((_, index) => selectedIngredients[index]);
+    const selected = adjustedIngredients?.filter((_: string, index: number) => selectedIngredients[index]);
     console.log('Adding to shopping list:', selected);
   };
 
@@ -109,7 +119,9 @@ const RecipeImport = () => {
               </Typography>
               <Slider
                 value={servings}
-                onChange={(e, value) => setServings(value)}
+                onChange={(e, value) => {
+                  if (typeof value === 'number') setServings(value);
+                }}
                 min={1}
                 max={20}
                 marks
@@ -120,17 +132,17 @@ const RecipeImport = () => {
             <Typography variant="h6" gutterBottom>
               Ingredients
             </Typography>
-            <List dense>
-              {adjustedIngredients?.map((ingredient, index) => (
+            <List>
+              {adjustedIngredients.map((ingredient: string, index: number) => (
                 <ListItem key={index}>
                   <FormControlLabel
                     control={
                       <Checkbox
                         checked={selectedIngredients[index]}
-                        onChange={(e) => {
-                          const newSelected = [...selectedIngredients];
-                          newSelected[index] = e.target.checked;
-                          setSelectedIngredients(newSelected);
+                        onChange={() => {
+                          const updated = [...selectedIngredients];
+                          updated[index] = !updated[index];
+                          setSelectedIngredients(updated);
                         }}
                       />
                     }
@@ -141,22 +153,21 @@ const RecipeImport = () => {
             </List>
             
             <Button
-              variant="outlined"
+              variant="contained"
               startIcon={<ShoppingCart />}
               onClick={addToShoppingList}
               disabled={!selectedIngredients.some(Boolean)}
-              sx={{ mt: 2, mr: 2 }}
             >
               Add Selected to Shopping List
             </Button>
             
-            <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
+            <Typography variant="h6" sx={{ mt: 3 }}>
               Instructions
             </Typography>
             <List>
-              {recipe.instructions.map((step, index) => (
+              {recipe.instructions.map((step: string, index: number) => (
                 <ListItem key={index}>
-                  <ListItemText primary={`${index + 1}. ${step}`} />
+                  <ListItemText primary={`Step ${index + 1}: ${step}`} />
                 </ListItem>
               ))}
             </List>

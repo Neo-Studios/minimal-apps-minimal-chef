@@ -22,11 +22,15 @@ import {
   MicOff 
 } from '@mui/icons-material';
 
+// @ts-ignore: Allow use of webkitSpeechRecognition in browsers
+// eslint-disable-next-line
+const SpeechRecognitionType = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
 const VoiceChef = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isListening, setIsListening] = useState(false);
-  const [recognition, setRecognition] = useState(null);
+  const [recognition, setRecognition] = useState<any>(null);
 
   const recipe = {
     title: 'Spaghetti Carbonara',
@@ -45,12 +49,12 @@ const VoiceChef = () => {
 
   useEffect(() => {
     if ('webkitSpeechRecognition' in window) {
-      const speechRecognition = new window.webkitSpeechRecognition();
+      const speechRecognition = new SpeechRecognitionType();
       speechRecognition.continuous = true;
       speechRecognition.interimResults = true;
       speechRecognition.lang = 'en-US';
 
-      speechRecognition.onresult = (event) => {
+      speechRecognition.onresult = (event: any) => {
         const transcript = event.results[event.results.length - 1][0].transcript.toLowerCase();
         
         if (transcript.includes('next')) {
@@ -66,12 +70,11 @@ const VoiceChef = () => {
     }
   }, [currentStep]);
 
-  const speakStep = (stepIndex) => {
+  const speakStep = (stepIndex: number) => {
     if ('speechSynthesis' in window) {
       const utterance = new SpeechSynthesisUtterance(recipe.steps[stepIndex]);
       utterance.rate = 0.8;
-      utterance.pitch = 1;
-      speechSynthesis.speak(utterance);
+      window.speechSynthesis.speak(utterance);
     }
   };
 
@@ -88,10 +91,11 @@ const VoiceChef = () => {
   };
 
   const toggleListening = () => {
+    if (!recognition) return;
     if (isListening) {
-      recognition?.stop();
+      recognition.stop();
     } else {
-      recognition?.start();
+      recognition.start();
     }
     setIsListening(!isListening);
   };

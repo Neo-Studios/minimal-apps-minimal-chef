@@ -15,20 +15,22 @@ import {
 
 const cuisineTypes = ['All', 'Italian', 'Indian', 'Japanese', 'Mexican', 'French', 'Thai', 'Chinese', 'Korean', 'Greek', 'Moroccan', 'Spanish', 'Turkish', 'Brazilian', 'Vietnamese', 'Peruvian', 'Lebanese', 'British', 'American', 'German', 'Russian', 'Ethiopian', 'Nigerian', 'Jamaican', 'Argentinian', 'Australian', 'Canadian'];
 
-const discoverRecipes = getAllRecipes().map(recipe => ({
-  id: recipe.id,
-  title: recipe.name,
-  image: recipe.image,
-  cuisine: Object.keys(internationalRecipes).find(country => 
+const discoverRecipes = getAllRecipes().map(recipe => {
+  const cuisineKey = Object.keys(internationalRecipes).find(country => 
     internationalRecipes[country].some(r => r.id === recipe.id)
-  )?.charAt(0).toUpperCase() + Object.keys(internationalRecipes).find(country => 
-    internationalRecipes[country].some(r => r.id === recipe.id)
-  )?.slice(1),
-  difficulty: recipe.difficulty,
-  rating: (4.2 + Math.random() * 0.7).toFixed(1),
-  cookTime: recipe.cookTime,
-  region: recipe.region
-}));
+  );
+  const cuisine = cuisineKey ? cuisineKey.charAt(0).toUpperCase() + cuisineKey.slice(1) : '';
+  return {
+    id: recipe.id,
+    title: recipe.name,
+    image: recipe.image,
+    cuisine,
+    difficulty: recipe.difficulty,
+    rating: (4.2 + Math.random() * 0.7).toFixed(1),
+    cookTime: recipe.cookTime,
+    region: recipe.region
+  };
+});
 
 const Discover: React.FC = () => {
   const navigate = useNavigate();
