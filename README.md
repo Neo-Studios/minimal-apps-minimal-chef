@@ -1,5 +1,10 @@
 # Minimal Chef
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)](https://minimal-chef-dev.vercel.app/)
+[![React](https://img.shields.io/badge/React-18.2.0-blue)](https://reactjs.org/)
+[![Material-UI](https://img.shields.io/badge/Material--UI-5.11.0-blue)](https://mui.com/)
+
 A minimalist cooking companion app built with React and Material-UI.
 
 >[!NOTE]
@@ -98,3 +103,32 @@ To use AI recipe generation, you need a Claude API key from Anthropic:
 ✅ **Dark/Light Mode**: Theme switching  
 ✅ **Responsive Design**: Mobile and desktop optimized  
 ✅ **Analytics & Speed Insights**: Vercel performance tracking
+
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+### Quick Start for Contributors
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## Community
+
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Contributing Guidelines](CONTRIBUTING.md)
+- [Issue Templates](.github/ISSUE_TEMPLATE/)
+- [License](LICENSE)
+
+## Support
+
+If you find this project helpful, please give it a ⭐ on GitHub!
+
+For questions or support, please [open an issue](https://github.com/EthanCoderPenguin2012/minimal-chef/issues).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
