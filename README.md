@@ -50,19 +50,20 @@ A minimalist cooking companion app built with React and Material-UI.
 
 ## Deployment
 
-This app is configured for automatic deployment to GitHub Pages:
+This app is configured for automatic deployment to Vercel:
 
 1. Fork this repository
-2. Update the `homepage` field in `package.json` with your GitHub username
-3. Push to the `main` branch
-4. Enable GitHub Pages in your repository settings
-5. Your app will be available at `https://yourusername.github.io/minimal-chef`
+2. Connect your GitHub repository to Vercel
+3. Vercel will automatically deploy on every push to `main`
+4. Add your `REACT_APP_ANTHROPIC_API_KEY` in Vercel's environment variables
+5. Your app will be available at your Vercel domain
 
 ### Manual Deployment
 
 To deploy manually:
 ```bash
-npm run deploy
+npm run build
+# Then upload the build folder to your hosting provider
 ```
 
 ## API Configuration
@@ -72,7 +73,7 @@ To use AI recipe generation, you need a Claude API key from Anthropic:
 2. Create an API key
 3. Add it to your `.env` file as `REACT_APP_ANTHROPIC_API_KEY`
 
-**Note**: For production deployment, API keys should be configured as environment variables in your hosting platform.
+**Note**: For Vercel deployment, add your API key as an environment variable in your Vercel dashboard under Settings > Environment Variables.
 
 ## Features
 
