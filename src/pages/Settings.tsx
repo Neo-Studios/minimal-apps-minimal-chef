@@ -9,6 +9,7 @@ import {
   Switch,
   Paper,
   Divider,
+  Alert,
 } from '@mui/material';
 import { useTheme } from '../hooks/useTheme';
 
@@ -20,6 +21,10 @@ const Settings: React.FC = () => {
       <Typography variant="h4" component="h1" gutterBottom>
         Settings
       </Typography>
+
+      <Alert severity="info" sx={{ mb: 2 }}>
+        This is a developer build. Some features may be unstable.
+      </Alert>
 
       <Paper>
         <List>
