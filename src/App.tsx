@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { lightTheme, darkTheme } from './theme';
 import { useTheme } from './hooks/useTheme';
 import Layout from './components/Layout';
@@ -43,6 +44,7 @@ const App: React.FC = () => {
         </Layout>
       </Router>
       <Analytics />
+      <SpeedInsights />
     </ThemeProvider>
   );
 };
