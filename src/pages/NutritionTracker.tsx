@@ -17,7 +17,7 @@ import {
   TextField,
   DialogActions,
 } from '@mui/material';
-import { LocalFireDepartment, Fitness, Restaurant } from '@mui/icons-material';
+import { LocalFireDepartment, FitnessCenter, Restaurant } from '@mui/icons-material';
 
 const NutritionTracker = () => {
   const [dailyGoals] = useState({
@@ -90,7 +90,7 @@ const NutritionTracker = () => {
         <Grid item xs={12} sm={6} md={3}>
           <Card>
             <CardContent sx={{ textAlign: 'center' }}>
-              <Fitness color="primary" sx={{ fontSize: 40, mb: 1 }} />
+              <FitnessCenter color="primary" sx={{ fontSize: 40, mb: 1 }} />
               <Typography variant="h6">Protein</Typography>
               <Typography variant="h4" color="primary">{consumed.protein}g</Typography>
               <Typography variant="body2" color="text.secondary">/ {dailyGoals.protein}g</Typography>
