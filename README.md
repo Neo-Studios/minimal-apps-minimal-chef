@@ -2,6 +2,8 @@
 
 A minimalist cooking companion app built with React and Material-UI.
 
+>[!NOTE]
+> This is the dev branch. Here you can find and preview the latest features and updates before they are merged into the main branch. As it is a developer branch, things are exprimental and may not be fully stable. Use with caution, and report any issues you encounter. For the online version click [here](https://minimal-chef-dev.vercel.app/).
 ## Features 
 
 - **Recipe Management**: Browse and search your recipe collection
