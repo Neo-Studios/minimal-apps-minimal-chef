@@ -2,6 +2,10 @@
 
 A minimalist cooking companion app built with React and Material-UI.
 
+>[!NOTE]
+> We are happy to announce that the transition to Vercel has been completed! The app is now hosted on Vercel, providing better performance and reliability. You can access the live  version at [minimal-chef.vercel.app](https://minimal-chef.vercel.app/).
+
+
 ## Features 
 
 - **Recipe Management**: Browse and search your recipe collection
