@@ -32,6 +32,9 @@ import {
   Mic,
   Link,
   Store,
+  Timer,
+  FitnessCenter,
+  Casino,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -55,6 +58,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { text: 'Shopping List', icon: <ShoppingCart />, path: '/shopping' },
     { text: 'Meal Log', icon: <Receipt />, path: '/meals' },
     { text: 'Voice Chef', icon: <Mic />, path: '/voice-chef' },
+    { text: 'Recipe Timer', icon: <Timer />, path: '/timer' },
+    { text: 'Nutrition', icon: <FitnessCenter />, path: '/nutrition' },
+    { text: 'Recipe Roulette', icon: <Casino />, path: '/roulette' },
   ];
 
   const speedDialActions = [
@@ -62,7 +68,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { icon: <ShoppingCart />, name: 'New Shopping Item', action: () => navigate('/shopping/add') },
     { icon: <AutoAwesome />, name: 'AI Recipe', action: () => navigate('/ai-recipe') },
     { icon: <Link />, name: 'Import Recipe', action: () => navigate('/import') },
-    { icon: <Store />, name: 'Instacart', action: () => navigate('/instacart') },
+    { icon: <Timer />, name: 'Recipe Timer', action: () => navigate('/timer') },
+    { icon: <Casino />, name: 'Recipe Roulette', action: () => navigate('/roulette') },
   ];
 
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);

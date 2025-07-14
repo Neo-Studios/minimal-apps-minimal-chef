@@ -88,5 +88,9 @@ To use AI recipe generation, you need a Claude API key from Anthropic:
 ✅ **Recipe Import**: Import from URLs with serving adjustment  
 ✅ **Manual Recipe Creation**: Build custom recipes  
 ✅ **International Database**: Recipes from multiple countries  
+✅ **Recipe Timer**: Multiple simultaneous cooking timers  
+✅ **Nutrition Tracker**: Daily macro and calorie tracking  
+✅ **Recipe Roulette**: Random recipe suggestions with filters  
 ✅ **Dark/Light Mode**: Theme switching  
-✅ **Responsive Design**: Mobile and desktop optimized
+✅ **Responsive Design**: Mobile and desktop optimized  
+✅ **Analytics & Speed Insights**: Vercel performance tracking

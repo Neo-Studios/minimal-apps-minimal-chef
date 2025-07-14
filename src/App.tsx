@@ -18,6 +18,9 @@ import NewRecipe from './pages/NewRecipe';
 import RecipeDetail from './pages/RecipeDetail';
 import AddShoppingItem from './pages/AddShoppingItem';
 import InstacartIntegration from './pages/InstacartIntegration';
+import RecipeTimer from './pages/RecipeTimer';
+import NutritionTracker from './pages/NutritionTracker';
+import RecipeRoulette from './pages/RecipeRoulette';
 
 const App: React.FC = () => {
   const { isDarkMode } = useTheme();
@@ -40,6 +43,9 @@ const App: React.FC = () => {
             <Route path="/recipe/:id" element={<RecipeDetail />} />
             <Route path="/shopping/add" element={<AddShoppingItem />} />
             <Route path="/instacart" element={<InstacartIntegration />} />
+            <Route path="/timer" element={<RecipeTimer />} />
+            <Route path="/nutrition" element={<NutritionTracker />} />
+            <Route path="/roulette" element={<RecipeRoulette />} />
           </Routes>
         </Layout>
       </Router>
