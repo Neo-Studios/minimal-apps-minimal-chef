@@ -4,6 +4,8 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AuthProvider } from './contexts/AuthContext';
+import { DebugProvider, useDebug } from './contexts/DebugContext';
+import DebugPanel from './components/DebugPanel';
 
 import { lightTheme, darkTheme } from './theme';
 import { useTheme } from './hooks/useTheme';
@@ -25,14 +27,13 @@ import NutritionTracker from './pages/NutritionTracker';
 import RecipeRoulette from './pages/RecipeRoulette';
 import Login from './pages/Login';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const { isDebugMode } = useDebug();
 
   return (
-    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-      <CssBaseline />
-      <AuthProvider>
-        <Router>
+    <>
+      <Router>
           <Layout>
           <Routes>
             <Route path="/" element={<Recipes />} />
@@ -53,10 +54,25 @@ const App: React.FC = () => {
             <Route path="/login" element={<Login />} />
           </Routes>
           </Layout>
-        </Router>
-      </AuthProvider>
+      </Router>
+      {isDebugMode && <DebugPanel />}
       <Analytics />
       <SpeedInsights />
+    </>
+  );
+};
+
+const App: React.FC = () => {
+  const { isDarkMode } = useTheme();
+
+  return (
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+      <CssBaseline />
+      <DebugProvider>
+        <AuthProvider>
+          <AppContent />
+        </AuthProvider>
+      </DebugProvider>
     </ThemeProvider>
   );
 };

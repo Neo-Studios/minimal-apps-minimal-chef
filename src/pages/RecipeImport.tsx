@@ -48,6 +48,12 @@ const RecipeImport = () => {
       }
       
       const data = await response.json();
+      
+      // Debug logging if available
+      if ((window as any).debug && localStorage.getItem('debugMode') === 'true') {
+        console.log('Recipe import data:', data);
+      }
+      
       const importedRecipe = {
         title: data.recipe.name || 'Imported Recipe',
         originalServings: data.recipe.servings || 4,
