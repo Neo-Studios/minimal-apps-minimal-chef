@@ -11,33 +11,39 @@ A minimalist cooking companion app built with React and Material-UI.
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)](https://minimal-chef-dev.vercel.app/)
 [![React](https://img.shields.io/badge/React-18.2.0-blue)](https://reactjs.org/)
 
-## Quick Start
-
-```bash
-git clone https://github.com/EthanCoderPenguin2012/minimal-chef.git
+<div class="glass-card">
+<h2>Quick Start</h2>
+<pre><code>git clone https://github.com/EthanCoderPenguin2012/minimal-chef.git
 cd minimal-chef
 npm install
-npm start
-```
+npm start</code></pre>
+</div>
 
-## Features
+<div class="glass-card">
+<h2>Features</h2>
+<ul>
+<li><strong>Recipe Management</strong>: Browse and search your recipe collection</li>
+<li><strong>AI Recipe Generation</strong>: Claude-powered recipe creation</li>
+<li><strong>Recipe Import</strong>: Import from any cooking website</li>
+<li><strong>Voice Chef</strong>: Step-by-step voice instructions</li>
+<li><strong>Shopping List</strong>: Organized grocery lists</li>
+<li><strong>Nutrition Tracker</strong>: Daily macro and calorie tracking</li>
+<li><strong>Recipe Timer</strong>: Multiple simultaneous cooking timers</li>
+<li><strong>Dark/Light Mode</strong>: Theme switching</li>
+</ul>
+</div>
 
-- **Recipe Management**: Browse and search your recipe collection
-- **AI Recipe Generation**: Claude-powered recipe creation
-- **Recipe Import**: Import from any cooking website
-- **Voice Chef**: Step-by-step voice instructions
-- **Shopping List**: Organized grocery lists
-- **Nutrition Tracker**: Daily macro and calorie tracking
-- **Recipe Timer**: Multiple simultaneous cooking timers
-- **Dark/Light Mode**: Theme switching
+<div class="glass-card">
+<h2>Live Demo</h2>
+<p>Try the app at <a href="https://minimal-chef-dev.vercel.app/">minimal-chef-dev.vercel.app</a></p>
+</div>
 
-## Live Demo
-
-Try the app at [minimal-chef-dev.vercel.app](https://minimal-chef-dev.vercel.app/)
-
-## Documentation
-
-- [Getting Started](getting-started.html)
-- [Features Guide](features.html)
-- [API Reference](api.html)
-- [Contributing](contributing.html)
+<div class="glass-card">
+<h2>Documentation</h2>
+<ul>
+<li><a href="getting-started.html">Getting Started</a></li>
+<li><a href="features.html">Features Guide</a></li>
+<li><a href="api.html">API Reference</a></li>
+<li><a href="contributing.html">Contributing</a></li>
+</ul>
+</div>

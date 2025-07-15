@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+<section id="hero" style="min-height: 100vh; display: flex; align-items: center; text-align: center;">
+    <div class="container">
+        <div class="section-content">
+            <h1>{{ site.title }}</h1>
+            <p class="subtitle" style="font-size: clamp(1rem, 3vw, 1.3rem); color: var(--primary-color); margin-bottom: 2rem; font-weight: 400;">{{ site.description }}</p>
+            {{ content }}
+        </div>
+    </div>
+</section>
