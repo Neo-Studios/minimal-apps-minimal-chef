@@ -3,7 +3,7 @@ description: A minimalist cooking companion app built with React and Material-UI
 baseurl: "/minimal-chef"
 url: "https://ethancoderpenguin2012.github.io"
 
-theme: minima
+# theme: minima # Using custom theme
 
 markdown: kramdown
 highlighter: rouge
