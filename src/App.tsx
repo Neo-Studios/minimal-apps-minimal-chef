@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { AuthProvider } from './contexts/AuthContext';
+
 import { lightTheme, darkTheme } from './theme';
 import { useTheme } from './hooks/useTheme';
 import Layout from './components/Layout';
@@ -21,6 +23,7 @@ import InstacartIntegration from './pages/InstacartIntegration';
 import RecipeTimer from './pages/RecipeTimer';
 import NutritionTracker from './pages/NutritionTracker';
 import RecipeRoulette from './pages/RecipeRoulette';
+import Login from './pages/Login';
 
 const App: React.FC = () => {
   const { isDarkMode } = useTheme();
@@ -28,8 +31,9 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <CssBaseline />
-      <Router>
-        <Layout>
+      <AuthProvider>
+        <Router>
+          <Layout>
           <Routes>
             <Route path="/" element={<Recipes />} />
             <Route path="/discover" element={<Discover />} />
@@ -46,9 +50,11 @@ const App: React.FC = () => {
             <Route path="/timer" element={<RecipeTimer />} />
             <Route path="/nutrition" element={<NutritionTracker />} />
             <Route path="/roulette" element={<RecipeRoulette />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
-        </Layout>
-      </Router>
+          </Layout>
+        </Router>
+      </AuthProvider>
       <Analytics />
       <SpeedInsights />
     </ThemeProvider>
