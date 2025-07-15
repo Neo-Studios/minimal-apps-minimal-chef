@@ -53,7 +53,7 @@ const DebugPanel = () => {
   };
 
   const getLocalStorageData = () => {
-    const data = {};
+    const data: { [key: string]: string | null } = {};
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       if (key?.startsWith('minimalChef')) {
