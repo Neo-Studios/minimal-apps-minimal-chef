@@ -81,8 +81,25 @@ const NewRecipe = () => {
   };
 
   const saveRecipe = () => {
-    console.log('Saving recipe:', recipe);
-    // Save logic here
+    const newRecipe = {
+      id: Date.now(),
+      name: recipe.title,
+      description: recipe.description,
+      servings: parseInt(recipe.servings) || 4,
+      cookTime: recipe.cookTime,
+      ingredients: recipe.ingredients.filter(ing => ing.trim()),
+      instructions: recipe.instructions.filter(inst => inst.trim()),
+      tags: recipe.tags,
+      image: recipe.image,
+      source: 'custom',
+      createdAt: new Date().toISOString()
+    };
+    
+    const existingRecipes = JSON.parse(localStorage.getItem('minimalChefCustomRecipes') || '[]');
+    existingRecipes.push(newRecipe);
+    localStorage.setItem('minimalChefCustomRecipes', JSON.stringify(existingRecipes));
+    
+    alert('Recipe saved to Library!');
   };
 
   return (

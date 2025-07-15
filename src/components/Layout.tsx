@@ -37,6 +37,7 @@ import {
   Casino,
   Login,
   Logout,
+  LibraryBooks,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -58,6 +59,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const menuItems = [
     { text: 'Recipes', icon: <Restaurant />, path: '/' },
+    { text: 'Library', icon: <LibraryBooks />, path: '/library' },
     { text: 'Discover', icon: <Explore />, path: '/discover' },
     { text: 'Shopping List', icon: <ShoppingCart />, path: '/shopping' },
     { text: 'Meal Log', icon: <Receipt />, path: '/meals' },

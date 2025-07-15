@@ -26,6 +26,7 @@ import RecipeTimer from './pages/RecipeTimer';
 import NutritionTracker from './pages/NutritionTracker';
 import RecipeRoulette from './pages/RecipeRoulette';
 import Login from './pages/Login';
+import Library from './pages/Library';
 
 const AppContent: React.FC = () => {
   const { isDarkMode } = useTheme();
@@ -52,6 +53,7 @@ const AppContent: React.FC = () => {
             <Route path="/nutrition" element={<NutritionTracker />} />
             <Route path="/roulette" element={<RecipeRoulette />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/library" element={<Library />} />
           </Routes>
           </Layout>
       </Router>
