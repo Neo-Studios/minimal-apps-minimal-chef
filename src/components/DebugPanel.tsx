@@ -52,11 +52,11 @@ const DebugPanel = () => {
     }
   };
 
-  const getLocalStorageData = () => {
-    const data: { [key: string]: string | null } = {};
+  const getLocalStorageData = (): Record<string, string | null> => {
+    const data: Record<string, string | null> = {};
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
-      if (key?.startsWith('minimalChef')) {
+      if (key && key.startsWith('minimalChef')) {
         data[key] = localStorage.getItem(key);
       }
     }
