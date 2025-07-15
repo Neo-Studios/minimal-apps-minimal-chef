@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { AuthProvider } from './contexts/AuthContext';
+import { DebugProvider, useDebug } from './contexts/DebugContext';
+import DebugPanel from './components/DebugPanel';
+
 import { lightTheme, darkTheme } from './theme';
 import { useTheme } from './hooks/useTheme';
 import Layout from './components/Layout';
@@ -18,15 +22,20 @@ import NewRecipe from './pages/NewRecipe';
 import RecipeDetail from './pages/RecipeDetail';
 import AddShoppingItem from './pages/AddShoppingItem';
 import InstacartIntegration from './pages/InstacartIntegration';
+import RecipeTimer from './pages/RecipeTimer';
+import NutritionTracker from './pages/NutritionTracker';
+import RecipeRoulette from './pages/RecipeRoulette';
+import Login from './pages/Login';
+import Library from './pages/Library';
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
   const { isDarkMode } = useTheme();
+  const { isDebugMode } = useDebug();
 
   return (
-    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-      <CssBaseline />
+    <>
       <Router>
-        <Layout>
+          <Layout>
           <Routes>
             <Route path="/" element={<Recipes />} />
             <Route path="/discover" element={<Discover />} />
@@ -40,11 +49,32 @@ const App: React.FC = () => {
             <Route path="/recipe/:id" element={<RecipeDetail />} />
             <Route path="/shopping/add" element={<AddShoppingItem />} />
             <Route path="/instacart" element={<InstacartIntegration />} />
+            <Route path="/timer" element={<RecipeTimer />} />
+            <Route path="/nutrition" element={<NutritionTracker />} />
+            <Route path="/roulette" element={<RecipeRoulette />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/library" element={<Library />} />
           </Routes>
-        </Layout>
+          </Layout>
       </Router>
+      {isDebugMode && <DebugPanel />}
       <Analytics />
       <SpeedInsights />
+    </>
+  );
+};
+
+const App: React.FC = () => {
+  const { isDarkMode } = useTheme();
+
+  return (
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+      <CssBaseline />
+      <DebugProvider>
+        <AuthProvider>
+          <AppContent />
+        </AuthProvider>
+      </DebugProvider>
     </ThemeProvider>
   );
 };

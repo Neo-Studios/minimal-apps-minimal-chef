@@ -1,0 +1,22 @@
+title: Minimal Chef Documentation
+description: A minimalist cooking companion app built with React and Material-UI
+baseurl: "/minimal-chef"
+url: "https://ethancoderpenguin2012.github.io"
+
+theme: minima
+
+markdown: kramdown
+highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+header_pages:
+  - getting-started.md
+  - features.md
+  - api.md
+  - contributing.md
+
+social_links:
+  github: EthanCoderPenguin2012/minimal-chef

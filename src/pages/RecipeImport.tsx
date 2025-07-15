@@ -37,47 +37,57 @@ const RecipeImport = () => {
   const importRecipe = async () => {
     setLoading(true);
     try {
-      const importedRecipe = await importRecipeFromUrl(url);
+      const response = await fetch('/api/import-recipe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url })
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to import recipe');
+      }
+      
+      const data = await response.json();
+      
+      // Debug logging if available
+      if ((window as any).debug && localStorage.getItem('debugMode') === 'true') {
+        console.log('Recipe import data:', data);
+      }
+      
+      const importedRecipe = {
+        title: data.recipe.name || 'Imported Recipe',
+        originalServings: data.recipe.servings || 4,
+        ingredients: data.recipe.ingredients || [],
+        instructions: data.recipe.instructions || [],
+        cookTime: data.recipe.cookTime,
+        prepTime: data.recipe.prepTime,
+        image: data.recipe.image
+      };
+      
       setRecipe(importedRecipe);
       setSelectedIngredients(new Array(importedRecipe.ingredients.length).fill(false));
     } catch (error) {
       console.error('Import failed:', error);
-      // Fallback to mock data
-      setRecipe({
-        title: 'Classic Chocolate Chip Cookies',
-        originalServings: 24,
-        ingredients: [
-          '2 1/4 cups all-purpose flour',
-          '1 tsp baking soda',
-          '1 tsp salt',
-          '1 cup butter, softened',
-          '3/4 cup granulated sugar',
-          '3/4 cup brown sugar',
-          '2 large eggs',
-          '2 tsp vanilla extract',
-          '2 cups chocolate chips'
-        ],
-        instructions: [
-          'Preheat oven to 375°F',
-          'Mix flour, baking soda, and salt in bowl',
-          'Cream butter and sugars until fluffy',
-          'Beat in eggs and vanilla',
-          'Gradually blend in flour mixture',
-          'Stir in chocolate chips',
-          'Drop rounded tablespoons onto ungreased cookie sheets',
-          'Bake 9-11 minutes until golden brown'
-        ]
-      });
-      setSelectedIngredients(new Array(9).fill(false));
+      alert('Failed to import recipe. Please check the URL and try again.');
     }
     setLoading(false);
   };
 
-  const adjustedIngredients = recipe ? adjustServings(recipe.ingredients, recipe.originalServings, servings) : [];
+  const adjustedIngredients = recipe ? recipe.ingredients.map(ingredient => {
+    return ingredient.replace(/\d+(\.\d+)?/g, (match) => {
+      const num = parseFloat(match);
+      const ratio = servings / recipe.originalServings;
+      const adjusted = (num * ratio).toFixed(2).replace(/\.?0+$/, '');
+      return adjusted;
+    });
+  }) : [];
 
   const addToShoppingList = () => {
     const selected = adjustedIngredients?.filter((_: string, index: number) => selectedIngredients[index]);
-    console.log('Adding to shopping list:', selected);
+    const existingList = JSON.parse(localStorage.getItem('minimalChefShoppingList') || '[]');
+    const newItems = selected.map(item => ({ id: Date.now() + Math.random(), text: item, completed: false }));
+    localStorage.setItem('minimalChefShoppingList', JSON.stringify([...existingList, ...newItems]));
+    alert(`Added ${selected.length} ingredients to shopping list!`);
   };
 
   return (
@@ -105,6 +115,22 @@ const RecipeImport = () => {
           </Button>
         </CardContent>
       </Card>
+
+      {!recipe && (
+        <Card sx={{ mb: 3 }}>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              Universal Recipe Import
+            </Typography>
+            <Typography variant="body2" color="text.secondary" paragraph>
+              Works with virtually ALL recipe and cooking websites using multiple extraction methods:
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              ✅ JSON-LD structured data • ✅ Microdata parsing • ✅ Intelligent HTML scraping
+            </Typography>
+          </CardContent>
+        </Card>
+      )}
 
       {recipe && (
         <Card>

@@ -15,7 +15,7 @@
 		- paste in a url and it simplifys it nto just the recipe with severing ajustment, option to add the ingrediants to the shopping list
 		- simular to justtherecipe.com but in app and free
 - Uses a Minimalist + Material 3 design
-- for light mode the base colour is `#EADDCB`
+- for light mode the base colour is `#EADDCwe need to switich to B`
 - use the font times new roman for tiles and headings and subheadings
 - noto sans for all other text
 - no emojis

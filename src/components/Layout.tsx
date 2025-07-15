@@ -32,8 +32,15 @@ import {
   Mic,
   Link,
   Store,
+  Timer,
+  FitnessCenter,
+  Casino,
+  Login,
+  Logout,
+  LibraryBooks,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 const drawerWidth = 240;
 
@@ -48,13 +55,18 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [speedDialOpen, setSpeedDialOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   const menuItems = [
     { text: 'Recipes', icon: <Restaurant />, path: '/' },
+    { text: 'Library', icon: <LibraryBooks />, path: '/library' },
     { text: 'Discover', icon: <Explore />, path: '/discover' },
     { text: 'Shopping List', icon: <ShoppingCart />, path: '/shopping' },
     { text: 'Meal Log', icon: <Receipt />, path: '/meals' },
     { text: 'Voice Chef', icon: <Mic />, path: '/voice-chef' },
+    { text: 'Recipe Timer', icon: <Timer />, path: '/timer' },
+    { text: 'Nutrition', icon: <FitnessCenter />, path: '/nutrition' },
+    { text: 'Recipe Roulette', icon: <Casino />, path: '/roulette' },
   ];
 
   const speedDialActions = [
@@ -62,7 +74,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { icon: <ShoppingCart />, name: 'New Shopping Item', action: () => navigate('/shopping/add') },
     { icon: <AutoAwesome />, name: 'AI Recipe', action: () => navigate('/ai-recipe') },
     { icon: <Link />, name: 'Import Recipe', action: () => navigate('/import') },
-    { icon: <Store />, name: 'Instacart', action: () => navigate('/instacart') },
+    { icon: <Timer />, name: 'Recipe Timer', action: () => navigate('/timer') },
+    { icon: <Casino />, name: 'Recipe Roulette', action: () => navigate('/roulette') },
   ];
 
   const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
@@ -89,6 +102,21 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <ListItemText primary="Settings" />
           </ListItemButton>
         </ListItem>
+        {user ? (
+          <ListItem disablePadding>
+            <ListItemButton onClick={logout}>
+              <ListItemIcon><Logout /></ListItemIcon>
+              <ListItemText primary={`Logout (${user.username})`} />
+            </ListItemButton>
+          </ListItem>
+        ) : (
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => navigate('/login')}>
+              <ListItemIcon><Login /></ListItemIcon>
+              <ListItemText primary="Login" />
+            </ListItemButton>
+          </ListItem>
+        )}
       </List>
     </Box>
   );
