@@ -1,4 +1,4 @@
-import { kv } from '@vercel/kv';
+import { put, list, del } from '@vercel/blob';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -12,24 +12,31 @@ export default async function handler(req, res) {
   }
 
   try {
-    const verificationData = await kv.get(`verification:${code}`);
-    if (!verificationData) {
+    const { blobs } = await list({ prefix: `verification-${code}` });
+    if (blobs.length === 0) {
       return res.status(400).json({ error: 'Invalid or expired code' });
     }
 
-    const { email, type } = verificationData;
-    const userData = await kv.get(`user:${email}`);
+    const verificationBlob = await fetch(blobs[0].url).then(r => r.json());
+    if (verificationBlob.expires < Date.now()) {
+      return res.status(400).json({ error: 'Code expired' });
+    }
 
-    if (!userData) {
+    const { email, type } = verificationBlob;
+    const { blobs: userBlobs } = await list({ prefix: `user-${email.replace('@', '-at-')}` });
+    
+    if (userBlobs.length === 0) {
       return res.status(400).json({ error: 'User not found' });
     }
 
+    const userData = await fetch(userBlobs[0].url).then(r => r.json());
+
     if (type === 'register') {
       userData.verified = true;
-      await kv.set(`user:${email}`, userData);
+      await put(`user-${email.replace('@', '-at-')}.json`, JSON.stringify(userData), { access: 'public' });
     }
 
-    await kv.del(`verification:${code}`);
+    await del(blobs[0].url);
 
     const { hash, ...userResponse } = userData;
     res.status(200).json({ 

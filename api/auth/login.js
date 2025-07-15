@@ -1,4 +1,4 @@
-import { kv } from '@vercel/kv';
+import { put, list } from '@vercel/blob';
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
@@ -13,13 +13,13 @@ export default async function handler(req, res) {
   }
 
   try {
-    const userData = await kv.get(`user:${email}`);
-    if (!userData) {
+    const { blobs } = await list({ prefix: `user-${email.replace('@', '-at-')}` });
+    if (blobs.length === 0) {
       return res.status(400).json({ error: 'User not found' });
     }
 
     const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
-    await kv.set(`verification:${verificationCode}`, { email, type: 'login' }, { ex: 600 });
+    await put(`verification-${verificationCode}.json`, JSON.stringify({ email, type: 'login', expires: Date.now() + 600000 }), { access: 'public' });
 
     const transporter = nodemailer.createTransporter({
       host: 'smtp.mailfence.com',

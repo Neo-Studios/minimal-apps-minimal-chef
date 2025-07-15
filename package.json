@@ -15,7 +15,7 @@
     "@anthropic-ai/sdk": "^0.9.0",
     "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.12",
-    "@vercel/kv": "^1.0.1",
+    "@vercel/blob": "^0.15.1",
     "nodemailer": "^6.9.8"
   },
   "scripts": {

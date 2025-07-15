@@ -1,4 +1,4 @@
-import { kv } from '@vercel/kv';
+import { put, list } from '@vercel/blob';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 
@@ -14,8 +14,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const existingUser = await kv.get(`user:${email}`);
-    if (existingUser) {
+    const { blobs } = await list({ prefix: `user-${email.replace('@', '-at-')}` });
+    if (blobs.length > 0) {
       return res.status(400).json({ error: 'User already exists' });
     }
 
@@ -30,8 +30,8 @@ export default async function handler(req, res) {
       createdAt: new Date().toISOString()
     };
 
-    await kv.set(`user:${email}`, userData);
-    await kv.set(`verification:${verificationCode}`, { email, type: 'register' }, { ex: 600 });
+    await put(`user-${email.replace('@', '-at-')}.json`, JSON.stringify(userData), { access: 'public' });
+    await put(`verification-${verificationCode}.json`, JSON.stringify({ email, type: 'register', expires: Date.now() + 600000 }), { access: 'public' });
 
     const transporter = nodemailer.createTransporter({
       host: 'smtp.mailfence.com',
