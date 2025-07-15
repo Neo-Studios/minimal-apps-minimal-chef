@@ -8,10 +8,7 @@
 A minimalist cooking companion app built with React and Material-UI.
 
 >[!NOTE]
-> This is the dev branch. Here you can find and preview the latest features and updates before they are merged into the main branch. As it is a developer branch, things are exprimental and may not be fully stable. Use with caution, and report any issues you encounter. For the online version click [here](https://minimal-chef-dev.vercel.app/).
 
->[!NOTE]
-> We are happy to announce that the transition to Vercel has been completed! The app is now hosted on Vercel, providing better performance and reliability. You can access the live dev version at [minimal-chef-dev.vercel.app](https://minimal-chef-dev.vercel.app/).
 
 ## Features 
 
