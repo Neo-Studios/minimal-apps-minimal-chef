@@ -1,87 +1,78 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAllRecipes, internationalRecipes } from '../utils/recipeDatabase';
+import { Recipe } from '../types/recipe';
+import RecipeCard from '../components/RecipeCard';
+import CuisineFilter from '../components/CuisineFilter';
 import {
   Box,
   Typography,
-  Card,
-  CardMedia,
-  CardContent,
   Grid,
-  Tabs,
-  Tab,
-  Chip,
 } from '@mui/material';
-
-const cuisineTypes = ['All', 'Italian', 'Indian', 'Japanese', 'Mexican', 'French', 'Thai', 'Chinese', 'Korean', 'Greek', 'Moroccan', 'Spanish', 'Turkish', 'Brazilian', 'Vietnamese', 'Peruvian', 'Lebanese', 'British', 'American', 'German', 'Russian', 'Ethiopian', 'Nigerian', 'Jamaican', 'Argentinian', 'Australian', 'Canadian'];
-
-const discoverRecipes = getAllRecipes().map(recipe => {
-  const cuisineKey = Object.keys(internationalRecipes).find(country => 
-    internationalRecipes[country].some(r => r.id === recipe.id)
-  );
-  const cuisine = cuisineKey ? cuisineKey.charAt(0).toUpperCase() + cuisineKey.slice(1) : '';
-  return {
-    id: recipe.id,
-    title: recipe.name,
-    image: recipe.image,
-    cuisine,
-    difficulty: recipe.difficulty,
-    rating: (4.2 + Math.random() * 0.7).toFixed(1),
-    cookTime: recipe.cookTime,
-    region: recipe.region
-  };
-});
 
 const Discover: React.FC = () => {
   const navigate = useNavigate();
-  const [selectedCuisine, setSelectedCuisine] = useState(0);
+  const [selectedCuisine, setSelectedCuisine] = useState('All');
+
+  const recipes: Recipe[] = useMemo(() => {
+    const allRecipes = getAllRecipes();
+    return allRecipes.map(recipe => {
+      const cuisineKey = Object.keys(internationalRecipes).find(country => 
+        internationalRecipes[country].some(r => r.id === recipe.id)
+      );
+      const cuisine = cuisineKey ? cuisineKey.charAt(0).toUpperCase() + cuisineKey.slice(1) : '';
+      return {
+        ...recipe,
+        cuisine,
+        rating: 4.2 + Math.random() * 0.7,
+      };
+    });
+  }, []);
+
+  const trendingRecipes = useMemo(() => {
+    return [...recipes].sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0)).slice(0, 4);
+  }, [recipes]);
+
+  const filteredRecipes = useMemo(() => {
+    if (selectedCuisine === 'All') {
+      return recipes;
+    }
+    return recipes.filter(recipe => recipe.cuisine?.toLowerCase() === selectedCuisine.toLowerCase());
+  }, [recipes, selectedCuisine]);
+
+  const handleCuisineChange = (cuisine: string) => {
+    setSelectedCuisine(cuisine);
+  };
 
   return (
     <Box>
       <Typography variant="h4" component="h1" gutterBottom>
         Discover Recipes
       </Typography>
-      
-      <Tabs
-        value={selectedCuisine}
-        onChange={(e, newValue) => setSelectedCuisine(newValue as number)}
-        sx={{ mb: 3 }}
-        variant="scrollable"
-        scrollButtons="auto"
-      >
-        {cuisineTypes.map((cuisine, index) => (
-          <Tab key={cuisine} label={cuisine} />
-        ))}
-      </Tabs>
 
-      <Grid container spacing={3}>
-        {discoverRecipes
-          .filter(recipe => selectedCuisine === 0 || recipe.cuisine?.toLowerCase() === cuisineTypes[selectedCuisine].toLowerCase())
-          .map((recipe) => (
+      <Typography variant="h5" component="h2" sx={{ my: 3 }}>
+        Trending Recipes
+      </Typography>
+      <Grid container spacing={3} sx={{ mb: 5 }}>
+        {trendingRecipes.map((recipe) => (
+          <Grid item xs={12} sm={6} md={3} key={`trending-${recipe.id}`}>
+            <RecipeCard recipe={recipe} />
+          </Grid>
+        ))}
+      </Grid>
+
+      <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
+        Explore by Cuisine
+      </Typography>
+      <CuisineFilter 
+        selectedCuisine={selectedCuisine} 
+        onCuisineChange={handleCuisineChange} 
+      />
+
+      <Grid container spacing={3} sx={{ mt: 3 }}>
+        {filteredRecipes.map((recipe) => (
           <Grid item xs={12} sm={6} md={4} key={recipe.id}>
-            <Card 
-              sx={{ height: '100%', cursor: 'pointer' }}
-              onClick={() => navigate(`/recipe/${recipe.id}`)}
-            >
-              <CardMedia
-                component="img"
-                height="200"
-                image={recipe.image}
-                alt={recipe.title}
-              />
-              <CardContent>
-                <Typography variant="h6" component="h2" gutterBottom>
-                  {recipe.title}
-                </Typography>
-                <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
-                  <Chip label={recipe.cuisine} size="small" />
-                  <Chip label={recipe.difficulty} size="small" variant="outlined" />
-                </Box>
-                <Typography variant="body2" color="text.secondary">
-                  ⭐ {recipe.rating} • {recipe.cookTime}
-                </Typography>
-              </CardContent>
-            </Card>
+            <RecipeCard recipe={recipe} />
           </Grid>
         ))}
       </Grid>

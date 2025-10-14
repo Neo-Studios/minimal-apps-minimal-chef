@@ -10,7 +10,6 @@ import DebugPanel from './components/DebugPanel';
 import { lightTheme, darkTheme } from './theme';
 import { useTheme } from './hooks/useTheme';
 import Layout from './components/Layout';
-import Recipes from './pages/Recipes';
 import Discover from './pages/Discover';
 import ShoppingList from './pages/ShoppingList';
 import Settings from './pages/Settings';
@@ -37,7 +36,7 @@ const AppContent: React.FC = () => {
       <Router>
           <Layout>
           <Routes>
-            <Route path="/" element={<Recipes />} />
+            <Route path="/" element={<Library />} />
             <Route path="/discover" element={<Discover />} />
             <Route path="/shopping" element={<ShoppingList />} />
             <Route path="/settings" element={<Settings />} />

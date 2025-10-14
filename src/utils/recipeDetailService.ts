@@ -1,19 +1,18 @@
 import recipeDetails from '../data/recipeDetails.json';
 import { getAllRecipes } from './recipeDatabase';
-import { FullRecipe, RecipeDetailsDatabase } from '../types/recipe';
+import { Recipe, RecipeDetailsDatabase } from '../types/recipe';
 
 const typedRecipeDetails = recipeDetails as RecipeDetailsDatabase;
 
-export const getRecipeDetails = (id: number): FullRecipe | null => {
+export const getRecipeDetails = (id: number): Recipe | null => {
   const basicRecipe = getAllRecipes().find(r => r.id === id);
   const detailedInfo = typedRecipeDetails[id.toString()];
-  
+
   if (!basicRecipe) return null;
-  
+
   return {
     id: basicRecipe.id,
     name: basicRecipe.name,
-    title: basicRecipe.name,
     image: basicRecipe.image,
     cookTime: basicRecipe.cookTime,
     difficulty: basicRecipe.difficulty,

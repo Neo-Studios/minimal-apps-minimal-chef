@@ -10,6 +10,7 @@ A minimalist cooking companion app built with React and Material-UI.
 >[!NOTE]
 >Hey! Sorry for the absence of updates. Minimal Apps is currently going through some changes, as it settles in under its new parent company: Neo Studios.
 >Also more updates coming soon....
+>EDIT: Big news! We are back! You can expect more updates over the coming months. v1.0 has been reschedled to Q1 2026. Get ready!
 
 
 ## Features 

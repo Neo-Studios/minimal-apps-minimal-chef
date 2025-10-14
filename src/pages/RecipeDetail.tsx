@@ -38,7 +38,6 @@ const RecipeDetail: React.FC = () => {
   const recipe = getRecipeDetails(parseInt(id || '0')) || {
     id: parseInt(id || '0'),
     name: 'Recipe Not Found',
-    title: 'Recipe Not Found',
     image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800',
     description: 'This recipe could not be found.',
     cookTime: '30 min',
@@ -53,7 +52,7 @@ const RecipeDetail: React.FC = () => {
   };
 
   const speakInstructions = () => {
-    if ('speechSynthesis' in window) {
+    if ('speechSynthesis' in window && recipe.instructions) {
       const text = recipe.instructions.join('. Next step: ');
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = 0.8;
@@ -72,12 +71,12 @@ const RecipeDetail: React.FC = () => {
           component="img"
           height="400"
           image={recipe.image}
-          alt={recipe.title}
+          alt={recipe.name}
         />
         <CardContent>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
             <Typography variant="h4" component="h1">
-              {recipe.title}
+              {recipe.name}
             </Typography>
             <IconButton onClick={() => setIsFavorite(!isFavorite)}>
               {isFavorite ? <Favorite color="error" /> : <FavoriteBorder />}
@@ -89,7 +88,7 @@ const RecipeDetail: React.FC = () => {
           </Typography>
 
           <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
-            {recipe.tags.map((tag) => (
+            {recipe.tags && recipe.tags.map((tag: string) => (
               <Chip key={tag} label={tag} size="small" />
             ))}
           </Box>
@@ -160,7 +159,7 @@ const RecipeDetail: React.FC = () => {
                 Ingredients
               </Typography>
               <List>
-                {recipe.ingredients.map((ingredient, index) => (
+                {recipe.ingredients && recipe.ingredients.map((ingredient: string, index: number) => (
                   <ListItem key={index}>
                     <ListItemText primary={ingredient} />
                   </ListItem>
@@ -177,7 +176,7 @@ const RecipeDetail: React.FC = () => {
                 Instructions
               </Typography>
               <List>
-                {recipe.instructions.map((step, index) => (
+                {recipe.instructions && recipe.instructions.map((step: string, index: number) => (
                   <React.Fragment key={index}>
                     <ListItem>
                       <ListItemText
@@ -185,7 +184,7 @@ const RecipeDetail: React.FC = () => {
                         secondary={step}
                       />
                     </ListItem>
-                    {index < recipe.instructions.length - 1 && <Divider />}
+                    {recipe.instructions && index < recipe.instructions.length - 1 && <Divider />}
                   </React.Fragment>
                 ))}
               </List>
@@ -200,7 +199,7 @@ const RecipeDetail: React.FC = () => {
             Nutrition Information
           </Typography>
           <Grid container spacing={2}>
-            {Object.entries(recipe.nutrition).map(([key, value]) => (
+            {recipe.nutrition && Object.entries(recipe.nutrition).map(([key, value]: [string, any]) => (
               <Grid item xs={6} sm={2.4} key={key}>
                 <Box sx={{ textAlign: 'center' }}>
                   <Typography variant="h6">{value}</Typography>
