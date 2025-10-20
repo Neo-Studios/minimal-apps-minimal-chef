@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:minimal_chef/models/meal_plan.dart';
 import 'package:minimal_chef/models/recipe.dart';
 import 'package:minimal_chef/services/meal_plan_service.dart';
+import 'package:minimal_chef/widgets/instruction_step.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class RecipeDetailScreen extends StatefulWidget {
@@ -86,7 +87,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
             ...widget.recipe.ingredients.map((ingredient) => ListTile(
                   leading: const Icon(Icons.check),
                   title: Text(ingredient.name),
-                  subtitle: Text(ingredient.quantity),
+                  subtitle: Text(ingredient.quantity ?? ''),
                 )),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -95,10 +96,13 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
-            ...widget.recipe.instructions.asMap().entries.map((entry) => ListTile(
-                  leading: CircleAvatar(child: Text('${entry.key + 1}')),
-                  title: Text(entry.value),
-                )),
+            ...widget.recipe.instructions
+                .asMap()
+                .entries
+                .map((entry) => InstructionStep(
+                      stepNumber: entry.key + 1,
+                      instruction: entry.value,
+                    )),
           ],
         ),
       ),

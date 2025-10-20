@@ -41,6 +41,19 @@ class Recipe {
     );
   }
 
+  factory Recipe.fromJson(Map<String, dynamic> json) {
+    return Recipe(
+      name: json['name'] ?? '',
+      description: json['description'] ?? '',
+      imageUrl: json['imageUrl'] ?? '',
+      instructions: List<String>.from(json['instructions'] ?? []),
+      ingredients: (json['ingredients'] as List?)
+              ?.map((i) => Ingredient.fromJson(i))
+              .toList() ??
+          [],
+    );
+  }
+
   Recipe copyWith({
     String? id,
     String? name,

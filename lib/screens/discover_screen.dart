@@ -1,53 +1,85 @@
 import 'package:flutter/material.dart';
-import 'package:minimal_chef/models/ingredient.dart';
 import 'package:minimal_chef/models/recipe.dart';
+import 'package:minimal_chef/screens/add_recipe_screen.dart';
+import 'package:minimal_chef/screens/add_shopping_list_item_screen.dart';
 import 'package:minimal_chef/screens/recipe_detail_screen.dart';
+import 'package:minimal_chef/services/recipe_service.dart';
+import 'package:minimal_chef/services/search_service.dart';
 
-class DiscoverScreen extends StatelessWidget {
+class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // Placeholder data
-    final List<Recipe> recipes = [
-      Recipe(
-        id: '1',
-        name: 'Spaghetti Carbonara',
-        description: 'A classic Italian pasta dish.',
-        imageUrl: 'https://www.allrecipes.com/thmb/Vg2c-Airq--2nry1j60G06A5M3A=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/11973-spaghetti-carbonara-ii-DDMFS-4x3-0639-626a3e14676446339f4a2155b1115e58.jpg',
-        instructions: [
-          'Cook pasta according to package directions.',
-          'In a separate bowl, whisk together eggs, cheese, and black pepper.',
-          'Drain pasta and immediately toss with the egg mixture.',
-          'Serve immediately.'
-        ],
-        ingredients: [
-          Ingredient(name: 'Spaghetti', quantity: '1 lb'),
-          Ingredient(name: 'Eggs', quantity: '3'),
-          Ingredient(name: 'Parmesan Cheese', quantity: '1 cup'),
-          Ingredient(name: 'Black Pepper', quantity: '1 tsp'),
-        ],
-      ),
-      Recipe(
-        id: '2',
-        name: 'Chicken Tikka Masala',
-        description: 'A popular Indian curry dish.',
-        imageUrl: 'https://www.allrecipes.com/thmb/1f-fA_h8o15t2n2pXH9A-OF22uY=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/45957-chicken-tikka-masala-ddmfs-4x3-0182-3e2b2f7681434c318c86992d9d4f4834.jpg',
-        instructions: [
-          'Marinate chicken in yogurt and spices.',
-          'Grill or pan-fry the chicken.',
-          'Prepare the masala sauce.',
-          'Simmer the chicken in the sauce.'
-        ],
-        ingredients: [
-          Ingredient(name: 'Chicken Breast', quantity: '1 lb'),
-          Ingredient(name: 'Yogurt', quantity: '1 cup'),
-          Ingredient(name: 'Garam Masala', quantity: '2 tsp'),
-          Ingredient(name: 'Tomato Sauce', quantity: '1 can'),
-        ],
-      ),
-    ];
+  State<DiscoverScreen> createState() => _DiscoverScreenState();
+}
 
+class _DiscoverScreenState extends State<DiscoverScreen> {
+  final RecipeService _recipeService = RecipeService();
+  late Future<List<Recipe>> _recipes;
+  List<Recipe> _searchResults = [];
+  final TextEditingController _searchController = TextEditingController();
+  final GlobalKey _fabKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    _recipes = _recipeService.getRecipes();
+    SearchService.init();
+  }
+
+  void _onSearchChanged(String query) {
+    final results = SearchService.search(query);
+    setState(() {
+      _searchResults = results;
+    });
+  }
+
+  void _showFabMenu() {
+    final RenderBox renderBox = _fabKey.currentContext!.findRenderObject() as RenderBox;
+    final size = renderBox.size;
+    final offset = renderBox.localToGlobal(Offset.zero);
+
+    showMenu(
+      context: context,
+      position: RelativeRect.fromLTRB(
+        offset.dx,
+        offset.dy - size.height - 110,
+        offset.dx + size.width,
+        offset.dy,
+      ),
+      items: [
+        const PopupMenuItem(
+          value: 'add_recipe',
+          child: ListTile(
+            leading: Icon(Icons.receipt_long),
+            title: Text('New Recipe'),
+          ),
+        ),
+        const PopupMenuItem(
+          value: 'add_shopping_item',
+          child: ListTile(
+            leading: Icon(Icons.shopping_cart),
+            title: Text('New Shopping List Item'),
+          ),
+        ),
+      ],
+    ).then((value) {
+      if (value == 'add_recipe') {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const AddRecipeScreen()),
+        );
+      } else if (value == 'add_shopping_item') {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const AddShoppingListItemScreen()),
+        );
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Discover'),
@@ -57,6 +89,8 @@ class DiscoverScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
+              controller: _searchController,
+              onChanged: _onSearchChanged,
               decoration: InputDecoration(
                 hintText: 'Search for recipes...',
                 prefixIcon: const Icon(Icons.search),
@@ -67,37 +101,82 @@ class DiscoverScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.8,
-              ),
-              itemCount: recipes.length,
-              itemBuilder: (context, index) {
-                final recipe = recipes[index];
-                return GestureDetector(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => RecipeDetailScreen(recipe: recipe),
+            child: _searchController.text.isEmpty
+                ? FutureBuilder<List<Recipe>>(
+                    future: _recipes,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return GridView.builder(
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 0.8,
+                          ),
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            final recipe = snapshot.data![index];
+                            return GestureDetector(
+                              onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => RecipeDetailScreen(recipe: recipe),
+                                ),
+                              ),
+                              child: Card(
+                                child: Column(
+                                  children: [
+                                    Image.network(recipe.imageUrl, height: 120, width: double.infinity, fit: BoxFit.cover),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(recipe.name, style: Theme.of(context).textTheme.titleMedium),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      } else if (snapshot.hasError) {
+                        return Text('${snapshot.error}');
+                      }
+                      return const Center(child: CircularProgressIndicator());
+                    },
+                  )
+                : GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.8,
                     ),
-                  ),
-                  child: Card(
-                    child: Column(
-                      children: [
-                        Image.network(recipe.imageUrl, height: 120, width: double.infinity, fit: BoxFit.cover),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(recipe.name, style: Theme.of(context).textTheme.titleMedium),
+                    itemCount: _searchResults.length,
+                    itemBuilder: (context, index) {
+                      final recipe = _searchResults[index];
+                      return GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RecipeDetailScreen(recipe: recipe),
+                          ),
                         ),
-                      ],
-                    ),
+                        child: Card(
+                          child: Column(
+                            children: [
+                              Image.network(recipe.imageUrl, height: 120, width: double.infinity, fit: BoxFit.cover),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(recipe.name, style: Theme.of(context).textTheme.titleMedium),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        key: _fabKey,
+        onPressed: _showFabMenu,
+        child: const Icon(Icons.add),
       ),
     );
   }
