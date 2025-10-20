@@ -91,72 +91,109 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.recipe == null ? 'Add Recipe' : 'Edit Recipe'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.save),
-            onPressed: _saveRecipe,
-          ),
-        ],
+        title: Text(
+          widget.recipe == null ? 'New Recipe' : 'Edit Recipe',
+          style: theme.textTheme.headlineMedium,
+        ),
+        backgroundColor: theme.colorScheme.surface,
+        elevation: 0,
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                GestureDetector(
-                  onTap: _pickImage,
-                  child: _image != null
-                      ? Image.file(File(_image!.path),
-                          height: 200,
-                          width: double.infinity,
-                          fit: BoxFit.cover)
-                      : (_imageUrl != null && _imageUrl!.isNotEmpty)
-                          ? Image.network(_imageUrl!,
-                              height: 200,
-                              width: double.infinity,
-                              fit: BoxFit.cover)
-                          : Container(
-                              height: 200,
-                              width: double.infinity,
-                              color: Colors.grey[300],
-                              child: const Center(
-                                child: Text('Tap to select an image'),
+        padding: const EdgeInsets.all(24.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              GestureDetector(
+                onTap: _pickImage,
+                child: Container(
+                  height: 250,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: theme.colorScheme.surfaceContainerHighest,
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: _image != null
+                        ? Image.file(File(_image!.path), fit: BoxFit.cover)
+                        : (_imageUrl != null && _imageUrl!.isNotEmpty)
+                            ? Image.network(_imageUrl!, fit: BoxFit.cover)
+                            : Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.add_a_photo_outlined,
+                                      size: 48,
+                                      color: theme.colorScheme.primary,
+                                    ),
+                                    const SizedBox(height: 16),
+                                    const Text('Add a photo'),
+                                  ],
+                                ),
                               ),
-                            ),
+                  ),
                 ),
-                const SizedBox(height: 16),
-                TextFormField(
-                  controller: _nameController,
-                  decoration: const InputDecoration(labelText: 'Recipe Name'),
-                  validator: (value) =>
-                      value!.isEmpty ? 'Please enter a name' : null,
+              ),
+              const SizedBox(height: 32),
+              _buildTextField(_nameController, 'Recipe Name', theme),
+              const SizedBox(height: 24),
+              _buildTextField(_descriptionController, 'Description', theme,
+                  maxLines: 3),
+              const SizedBox(height: 24),
+              _buildTextField(
+                  _ingredientsController, 'Ingredients (one per line)', theme,
+                  maxLines: 5),
+              const SizedBox(height: 24),
+              _buildTextField(
+                  _instructionsController, 'Instructions (one per line)', theme,
+                  maxLines: 8),
+              const SizedBox(height: 40),
+              ElevatedButton(
+                onPressed: _saveRecipe,
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size.fromHeight(64),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                 ),
-                TextFormField(
-                  controller: _descriptionController,
-                  decoration: const InputDecoration(labelText: 'Description'),
-                  maxLines: 3,
+                child: Text(
+                  'Save Recipe',
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    color: theme.colorScheme.onPrimary,
+                  ),
                 ),
-                TextFormField(
-                  controller: _ingredientsController,
-                  decoration: const InputDecoration(
-                      labelText: 'Ingredients (one per line)'),
-                  maxLines: 5,
-                ),
-                TextFormField(
-                  controller: _instructionsController,
-                  decoration: const InputDecoration(
-                      labelText: 'Instructions (one per line)'),
-                  maxLines: 10,
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(
+      TextEditingController controller, String label, ThemeData theme,
+      {int maxLines = 1}) {
+    return Container(
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      child: TextFormField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: label,
+          border: InputBorder.none,
+        ),
+        maxLines: maxLines,
+        validator: (value) =>
+            value!.isEmpty ? 'Please enter a $label.toLowerCase()' : null,
       ),
     );
   }

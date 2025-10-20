@@ -17,4 +17,10 @@ class MealPlanService {
       return snapshot.docs.map((doc) => MealPlan.fromMap(doc.data() as Map<String, dynamic>, doc.id)).toList();
     });
   }
+
+  Stream<List<MealPlan>> getMealPlansForDay(DateTime day) {
+    final startOfDay = DateTime(day.year, day.month, day.day);
+    final endOfDay = DateTime(day.year, day.month, day.day, 23, 59, 59);
+    return getMealPlan(startOfDay, endOfDay);
+  }
 }

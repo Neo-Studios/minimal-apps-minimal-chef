@@ -41,34 +41,36 @@ class Recipe {
     );
   }
 
-  factory Recipe.fromJson(Map<String, dynamic> json) {
+  factory Recipe.fromMealDb(Map<String, dynamic> map) {
+    List<Ingredient> ingredients = [];
+    for (int i = 1; i <= 20; i++) {
+      final ingredient = map['strIngredient$i'];
+      final measure = map['strMeasure$i'];
+      if (ingredient != null && ingredient.isNotEmpty) {
+        ingredients.add(Ingredient(name: ingredient, quantity: measure));
+      } else {
+        break;
+      }
+    }
+
     return Recipe(
-      name: json['name'] ?? '',
-      description: json['description'] ?? '',
-      imageUrl: json['imageUrl'] ?? '',
-      instructions: List<String>.from(json['instructions'] ?? []),
-      ingredients: (json['ingredients'] as List?)
-              ?.map((i) => Ingredient.fromJson(i))
-              .toList() ??
-          [],
+      id: map['idMeal'],
+      name: map['strMeal'] ?? '',
+      description: map['strInstructions'] ?? '',
+      imageUrl: map['strMealThumb'] ?? '',
+      instructions: (map['strInstructions'] as String? ?? '').split('\r\n').where((s) => s.isNotEmpty).toList(),
+      ingredients: ingredients,
     );
   }
 
-  Recipe copyWith({
-    String? id,
-    String? name,
-    String? description,
-    String? imageUrl,
-    List<String>? instructions,
-    List<Ingredient>? ingredients,
-  }) {
+  Recipe toRecipe() {
     return Recipe(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      description: description ?? this.description,
-      imageUrl: imageUrl ?? this.imageUrl,
-      instructions: instructions ?? this.instructions,
-      ingredients: ingredients ?? this.ingredients,
+      id: id,
+      name: name,
+      description: description,
+      imageUrl: imageUrl,
+      instructions: instructions,
+      ingredients: ingredients,
     );
   }
 }

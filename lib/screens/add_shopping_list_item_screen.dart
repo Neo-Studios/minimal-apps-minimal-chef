@@ -19,7 +19,6 @@ class _AddShoppingListItemScreenState extends State<AddShoppingListItemScreen> {
 
   void _saveItem() {
     if (_formKey.currentState!.validate()) {
-      // TODO: Implement save logic
       Navigator.of(context).pop();
     }
   }

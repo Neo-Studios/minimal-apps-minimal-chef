@@ -1,4 +1,3 @@
-import 'dart.ui'; // Import this for FontVariation
 import 'package:flutter/material.dart';
 
 class VariableFontText extends StatefulWidget {

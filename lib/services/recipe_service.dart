@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:minimal_chef/models/recipe.dart';
 
 class RecipeService {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final CollectionReference _recipesCollection =
       FirebaseFirestore.instance.collection('recipes');
 
@@ -14,7 +13,6 @@ class RecipeService {
           .map((doc) => Recipe.fromMap(doc.data() as Map<String, dynamic>, doc.id))
           .toList();
     } catch (e) {
-      print('Error getting recipes: $e');
       return [];
     }
   }
@@ -23,7 +21,7 @@ class RecipeService {
     try {
       await _recipesCollection.add(recipe.toMap());
     } catch (e) {
-      print('Error adding recipe: $e');
+      // Error adding recipe
     }
   }
 
@@ -31,7 +29,7 @@ class RecipeService {
     try {
       await _recipesCollection.doc(recipe.id).update(recipe.toMap());
     } catch (e) {
-      print('Error updating recipe: $e');
+      // Error updating recipe
     }
   }
 
@@ -39,7 +37,7 @@ class RecipeService {
     try {
       await _recipesCollection.doc(recipeId).delete();
     } catch (e) {
-      print('Error deleting recipe: $e');
+      // Error deleting recipe
     }
   }
 }

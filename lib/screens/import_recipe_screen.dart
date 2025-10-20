@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'package:minimal_chef/services/scraper_service.dart';
 
 class ImportRecipeScreen extends StatefulWidget {
   const ImportRecipeScreen({super.key});
@@ -12,27 +10,22 @@ class ImportRecipeScreen extends StatefulWidget {
 class _ImportRecipeScreenState extends State<ImportRecipeScreen> {
   final _formKey = GlobalKey<FormState>();
   final _urlController = TextEditingController();
-  final _scraperService = ScraperService();
   bool _isLoading = false;
 
   void _importRecipe() async {
     if (_formKey.currentState!.validate()) {
-      final url = _urlController.text;
       setState(() {
         _isLoading = true;
       });
-      try {
-        final recipe = await _scraperService.scrapeRecipe(url);
-        // TODO: Navigate to a new screen to show the scraped recipe
-        print('Scraped recipe: ${recipe.name}');
-      } catch (e) {
-        print('Error scraping recipe: $e');
-        // Show an error to the user
-      } finally {
-        setState(() {
-          _isLoading = false;
-        });
+      await Future.delayed(const Duration(seconds: 1));
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Recipe import feature coming soon!')),
+        );
       }
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:minimal_chef/models/recipe.dart';
-import 'package:minimal_chef/screens/add_recipe_screen.dart';
-import 'package:minimal_chef/screens/add_shopping_list_item_screen.dart';
 import 'package:minimal_chef/screens/recipe_detail_screen.dart';
-import 'package:minimal_chef/services/recipe_service.dart';
-import 'package:minimal_chef/services/search_service.dart';
+import 'package:minimal_chef/services/recipe_api_service.dart';
 
 class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});
@@ -14,169 +11,238 @@ class DiscoverScreen extends StatefulWidget {
 }
 
 class _DiscoverScreenState extends State<DiscoverScreen> {
-  final RecipeService _recipeService = RecipeService();
-  late Future<List<Recipe>> _recipes;
+  final RecipeApiService _recipeApiService = RecipeApiService();
+  Future<Recipe>? _randomRecipeFuture;
   List<Recipe> _searchResults = [];
   final TextEditingController _searchController = TextEditingController();
-  final GlobalKey _fabKey = GlobalKey();
+  bool _isLoading = false;
 
   @override
   void initState() {
     super.initState();
-    _recipes = _recipeService.getRecipes();
-    SearchService.init();
+    _fetchRandomRecipe();
   }
 
-  void _onSearchChanged(String query) {
-    final results = SearchService.search(query);
+  void _fetchRandomRecipe() {
     setState(() {
-      _searchResults = results;
+      _randomRecipeFuture = _recipeApiService.getRandomRecipe();
     });
   }
 
-  void _showFabMenu() {
-    final RenderBox renderBox = _fabKey.currentContext!.findRenderObject() as RenderBox;
-    final size = renderBox.size;
-    final offset = renderBox.localToGlobal(Offset.zero);
+  void _onSearchChanged(String query) async {
+    if (query.isEmpty) {
+      setState(() {
+        _searchResults = [];
+      });
+      return;
+    }
 
-    showMenu(
-      context: context,
-      position: RelativeRect.fromLTRB(
-        offset.dx,
-        offset.dy - size.height - 110,
-        offset.dx + size.width,
-        offset.dy,
-      ),
-      items: [
-        const PopupMenuItem(
-          value: 'add_recipe',
-          child: ListTile(
-            leading: Icon(Icons.receipt_long),
-            title: Text('New Recipe'),
-          ),
-        ),
-        const PopupMenuItem(
-          value: 'add_shopping_item',
-          child: ListTile(
-            leading: Icon(Icons.shopping_cart),
-            title: Text('New Shopping List Item'),
-          ),
-        ),
-      ],
-    ).then((value) {
-      if (value == 'add_recipe') {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const AddRecipeScreen()),
-        );
-      } else if (value == 'add_shopping_item') {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const AddShoppingListItemScreen()),
-        );
-      }
+    setState(() {
+      _isLoading = true;
     });
+
+    try {
+      final results = await _recipeApiService.searchRecipes(query);
+      setState(() {
+        _searchResults = results;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      // Handle error, maybe show a snackbar
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Discover'),
+      backgroundColor: theme.colorScheme.surface,
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            floating: true,
+            backgroundColor: theme.colorScheme.surface.withAlpha(220),
+            title: _buildSearchField(theme),
+          ),
+          _searchController.text.isEmpty
+              ? _buildRandomRecipeSection(theme)
+              : _buildSearchResults(theme),
+        ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: _searchController,
-              onChanged: _onSearchChanged,
-              decoration: InputDecoration(
-                hintText: 'Search for recipes...',
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+    );
+  }
+
+  Widget _buildSearchField(ThemeData theme) {
+    return Container(
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      child: TextField(
+        controller: _searchController,
+        onChanged: _onSearchChanged,
+        decoration: const InputDecoration(
+          hintText: 'Search for a recipe...',
+          border: InputBorder.none,
+          prefixIcon: Icon(Icons.search),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRandomRecipeSection(ThemeData theme) {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Don't know what to cook?", style: theme.textTheme.headlineSmall),
+            const SizedBox(height: 8),
+            Text("Here's a random recipe for you:", style: theme.textTheme.bodyLarge),
+            const SizedBox(height: 24),
+            FutureBuilder<Recipe>(
+              future: _randomRecipeFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Column(
+                      children: [
+                        const Text('Could not fetch recipe.'),
+                        TextButton(onPressed: _fetchRandomRecipe, child: const Text('Try Again')),
+                      ],
+                    ),
+                  );
+                }
+                if (!snapshot.hasData) {
+                  return const Center(child: Text('No recipe found.'));
+                }
+
+                final recipe = snapshot.data!;
+                return RecipeCard(recipe: recipe, theme: theme);
+              },
+            ),
+            const SizedBox(height: 24),
+            Center(
+              child: ElevatedButton.icon(
+                onPressed: _fetchRandomRecipe,
+                icon: const Icon(Icons.refresh),
+                label: const Text('Another One!'),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSearchResults(ThemeData theme) {
+    if (_isLoading) {
+      return const SliverToBoxAdapter(child: Center(child: CircularProgressIndicator()));
+    }
+
+    if (_searchResults.isEmpty) {
+      return const SliverToBoxAdapter(
+        child: Padding(
+          padding: EdgeInsets.all(48.0),
+          child: Center(child: Text('No recipes found.')),
+        ),
+      );
+    }
+
+    return SliverPadding(
+      padding: const EdgeInsets.all(24.0),
+      sliver: SliverGrid(
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 400,
+          mainAxisSpacing: 24,
+          crossAxisSpacing: 24,
+          childAspectRatio: 0.9,
+        ),
+        delegate: SliverChildBuilderDelegate(
+          (context, index) {
+            final recipe = _searchResults[index];
+            return RecipeCard(recipe: recipe, theme: theme);
+          },
+          childCount: _searchResults.length,
+        ),
+      ),
+    );
+  }
+}
+
+class RecipeCard extends StatelessWidget {
+  const RecipeCard({
+    super.key,
+    required this.recipe,
+    required this.theme,
+  });
+
+  final Recipe recipe;
+  final ThemeData theme;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => RecipeDetailScreen(recipe: recipe),
+        ),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(28),
+          color: theme.colorScheme.surfaceContainerHighest,
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Image.network(
+                recipe.imageUrl,
+                fit: BoxFit.cover,
+                color: Colors.black.withValues(alpha: 0.2),
+                colorBlendMode: BlendMode.darken,
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                padding: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [Colors.black.withValues(alpha: 0.8), Colors.black.withValues(alpha: 0.0)],
+                  ),
+                ),
+                child: Text(
+                  recipe.name,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            child: _searchController.text.isEmpty
-                ? FutureBuilder<List<Recipe>>(
-                    future: _recipes,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return GridView.builder(
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 0.8,
-                          ),
-                          itemCount: snapshot.data!.length,
-                          itemBuilder: (context, index) {
-                            final recipe = snapshot.data![index];
-                            return GestureDetector(
-                              onTap: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => RecipeDetailScreen(recipe: recipe),
-                                ),
-                              ),
-                              child: Card(
-                                child: Column(
-                                  children: [
-                                    Image.network(recipe.imageUrl, height: 120, width: double.infinity, fit: BoxFit.cover),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(recipe.name, style: Theme.of(context).textTheme.titleMedium),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
-                        );
-                      } else if (snapshot.hasError) {
-                        return Text('${snapshot.error}');
-                      }
-                      return const Center(child: CircularProgressIndicator());
-                    },
-                  )
-                : GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.8,
-                    ),
-                    itemCount: _searchResults.length,
-                    itemBuilder: (context, index) {
-                      final recipe = _searchResults[index];
-                      return GestureDetector(
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => RecipeDetailScreen(recipe: recipe),
-                          ),
-                        ),
-                        child: Card(
-                          child: Column(
-                            children: [
-                              Image.network(recipe.imageUrl, height: 120, width: double.infinity, fit: BoxFit.cover),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(recipe.name, style: Theme.of(context).textTheme.titleMedium),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        key: _fabKey,
-        onPressed: _showFabMenu,
-        child: const Icon(Icons.add),
+          ],
+        ),
       ),
     );
   }

@@ -9,7 +9,7 @@ class SearchService {
   static Future<void> init() async {
     final String response = await rootBundle.loadString('lib/data/recipes.neo');
     final List<dynamic> data = json.decode(response);
-    _recipes = data.map((json) => Recipe.fromJson(json)).toList();
+    _recipes = data.map((json) => Recipe.fromMap(json, '')).toList();
   }
 
   static List<Recipe> search(String query) {
