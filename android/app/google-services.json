@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "409860921755",
+    "project_id": "minimal-chef",
+    "storage_bucket": "minimal-chef.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409860921755:android:41c8f899c0fd4fa3e3e93e",
+        "android_client_info": {
+          "package_name": "com.example.minimal_chef"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409860921755-80vbeuecjq22oebdufjacgqucjuuclfv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDCYTDvblRKmNa4CbDcbzyBZ3h3p2F2YE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409860921755-80vbeuecjq22oebdufjacgqucjuuclfv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
