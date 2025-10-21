@@ -21,12 +21,13 @@ class MinimalChefApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFD8BFD8),
+          seedColor: const Color(0xFFFFA500),
           brightness: Brightness.light,
-          primary: const Color(0xFFD8BFD8),
-          secondary: const Color(0xFFFFB6C1),
-          surface: const Color(0xFFF5F5F5),
-          onSurface: const Color(0xFF333333),
+          primary: const Color(0xFFFFA500),
+          secondary: const Color(0xFF00B4D8),
+          surface: const Color(0xFFFFF8E1),
+          onSurface: const Color(0xFF2F2F2F),
+          secondaryContainer: const Color(0xFFFF6F61),
         ),
         visualDensity: VisualDensity.standard,
         textTheme: TextTheme(
@@ -46,19 +47,20 @@ class MinimalChefApp extends StatelessWidget {
             labelMedium: const TextStyle(fontFamily: 'RobotoFlex', fontSize: 12, fontWeight: FontWeight.w500, letterSpacing: 0.5, height: 1.33),
             labelSmall: const TextStyle(fontFamily: 'RobotoFlex', fontSize: 11, fontWeight: FontWeight.w500, letterSpacing: 0.5, height: 1.45),
           ).apply(
-            bodyColor: const Color(0xFF333333),
-            displayColor: const Color(0xFF333333),
+            bodyColor: const Color(0xFF2F2F2F),
+            displayColor: const Color(0xFF2F2F2F),
           ),
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFFC39BD3),
+          seedColor: const Color(0xFF1C1C1C),
           brightness: Brightness.dark,
-          primary: const Color(0xFFC39BD3),
-          secondary: const Color(0xFFF48FB1),
-          surface: const Color(0xFF1E1E1E),
-          onSurface: const Color(0xFFFFFFFF),
+          primary: const Color(0xFF00B4D8),
+          secondary: const Color(0xFF00B4D8),
+          surface: const Color(0xFF2A2A2A),
+          onSurface: const Color(0xFFF5F5F5),
+          secondaryContainer: const Color(0xFFFF6F61),
         ),
         visualDensity: VisualDensity.standard,
         textTheme: TextTheme(
@@ -78,8 +80,8 @@ class MinimalChefApp extends StatelessWidget {
             labelMedium: const TextStyle(fontFamily: 'RobotoFlex', fontSize: 12, fontWeight: FontWeight.w500, letterSpacing: 0.5, height: 1.33),
             labelSmall: const TextStyle(fontFamily: 'RobotoFlex', fontSize: 11, fontWeight: FontWeight.w500, letterSpacing: 0.5, height: 1.45),
           ).apply(
-            bodyColor: const Color(0xFFFFFFFF),
-            displayColor: const Color(0xFFFFFFFF),
+            bodyColor: const Color(0xFFF5F5F5),
+            displayColor: const Color(0xFFF5F5F5),
           ),
       ),
       home: const AuthGate(),
