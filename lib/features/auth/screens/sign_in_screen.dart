@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minimal_chef/features/auth/screens/email_password_login_screen.dart';
 import 'package:minimal_chef/features/auth/services/auth_service.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -59,6 +60,20 @@ class _SignInScreenState extends State<SignInScreen> with SingleTickerProviderSt
                   'Sign in with Google',
                   style: TextStyle(fontSize: 18),
                 ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const EmailPasswordLoginScreen(),
+                  ),
+                );
+              },
+              child: const Text(
+                'Sign in with Email',
+                style: TextStyle(fontSize: 18),
               ),
             ),
           ],
