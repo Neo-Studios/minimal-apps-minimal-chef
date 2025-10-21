@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:minimal_chef/models/recipe.dart';
-import 'package:minimal_chef/screens/recipe_detail_screen.dart';
-import 'package:minimal_chef/services/recipe_api_service.dart';
+import 'package:minimal_chef/features/recipe/models/recipe.dart';
+import 'package:minimal_chef/features/recipe/screens/recipe_detail_screen.dart';
+import 'package:minimal_chef/features/recipe/services/recipe_api_service.dart';
 
 class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});

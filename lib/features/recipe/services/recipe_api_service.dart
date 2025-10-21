@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:minimal_chef/models/recipe.dart';
+import 'package:minimal_chef/features/recipe/models/recipe.dart';
 
 class RecipeApiService {
   static const String _baseUrl = 'https://www.themealdb.com/api/json/v1/1';

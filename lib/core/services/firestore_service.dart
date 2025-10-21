@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:minimal_chef/models/recipe.dart';
+import 'package:minimal_chef/features/recipe/models/recipe.dart';
 
 class FirestoreService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;

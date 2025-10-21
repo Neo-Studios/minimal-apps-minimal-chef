@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:minimal_chef/models/meal_plan.dart';
+import 'package:minimal_chef/features/meal_plan/models/meal_plan.dart';
 
 class MealPlanService {
   final CollectionReference _mealPlanCollection = FirebaseFirestore.instance.collection('meal_plans');

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:minimal_chef/services/auth_service.dart';
+import 'package:minimal_chef/features/auth/services/auth_service.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});

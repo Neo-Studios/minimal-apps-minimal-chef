@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:minimal_chef/models/recipe.dart';
+import 'package:minimal_chef/features/recipe/models/recipe.dart';
 
 class SearchService {
   static late List<Recipe> _recipes;

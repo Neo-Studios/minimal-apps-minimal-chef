@@ -11,7 +11,7 @@ class AuthService {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser == null) {
-        return null; // The user canceled the sign-in
+        return null;
       }
       final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
       final AuthCredential credential = GoogleAuthProvider.credential(
@@ -21,7 +21,6 @@ class AuthService {
       final UserCredential userCredential = await _auth.signInWithCredential(credential);
       return userCredential.user;
     } catch (e) {
-      print(e); // TODO: Handle error properly
       return null;
     }
   }

@@ -1,4 +1,4 @@
-import 'package:minimal_chef/models/ingredient.dart';
+import 'package:minimal_chef/features/recipe/models/ingredient.dart';
 
 class Recipe {
   final String? id;
