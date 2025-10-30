@@ -7,6 +7,7 @@ class Recipe {
   final String imageUrl;
   final List<String> instructions;
   final List<Ingredient> ingredients;
+  final String? userId;
 
   Recipe({
     this.id,
@@ -15,6 +16,7 @@ class Recipe {
     required this.imageUrl,
     required this.instructions,
     required this.ingredients,
+    this.userId,
   });
 
   Map<String, dynamic> toMap() {
@@ -24,6 +26,7 @@ class Recipe {
       'imageUrl': imageUrl,
       'instructions': instructions,
       'ingredients': ingredients.map((i) => i.toMap()).toList(),
+      'userId': userId,
     };
   }
 
@@ -38,6 +41,7 @@ class Recipe {
               ?.map((i) => Ingredient.fromMap(i))
               .toList() ??
           [],
+      userId: map['userId'],
     );
   }
 
@@ -60,6 +64,7 @@ class Recipe {
       imageUrl: map['strMealThumb'] ?? '',
       instructions: (map['strInstructions'] as String? ?? '').split('\r\n').where((s) => s.isNotEmpty).toList(),
       ingredients: ingredients,
+      userId: null,
     );
   }
 
@@ -71,6 +76,7 @@ class Recipe {
       imageUrl: imageUrl,
       instructions: instructions,
       ingredients: ingredients,
+      userId: userId,
     );
   }
 }

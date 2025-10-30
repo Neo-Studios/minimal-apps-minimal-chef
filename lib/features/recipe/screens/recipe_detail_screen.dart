@@ -61,19 +61,22 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
               ),
               TextButton(
                 onPressed: () {
-                  MealPlanService().addToMealPlan(
-                    MealPlan(
-                      recipeId: widget.recipe.id!,
-                      date: _selectedDay,
-                    ),
-                  );
-                  Navigator.pop(context);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Added to your meal plan!'),
-                      behavior: SnackBarBehavior.floating,
-                    ),
-                  );
+                  final recipeId = widget.recipe.id;
+                  if (recipeId != null) {
+                    MealPlanService().addToMealPlan(
+                      MealPlan(
+                        recipeId: recipeId,
+                        date: _selectedDay,
+                      ),
+                    );
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Added to your meal plan!'),
+                        behavior: SnackBarBehavior.floating,
+                      ),
+                    );
+                  }
                 },
                 child: const Text('Add'),
               ),
@@ -89,7 +92,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     final theme = Theme.of(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _showAddDialog,
+        onPressed: widget.recipe.id != null ? _showAddDialog : null,
         label: const Text('Add to Plan'),
         icon: const Icon(Icons.calendar_today_outlined),
       ),

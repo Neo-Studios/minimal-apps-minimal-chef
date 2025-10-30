@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:minimal_chef/features/recipe/models/recipe.dart';
 
 class RecipeService {
@@ -18,9 +20,20 @@ class RecipeService {
 
   Future<void> addRecipe(Recipe recipe) async {
     try {
-      await _recipesCollection.add(recipe.toMap());
+      final userId = FirebaseAuth.instance.currentUser?.uid;
+      final recipeWithUser = Recipe(
+        id: recipe.id,
+        name: recipe.name,
+        description: recipe.description,
+        imageUrl: recipe.imageUrl,
+        instructions: recipe.instructions,
+        ingredients: recipe.ingredients,
+        userId: userId,
+      );
+      await _recipesCollection.add(recipeWithUser.toMap());
     } catch (e) {
-      // Error adding recipe
+      debugPrint("Error adding recipe: $e");
+      rethrow;
     }
   }
 
@@ -28,7 +41,8 @@ class RecipeService {
     try {
       await _recipesCollection.doc(recipe.id).update(recipe.toMap());
     } catch (e) {
-      // Error updating recipe
+      debugPrint("Error updating recipe: $e");
+      rethrow;
     }
   }
 
@@ -36,7 +50,8 @@ class RecipeService {
     try {
       await _recipesCollection.doc(recipeId).delete();
     } catch (e) {
-      // Error deleting recipe
+      debugPrint("Error deleting recipe: $e");
+      rethrow;
     }
   }
 }

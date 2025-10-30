@@ -17,9 +17,15 @@ class _AddShoppingListItemScreenState extends State<AddShoppingListItemScreen> {
     _nameController = TextEditingController();
   }
 
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
+
   void _saveItem() {
     if (_formKey.currentState!.validate()) {
-      Navigator.of(context).pop();
+      Navigator.of(context).pop(_nameController.text);
     }
   }
 
