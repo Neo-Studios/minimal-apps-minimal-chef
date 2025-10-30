@@ -193,7 +193,7 @@ class _AddRecipeScreenState extends State<AddRecipeScreen> {
         ),
         maxLines: maxLines,
         validator: (value) =>
-            value!.isEmpty ? 'Please enter a $label.toLowerCase()' : null,
+            value!.isEmpty ? 'Please enter a ${label.toLowerCase()}' : null,
       ),
     );
   }
