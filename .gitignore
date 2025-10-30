@@ -31,6 +31,8 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
+# Uncomment to commit web build for Vercel:
+!/build/web/
 /coverage/
 
 # Firebase configuration (contains sensitive API keys)
