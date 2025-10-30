@@ -30,9 +30,9 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
-/build/
+# /build/
 # Uncomment to commit web build for Vercel:
-!/build/web/
+# !/build/web/
 /coverage/
 
 # Firebase configuration (contains sensitive API keys)
