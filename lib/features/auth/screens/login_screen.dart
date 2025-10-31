@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:minimal_chef/features/auth/services/auth_service.dart';
-import 'dart:ui';
+import 'dart:ui' as ui;
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -54,14 +55,14 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
 
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              theme.colorScheme.primaryContainer,
-              theme.colorScheme.secondaryContainer,
-              theme.colorScheme.tertiaryContainer,
+              Color(0xFFFFF8E1),
+              Color(0xFFFFE4B5),
+              Color(0xFFFFEFD5),
             ],
           ),
         ),
@@ -69,29 +70,32 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
           child: Center(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: FadeTransition(
-                opacity: _fadeAnimation,
-                child: SlideTransition(
-                  position: _slideAnimation,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _buildLogo(theme),
-                      const SizedBox(height: 48),
-                      _buildWelcomeText(theme),
-                      const SizedBox(height: 16),
-                      _buildSubtitle(theme),
-                      const SizedBox(height: 64),
-                      _buildGlassCard(
-                        child: Column(
-                          children: [
-                            _buildGoogleButton(theme),
-                          ],
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 480),
+                child: FadeTransition(
+                  opacity: _fadeAnimation,
+                  child: SlideTransition(
+                    position: _slideAnimation,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _buildLogo(theme),
+                        const SizedBox(height: 48),
+                        _buildWelcomeText(theme),
+                        const SizedBox(height: 16),
+                        _buildSubtitle(theme),
+                        const SizedBox(height: 64),
+                        _buildGlassCard(
+                          child: Column(
+                            children: [
+                              _buildGoogleButton(theme),
+                            ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 32),
-                      _buildFooterText(theme),
-                    ],
+                        const SizedBox(height: 32),
+                        _buildFooterText(theme),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -106,28 +110,28 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     return Container(
       width: 120,
       height: 120,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.circle,
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            theme.colorScheme.primary,
-            theme.colorScheme.secondary,
+            Color(0xFFFFA500),
+            Color(0xFFFF6F61),
           ],
         ),
         boxShadow: [
           BoxShadow(
-            color: theme.colorScheme.primary.withValues(alpha: 0.3),
+            color: Color(0x4DFFA500),
             blurRadius: 30,
-            offset: const Offset(0, 10),
+            offset: Offset(0, 10),
           ),
         ],
       ),
       child: Icon(
         Icons.restaurant_menu,
         size: 60,
-        color: theme.colorScheme.onPrimary,
+        color: Colors.white,
       ),
     );
   }
@@ -137,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
       'Welcome to Minimal Chef',
       style: theme.textTheme.headlineMedium?.copyWith(
         fontWeight: FontWeight.bold,
-        color: theme.colorScheme.onSurface,
+        color: const Color(0xFF2F2F2F),
       ),
       textAlign: TextAlign.center,
     );
@@ -147,29 +151,40 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     return Text(
       'Your minimalist cooking companion',
       style: theme.textTheme.bodyLarge?.copyWith(
-        color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+        color: const Color(0xFF2F2F2F).withValues(alpha: 0.7),
       ),
       textAlign: TextAlign.center,
     );
   }
 
   Widget _buildGlassCard({required Widget child}) {
+    final glassContainer = Container(
+      padding: const EdgeInsets.all(32),
+      decoration: BoxDecoration(
+        color: kIsWeb 
+            ? const Color(0xFFFFFFFF).withValues(alpha: 0.7)
+            : const Color(0xFFFFFFFF).withValues(alpha: 0.8),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(
+          color: const Color(0xFFFFA500).withValues(alpha: 0.3),
+          width: 1.5,
+        ),
+      ),
+      child: child,
+    );
+
+    if (kIsWeb) {
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(24),
+        child: glassContainer,
+      );
+    }
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(24),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-        child: Container(
-          padding: const EdgeInsets.all(32),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.2),
-            borderRadius: BorderRadius.circular(24),
-            border: Border.all(
-              color: Colors.white.withValues(alpha: 0.3),
-              width: 1.5,
-            ),
-          ),
-          child: child,
-        ),
+        filter: ui.ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: glassContainer,
       ),
     );
   }
@@ -183,25 +198,23 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
           decoration: BoxDecoration(
-            color: theme.colorScheme.surface,
+            color: const Color(0xFFFFFFFF),
             borderRadius: BorderRadius.circular(16),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.1),
+                color: Color(0x1A000000),
                 blurRadius: 20,
-                offset: const Offset(0, 8),
+                offset: Offset(0, 8),
               ),
             ],
           ),
           child: _isLoading
-              ? SizedBox(
+              ? const SizedBox(
                   height: 24,
                   width: 24,
                   child: CircularProgressIndicator(
                     strokeWidth: 2,
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      theme.colorScheme.primary,
-                    ),
+                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFFFA500)),
                   ),
                 )
               : Row(
@@ -210,12 +223,14 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     const FaIcon(
                       FontAwesomeIcons.google,
                       size: 24,
+                      color: Color(0xFF2F2F2F),
                     ),
                     const SizedBox(width: 16),
                     Text(
                       'Continue with Google',
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w600,
+                        color: const Color(0xFF2F2F2F),
                       ),
                     ),
                   ],
@@ -229,7 +244,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     return Text(
       'By continuing, you agree to our Terms & Privacy Policy',
       style: theme.textTheme.bodySmall?.copyWith(
-        color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+        color: const Color(0xFF2F2F2F).withValues(alpha: 0.6),
       ),
       textAlign: TextAlign.center,
     );
