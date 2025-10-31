@@ -1,82 +1,122 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:minimal_chef/features/auth/screens/email_password_login_screen.dart';
 import 'package:minimal_chef/features/auth/services/auth_service.dart';
 
-class SignInScreen extends StatefulWidget {
+class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
-
-  @override
-  State<SignInScreen> createState() => _SignInScreenState();
-}
-
-class _SignInScreenState extends State<SignInScreen> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _scaleAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 150),
-      vsync: this,
-    );
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 0.95).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Minimal Chef',
-              style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 40),
-            ScaleTransition(
-              scale: _scaleAnimation,
-              child: ElevatedButton(
-                onPressed: () {
-                  _controller.forward().then((_) => _controller.reverse());
-                  AuthService().signInWithGoogle();
-                },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(250, 60),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Colors.green.shade200,
+              Colors.green.shade400,
+            ],
+          ),
+        ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Spacer(flex: 2),
+                Text(
+                  'Minimal Chef',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 48,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 15.0,
+                        color: Colors.black.withValues(alpha: 0.2),
+                        offset: const Offset(4.0, 4.0),
+                      ),
+                    ],
                   ),
                 ),
-                child: const Text(
-                  'Sign in with Google',
-                  style: TextStyle(fontSize: 18),
+                const SizedBox(height: 16),
+                Text(
+                  'Simple, Delicious, Minimalist.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white.withValues(alpha: 0.9),
+                  ),
+                ),
+                const Spacer(flex: 3),
+                _buildSignInButton(
+                  context,
+                  icon: FontAwesomeIcons.google,
+                  iconColor: Colors.redAccent,
+                  text: 'Sign in with Google',
+                  onTap: () {
+                    AuthService().signInWithGoogle();
+                  },
+                ),
+                const SizedBox(height: 20),
+                _buildSignInButton(
+                  context,
+                  icon: FontAwesomeIcons.solidEnvelope,
+                  iconColor: Colors.black87,
+                  text: 'Sign in with Email',
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const EmailPasswordLoginScreen(),
+                      ),
+                    );
+                  },
+                ),
+                const Spacer(flex: 2),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSignInButton(
+    BuildContext context, {
+    required IconData icon,
+    required Color iconColor,
+    required String text,
+    required VoidCallback onTap,
+  }) {
+    return Material(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(16),
+      elevation: 8,
+      shadowColor: Colors.black.withValues(alpha: 0.2),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FaIcon(icon, color: iconColor),
+              const SizedBox(width: 12),
+              Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
                 ),
               ),
-            ),
-            const SizedBox(height: 20),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const EmailPasswordLoginScreen(),
-                  ),
-                );
-              },
-              child: const Text(
-                'Sign in with Email',
-                style: TextStyle(fontSize: 18),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
