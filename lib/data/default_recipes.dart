@@ -1,23 +1,28 @@
 import 'package:minimal_chef/features/recipe/models/recipe.dart';
-import 'package:minimal_chef/features/recipe/models/ingredient.dart';
+import 'recipes/italian_recipes.dart';
+import 'recipes/asian_recipes.dart';
+import 'recipes/indian_recipes.dart';
+import 'recipes/mexican_recipes.dart';
+import 'recipes/mediterranean_recipes.dart';
+import 'recipes/french_recipes.dart';
+import 'recipes/american_recipes.dart';
+import 'recipes/british_recipes.dart';
+import 'recipes/korean_recipes.dart';
+import 'recipes/greek_recipes.dart';
 
 class DefaultRecipes {
   static List<Recipe> get recipes => [
-        Recipe(
-          name: 'Classic Spaghetti Carbonara',
-          description: 'A traditional Italian pasta dish with eggs, cheese, and pancetta',
-          imageUrl: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800',
-          instructions: [
-            'Bring a large pot of salted water to boil and cook spaghetti according to package directions',
-            'While pasta cooks, fry pancetta in a large pan until crispy',
-            'In a bowl, whisk together eggs, Parmesan cheese, and black pepper',
-            'Drain pasta, reserving 1 cup of pasta water',
-            'Add hot pasta to the pan with pancetta, remove from heat',
-            'Quickly stir in egg mixture, adding pasta water to create a creamy sauce',
-            'Serve immediately with extra Parmesan and black pepper',
-          ],
-          ingredients: [
-            Ingredient(name: 'Spaghetti', quantity: '400g'),
+    ...ItalianRecipes.recipes,
+    ...AsianRecipes.recipes,
+    ...IndianRecipes.recipes,
+    ...MexicanRecipes.recipes,
+    ...MediterraneanRecipes.recipes,
+    ...FrenchRecipes.recipes,
+    ...AmericanRecipes.recipes,
+    ...BritishRecipes.recipes,
+    ...KoreanRecipes.recipes,
+    ...GreekRecipes.recipes,
+  ];
             Ingredient(name: 'Pancetta', quantity: '200g'),
             Ingredient(name: 'Eggs', quantity: '4 large'),
             Ingredient(name: 'Parmesan cheese', quantity: '100g, grated'),
