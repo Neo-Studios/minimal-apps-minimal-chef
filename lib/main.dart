@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:minimal_chef/features/auth/screens/auth_gate.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:minimal_chef/core/services/web_recipe_import_service.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -8,6 +9,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  WebRecipeImportService.initialize();
   runApp(const MinimalChefApp());
 }
 

@@ -1,0 +1,17 @@
+[
+    {
+      "name": "Recipe Name",
+      "description": "Description",
+      "imageUrl": "https://...",
+      "instructions": ["Step 1", "Step 2"],
+      "ingredients": [{"name": "Ingredient", "quantity": "1 cup"}],
+      "cuisineType": "italian",
+      "mealType": "dinner",
+      "difficultyLevel": "easy",
+      "prepTime": 30,
+      "cookTime": 45,
+      "servings": 4,
+      "tags": ["tag1", "tag2"]
+    }
+  ]
+  
