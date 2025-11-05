@@ -32,7 +32,7 @@ class FrenchRecipes {
         Ingredient(name: 'Bay leaves', quantity: '2'),
       ],
       cuisineType: CuisineType.french,
-      mealType: MealType.main_course,
+      mealType: MealType.dinner,
       difficultyLevel: DifficultyLevel.intermediate,
       prepTime: 30,
       cookTime: 90,

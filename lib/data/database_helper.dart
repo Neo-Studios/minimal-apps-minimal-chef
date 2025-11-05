@@ -3,7 +3,10 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:minimal_chef/features/recipe/models/recipe.dart';
 import 'package:minimal_chef/features/recipe/models/ingredient.dart';
+import 'package:minimal_chef/features/recipe/models/recipe_enums.dart';
+import 'package:minimal_chef/features/recipe/models/nutrition_info.dart';
 import 'package:minimal_chef/data/recipes.dart';
+import 'package:minimal_chef/data/sync_operation.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper instance = DatabaseHelper._init();

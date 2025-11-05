@@ -1,5 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:minimal_chef/features/recipe/models/recipe.dart';
+import 'package:minimal_chef/features/recipe/models/recipe_enums.dart';
 
 class FirestoreService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;

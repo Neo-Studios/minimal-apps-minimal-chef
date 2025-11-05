@@ -29,8 +29,8 @@ class BritishRecipes {
         Ingredient(name: 'Malt vinegar', quantity: 'to serve'),
         Ingredient(name: 'Tartar sauce', quantity: 'to serve'),
       ],
-      cuisineType: CuisineType.british,
-      mealType: MealType.main_course,
+      cuisineType: CuisineType.other,
+      mealType: MealType.dinner,
       difficultyLevel: DifficultyLevel.intermediate,
       prepTime: 30,
       cookTime: 25,
@@ -69,8 +69,8 @@ class BritishRecipes {
         Ingredient(name: 'Butter', quantity: '50g'),
         Ingredient(name: 'Milk', quantity: '100ml'),
       ],
-      cuisineType: CuisineType.british,
-      mealType: MealType.main_course,
+      cuisineType: CuisineType.other,
+      mealType: MealType.dinner,
       difficultyLevel: DifficultyLevel.intermediate,
       prepTime: 30,
       cookTime: 60,
@@ -109,7 +109,7 @@ class BritishRecipes {
         Ingredient(name: 'Double cream', quantity: '200ml'),
         Ingredient(name: 'Icing sugar', quantity: 'for dusting'),
       ],
-      cuisineType: CuisineType.british,
+      cuisineType: CuisineType.other,
       mealType: MealType.dessert,
       difficultyLevel: DifficultyLevel.intermediate,
       prepTime: 20,
@@ -125,6 +125,5 @@ class BritishRecipes {
       tags: {'cake', 'dessert', 'afternoon tea', 'classic'},
       dietaryRestrictions: {DietaryRestriction.vegetarian},
     ),
-    // More British recipes to be added...
   ];
 }

@@ -189,7 +189,7 @@ class Recipe {
       cuisineType: determineCuisineType(map['strArea'], map['strCategory']),
       mealType: determineMealType(map['strCategory']),
       userId: null,
-      tags: {map['strTags'] ?? ''}.where((t) => t.isNotEmpty).toSet(),
+      tags: <String>{map['strTags'] ?? ''}.where((t) => t.isNotEmpty).toSet(),
     );
   }
 

@@ -30,7 +30,7 @@ class AmericanRecipes {
         Ingredient(name: 'Salt and pepper', quantity: 'to taste'),
       ],
       cuisineType: CuisineType.american,
-      mealType: MealType.main_course,
+      mealType: MealType.dinner,
       difficultyLevel: DifficultyLevel.easy,
       prepTime: 15,
       cookTime: 10,

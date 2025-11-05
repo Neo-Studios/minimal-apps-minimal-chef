@@ -1,7 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:minimal_chef/core/services/firestore_service.dart';
 import 'package:minimal_chef/data/database_helper.dart';
+import 'package:minimal_chef/data/sync_operation.dart';
 import 'package:minimal_chef/features/recipe/models/recipe.dart';
+import 'package:minimal_chef/features/recipe/models/recipe_enums.dart';
 
 class RecipeStorageService {
   final FirestoreService _firestoreService = FirestoreService();
@@ -29,7 +30,7 @@ class RecipeStorageService {
       await _firestoreService.addRecipe(recipe);
     } catch (e) {
       // Mark for sync later if cloud save fails
-      await _markForSync(recipe.id!, SyncOperation.add);
+      await _markForSync(recipe.id!, 'add');
     }
   }
 
@@ -43,7 +44,7 @@ class RecipeStorageService {
       await _firestoreService.updateRecipe(recipe);
     } catch (e) {
       // Mark for sync later if cloud update fails
-      await _markForSync(recipe.id!, SyncOperation.update);
+      await _markForSync(recipe.id!, 'update');
     }
   }
 
@@ -57,7 +58,7 @@ class RecipeStorageService {
       await _firestoreService.deleteRecipe(id);
     } catch (e) {
       // Mark for sync later if cloud delete fails
-      await _markForSync(id, SyncOperation.delete);
+      await _markForSync(id, 'delete');
     }
   }
 
@@ -98,8 +99,8 @@ class RecipeStorageService {
       final localRecipes = await _databaseHelper.getAllRecipes();
 
       // Create maps for easy lookup
-      final cloudMap = {r.id: r for r in cloudRecipes};
-      final localMap = {r.id: r for r in localRecipes};
+      final cloudMap = {for (var r in cloudRecipes) r.id: r};
+      final localMap = {for (var r in localRecipes) r.id: r};
 
       // Process cloud updates
       for (final recipe in cloudRecipes) {
@@ -121,7 +122,7 @@ class RecipeStorageService {
             await _firestoreService.addRecipe(recipe);
           } catch (e) {
             // Mark for sync later if cloud save fails
-            await _markForSync(recipe.id!, SyncOperation.add);
+            await _markForSync(recipe.id!, 'add');
           }
         }
       }
@@ -130,9 +131,13 @@ class RecipeStorageService {
     }
   }
 
-  Future<void> _markForSync(String recipeId, SyncOperation operation) async {
-    // Store sync operation in local database
-    await _databaseHelper.addSyncOperation(recipeId, operation);
+  Future<void> _markForSync(String recipeId, String operation) async {
+    final syncOp = SyncOperation(
+      recipeId: recipeId,
+      operation: operation,
+      createdAt: DateTime.now().millisecondsSinceEpoch,
+    );
+    await _databaseHelper.addSyncOperation(recipeId, syncOp);
   }
 
   Future<void> _processPendingSyncs() async {
@@ -141,19 +146,19 @@ class RecipeStorageService {
     for (final sync in pendingSyncs) {
       try {
         switch (sync.operation) {
-          case SyncOperation.add:
+          case 'add':
             final recipe = await _databaseHelper.getRecipe(int.parse(sync.recipeId));
             if (recipe != null) {
               await _firestoreService.addRecipe(recipe);
             }
             break;
-          case SyncOperation.update:
+          case 'update':
             final recipe = await _databaseHelper.getRecipe(int.parse(sync.recipeId));
             if (recipe != null) {
               await _firestoreService.updateRecipe(recipe);
             }
             break;
-          case SyncOperation.delete:
+          case 'delete':
             await _firestoreService.deleteRecipe(sync.recipeId);
             break;
         }
@@ -165,10 +170,4 @@ class RecipeStorageService {
       }
     }
   }
-}
-
-enum SyncOperation {
-  add,
-  update,
-  delete,
 }
