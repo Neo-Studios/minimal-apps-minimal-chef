@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Chef - Your Minimalist Cooking Companion</title>
+    <meta name="description" content="Discover recipes, plan meals, and organize shopping lists with Minimal Chef - a beautifully simple cooking app for all your devices.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #FFA500 0%, #FF6F61 100%);
+            color: white;
+            padding: 120px 20px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><path d="M30 0L60 30L30 60L0 30Z" fill="rgba(255,255,255,0.03)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #FFA500;
+            padding: 18px 48px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: bounce 2s infinite;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            animation: none;
+            background: #FFF8E1;
+        }
+
+        .cta-button:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+
+        .secondary-button:hover {
+            background: white;
+            color: #FFA500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 20px;
+            background: #FFF8E1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #1a1a1a;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .feature-card:hover .feature-icon {
+            animation: wiggle 0.5s ease-in-out;
+            transform: scale(1.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Showcase Section */
+        .showcase {
+            padding: 100px 20px;
+            background: white;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .showcase-grid:nth-child(even) {
+            direction: rtl;
+        }
+
+        .showcase-grid:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .showcase-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .showcase-content p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .showcase-image {
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFE4B5 100%);
+            border-radius: 20px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+        }
+
+        .showcase-image:hover {
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 20px 60px rgba(255, 165, 0, 0.3);
+        }
+
+        /* Download Section */
+        .download {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #00B4D8 0%, #0096C7 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .download h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .download p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .platform-badges {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .badge:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 20px;
+            background: #FFF8E1;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #FFA500;
+        }
+
+        .stars {
+            color: #FFA500;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2F2F2F;
+            color: white;
+            padding: 60px 20px 30px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #00B4D8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #FFA500;
+        }
+
+        footer p {
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .showcase-grid:nth-child(even) {
+                direction: ltr;
+            }
+
+            .secondary-button {
+                margin-left: 0;
+                margin-top: 15px;
+                display: block;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes wiggle {
+            0%, 100% {
+                transform: rotate(0deg) scale(1.2);
+            }
+            25% {
+                transform: rotate(-10deg) scale(1.3);
+            }
+            75% {
+                transform: rotate(10deg) scale(1.3);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .hero h1 {
+            animation: fadeInUp 1s cubic-bezier(0.68, -0.55, 0.265, 1.55), pulse 3s ease-in-out infinite;
+        }
+
+        .section-title {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .feature-card {
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .showcase-image {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content container fade-in">
+            <h1>Minimal Chef</h1>
+            <p>Your minimalist cooking companion for recipes, meal planning, and shopping lists</p>
+            <a href="https://minimal-chef.vercel.app" class="cta-button">Try Web App</a>
+            <a href="https://github.com/Neo-Studios/minimal-apps-minimal-chef" class="cta-button secondary-button">View on GitHub</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Everything you need to cook with confidence</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🍳</span>
+                    <h3>Recipe Discovery</h3>
+                    <p>Browse recipes from cuisines around the world. Import from any website or add your own family recipes with photos and instructions.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📅</span>
+                    <h3>Meal Planning</h3>
+                    <p>Plan your week with an intuitive calendar interface. Log meals and stay organized with visual tracking that makes planning effortless.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🛒</span>
+                    <h3>Smart Shopping</h3>
+                    <p>Build shopping lists from recipes automatically. Integrate with Instacart and other services for seamless grocery delivery.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">☁️</span>
+                    <h3>Cloud Sync</h3>
+                    <p>Your recipes and plans sync across all devices. Access your kitchen companion on phone, tablet, or computer—anywhere you cook.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎨</span>
+                    <h3>Beautiful Design</h3>
+                    <p>Minimalist interface that gets out of your way. Light and dark modes adapt to your environment, day or night.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📱</span>
+                    <h3>Multi-Platform</h3>
+                    <p>Available on Android, iOS and web. One app, every device you own.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section class="showcase">
+        <div class="container">
+            <div class="showcase-grid">
+                <div class="showcase-content">
+                    <h3>Import recipes from anywhere</h3>
+                    <p>Paste any recipe URL and Minimal Chef automatically extracts ingredients, instructions, and cooking times. No more switching between apps and browser tabs.</p>
+                    <p>Your favorite food blogs, recipe sites, and cooking channels—all in one place.</p>
+                </div>
+                <div class="showcase-image">🔗</div>
+            </div>
+
+            <div class="showcase-grid">
+                <div class="showcase-content">
+                    <h3>Plan your week in seconds</h3>
+                    <p>Visual calendar makes meal planning intuitive. Drag recipes to days, see your week at a glance, and never wonder "what's for dinner?" again.</p>
+                    <p>Track what you've cooked and discover patterns in your favorite meals.</p>
+                </div>
+                <div class="showcase-image">📆</div>
+            </div>
+
+            <div class="showcase-grid">
+                <div class="showcase-content">
+                    <h3>Cook with built-in timers</h3>
+                    <p>Never overcook again. Set multiple timers for different cooking steps, all within the recipe view. Focus on cooking, not watching the clock.</p>
+                    <p>Coming soon: Voice-guided cooking with hands-free controls.</p>
+                </div>
+                <div class="showcase-image">⏲️</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <!-- Uncomment when you have real reviews
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Loved by home cooks everywhere</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Finally, a recipe app that doesn't overwhelm me with features I don't need. Clean, simple, and exactly what I was looking for."</p>
+                    <p class="testimonial-author">— Sarah M.</p>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The meal planning calendar changed how I organize my week. No more last-minute grocery runs or 'what's for dinner?' panic."</p>
+                    <p class="testimonial-author">— James K.</p>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Love that I can import recipes from any website. My entire collection is now in one place, synced across all my devices."</p>
+                    <p class="testimonial-author">— Emily R.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Download Section -->
+    <section class="download">
+        <div class="container">
+            <h2>Open Source & Multi-Platform</h2>
+            <p>Build Minimal Chef for any device. Free forever.</p>
+            <a href="https://github.com/yourusername/minimal-chef" class="cta-button">View on GitHub</a>
+            <div class="platform-badges">
+                <span class="badge">Android</span>
+                <span class="badge">iOS</span>
+                <span class="badge">Web</span>
+                <span class="badge">Windows</span>
+                <span class="badge">macOS</span>
+                <span class="badge">Linux</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Minimal Chef. Minimal Chef is licensed and owned by Neo Studios. See <a href="neo-studios.github.io">here</a> for more about us. Open source and available on all platforms.</p>
+            <p>Made with ❤️ for home cooks everywhere.</p>
+        </div>
+    </footer>
+</body>
+</html>
