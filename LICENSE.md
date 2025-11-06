@@ -1,6 +1,8 @@
 # Neo Studios Public Repository License
 
 **Version 1.0 — Effective Date: 20/10/2025**
+ 
+_Project: Minimal Chef_
 
 ---
 

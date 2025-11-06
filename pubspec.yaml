@@ -2,7 +2,7 @@ name: minimal_chef
 description: "A minimal cooking app, written in Flutter"
 publish_to: 'none'
 
-version: 0.1.0+ob3
+version: 0.1.0+beta4
 
 environment:
   sdk: ^3.9.0
@@ -18,6 +18,7 @@ dependencies:
   cloud_firestore: ^6.0.3
   firebase_storage: ^13.0.3
   google_sign_in: ^6.2.0
+  google_sign_in_web: ^0.12.4
   image_picker: ^1.0.4
   html: ^0.15.4
   morphable_shape: ^2.0.0
