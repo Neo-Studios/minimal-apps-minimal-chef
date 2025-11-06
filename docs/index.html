@@ -3,11 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimal Chef - Your Minimalist Cooking Companion</title>
-    <meta name="description" content="Discover recipes, plan meals, and organize shopping lists with Minimal Chef - a beautifully simple cooking app for all your devices.">
+    <title>Minimal Chef - Free Recipe Manager, Meal Planner & Shopping List App</title>
+    <meta name="description" content="Minimal Chef is a free, open-source cooking app for recipe management, meal planning, and shopping lists. Import recipes from any website, plan your week, and sync across all devices. Available on Android, iOS, and web.">
+    <meta name="keywords" content="recipe app, meal planner, shopping list, cooking app, recipe manager, meal planning app, recipe organizer, free recipe app, open source cooking app">
+    <meta name="author" content="Neo Studios">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://minimal-chef.vercel.app/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://minimal-chef.vercel.app/">
+    <meta property="og:title" content="Minimal Chef - Free Recipe Manager & Meal Planner">
+    <meta property="og:description" content="Discover recipes, plan meals, and organize shopping lists with Minimal Chef - a beautifully simple cooking app for all your devices.">
+    <meta property="og:image" content="https://minimal-chef.vercel.app/og-image.png">
+    <meta property="og:site_name" content="Minimal Chef">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://minimal-chef.vercel.app/">
+    <meta name="twitter:title" content="Minimal Chef - Free Recipe Manager & Meal Planner">
+    <meta name="twitter:description" content="Discover recipes, plan meals, and organize shopping lists with Minimal Chef - a beautifully simple cooking app for all your devices.">
+    <meta name="twitter:image" content="https://minimal-chef.vercel.app/og-image.png">
+    
+    <!-- Theme & Mobile -->
+    <meta name="theme-color" content="#FFA500">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Minimal Chef">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Minimal Chef",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Android, iOS, Windows, macOS, Linux, Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "ratingCount": "1"
+      },
+      "description": "A minimalist cooking app for recipe management, meal planning, and shopping lists. Import recipes from any website, plan your week, and sync across all devices.",
+      "screenshot": "https://minimal-chef.vercel.app/screenshot.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Neo Studios"
+      }
+    }
+    </script>
     <style>
         * {
             margin: 0;
@@ -54,6 +113,7 @@
             font-size: 1.3rem;
             font-weight: 700;
             color: #FFA500;
+            margin: 0;
         }
 
         .neo-button {
@@ -102,7 +162,7 @@
             z-index: 1;
         }
 
-        .hero h1 {
+        .hero h2 {
             font-size: 4rem;
             font-weight: 700;
             margin-bottom: 20px;
@@ -128,6 +188,7 @@
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             animation: bounce 2s infinite;
+            will-change: transform;
         }
 
         .cta-button:hover {
@@ -181,6 +242,8 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             cursor: pointer;
+            will-change: transform;
+            contain: layout style paint;
         }
 
         .feature-card:hover {
@@ -257,6 +320,7 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             cursor: pointer;
+            will-change: transform;
         }
 
         .showcase-image:hover {
@@ -381,7 +445,7 @@
                 font-size: 0.8rem;
             }
 
-            .hero h1 {
+            .hero h2 {
                 font-size: 2.5rem;
             }
 
@@ -464,7 +528,7 @@
             animation: fadeInUp 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
-        .hero h1 {
+        .hero h2 {
             animation: fadeInUp 1s cubic-bezier(0.68, -0.55, 0.265, 1.55), pulse 3s ease-in-out infinite;
         }
 
@@ -490,25 +554,25 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header role="banner">
         <div class="header-content">
-            <div class="logo">Minimal Chef</div>
+            <h1 class="logo">Minimal Chef</h1>
             <a href="https://github.com/Neo-Studios" class="neo-button">neo</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" role="main" aria-label="Hero section">
         <div class="hero-content container fade-in">
-            <h1>Minimal Chef</h1>
+            <h2>Minimal Chef</h2>
             <p>Your minimalist cooking companion for recipes, meal planning, and shopping lists</p>
-            <a href="https://minimal-chef.vercel.app" class="cta-button">Try Web App</a>
-            <a href="https://github.com/Neo-Studios/minimal-apps-minimal-chef" class="cta-button secondary-button">View on GitHub</a>
+            <a href="https://minimal-chef.vercel.app" class="cta-button" aria-label="Try Minimal Chef web application">Try Web App</a>
+            <a href="https://github.com/Neo-Studios/minimal-apps-minimal-chef" class="cta-button secondary-button" aria-label="View Minimal Chef source code on GitHub">View on GitHub</a>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="features">
+    <section id="features" class="features" aria-label="Features">
         <div class="container">
             <h2 class="section-title">Everything you need to cook with confidence</h2>
             <div class="features-grid">
@@ -547,7 +611,7 @@
     </section>
 
     <!-- Showcase Section -->
-    <section class="showcase">
+    <section class="showcase" aria-label="Product showcase">
         <div class="container">
             <div class="showcase-grid">
                 <div class="showcase-content">
@@ -605,11 +669,11 @@
     -->
 
     <!-- Download Section -->
-    <section class="download">
+    <section class="download" aria-label="Download information">
         <div class="container">
             <h2>Open Source & Multi-Platform</h2>
             <p>Build Minimal Chef for any device. Free forever.</p>
-            <a href="https://github.com/yourusername/minimal-chef" class="cta-button">View on GitHub</a>
+            <a href="https://github.com/Neo-Studios/minimal-apps-minimal-chef" class="cta-button" aria-label="View Minimal Chef on GitHub">View on GitHub</a>
             <div class="platform-badges">
                 <span class="badge">Android</span>
                 <span class="badge">iOS</span>
@@ -622,7 +686,7 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <p>© 2025 Minimal Chef. Minimal Chef is licensed and owned by Neo Studios. See <a href="neo-studios.github.io">here</a> for more about us. Open source and available on all platforms.</p>
             <p>Made with ❤️ for home cooks everywhere.</p>

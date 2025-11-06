@@ -1,13 +1,14 @@
 {
-    "name": "minimal_chef",
-    "short_name": "minimal_chef",
+    "name": "Minimal Chef",
+    "short_name": "Chef",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#FFFBFE",
+    "theme_color": "#8B4513",
+    "description": "A minimalist cooking app for recipes, meal planning, and shopping lists.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
+    "categories": ["food", "lifestyle"],
     "icons": [
         {
             "src": "icons/Icon-192.png",
