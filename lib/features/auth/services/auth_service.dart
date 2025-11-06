@@ -6,6 +6,7 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn(
     clientId: kIsWeb ? '409860921755-kjgtpg5cj9gc26pheqsip24p4bbsc115.apps.googleusercontent.com' : null,
+    scopes: ['email'],
   );
 
   Stream<User?> get user => _auth.authStateChanges();
