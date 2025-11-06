@@ -8,8 +8,16 @@ import 'package:minimal_chef/features/recipe/models/ingredient.dart';
 import 'package:minimal_chef/features/recipe/models/nutrition_info.dart';
 import 'package:minimal_chef/features/recipe/models/recipe_enums.dart';
 
-@JS('importRecipesToFirestore')
-external set _importRecipesToFirestore(JSFunction f);
+@JS()
+@staticInterop
+class _GlobalContext {}
+
+extension on _GlobalContext {
+  external set importRecipesToFirestore(JSFunction f);
+}
+
+@JS('self')
+external _GlobalContext get _global;
 
 class WebRecipeImportService {
   static const String _devPassword = 'neo-access-[pop]-@chef';
@@ -24,18 +32,21 @@ class WebRecipeImportService {
 
   static void initialize() {
     if (kIsWeb) {
-      _importRecipesToFirestore = _handleImport.toJS;
+      try {
+        _global.importRecipesToFirestore = _handleImport.toJS;
+      } catch (e) {
+        debugPrint('Failed to initialize web import: $e');
+      }
     }
   }
 
   static void _handleImport(JSAny data) async {
     try {
       final service = WebRecipeImportService();
-      final dataObj = data as JSObject;
-      final recipesJS = (dataObj as JSAny).dartify() as Map<String, dynamic>;
+      final dataMap = data.dartify() as Map<String, dynamic>;
       
-      final recipes = (recipesJS['recipes'] as List).cast<Map<String, dynamic>>();
-      final password = recipesJS['password'] as String;
+      final recipes = (dataMap['recipes'] as List).cast<Map<String, dynamic>>();
+      final password = dataMap['password'] as String;
       
       await service._importRecipes(recipes, password);
     } catch (e) {
