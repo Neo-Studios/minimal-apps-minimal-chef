@@ -21,6 +21,50 @@ jobs:
       with:
         channel: 'stable'
     
+    - name: Create google-services.json
+      run: |
+        cat > android/app/google-services.json << 'EOF'
+        {
+          "project_info": {
+            "project_number": "${{ secrets.FIREBASE_PROJECT_NUMBER }}",
+            "project_id": "${{ secrets.FIREBASE_PROJECT_ID }}",
+            "storage_bucket": "${{ secrets.FIREBASE_STORAGE_BUCKET }}"
+          },
+          "client": [
+            {
+              "client_info": {
+                "mobilesdk_app_id": "${{ secrets.FIREBASE_ANDROID_APP_ID }}",
+                "android_client_info": {
+                  "package_name": "com.example.minimal_chef"
+                }
+              },
+              "oauth_client": [
+                {
+                  "client_id": "${{ secrets.FIREBASE_OAUTH_CLIENT_ID }}",
+                  "client_type": 3
+                }
+              ],
+              "api_key": [
+                {
+                  "current_key": "${{ secrets.FIREBASE_ANDROID_API_KEY }}"
+                }
+              ],
+              "services": {
+                "appinvite_service": {
+                  "other_platform_oauth_client": [
+                    {
+                      "client_id": "${{ secrets.FIREBASE_OAUTH_CLIENT_ID }}",
+                      "client_type": 3
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "configuration_version": "1"
+        }
+        EOF
+    
     - name: Create Firebase Options
       run: |
         cat > lib/firebase_options.dart << 'EOF'
