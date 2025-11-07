@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:minimal_chef/features/auth/screens/auth_gate.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:minimal_chef/core/services/web_recipe_import_service.dart';
+import 'package:minimal_chef/core/services/web_recipe_import_service_loader.dart';
 import 'firebase_options.dart';
 
 void main() async {

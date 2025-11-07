@@ -20,7 +20,14 @@ A minimalist cooking application built with Flutter that helps users discover re
 ### Installation
 
 ```bash
+# 1. Install dependencies
 flutter pub get
+
+# 2. Setup Firebase configuration
+cp lib/firebase_options.dart.example lib/firebase_options.dart
+# Edit lib/firebase_options.dart with your Firebase credentials
+
+# 3. Run the app
 flutter run
 ```
 
@@ -50,6 +57,10 @@ flutter build web          # Web
 ```
 
 For iOS builds without Mac, see `.github/workflows/ios-build.yml`
+
+## CI/CD Setup
+
+For GitHub Actions builds, you need to configure Firebase secrets. See [`.github/SECRETS_SETUP.md`](.github/SECRETS_SETUP.md) for detailed instructions.
 
 ## Tech Stack
 
