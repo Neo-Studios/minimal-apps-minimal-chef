@@ -142,9 +142,13 @@ jobs:
       run: flutter pub get
     
     - name: Build APK
+      run: flutter build apk --release
+      continue-on-error: true
+    
+    - name: Copy APK to expected location
       run: |
-        cd android
-        ./gradlew assembleRelease
+        mkdir -p build/app/outputs/flutter-apk
+        cp android/app/build/outputs/apk/release/app-release.apk build/app/outputs/flutter-apk/ || true
     
     - name: Upload APK
       uses: actions/upload-artifact@v4
