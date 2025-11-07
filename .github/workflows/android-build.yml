@@ -35,7 +35,7 @@ jobs:
               "client_info": {
                 "mobilesdk_app_id": "${{ secrets.FIREBASE_ANDROID_APP_ID }}",
                 "android_client_info": {
-                  "package_name": "com.example.minimal_chef"
+                  "package_name": "com.neo_studios.minimal_chef"
                 }
               },
               "oauth_client": [
