@@ -102,8 +102,8 @@ jobs:
           }
 
           static const FirebaseOptions web = FirebaseOptions(
-            apiKey: '${{ secrets.FIREBASE_WEB_API_KEY || secrets.FIREBASE_ANDROID_API_KEY }}',
-            appId: '${{ secrets.FIREBASE_WEB_APP_ID || secrets.FIREBASE_ANDROID_APP_ID }}',
+            apiKey: '${{ secrets.FIREBASE_ANDROID_API_KEY }}',
+            appId: '${{ secrets.FIREBASE_ANDROID_APP_ID }}',
             messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}',
             projectId: '${{ secrets.FIREBASE_PROJECT_ID }}',
             authDomain: '${{ secrets.FIREBASE_AUTH_DOMAIN }}',
@@ -119,21 +119,21 @@ jobs:
           );
 
           static const FirebaseOptions ios = FirebaseOptions(
-            apiKey: '${{ secrets.FIREBASE_IOS_API_KEY || secrets.FIREBASE_ANDROID_API_KEY }}',
-            appId: '${{ secrets.FIREBASE_IOS_APP_ID || secrets.FIREBASE_ANDROID_APP_ID }}',
+            apiKey: '${{ secrets.FIREBASE_ANDROID_API_KEY }}',
+            appId: '${{ secrets.FIREBASE_ANDROID_APP_ID }}',
             messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}',
             projectId: '${{ secrets.FIREBASE_PROJECT_ID }}',
             storageBucket: '${{ secrets.FIREBASE_STORAGE_BUCKET }}',
-            iosBundleId: '${{ secrets.FIREBASE_IOS_BUNDLE_ID || '''com.example.minimalChef''' }}',
+            iosBundleId: 'com.neo_studios.minimal_chef',
           );
 
           static const FirebaseOptions macos = FirebaseOptions(
-            apiKey: '${{ secrets.FIREBASE_MACOS_API_KEY || secrets.FIREBASE_ANDROID_API_KEY }}',
-            appId: '${{ secrets.FIREBASE_MACOS_APP_ID || secrets.FIREBASE_ANDROID_APP_ID }}',
+            apiKey: '${{ secrets.FIREBASE_ANDROID_API_KEY }}',
+            appId: '${{ secrets.FIREBASE_ANDROID_APP_ID }}',
             messagingSenderId: '${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}',
             projectId: '${{ secrets.FIREBASE_PROJECT_ID }}',
             storageBucket: '${{ secrets.FIREBASE_STORAGE_BUCKET }}',
-            iosBundleId: '${{ secrets.FIREBASE_MACOS_BUNDLE_ID || '''com.example.minimalChef''' }}',
+            iosBundleId: 'com.neo_studios.minimal_chef',
           );
         }
         EOF
