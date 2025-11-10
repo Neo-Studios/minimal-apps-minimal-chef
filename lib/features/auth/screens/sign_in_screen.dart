@@ -58,8 +58,19 @@ class SignInScreen extends StatelessWidget {
                   icon: FontAwesomeIcons.google,
                   iconColor: Colors.redAccent,
                   text: 'Sign in with Google',
-                  onTap: () {
-                    AuthService().signInWithGoogle();
+                  onTap: () async {
+                    try {
+                      await AuthService().signInWithGoogle();
+                    } catch (e) {
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Sign-in failed: ${e.toString()}'),
+                            backgroundColor: Colors.redAccent,
+                          ),
+                        );
+                      }
+                    }
                   },
                 ),
                 const SizedBox(height: 20),

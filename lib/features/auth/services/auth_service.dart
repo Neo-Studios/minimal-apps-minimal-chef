@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn(
-    clientId: kIsWeb ? '409860921755-kjgtpg5cj9gc26pheqsip24p4bbsc115.apps.googleusercontent.com' : null,
+    clientId: kIsWeb ? '409860921755-b7ujfansgq4qjl30kqv9rf32lhrtd7u8.apps.googleusercontent.com' : null,
     scopes: ['email'],
   );
 
@@ -32,27 +32,19 @@ class AuthService {
   }
 
   Future<User?> signInWithEmailAndPassword(String email, String password) async {
-    try {
-      final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return userCredential.user;
-    } catch (e) {
-      return null;
-    }
+    final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    return userCredential.user;
   }
 
   Future<User?> createUserWithEmailAndPassword(String email, String password) async {
-    try {
-      final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return userCredential.user;
-    } catch (e) {
-      return null;
-    }
+    final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    return userCredential.user;
   }
 
   Future<void> signOut() async {

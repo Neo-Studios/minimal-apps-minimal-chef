@@ -32,34 +32,29 @@ class _EmailPasswordLoginScreenState
       });
 
       try {
+        final authService = AuthService();
         if (_isLogin) {
-          await AuthService().signInWithEmailAndPassword(
-            _emailController.text,
+          await authService.signInWithEmailAndPassword(
+            _emailController.text.trim(),
             _passwordController.text,
           );
         } else {
-          await AuthService().createUserWithEmailAndPassword(
-            _emailController.text,
+          await authService.createUserWithEmailAndPassword(
+            _emailController.text.trim(),
             _passwordController.text,
           );
         }
-        if (mounted) {
-          Navigator.of(context).pop();
-        }
       } catch (e) {
         if (mounted) {
+          setState(() {
+            _isLoading = false;
+          });
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(e.toString()),
               backgroundColor: Colors.redAccent,
             ),
           );
-        }
-      } finally {
-        if (mounted) {
-          setState(() {
-            _isLoading = false;
-          });
         }
       }
     }
