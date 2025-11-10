@@ -2834,23 +2834,14 @@ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
 --------------------------------------------------------------------------------
 cross_file
-file_selector_linux
-file_selector_platform_interface
-file_selector_windows
-flutter_lints
-google_identity_services_web
-google_sign_in
+file_selector_macos
+flutter_plugin_android_lifecycle
 google_sign_in_android
 google_sign_in_ios
-google_sign_in_platform_interface
-google_sign_in_web
-image_picker_for_web
-image_picker_linux
+image_picker_macos
 image_picker_platform_interface
-image_picker_windows
-plugin_platform_interface
 
-Copyright 2013 The Flutter Authors. All rights reserved.
+Copyright 2013 The Flutter Authors
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
@@ -5180,11 +5171,20 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 --------------------------------------------------------------------------------
-file_selector_macos
-flutter_plugin_android_lifecycle
-image_picker_macos
+file_selector_linux
+file_selector_platform_interface
+file_selector_windows
+flutter_lints
+google_identity_services_web
+google_sign_in
+google_sign_in_platform_interface
+google_sign_in_web
+image_picker_for_web
+image_picker_linux
+image_picker_windows
+plugin_platform_interface
 
-Copyright 2013 The Flutter Authors
+Copyright 2013 The Flutter Authors. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
