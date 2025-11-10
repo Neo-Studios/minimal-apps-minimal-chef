@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:minimal_chef/features/auth/screens/auth_gate.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:minimal_chef/core/services/web_recipe_import_service_loader.dart';
@@ -22,8 +23,15 @@ class MinimalChefApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    
     return MaterialApp(
       title: 'Minimal Chef',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -34,6 +42,14 @@ class MinimalChefApp extends StatelessWidget {
           surface: const Color(0xFFFFF8E1),
           onSurface: const Color(0xFF2F2F2F),
           secondaryContainer: const Color(0xFFFF6F61),
+        ),
+        appBarTheme: const AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarIconBrightness: Brightness.dark,
+            systemNavigationBarColor: Colors.transparent,
+            systemNavigationBarIconBrightness: Brightness.dark,
+          ),
         ),
         visualDensity: VisualDensity.standard,
         textTheme: TextTheme(
@@ -67,6 +83,14 @@ class MinimalChefApp extends StatelessWidget {
           surface: const Color(0xFF2A2A2A),
           onSurface: const Color(0xFFF5F5F5),
           secondaryContainer: const Color(0xFFFF6F61),
+        ),
+        appBarTheme: const AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarIconBrightness: Brightness.light,
+            systemNavigationBarColor: Colors.transparent,
+            systemNavigationBarIconBrightness: Brightness.light,
+          ),
         ),
         visualDensity: VisualDensity.standard,
         textTheme: TextTheme(
