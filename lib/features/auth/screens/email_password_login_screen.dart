@@ -64,13 +64,14 @@ class _EmailPasswordLoginScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Colors.green.shade200,
-              Colors.green.shade400,
+              Color(0xFFFFF8E1),
+              Color(0xFFFFE4B5),
+              Color(0xFFFFEFD5),
             ],
           ),
         ),
@@ -84,9 +85,9 @@ class _EmailPasswordLoginScreenState
                   _isLogin ? 'Welcome Back' : 'Create Account',
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    fontSize: 36,
+                    fontSize: 32,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Color(0xFF2F2F2F),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -95,9 +96,9 @@ class _EmailPasswordLoginScreenState
                       ? 'Sign in to continue'
                       : 'Create a new account to get started',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white.withValues(alpha: 0.9),
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Color(0xFF2F2F2F),
                   ),
                 ),
                 const SizedBox(height: 48),
@@ -129,19 +130,18 @@ class _EmailPasswordLoginScreenState
                           if (_isLoading)
                             const CircularProgressIndicator()
                           else
-                            ElevatedButton(
+                            FilledButton(
                               onPressed: _submit,
-                              style: ElevatedButton.styleFrom(
+                              style: FilledButton.styleFrom(
                                 minimumSize: const Size(double.infinity, 50),
-                                backgroundColor: Colors.green.shade600,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
                               child: Text(
-                                _isLogin ? 'Login' : 'Sign Up',
+                                _isLogin ? 'Sign In' : 'Create Account',
                                 style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
+                                    fontSize: 16, fontWeight: FontWeight.w600),
                               ),
                             ),
                           const SizedBox(height: 12),
@@ -149,9 +149,8 @@ class _EmailPasswordLoginScreenState
                             onPressed: _switchAuthMode,
                             child: Text(
                               _isLogin
-                                  ? 'Create an account'
-                                  : 'I already have an account',
-                              style: TextStyle(color: Colors.green.shade800),
+                                  ? 'Don\'t have an account? Sign up'
+                                  : 'Already have an account? Sign in',
                             ),
                           ),
                         ],

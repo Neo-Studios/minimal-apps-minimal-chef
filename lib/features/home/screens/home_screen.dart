@@ -132,12 +132,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _navigateToAddRecipe,
-        label: const Text('New Recipe'),
-        icon: const Icon(Icons.add),
-      ),
-      floatingActionButtonLocation: isDesktop ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: _selectedIndex == 1
+          ? FloatingActionButton.extended(
+              onPressed: _navigateToAddRecipe,
+              label: const Text('New Recipe'),
+              icon: const Icon(Icons.add),
+            )
+          : null,
     );
   }
 }

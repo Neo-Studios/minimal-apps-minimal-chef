@@ -52,7 +52,22 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 /android/app/build
+/android/app/.cxx
+/android/.gradle
+/android/build
 
+# iOS build artifacts
+/ios/Pods
+/ios/.symlinks
+/ios/Flutter/Flutter.framework
+/ios/Flutter/Flutter.podspec
+
+# macOS build artifacts
+/macos/Pods
+/macos/.symlinks
+
+# Build directories
+/build/
 
 /.gemini/
 .env

@@ -9,7 +9,11 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  WebRecipeImportService.initialize();
+  try {
+    WebRecipeImportService.initialize();
+  } catch (e) {
+    debugPrint('WebRecipeImportService initialization failed: $e');
+  }
   runApp(const MinimalChefApp());
 }
 
