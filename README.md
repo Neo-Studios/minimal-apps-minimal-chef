@@ -1,6 +1,10 @@
 # Minimal Chef
 
-A minimalist cooking application built with Flutter that helps users discover recipes, plan meals, and manage shopping lists.
+**Version 0.1.0** - A minimalist cooking application built with Flutter that helps users discover recipes, plan meals, and manage shopping lists.
+
+[![Flutter](https://img.shields.io/badge/Flutter-3.9%2B-02569B?logo=flutter)](https://flutter.dev)
+[![Firebase](https://img.shields.io/badge/Firebase-Enabled-FFCA28?logo=firebase)](https://firebase.google.com)
+[![License](https://img.shields.io/badge/License-Neo%20Studios-blue)](LICENSE.md)
 
 ## Features
 
@@ -10,12 +14,24 @@ A minimalist cooking application built with Flutter that helps users discover re
 - **Multi-Platform** - Android, iOS, Web, Windows, Linux, macOS
 - **Firebase Backend** - Cloud sync with Firestore, Google Sign-In authentication
 
+## What's New in v0.1
+
+🎉 First public release!
+- Recipe management with URL import
+- Calendar-based meal planning
+- Shopping list with Instacart integration
+- Multi-platform support (Android, iOS, Web, Desktop)
+- Material 3 design with light/dark themes
+
+See [CHANGELOG.md](CHANGELOG.md) for full details.
+
 ## Getting Started
 
 ### Prerequisites
 - Flutter SDK ^3.9.0
 - Firebase project configured
 - Google Sign-In credentials
+- Android SDK 31+ (for Android builds)
 
 ### Installation
 
@@ -69,6 +85,34 @@ For GitHub Actions builds, you need to configure Firebase secrets. See [`.github
 - **Authentication**: Google Sign-In
 - **UI**: Material 3 with custom RobotoFlex typography
 - **State**: Local state management with StreamBuilder
+- **Database**: Cloud Firestore + SQLite (local)
+- **Image Handling**: Firebase Storage + image_picker
+
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## Security
+
+For security concerns, please see [SECURITY.md](SECURITY.md).
+
+## License
+
+This project is licensed under the Neo Studios Public Repository License - see [LICENSE.md](LICENSE.md) for details.
+
+## Roadmap
+
+### v0.2 (Planned)
+- AI Chef with voice-guided cooking
+- Offline mode support
+- Recipe sharing between users
+- Enhanced search functionality
+
+### Future
+- Nutrition tracking
+- Grocery delivery integration
+- Recipe collections and favorites
+- Social features
 
 ## Project Structure
 
