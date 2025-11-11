@@ -1,0 +1,22 @@
+# Polski (Polska)
+app.name=Minimal Chef
+settings.title=Ustawienia
+settings.general=Ogólne
+settings.accessibility=Dostępność
+settings.account=Konto
+settings.about=O aplikacji
+general.theme=Motyw
+general.language=Język
+general.notifications=Powiadomienia
+general.offline_mode=Tryb offline
+accessibility.font_size=Rozmiar czcionki
+accessibility.reduce_motion=Ogranicz ruch
+accessibility.high_contrast=Wysoki kontrast
+accessibility.color_blind_mode=Tryb daltonizmu
+accessibility.screen_reader=Zoptymalizowane dla czytnika ekranu
+account.name=Imię
+account.email=E-mail
+account.sign_out=Wyloguj się
+about.version=Wersja
+about.developer=Deweloper
+about.license=Licencja

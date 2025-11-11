@@ -1,0 +1,22 @@
+# Nederlands (Nederland)
+app.name=Minimal Chef
+settings.title=Instellingen
+settings.general=Algemeen
+settings.accessibility=Toegankelijkheid
+settings.account=Account
+settings.about=Over
+general.theme=Thema
+general.language=Taal
+general.notifications=Meldingen
+general.offline_mode=Offline Modus
+accessibility.font_size=Lettergrootte
+accessibility.reduce_motion=Beweging Verminderen
+accessibility.high_contrast=Hoog Contrast
+accessibility.color_blind_mode=Kleurenblindheid Modus
+accessibility.screen_reader=Schermlezer Geoptimaliseerd
+account.name=Naam
+account.email=E-mail
+account.sign_out=Uitloggen
+about.version=Versie
+about.developer=Ontwikkelaar
+about.license=Licentie

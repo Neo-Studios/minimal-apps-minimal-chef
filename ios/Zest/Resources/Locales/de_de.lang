@@ -1,0 +1,22 @@
+# Deutsch (Deutschland)
+app.name=Minimal Chef
+settings.title=Einstellungen
+settings.general=Allgemein
+settings.accessibility=Barrierefreiheit
+settings.account=Konto
+settings.about=Über
+general.theme=Design
+general.language=Sprache
+general.notifications=Benachrichtigungen
+general.offline_mode=Offline-Modus
+accessibility.font_size=Schriftgröße
+accessibility.reduce_motion=Bewegung Reduzieren
+accessibility.high_contrast=Hoher Kontrast
+accessibility.color_blind_mode=Farbenblindheitsmodus
+accessibility.screen_reader=Bildschirmleser Optimiert
+account.name=Name
+account.email=E-Mail
+account.sign_out=Abmelden
+about.version=Version
+about.developer=Entwickler
+about.license=Lizenz

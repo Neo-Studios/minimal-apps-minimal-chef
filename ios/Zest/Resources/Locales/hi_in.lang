@@ -1,0 +1,22 @@
+# हिन्दी (भारत)
+app.name=Minimal Chef
+settings.title=सेटिंग्स
+settings.general=सामान्य
+settings.accessibility=सुलभता
+settings.account=खाता
+settings.about=के बारे में
+general.theme=थीम
+general.language=भाषा
+general.notifications=सूचनाएं
+general.offline_mode=ऑफ़लाइन मोड
+accessibility.font_size=फ़ॉन्ट आकार
+accessibility.reduce_motion=गति कम करें
+accessibility.high_contrast=उच्च कंट्रास्ट
+accessibility.color_blind_mode=रंग अंधता मोड
+accessibility.screen_reader=स्क्रीन रीडर अनुकूलित
+account.name=नाम
+account.email=ईमेल
+account.sign_out=साइन आउट
+about.version=संस्करण
+about.developer=डेवलपर
+about.license=लाइसेंस

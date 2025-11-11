@@ -1,129 +1,186 @@
-# Project Structure - Minimal Chef
+# Project Structure
 
-## Directory Organization
+## Repository Organization
 
 ```
-minimal-apps-minimal-chef/
-├── lib/                      # Main Flutter application code
-│   ├── features/            # Feature-based modules
-│   │   ├── auth/           # Authentication (Google Sign-In)
-│   │   ├── common/         # Shared feature components
-│   │   ├── discover/       # Recipe discovery interface
-│   │   ├── home/           # Home screen and navigation
-│   │   ├── meal_plan/      # Meal planning calendar
-│   │   ├── recipe/         # Recipe management
-│   │   ├── settings/       # App settings
-│   │   └── shopping_list/  # Shopping list management
-│   ├── core/               # Core services and utilities
-│   │   └── services/       # Core service implementations
-│   ├── data/               # Data layer
-│   │   ├── recipes/        # Recipe data files
-│   │   ├── database_helper.dart
-│   │   ├── default_recipes.dart
-│   │   ├── recipes.dart
-│   │   ├── recipes.db      # SQLite database
-│   │   └── sync_operation.dart
-│   ├── models/             # Data models
-│   ├── providers/          # State management providers
-│   ├── screens/            # Screen widgets
-│   ├── services/           # Service layer
-│   ├── widgets/            # Reusable UI components
-│   ├── firebase_options.dart
-│   └── main.dart           # Application entry point
-├── android/                # Android platform code
-│   └── app/
-│       └── src/main/
-│           ├── java/       # Java plugin registrants
-│           └── kotlin/     # Kotlin MainActivity
-├── ios/                    # iOS platform code
-│   ├── Runner/             # iOS app configuration
-│   └── Flutter/            # Flutter iOS integration
-├── web/                    # Web platform code
-│   ├── icons/              # PWA icons
-│   ├── dev-recipes.js      # Recipe import utilities
-│   └── index.html          # Web entry point
-├── macos/                  # macOS platform code
-├── assets/                 # Static assets
-│   └── fonts/              # Custom fonts (RobotoFlex)
-├── test/                   # Unit and widget tests
-│   ├── models/             # Model tests
-│   ├── services/           # Service tests
-│   └── widgets/            # Widget tests
+zest/
+├── web/                    # Next.js web application
+├── android/                # Kotlin Android application
+├── ios/                    # Swift iOS application
+├── shared/                 # Cross-platform shared resources
+├── docs/                   # Documentation
 ├── .gemini/                # AI assistant workspace
-│   ├── diagnostics/        # Issue diagnostics
-│   ├── plans/              # Feature plans
-│   └── tasks/              # Task lists
-├── .github/                # GitHub workflows
-│   └── workflows/          # CI/CD pipelines
-├── .idx/                   # IDX environment config
-├── docs/                   # Documentation website
-└── pubspec.yaml            # Flutter dependencies
+├── .amazonq/               # Amazon Q configuration
+├── .github/                # GitHub workflows and CI/CD
+└── .idx/                   # IDX environment configuration
 ```
 
-## Core Components
+## Platform-Specific Directories
 
-### Feature Modules (lib/features/)
-Each feature is self-contained with its own screens, widgets, and logic:
-- **auth**: Handles Google Sign-In and authentication state
-- **recipe**: Recipe CRUD operations, import, and display
-- **meal_plan**: Calendar-based meal planning with table_calendar
-- **shopping_list**: Shopping list management with Instacart integration
-- **discover**: Recipe browsing and discovery interface
-- **home**: Main navigation and home screen
-- **settings**: App configuration and preferences
+### Web Application (`web/`)
+```
+web/
+├── src/
+│   ├── app/              # Next.js 14 App Router pages
+│   ├── components/       # React components
+│   ├── lib/              # Utilities and Firebase config
+│   ├── types/            # TypeScript type definitions
+│   └── test/             # Test files
+├── public/
+│   ├── fonts/            # Web fonts
+│   ├── locales/          # Localization files
+│   └── manifest.json     # PWA manifest
+├── package.json          # Dependencies
+├── next.config.js        # Next.js configuration
+├── tailwind.config.ts    # Tailwind CSS configuration
+└── tsconfig.json         # TypeScript configuration
+```
 
-### Data Layer (lib/data/)
-- **database_helper.dart**: SQLite database management
-- **default_recipes.dart**: Pre-loaded recipe data
-- **recipes.dart**: Recipe data access layer
-- **sync_operation.dart**: Cloud sync operations
-- **recipes.db**: Local SQLite database for offline access
+**Key Components:**
+- App Router for routing and layouts
+- Zustand for state management
+- Firebase SDK for backend services
+- Tailwind CSS for styling
+- TypeScript for type safety
 
-### Services (lib/services/ & lib/core/services/)
-- **web_recipe_import_service_loader.dart**: Web recipe scraping and import
-- Firebase integration services (Auth, Firestore, Storage)
-- Local database services
+### Android Application (`android/`)
+```
+android/
+├── app/
+│   ├── src/
+│   │   └── main/
+│   │       ├── java/com/neostudios/zest/
+│   │       │   ├── ai/              # AI integration
+│   │       │   ├── data/            # Data layer
+│   │       │   ├── ui/              # Compose UI components
+│   │       │   └── MainActivity.kt
+│   │       └── res/                 # Resources
+│   ├── build.gradle.kts
+│   └── proguard-rules.pro
+├── build.gradle.kts      # Root build configuration
+├── gradle.properties     # Gradle properties
+└── settings.gradle.kts   # Project settings
+```
 
-### Models (lib/models/)
-Data models for Recipe, Ingredient, MealPlan, ShoppingList entities
+**Key Components:**
+- Jetpack Compose for UI
+- Material 3 Expressive design system
+- Hilt for dependency injection
+- Firebase SDK for backend
+- Kotlin Coroutines for async operations
 
-### Platform Code
-- **android/**: Gradle build configuration, MainActivity, plugin registration
-- **ios/**: Xcode project, AppDelegate, Info.plist
-- **web/**: HTML entry point, PWA manifest, recipe import JS utilities
-- **macos/**: macOS app configuration
+### iOS Application (`ios/`)
+```
+ios/
+├── Zest/
+│   ├── AI/               # AI integration (Apple Intelligence)
+│   ├── Models/           # Data models
+│   ├── Services/         # Business logic services
+│   ├── ViewModels/       # MVVM view models
+│   ├── Views/            # SwiftUI views
+│   ├── Resources/        # Assets and resources
+│   ├── Performance/      # Performance monitoring
+│   ├── Info.plist        # App configuration
+│   └── MinimalChefApp.swift  # App entry point
+├── MinimalChefTests/     # Unit tests
+├── Runner/               # Flutter compatibility layer
+└── Podfile               # CocoaPods dependencies
+```
+
+**Key Components:**
+- SwiftUI for declarative UI
+- Liquid Glass design language
+- Combine framework for reactive programming
+- Firebase SDK for backend
+- HealthKit for nutrition integration
+
+## Shared Resources (`shared/`)
+
+### Design Tokens (`shared/design-tokens/`)
+- `tokens.json` - Unified design system tokens (colors, typography, spacing)
+
+### Localization (`shared/locales/`)
+- 21 language files (.lang format)
+- Consistent translations across platforms
+
+### Firebase Configuration (`shared/firebase-config/`)
+- Setup documentation
+- Firestore schema definitions
+
+### Assets
+- `shared/fonts/` - RobotoFlex variable font
+- `shared/icons/` - Icon assets and guidelines
+
+## Documentation (`docs/`)
+- `ARCHITECTURE.md` - System architecture overview
+- `AI_SUPPORT.md` - AI device compatibility
+- `AI_SDK_INTEGRATION.md` - AI SDK integration guide
+- `SETUP.md` - Development setup instructions
+- SEO files (robots.txt, sitemap.xml, humans.txt)
+
+## AI Assistant Workspace (`.gemini/`)
+```
+.gemini/
+├── plans/          # Feature planning documents
+├── tasks/          # Task lists with sub-tasks
+├── progress/       # Phase summaries and session logs
+└── diagnostics/    # Issue tracking and fixes
+```
+
+## CI/CD Configuration (`.github/workflows/`)
+- `android-build.yml` - Android build pipeline
+- `ios-build.yml` - iOS build pipeline
+- `web-deploy.yml` - Web deployment pipeline
+- `test.yml` - Automated testing
 
 ## Architectural Patterns
 
-### Feature-Based Architecture
-The app uses a feature-based structure where each major feature (auth, recipe, meal_plan, shopping_list) is organized as a self-contained module with its own screens, widgets, and business logic.
+### Multi-Platform Architecture
+- **Native Implementations** - Each platform uses native frameworks (Next.js, Kotlin Compose, SwiftUI)
+- **Shared Backend** - Firebase provides unified backend (Auth, Firestore, Storage)
+- **Design Token System** - Shared design tokens ensure visual consistency
+- **Localization Strategy** - Centralized translation files
 
 ### Data Flow
-1. **UI Layer**: Feature screens and widgets
-2. **Service Layer**: Business logic and API calls
-3. **Data Layer**: Local SQLite + Cloud Firestore
-4. **Firebase Backend**: Authentication, cloud storage, real-time sync
+1. **Client Layer** - Platform-specific UI (React, Compose, SwiftUI)
+2. **Service Layer** - Business logic and API calls
+3. **Firebase Backend** - Authentication, database, storage
+4. **Local Storage** - Offline-first with local caching
 
 ### State Management
-- Local state management with StatefulWidget
-- StreamBuilder for Firebase real-time updates
-- Provider pattern for shared state (lib/providers/)
+- **Web:** Zustand for global state
+- **Android:** Hilt + ViewModel + StateFlow
+- **iOS:** Combine + ObservableObject
 
-### Database Strategy
-- **Local**: SQLite via sqflite for offline access
-- **Cloud**: Cloud Firestore for synchronization
-- **Hybrid**: Sync operations bridge local and cloud data
+### AI Integration
+- Platform-specific AI SDKs (AICore, Galaxy AI, Apple Intelligence)
+- On-device processing for privacy
+- Fallback to cloud AI when unavailable
 
-### Platform Integration
-- Flutter platform channels for native functionality
-- Firebase SDKs for each platform (Android, iOS, Web)
-- Platform-specific configurations in respective directories
+## Core Component Relationships
 
-## Key Relationships
+### Recipe Management Flow
+```
+UI Layer → ViewModel/State → Service Layer → Firebase/Local DB
+```
 
-- **main.dart** → Initializes Firebase and launches AuthGate
-- **AuthGate** → Routes to Home or Login based on auth state
-- **Home** → Navigation hub for all feature modules
-- **Features** → Access services for data operations
-- **Services** → Interact with Firebase and local database
-- **Models** → Shared across all layers for type safety
+### Authentication Flow
+```
+Login UI → Firebase Auth → User Session → Firestore User Profile
+```
+
+### AI Features Flow
+```
+User Input → AI Manager → Device AI SDK → Result Processing → UI Update
+```
+
+### Offline Sync Flow
+```
+Local DB ↔ Sync Service ↔ Firebase Firestore
+```
+
+## Development Environment
+- **IDX Integration** - Firebase Studio environment
+- **Package Management** - `.idx/dev.nix` for system dependencies
+- **Hot Reload** - Supported on all platforms
+- **Testing** - Platform-specific test frameworks

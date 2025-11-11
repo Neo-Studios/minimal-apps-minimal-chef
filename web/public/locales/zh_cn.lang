@@ -1,0 +1,22 @@
+# 简体中文 (中国)
+app.name=Minimal Chef
+settings.title=设置
+settings.general=常规
+settings.accessibility=辅助功能
+settings.account=账户
+settings.about=关于
+general.theme=主题
+general.language=语言
+general.notifications=通知
+general.offline_mode=离线模式
+accessibility.font_size=字体大小
+accessibility.reduce_motion=减少动画
+accessibility.high_contrast=高对比度
+accessibility.color_blind_mode=色盲模式
+accessibility.screen_reader=屏幕阅读器优化
+account.name=姓名
+account.email=邮箱
+account.sign_out=退出登录
+about.version=版本
+about.developer=开发者
+about.license=许可证

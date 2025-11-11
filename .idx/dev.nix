@@ -3,10 +3,21 @@
   channel = "unstable";
 
   packages = with pkgs; [
-    flutter
-    cmake
+    # Web (TypeScript/Next.js)
+    nodejs_20
+    nodePackages.npm
+    nodePackages.typescript
+    nodePackages.pnpm
+    
+    # Android (Kotlin)
     android-tools
+    gradle
+    kotlin
     jdk17
+    
+    # Build tools
+    cmake
+    git
   ];
 
   env = {
@@ -15,6 +26,15 @@
   };
 
   idx.previews = {
-    enable = false;
+    enable = true;
+    previews = {
+      web = {
+        command = ["npm" "run" "dev" "--prefix" "web"];
+        manager = "web";
+        env = {
+          PORT = "3000";
+        };
+      };
+    };
   };
 }

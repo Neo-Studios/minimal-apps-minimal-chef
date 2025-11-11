@@ -1,0 +1,22 @@
+# Português (Brasil)
+app.name=Minimal Chef
+settings.title=Configurações
+settings.general=Geral
+settings.accessibility=Acessibilidade
+settings.account=Conta
+settings.about=Sobre
+general.theme=Tema
+general.language=Idioma
+general.notifications=Notificações
+general.offline_mode=Modo Offline
+accessibility.font_size=Tamanho da Fonte
+accessibility.reduce_motion=Reduzir Movimento
+accessibility.high_contrast=Alto Contraste
+accessibility.color_blind_mode=Modo Daltonismo
+accessibility.screen_reader=Otimizado para Leitor de Tela
+account.name=Nome
+account.email=E-mail
+account.sign_out=Sair
+about.version=Versão
+about.developer=Desenvolvedor
+about.license=Licença

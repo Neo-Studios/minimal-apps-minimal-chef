@@ -1,0 +1,22 @@
+# Svenska (Sverige)
+app.name=Minimal Chef
+settings.title=Inställningar
+settings.general=Allmänt
+settings.accessibility=Tillgänglighet
+settings.account=Konto
+settings.about=Om
+general.theme=Tema
+general.language=Språk
+general.notifications=Aviseringar
+general.offline_mode=Offlineläge
+accessibility.font_size=Teckenstorlek
+accessibility.reduce_motion=Minska Rörelse
+accessibility.high_contrast=Hög Kontrast
+accessibility.color_blind_mode=Färgblindhetsläge
+accessibility.screen_reader=Skärmläsare Optimerad
+account.name=Namn
+account.email=E-post
+account.sign_out=Logga Ut
+about.version=Version
+about.developer=Utvecklare
+about.license=Licens

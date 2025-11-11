@@ -1,0 +1,22 @@
+# Русский (Россия)
+app.name=Minimal Chef
+settings.title=Настройки
+settings.general=Общие
+settings.accessibility=Доступность
+settings.account=Аккаунт
+settings.about=О приложении
+general.theme=Тема
+general.language=Язык
+general.notifications=Уведомления
+general.offline_mode=Автономный режим
+accessibility.font_size=Размер шрифта
+accessibility.reduce_motion=Уменьшить движение
+accessibility.high_contrast=Высокая контрастность
+accessibility.color_blind_mode=Режим дальтонизма
+accessibility.screen_reader=Оптимизация для программ чтения с экрана
+account.name=Имя
+account.email=Электронная почта
+account.sign_out=Выйти
+about.version=Версия
+about.developer=Разработчик
+about.license=Лицензия

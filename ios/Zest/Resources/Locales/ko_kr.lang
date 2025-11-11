@@ -1,0 +1,22 @@
+# 한국어 (대한민국)
+app.name=Minimal Chef
+settings.title=설정
+settings.general=일반
+settings.accessibility=접근성
+settings.account=계정
+settings.about=정보
+general.theme=테마
+general.language=언어
+general.notifications=알림
+general.offline_mode=오프라인 모드
+accessibility.font_size=글꼴 크기
+accessibility.reduce_motion=동작 줄이기
+accessibility.high_contrast=고대비
+accessibility.color_blind_mode=색맹 모드
+accessibility.screen_reader=화면 읽기 최적화
+account.name=이름
+account.email=이메일
+account.sign_out=로그아웃
+about.version=버전
+about.developer=개발자
+about.license=라이선스

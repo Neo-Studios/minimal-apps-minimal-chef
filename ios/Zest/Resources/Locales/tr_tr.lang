@@ -1,0 +1,22 @@
+# Türkçe (Türkiye)
+app.name=Minimal Chef
+settings.title=Ayarlar
+settings.general=Genel
+settings.accessibility=Erişilebilirlik
+settings.account=Hesap
+settings.about=Hakkında
+general.theme=Tema
+general.language=Dil
+general.notifications=Bildirimler
+general.offline_mode=Çevrimdışı Mod
+accessibility.font_size=Yazı Boyutu
+accessibility.reduce_motion=Hareketi Azalt
+accessibility.high_contrast=Yüksek Kontrast
+accessibility.color_blind_mode=Renk Körlüğü Modu
+accessibility.screen_reader=Ekran Okuyucu Optimize
+account.name=İsim
+account.email=E-posta
+account.sign_out=Çıkış Yap
+about.version=Sürüm
+about.developer=Geliştirici
+about.license=Lisans

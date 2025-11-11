@@ -1,0 +1,22 @@
+# العربية (السعودية)
+app.name=Minimal Chef
+settings.title=الإعدادات
+settings.general=عام
+settings.accessibility=إمكانية الوصول
+settings.account=الحساب
+settings.about=حول
+general.theme=المظهر
+general.language=اللغة
+general.notifications=الإشعارات
+general.offline_mode=وضع عدم الاتصال
+accessibility.font_size=حجم الخط
+accessibility.reduce_motion=تقليل الحركة
+accessibility.high_contrast=تباين عالي
+accessibility.color_blind_mode=وضع عمى الألوان
+accessibility.screen_reader=محسّن لقارئ الشاشة
+account.name=الاسم
+account.email=البريد الإلكتروني
+account.sign_out=تسجيل الخروج
+about.version=الإصدار
+about.developer=المطور
+about.license=الترخيص

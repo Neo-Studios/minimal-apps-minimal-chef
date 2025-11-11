@@ -1,0 +1,22 @@
+# Tiếng Việt (Việt Nam)
+app.name=Minimal Chef
+settings.title=Cài đặt
+settings.general=Chung
+settings.accessibility=Khả năng truy cập
+settings.account=Tài khoản
+settings.about=Giới thiệu
+general.theme=Giao diện
+general.language=Ngôn ngữ
+general.notifications=Thông báo
+general.offline_mode=Chế độ ngoại tuyến
+accessibility.font_size=Kích thước phông chữ
+accessibility.reduce_motion=Giảm chuyển động
+accessibility.high_contrast=Độ tương phản cao
+accessibility.color_blind_mode=Chế độ mù màu
+accessibility.screen_reader=Tối ưu hóa trình đọc màn hình
+account.name=Tên
+account.email=Email
+account.sign_out=Đăng xuất
+about.version=Phiên bản
+about.developer=Nhà phát triển
+about.license=Giấy phép

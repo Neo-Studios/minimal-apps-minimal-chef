@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Minimal Chef</string>
+    <string name="app_name">Zest</string>
+    <string name="recipe_widget_description">A widget that shows you a recipe of the day.</string>
 </resources>

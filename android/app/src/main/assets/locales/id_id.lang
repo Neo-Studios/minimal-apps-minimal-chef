@@ -1,0 +1,22 @@
+# Bahasa Indonesia (Indonesia)
+app.name=Minimal Chef
+settings.title=Pengaturan
+settings.general=Umum
+settings.accessibility=Aksesibilitas
+settings.account=Akun
+settings.about=Tentang
+general.theme=Tema
+general.language=Bahasa
+general.notifications=Notifikasi
+general.offline_mode=Mode Offline
+accessibility.font_size=Ukuran Font
+accessibility.reduce_motion=Kurangi Gerakan
+accessibility.high_contrast=Kontras Tinggi
+accessibility.color_blind_mode=Mode Buta Warna
+accessibility.screen_reader=Dioptimalkan untuk Pembaca Layar
+account.name=Nama
+account.email=Email
+account.sign_out=Keluar
+about.version=Versi
+about.developer=Pengembang
+about.license=Lisensi

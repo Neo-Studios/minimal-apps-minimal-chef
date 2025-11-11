@@ -23,23 +23,21 @@ migrate_working_dir/
 # is commented out by default.
 #.vscode/
 
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
-.dart_tool/
-.flutter-plugins-dependencies
-.pub-cache/
-.pub/
-# /build/
-# Uncomment to commit web build for Vercel:
-# !/build/web/
+# Web (Next.js)
+web/.next/
+web/node_modules/
+web/out/
+web/.env.local
+web/.env.production.local
+web/.vercel
+
+# Coverage
 /coverage/
 
 # Firebase configuration (contains sensitive API keys)
-lib/firebase_options.dart
 android/app/google-services.json
-ios/Runner/GoogleService-Info.plist
-macos/Runner/GoogleService-Info.plist
+ios/MinimalChef/GoogleService-Info.plist
+web/.env
 
 # Symbolication related
 app.*.symbols
@@ -55,19 +53,15 @@ app.*.map.json
 /android/app/.cxx
 /android/.gradle
 /android/build
-
+m3expressive docs page.md
 # iOS build artifacts
 /ios/Pods
-/ios/.symlinks
-/ios/Flutter/Flutter.framework
-/ios/Flutter/Flutter.podspec
-
-# macOS build artifacts
-/macos/Pods
-/macos/.symlinks
+/ios/DerivedData
+/ios/*.xcworkspace
+/ios/*.xcuserdata
 
 # Build directories
 /build/
 
+# AI assistant workspace
 /.gemini/
-.env

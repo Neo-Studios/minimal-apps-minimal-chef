@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'RobotoFlex';
+  src: url('/fonts/RobotoFlex-Variable.ttf') format('truetype');
+  font-weight: 100 1000;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
+
+:root {
+  --primary: #FFA500;
+  --secondary: #00B4D8;
+  --surface: #FFF8E1;
+  --on-surface: #2F2F2F;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #00B4D8;
+    --secondary: #00B4D8;
+    --surface: #2A2A2A;
+    --on-surface: #F5F5F5;
+  }
+}
+
+body {
+  font-family: 'RobotoFlex', sans-serif;
+  background-color: var(--surface);
+  color: var(--on-surface);
+}
+
+body.dyslexic-font {
+  font-family: 'OpenDyslexic', sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

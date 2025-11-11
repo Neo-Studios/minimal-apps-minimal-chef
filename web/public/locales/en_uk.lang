@@ -1,0 +1,22 @@
+# English (United Kingdom)
+app.name=Minimal Chef
+settings.title=Settings
+settings.general=General
+settings.accessibility=Accessibility
+settings.account=Account
+settings.about=About
+general.theme=Theme
+general.language=Language
+general.notifications=Notifications
+general.offline_mode=Offline Mode
+accessibility.font_size=Font Size
+accessibility.reduce_motion=Reduce Motion
+accessibility.high_contrast=High Contrast
+accessibility.color_blind_mode=Colour Blind Mode
+accessibility.screen_reader=Screen Reader Optimised
+account.name=Name
+account.email=Email
+account.sign_out=Sign Out
+about.version=Version
+about.developer=Developer
+about.license=Licence

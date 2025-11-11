@@ -1,0 +1,22 @@
+# Français (France)
+app.name=Minimal Chef
+settings.title=Paramètres
+settings.general=Général
+settings.accessibility=Accessibilité
+settings.account=Compte
+settings.about=À propos
+general.theme=Thème
+general.language=Langue
+general.notifications=Notifications
+general.offline_mode=Mode Hors Ligne
+accessibility.font_size=Taille de Police
+accessibility.reduce_motion=Réduire les Animations
+accessibility.high_contrast=Contraste Élevé
+accessibility.color_blind_mode=Mode Daltonien
+accessibility.screen_reader=Optimisé pour Lecteur d'Écran
+account.name=Nom
+account.email=Email
+account.sign_out=Se Déconnecter
+about.version=Version
+about.developer=Développeur
+about.license=Licence

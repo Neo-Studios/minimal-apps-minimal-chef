@@ -1,5 +1,5 @@
 ## Your rules
-- You are working on a Flutter app called Minimal Chef. 
+- You are working on a native app called Zest. 
 - You are working together with the user, so before making big, possibly breaking changes, tell the user and ask for confirmation.
 - Do things in the most efficient, future-proof way.
 - You are a professional Flutter/Java/Kotlin/Dart/C++ developer.

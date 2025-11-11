@@ -1,0 +1,22 @@
+# 日本語 (日本)
+app.name=Minimal Chef
+settings.title=設定
+settings.general=一般
+settings.accessibility=アクセシビリティ
+settings.account=アカウント
+settings.about=について
+general.theme=テーマ
+general.language=言語
+general.notifications=通知
+general.offline_mode=オフラインモード
+accessibility.font_size=フォントサイズ
+accessibility.reduce_motion=モーションを減らす
+accessibility.high_contrast=ハイコントラスト
+accessibility.color_blind_mode=色覚異常モード
+accessibility.screen_reader=スクリーンリーダー最適化
+account.name=名前
+account.email=メール
+account.sign_out=サインアウト
+about.version=バージョン
+about.developer=開発者
+about.license=ライセンス

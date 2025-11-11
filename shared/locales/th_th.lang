@@ -1,0 +1,22 @@
+# ไทย (ประเทศไทย)
+app.name=Minimal Chef
+settings.title=การตั้งค่า
+settings.general=ทั่วไป
+settings.accessibility=การเข้าถึง
+settings.account=บัญชี
+settings.about=เกี่ยวกับ
+general.theme=ธีม
+general.language=ภาษา
+general.notifications=การแจ้งเตือน
+general.offline_mode=โหมดออฟไลน์
+accessibility.font_size=ขนาดตัวอักษร
+accessibility.reduce_motion=ลดการเคลื่อนไหว
+accessibility.high_contrast=คอนทราสต์สูง
+accessibility.color_blind_mode=โหมดตาบอดสี
+accessibility.screen_reader=ปรับให้เหมาะกับโปรแกรมอ่านหน้าจอ
+account.name=ชื่อ
+account.email=อีเมล
+account.sign_out=ออกจากระบบ
+about.version=เวอร์ชัน
+about.developer=นักพัฒนา
+about.license=ใบอนุญาต

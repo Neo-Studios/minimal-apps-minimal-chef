@@ -1,28 +1,33 @@
 name: iOS Build
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'ios/**'
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: macos-latest
-    
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Setup Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        channel: 'stable'
-    
-    - name: Install dependencies
-      run: flutter pub get
-    
-    - name: Build iOS (no codesign)
-      run: flutter build ios --release --no-codesign
-    
-    - name: Upload IPA
-      uses: actions/upload-artifact@v4
-      with:
-        name: ios-build
-        path: build/ios/iphoneos/*.app
+      - uses: actions/checkout@v3
+      
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+          
+      - name: Install CocoaPods
+        run: |
+          cd ios
+          pod install
+          
+      - name: Build iOS
+        run: |
+          cd ios
+          xcodebuild -workspace MinimalChef.xcworkspace \
+            -scheme MinimalChef \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            build
