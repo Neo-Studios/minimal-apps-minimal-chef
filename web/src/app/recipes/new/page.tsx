@@ -14,7 +14,7 @@ export default function NewRecipePage() {
   const [prepTime, setPrepTime] = useState(0)
   const [cookTime, setCookTime] = useState(0)
   const [servings, setServings] = useState(1)
-  const [ingredients, setIngredients] = useState<Ingredient[]>([{ name: '', amount: '', unit: '' }])
+  const [ingredients, setIngredients] = useState<Ingredient[]>([{ name: '', amount: 0, unit: '' }])
   const [instructions, setInstructions] = useState([''])
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -84,11 +84,12 @@ export default function NewRecipePage() {
         {ingredients.map((ing, i) => (
           <div key={i} className="grid grid-cols-3 gap-2">
             <input
+              type="number"
               placeholder="Amount"
               value={ing.amount}
               onChange={(e) => {
                 const newIng = [...ingredients]
-                newIng[i].amount = e.target.value
+                newIng[i].amount = Number(e.target.value)
                 setIngredients(newIng)
               }}
               className="p-2 border rounded"
@@ -117,7 +118,7 @@ export default function NewRecipePage() {
         ))}
         <button
           type="button"
-          onClick={() => setIngredients([...ingredients, { name: '', amount: '', unit: '' }])}
+          onClick={() => setIngredients([...ingredients, { name: '', amount: 0, unit: '' }])}
           className="text-primary"
         >
           + Add Ingredient

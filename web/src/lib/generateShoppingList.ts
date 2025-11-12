@@ -8,8 +8,8 @@ export function generateShoppingList(recipes: Recipe[]): Ingredient[] {
       const key = ing.name.toLowerCase()
       if (ingredientMap.has(key)) {
         const existing = ingredientMap.get(key)!
-        // Combine quantities (simplified)
-        existing.amount = `${existing.amount} + ${ing.amount}`
+        // Combine quantities
+        existing.amount += ing.amount
       } else {
         ingredientMap.set(key, { ...ing })
       }

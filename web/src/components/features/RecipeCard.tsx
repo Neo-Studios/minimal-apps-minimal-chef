@@ -15,7 +15,7 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
         <h3 className="text-lg font-semibold">{recipe.name}</h3>
         <p className="text-sm text-gray-600">{recipe.cuisineType}</p>
         <div className="flex gap-2 mt-2 text-xs text-gray-500">
-          <span>⏱️ {recipe.prepTime + recipe.cookTime} min</span>
+          <span>⏱️ {(recipe.prepTime || 0) + (recipe.cookTime || 0)} min</span>
           <span>🍽️ {recipe.servings} servings</span>
         </div>
       </div>

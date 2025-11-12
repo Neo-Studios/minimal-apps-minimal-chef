@@ -19,10 +19,12 @@ const useNotifications = () => {
 
             onMessage(messaging, (payload) => {
               console.log('Message received. ', payload)
-              new Notification(payload.notification.title, {
-                body: payload.notification.body,
-                icon: payload.notification.icon,
-              })
+              if (payload.notification) {
+                new Notification(payload.notification.title || 'New Message', {
+                  body: payload.notification.body || '',
+                  icon: payload.notification.icon || '',
+                })
+              }
             })
           }
         }
