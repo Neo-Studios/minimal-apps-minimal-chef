@@ -1,39 +1,74 @@
-import { Recipe } from '@/types/models'
+// Offline cache service for PWA functionality
 
-const CACHE_NAME = 'minimal-chef-v1'
-const RECIPE_CACHE_KEY = 'cached-recipes'
+const CACHE_NAME = 'zest-cache-v1'
+const CACHE_URLS = [
+  '/',
+  '/recipes',
+  '/meal-plan',
+  '/shopping',
+  '/settings',
+]
 
-export async function cacheRecipe(recipe: Recipe): Promise<void> {
-  if (typeof window === 'undefined') return
-  
-  const cached = await getCachedRecipes()
-  const updated = [...cached.filter(r => r.id !== recipe.id), recipe]
-  localStorage.setItem(RECIPE_CACHE_KEY, JSON.stringify(updated))
+export async function registerCache() {
+  if ('serviceWorker' in navigator) {
+    try {
+      const registration = await navigator.serviceWorker.register('/sw.js')
+      console.log('Service Worker registered:', registration)
+    } catch (error) {
+      console.error('Service Worker registration failed:', error)
+    }
+  }
 }
 
-export async function getCachedRecipes(): Promise<Recipe[]> {
-  if (typeof window === 'undefined') return []
-  
-  const cached = localStorage.getItem(RECIPE_CACHE_KEY)
-  return cached ? JSON.parse(cached) : []
+export async function cacheResources() {
+  if ('caches' in window) {
+    try {
+      const cache = await caches.open(CACHE_NAME)
+      await cache.addAll(CACHE_URLS)
+      console.log('Resources cached successfully')
+    } catch (error) {
+      console.error('Failed to cache resources:', error)
+    }
+  }
 }
 
-export async function getCachedRecipe(id: string): Promise<Recipe | null> {
-  const recipes = await getCachedRecipes()
-  return recipes.find(r => r.id === id) || null
+export async function getCachedData(url: string) {
+  if ('caches' in window) {
+    try {
+      const cache = await caches.open(CACHE_NAME)
+      const response = await cache.match(url)
+      if (response) {
+        return await response.json()
+      }
+    } catch (error) {
+      console.error('Failed to get cached data:', error)
+    }
+  }
+  return null
 }
 
-export async function removeCachedRecipe(id: string): Promise<void> {
-  const recipes = await getCachedRecipes()
-  const filtered = recipes.filter(r => r.id !== id)
-  localStorage.setItem(RECIPE_CACHE_KEY, JSON.stringify(filtered))
+export async function setCachedData(url: string, data: unknown) {
+  if ('caches' in window) {
+    try {
+      const cache = await caches.open(CACHE_NAME)
+      const response = new Response(JSON.stringify(data))
+      await cache.put(url, response)
+    } catch (error) {
+      console.error('Failed to set cached data:', error)
+    }
+  }
 }
 
-export async function clearCache(): Promise<void> {
-  if (typeof window === 'undefined') return
-  localStorage.removeItem(RECIPE_CACHE_KEY)
-}
-
-export function isOnline(): boolean {
-  return typeof navigator !== 'undefined' ? navigator.onLine : true
+export async function clearCache() {
+  if ('caches' in window) {
+    try {
+      const cacheNames = await caches.keys()
+      await Promise.all(
+        cacheNames.map((name) => caches.delete(name))
+      )
+      console.log('Cache cleared successfully')
+    } catch (error) {
+      console.error('Failed to clear cache:', error)
+    }
+  }
 }

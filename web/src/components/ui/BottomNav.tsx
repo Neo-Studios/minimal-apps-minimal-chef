@@ -8,6 +8,7 @@ export default function BottomNav() {
 
   const links = [
     { href: '/recipes', label: 'Recipes' },
+    { href: '/cookbooks', label: 'Cookbooks' },
     { href: '/meal-plan', label: 'Meal Plan' },
     { href: '/shopping', label: 'Shopping' },
     { href: '/settings', label: 'Settings' },

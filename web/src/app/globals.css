@@ -17,18 +17,95 @@
 }
 
 :root {
-  --primary: #FFA500;
-  --secondary: #00B4D8;
-  --surface: #FFF8E1;
-  --on-surface: #2F2F2F;
+  /* Material 3 Expressive - Mediterranean Blue Theme */
+  --m3-primary: #0077BE;
+  --m3-primary-light: #3399D6;
+  --m3-primary-dark: #005A94;
+  --m3-primary-container: #D6EFFF;
+  --m3-on-primary: #FFFFFF;
+  --m3-on-primary-container: #001F33;
+  
+  --m3-secondary: #00A8CC;
+  --m3-secondary-light: #33BFDB;
+  --m3-secondary-dark: #0088A8;
+  --m3-secondary-container: #D6F5FF;
+  --m3-on-secondary: #FFFFFF;
+  --m3-on-secondary-container: #003340;
+  
+  --m3-tertiary: #FFB84D;
+  --m3-tertiary-container: #FFF4E0;
+  --m3-on-tertiary: #FFFFFF;
+  --m3-on-tertiary-container: #4D3300;
+  
+  --m3-surface: #F5FAFE;
+  --m3-surface-dim: #E8F4F8;
+  --m3-surface-bright: #FFFFFF;
+  --m3-surface-container: #E6F4FF;
+  --m3-surface-container-high: #D6EFFF;
+  --m3-surface-container-highest: #C2E7FF;
+  --m3-on-surface: #0D2137;
+  --m3-on-surface-variant: #3A5266;
+  
+  --m3-error: #BA1A1A;
+  --m3-error-container: #FFDAD6;
+  --m3-on-error: #FFFFFF;
+  --m3-on-error-container: #410002;
+  
+  --m3-outline: #79747E;
+  --m3-outline-variant: #CAC4D0;
+  
+  /* Legacy support */
+  --primary: var(--m3-primary);
+  --secondary: var(--m3-secondary);
+  --surface: var(--m3-surface);
+  --on-surface: var(--m3-on-surface);
 }
 
+.dark,
 @media (prefers-color-scheme: dark) {
-  :root {
-    --primary: #00B4D8;
-    --secondary: #00B4D8;
-    --surface: #2A2A2A;
-    --on-surface: #F5F5F5;
+  :root:not(.light) {
+    /* Material 3 Expressive - Mediterranean Night Theme */
+    --m3-primary: #5CB3FF;
+    --m3-primary-light: #8FCCFF;
+    --m3-primary-dark: #3399D6;
+    --m3-primary-container: #001F33;
+    --m3-on-primary: #001F33;
+    --m3-on-primary-container: #D6EFFF;
+    
+    --m3-secondary: #4DD4F5;
+    --m3-secondary-light: #7DE3FF;
+    --m3-secondary-dark: #00A8CC;
+    --m3-secondary-container: #003340;
+    --m3-on-secondary: #003340;
+    --m3-on-secondary-container: #D6F5FF;
+    
+    --m3-tertiary: #FFD699;
+    --m3-tertiary-container: #4D3300;
+    --m3-on-tertiary: #4D3300;
+    --m3-on-tertiary-container: #FFF4E0;
+    
+    --m3-surface: #0D2137;
+    --m3-surface-dim: #0A1929;
+    --m3-surface-bright: #1A3A52;
+    --m3-surface-container: #14293D;
+    --m3-surface-container-high: #1E3A52;
+    --m3-surface-container-highest: #2A4A66;
+    --m3-on-surface: #E3F2FD;
+    --m3-on-surface-variant: #B3D9F2;
+    
+    --m3-error: #FFB4AB;
+    --m3-error-container: #93000A;
+    --m3-on-error: #690005;
+    --m3-on-error-container: #FFDAD6;
+    
+    --m3-outline: #938F99;
+    --m3-outline-variant: #49454F;
+    
+    /* Legacy support */
+    --primary: var(--m3-primary);
+    --secondary: var(--m3-secondary);
+    --surface: var(--m3-surface);
+    --on-surface: var(--m3-on-surface);
   }
 }
 
@@ -48,4 +125,93 @@ body.dyslexic-font {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Custom animations */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--m3-surface-container);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--m3-outline-variant);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--m3-outline-main);
+}
+
+/* Selection */
+::selection {
+  background: var(--m3-primary-container);
+  color: var(--m3-on-primary-container);
 }

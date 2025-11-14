@@ -5,19 +5,51 @@ import { useAuthStore } from '@/lib/stores/authStore'
 import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, orderBy } from 'firebase/firestore'
 import { db } from '@/lib/firebase/config'
 import { ShoppingListItem } from '@/types/models'
+import { Icon } from '@/components/ui/Icon'
 
 const CATEGORIES = ['Produce', 'Meat', 'Dairy', 'Bakery', 'Pantry', 'Frozen', 'Other']
+
+// Auto-detect category based on item name
+function detectCategory(itemName: string): string {
+  const name = itemName.toLowerCase()
+  
+  // Produce
+  const produce = ['apple', 'banana', 'orange', 'lettuce', 'tomato', 'potato', 'onion', 'carrot', 'celery', 'cucumber', 'pepper', 'broccoli', 'spinach', 'kale', 'avocado', 'lemon', 'lime', 'garlic', 'ginger', 'mushroom', 'zucchini', 'squash', 'berry', 'berries', 'grape', 'melon', 'peach', 'pear', 'plum', 'cherry', 'strawberry', 'blueberry', 'raspberry', 'vegetable', 'fruit', 'salad', 'herb', 'basil', 'cilantro', 'parsley']
+  if (produce.some(item => name.includes(item))) return 'Produce'
+  
+  // Meat
+  const meat = ['chicken', 'beef', 'pork', 'turkey', 'fish', 'salmon', 'tuna', 'shrimp', 'steak', 'bacon', 'sausage', 'ham', 'lamb', 'meat', 'ground']
+  if (meat.some(item => name.includes(item))) return 'Meat'
+  
+  // Dairy
+  const dairy = ['milk', 'cheese', 'yogurt', 'butter', 'cream', 'egg', 'sour cream', 'cottage cheese', 'mozzarella', 'cheddar', 'parmesan', 'dairy']
+  if (dairy.some(item => name.includes(item))) return 'Dairy'
+  
+  // Bakery
+  const bakery = ['bread', 'bagel', 'roll', 'bun', 'croissant', 'muffin', 'donut', 'cake', 'cookie', 'pastry', 'tortilla', 'pita']
+  if (bakery.some(item => name.includes(item))) return 'Bakery'
+  
+  // Frozen
+  const frozen = ['frozen', 'ice cream', 'popsicle', 'pizza']
+  if (frozen.some(item => name.includes(item))) return 'Frozen'
+  
+  // Pantry
+  const pantry = ['rice', 'pasta', 'bean', 'flour', 'sugar', 'salt', 'pepper', 'oil', 'vinegar', 'sauce', 'spice', 'cereal', 'oat', 'can', 'canned', 'jar', 'box', 'bag']
+  if (pantry.some(item => name.includes(item))) return 'Pantry'
+  
+  return 'Other'
+}
 
 export default function ShoppingPage() {
   const { user } = useAuthStore()
   const [items, setItems] = useState<ShoppingListItem[]>([])
   const [newItem, setNewItem] = useState('')
   const [newAmount, setNewAmount] = useState('')
-  const [newCategory, setNewCategory] = useState('Other')
   const [groupByCategory, setGroupByCategory] = useState(true)
 
   useEffect(() => {
     if (user) loadItems()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user])
 
   const loadItems = async () => {
@@ -29,16 +61,16 @@ export default function ShoppingPage() {
 
   const addItem = async () => {
     if (!user || !newItem) return
+    const detectedCategory = detectCategory(newItem)
     await addDoc(collection(db, 'shoppingLists', user.uid, 'items'), {
       name: newItem,
       amount: newAmount,
-      category: newCategory,
+      category: detectedCategory,
       checked: false,
       createdAt: new Date()
     })
     setNewItem('')
     setNewAmount('')
-    setNewCategory('Other')
     loadItems()
   }
 
@@ -84,24 +116,13 @@ export default function ShoppingPage() {
             onKeyPress={(e) => e.key === 'Enter' && addItem()}
             className="w-full p-3 border rounded-lg dark:bg-gray-700"
           />
-          <div className="flex gap-2">
-            <input
-              type="text"
-              placeholder="Amount (optional)"
-              value={newAmount}
-              onChange={(e) => setNewAmount(e.target.value)}
-              className="flex-1 p-3 border rounded-lg dark:bg-gray-700"
-            />
-            <select
-              value={newCategory}
-              onChange={(e) => setNewCategory(e.target.value)}
-              className="p-3 border rounded-lg dark:bg-gray-700"
-            >
-              {CATEGORIES.map(cat => (
-                <option key={cat} value={cat}>{cat}</option>
-              ))}
-            </select>
-          </div>
+          <input
+            type="text"
+            placeholder="Amount (optional)"
+            value={newAmount}
+            onChange={(e) => setNewAmount(e.target.value)}
+            className="w-full p-3 border rounded-lg dark:bg-gray-700"
+          />
           <button onClick={addItem} className="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold">
             Add Item
           </button>
@@ -111,13 +132,15 @@ export default function ShoppingPage() {
       <div className="flex justify-between items-center mb-4">
         <button
           onClick={() => setGroupByCategory(!groupByCategory)}
-          className="text-blue-500 font-medium"
+          className="text-blue-500 font-medium flex items-center gap-2"
         >
-          {groupByCategory ? '📋 Show All' : '📁 Group by Category'}
+          <Icon name={groupByCategory ? 'clipboard' : 'folder'} />
+          {groupByCategory ? 'Show All' : 'Group by Category'}
         </button>
         {items.some(item => item.checked) && (
-          <button onClick={clearChecked} className="text-red-500 font-medium">
-            🗑️ Clear Checked
+          <button onClick={clearChecked} className="text-red-500 font-medium flex items-center gap-2">
+            <Icon name="trash" />
+            Clear Checked
           </button>
         )}
       </div>
@@ -162,7 +185,7 @@ export default function ShoppingPage() {
 
       {items.length === 0 && (
         <div className="text-center py-12 text-gray-500">
-          <div className="text-6xl mb-4">🛒</div>
+          <Icon name="cart" size="6x" className="mb-4" />
           <p>Your shopping list is empty</p>
         </div>
       )}

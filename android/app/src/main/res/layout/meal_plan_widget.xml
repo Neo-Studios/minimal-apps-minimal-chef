@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/widget_background">
+
+    <TextView
+        android:id="@+id/widget_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This Week's Meals"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="?android:textColorPrimary"
+        android:paddingBottom="12dp" />
+
+    <TextView
+        android:id="@+id/widget_meal_monday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mon: Chicken Stir Fry"
+        android:textSize="14sp"
+        android:textColor="?android:textColorSecondary"
+        android:paddingVertical="4dp" />
+
+    <TextView
+        android:id="@+id/widget_meal_tuesday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tue: Pasta Carbonara"
+        android:textSize="14sp"
+        android:textColor="?android:textColorSecondary"
+        android:paddingVertical="4dp" />
+
+    <TextView
+        android:id="@+id/widget_meal_wednesday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wed: Grilled Salmon"
+        android:textSize="14sp"
+        android:textColor="?android:textColorSecondary"
+        android:paddingVertical="4dp" />
+
+    <TextView
+        android:id="@+id/widget_meal_thursday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thu: Tacos"
+        android:textSize="14sp"
+        android:textColor="?android:textColorSecondary"
+        android:paddingVertical="4dp" />
+
+    <TextView
+        android:id="@+id/widget_meal_friday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fri: Pizza Night"
+        android:textSize="14sp"
+        android:textColor="?android:textColorSecondary"
+        android:paddingVertical="4dp" />
+
+</LinearLayout>

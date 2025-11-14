@@ -4,7 +4,7 @@ export interface SearchFilters {
   query?: string
   cuisineType?: string
   mealType?: string
-  difficulty?: 'easy' | 'medium' | 'hard'
+  difficulty?: 'Easy' | 'Medium' | 'Hard'
   dietaryRestrictions?: DietaryRestriction[]
   maxPrepTime?: number
   maxCookTime?: number

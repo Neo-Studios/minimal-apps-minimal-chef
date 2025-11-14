@@ -1,18 +1,18 @@
-'use client'
-
 import './globals.css'
-import useNotifications from '@/hooks/useNotifications'
-import useInstallPrompt from '@/hooks/useInstallPrompt'
-import BottomNav from '@/components/ui/BottomNav'
+import type { Metadata } from 'next'
+import { ClientLayout } from '@/components/layout/ClientLayout'
+
+export const metadata: Metadata = {
+  title: 'Zest - Your Cooking Companion',
+  description: 'Recipe management, meal planning, and smart cooking assistance',
+  manifest: '/manifest.json',
+}
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  useNotifications()
-  const { showInstallPrompt, handleInstall } = useInstallPrompt()
-
   return (
     <html lang="en">
       <head>
@@ -21,16 +21,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://firebasestorage.googleapis.com" />
       </head>
       <body>
-        {children}
-        {showInstallPrompt && (
-          <button
-            onClick={handleInstall}
-            className="fixed bottom-20 right-4 bg-primary text-white p-3 rounded-full shadow-lg"
-          >
-            Install App
-          </button>
-        )}
-        <BottomNav />
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   )

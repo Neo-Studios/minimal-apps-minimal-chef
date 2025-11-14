@@ -160,7 +160,7 @@ export default function SettingsPage() {
           <div className="space-y-3">
             <div>
               <p className="text-sm text-gray-500 dark:text-gray-400">Version</p>
-              <p className="font-medium">2.0.0</p>
+              <p className="font-medium">0.5.0</p>
             </div>
             <div>
               <p className="text-sm text-gray-500 dark:text-gray-400">Developer</p>

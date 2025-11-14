@@ -1,31 +1,130 @@
+import { Timestamp } from 'firebase/firestore'
+
+export type DietaryRestriction = 
+  | 'vegetarian'
+  | 'vegan'
+  | 'gluten-free'
+  | 'dairy-free'
+  | 'nut-free'
+  | 'keto'
+  | 'paleo'
+  | 'halal'
+  | 'kosher'
+
 export interface Recipe {
   id?: string
   name: string
   description?: string
-  ingredients: Ingredient[]
-  instructions: string[]
-  prepTime?: number
-  cookTime?: number
-  servings: number
-  imageUrl?: string
-  userId?: string
+  cuisine: string
   cuisineType?: string
   mealType?: string
-  difficulty?: 'easy' | 'medium' | 'hard'
-  dietaryRestrictions?: DietaryRestriction[]
-  nutrition?: NutritionInfo
+  prepTime: number
+  cookTime: number
+  servings: number
+  difficulty: 'Easy' | 'Medium' | 'Hard'
+  ingredients: Ingredient[]
+  instructions: string[]
+  imageUrl?: string
   rating?: number
-  notes?: string
-  costEstimate?: number
-  createdAt?: Date
-  updatedAt?: Date
+  dietaryRestrictions?: DietaryRestriction[]
+  nutrition?: {
+    calories: number
+    protein: number
+    carbs: number
+    fat: number
+    fiber?: number
+    sugar?: number
+    sodium?: number
+  }
+  userId: string
+  createdAt?: Timestamp
+  updatedAt?: Timestamp
 }
 
 export interface Ingredient {
   name: string
   amount: number
   unit: string
+}
+
+export interface Cookbook {
+  id?: string
+  name: string
+  description?: string
+  recipeIds: string[]
+  userId: string
+  isPublic?: boolean
+  createdAt?: Timestamp
+  updatedAt?: Timestamp
+}
+
+export interface MealPlan {
+  id?: string
+  userId: string
+  date: string
+  meals: {
+    breakfast?: string[]
+    lunch?: string[]
+    dinner?: string[]
+    snacks?: string[]
+  }
+  createdAt?: Timestamp
+  updatedAt?: Timestamp
+}
+
+export interface ShoppingList {
+  id?: string
+  userId: string
+  name: string
+  items: ShoppingItem[]
+  createdAt?: Timestamp
+  updatedAt?: Timestamp
+}
+
+export interface ShoppingItem {
+  id: string
+  name: string
+  amount?: number
+  unit?: string
+  checked: boolean
   category?: string
+}
+
+export interface ShoppingListItem {
+  id: string
+  name: string
+  amount?: string
+  unit?: string
+  category: string
+  checked: boolean
+  recipeName?: string
+  createdAt?: Date
+}
+
+export interface Timer {
+  id: string
+  name: string
+  duration: number
+  remaining: number
+  isRunning: boolean
+}
+
+export interface CookingTimer {
+  id: string
+  name: string
+  duration: number
+  remainingTime: number
+  isRunning: boolean
+}
+
+export interface NutritionData {
+  calories: number
+  protein: number
+  carbs: number
+  fat: number
+  fiber?: number
+  sugar?: number
+  sodium?: number
 }
 
 export interface NutritionInfo {
@@ -38,87 +137,8 @@ export interface NutritionInfo {
   sodium?: number
 }
 
-export type DietaryRestriction = 
-  | 'vegetarian' 
-  | 'vegan' 
-  | 'gluten-free' 
-  | 'dairy-free' 
-  | 'keto' 
-  | 'paleo' 
-  | 'low-carb' 
-  | 'halal' 
-  | 'kosher'
-
-export interface Cookbook {
-  id?: string
-  name: string
-  description?: string
-  recipeIds: string[]
-  userId: string
-  isPublic: boolean
-  coverImageUrl?: string
-  createdAt?: Date
-  updatedAt?: Date
-}
-
-export interface CookingTimer {
-  id: string
-  name: string
-  duration: number
-  remainingTime: number
-  isRunning: boolean
-  recipeId?: string
-}
-
-export interface InventoryItem {
-  id?: string
-  name: string
-  quantity: number
-  unit: string
-  expirationDate?: Date
-  category?: string
-  userId: string
-  addedAt?: Date
-}
-
-export interface MealPlan {
-  id?: string
-  date: string
-  recipeId: string
-  mealType: 'breakfast' | 'lunch' | 'dinner' | 'snack'
-  userId: string
-}
-
-export interface ShoppingListItem {
-  id?: string
-  name: string
-  amount?: string
-  category?: string
-  checked: boolean
-  userId?: string
-  recipeId?: string
-  recipeName?: string
-  createdAt?: Date
-}
-
-export interface User {
-  uid: string
-  email: string | null
-  displayName: string | null
-  photoURL: string | null
-}
-
 export interface RecipeRecommendation {
   recipeId: string
   score: number
   reason: string
-}
-
-export interface NutritionGoal {
-  id?: string
-  userId: string
-  dailyCalories: number
-  dailyProtein: number
-  dailyCarbs: number
-  dailyFat: number
 }

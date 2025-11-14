@@ -1,0 +1,245 @@
+/* Responsive Design for Tablets and Desktop */
+
+/* Mobile First - Base Styles */
+.container {
+  width: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+/* Tablet - 768px and up */
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 24px;
+  }
+  
+  .grid {
+    gap: 24px;
+  }
+  
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  /* Tablet Navigation */
+  .md\:navigation-rail {
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: var(--md-sys-color-surface);
+    border-right: 1px solid var(--md-sys-color-outline-variant);
+    padding: 12px 0;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .md\:main-with-rail {
+    margin-left: 80px;
+  }
+  
+  /* Two-pane layout for tablets */
+  .md\:two-pane {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 0;
+    height: 100vh;
+  }
+  
+  .md\:pane-list {
+    border-right: 1px solid var(--md-sys-color-outline-variant);
+    overflow-y: auto;
+  }
+  
+  .md\:pane-detail {
+    overflow-y: auto;
+  }
+}
+
+/* Desktop - 1024px and up */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 32px;
+  }
+  
+  .grid {
+    gap: 32px;
+  }
+  
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  
+  /* Desktop Navigation Drawer */
+  .lg\:navigation-drawer {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: var(--md-sys-color-surface);
+    border-right: 1px solid var(--md-sys-color-outline-variant);
+    padding: 24px 16px;
+    gap: 8px;
+  }
+  
+  .lg\:main-with-drawer {
+    margin-left: 280px;
+  }
+  
+  /* Three-pane layout for desktop */
+  .lg\:three-pane {
+    display: grid;
+    grid-template-columns: 280px 400px 1fr;
+    gap: 0;
+    height: 100vh;
+  }
+  
+  .lg\:pane-navigation {
+    border-right: 1px solid var(--md-sys-color-outline-variant);
+    overflow-y: auto;
+  }
+  
+  .lg\:pane-list {
+    border-right: 1px solid var(--md-sys-color-outline-variant);
+    overflow-y: auto;
+  }
+  
+  .lg\:pane-detail {
+    overflow-y: auto;
+  }
+  
+  /* Desktop-specific components */
+  .lg\:sidebar {
+    width: 320px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .lg\:main-content {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+/* Large Desktop - 1440px and up */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
+  
+  .xl\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  
+  .xl\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+/* Utility Classes */
+.hide-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-mobile {
+    display: block;
+  }
+  
+  .hide-tablet {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hide-tablet {
+    display: block;
+  }
+  
+  .hide-desktop {
+    display: none;
+  }
+}
+
+/* Touch vs Mouse */
+@media (hover: hover) and (pointer: fine) {
+  .hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
+  
+  .hover\:shadow-lg:hover {
+    box-shadow: var(--md-sys-elevation-level3);
+  }
+}
+
+/* Landscape Orientation */
+@media (orientation: landscape) and (max-height: 600px) {
+  .landscape\:flex-row {
+    flex-direction: row;
+  }
+  
+  .landscape\:h-screen {
+    height: 100vh;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print\:break-inside-avoid {
+    break-inside: avoid;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .md3-card {
+    border: 2px solid var(--md-sys-color-outline);
+  }
+  
+  .md3-button-outlined {
+    border-width: 2px;
+  }
+}

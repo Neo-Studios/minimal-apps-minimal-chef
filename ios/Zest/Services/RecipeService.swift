@@ -2,8 +2,11 @@ import Foundation
 import FirebaseFirestore
 
 class RecipeService {
+    static let shared = RecipeService()
     private let db = Firestore.firestore()
     private let recipesCollection = "recipes"
+    
+    private init() {}
     
     func addRecipe(_ recipe: Recipe) async throws -> String {
         let docRef = try await db.collection(recipesCollection).addDocument(data: recipe.toDict())

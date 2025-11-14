@@ -2,39 +2,47 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuthStore } from '@/lib/stores/authStore'
-import { addRecipe } from '@/lib/firebase/firestore'
-import { Ingredient } from '@/types/models'
+import { useAuth } from '@/lib/hooks/useAuth'
+import { createRecipe, Ingredient } from '@/lib/firebase/recipes'
 
 export default function NewRecipePage() {
   const router = useRouter()
-  const { user } = useAuthStore()
+  const { user } = useAuth()
   const [name, setName] = useState('')
-  const [cuisineType, setCuisineType] = useState('')
+  const [cuisine, setCuisine] = useState('')
+  const [description, setDescription] = useState('')
   const [prepTime, setPrepTime] = useState(0)
   const [cookTime, setCookTime] = useState(0)
   const [servings, setServings] = useState(1)
+  const [difficulty, setDifficulty] = useState<'Easy' | 'Medium' | 'Hard'>('Medium')
   const [ingredients, setIngredients] = useState<Ingredient[]>([{ name: '', amount: 0, unit: '' }])
   const [instructions, setInstructions] = useState([''])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!user) return
+    if (!user) {
+      alert('Please sign in to create recipes')
+      return
+    }
 
-    await addRecipe({
+    const recipeId = await createRecipe({
       name,
-      userId: user.uid,
-      cuisineType,
-      mealType: 'dinner',
+      description,
+      cuisine,
       prepTime,
       cookTime,
       servings,
+      difficulty,
       ingredients: ingredients.filter(i => i.name),
       instructions: instructions.filter(i => i),
-      createdAt: new Date(),
-      updatedAt: new Date()
+      userId: user.uid,
     })
-    router.push('/recipes')
+    
+    if (recipeId) {
+      router.push('/recipes')
+    } else {
+      alert('Failed to create recipe')
+    }
   }
 
   return (
@@ -49,13 +57,33 @@ export default function NewRecipePage() {
           className="w-full p-3 border rounded-lg"
           required
         />
+        <textarea
+          placeholder="Description (optional)"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="w-full p-3 border rounded-lg"
+          rows={3}
+        />
         <input
           type="text"
-          placeholder="Cuisine Type"
-          value={cuisineType}
-          onChange={(e) => setCuisineType(e.target.value)}
+          placeholder="Cuisine Type (e.g., Italian, Mexican)"
+          value={cuisine}
+          onChange={(e) => setCuisine(e.target.value)}
           className="w-full p-3 border rounded-lg"
+          required
         />
+        <div>
+          <label className="block text-sm font-medium mb-2">Difficulty</label>
+          <select
+            value={difficulty}
+            onChange={(e) => setDifficulty(e.target.value as 'Easy' | 'Medium' | 'Hard')}
+            className="w-full p-3 border rounded-lg"
+          >
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
         <div className="grid grid-cols-3 gap-4">
           <input
             type="number"

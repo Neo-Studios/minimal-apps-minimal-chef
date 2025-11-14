@@ -1,6 +1,6 @@
 # Zest
 
-**Version 2.0.0** - A modern cooking application with native implementations for Web, Android, and iOS.
+**Version 0.5.0** - A modern cooking application with native implementations for Web, Android, and iOS.
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-Next.js-3178C6?logo=typescript)](https://nextjs.org)
 [![Kotlin](https://img.shields.io/badge/Kotlin-Compose-7F52FF?logo=kotlin)](https://developer.android.com/jetpack/compose)
@@ -8,9 +8,9 @@
 [![Firebase](https://img.shields.io/badge/Firebase-Enabled-FFCA28?logo=firebase)](https://firebase.google.com)
 [![License](https://img.shields.io/badge/License-Neo%20Studios-blue)](LICENSE.md)
 
-## 🎉 What's New in v2.0
+## 🎉 What's New in v0.5
 
-Zest v2.0 is a complete rewrite with native platforms for better performance and platform-specific features!
+Zest v0.5 is a complete rewrite with native platforms for better performance and platform-specific features!
 
 - **Native Web** - Next.js 14 with React 18
 - **Native Android** - Kotlin with Jetpack Compose & Material 3 Expressive
@@ -112,20 +112,24 @@ open MinimalChef.xcworkspace
 ### Web
 - Next.js 14.2 with React 18
 - TypeScript 5.4
-- Tailwind CSS 3.4
+- Tailwind CSS 3.4 with Material 3 Expressive
+- Mediterranean Blue theme (inspired by Greek islands)
 - Firebase 10.12
 - Zustand (state management)
+- Dynamic theming (light/dark mode)
 
 ### Android
 - Kotlin with Jetpack Compose
-- Material 3 Expressive design
+- Material 3 Expressive design system
 - Hilt (dependency injection)
 - Firebase SDK
 - Coil (image loading)
+- Dynamic color support (Android 12+)
 
 ### iOS
 - Swift with SwiftUI
 - Liquid Glass design language
+- Translucent materials with depth
 - Combine framework
 - Firebase SDK
 - HealthKit integration
@@ -176,7 +180,7 @@ This project is licensed under the Neo Studios Public Repository License - see [
 
 ## Why Native?
 
-This v2.0 native rewrite provides:
+This v0.5 native rewrite provides:
 - 3x faster performance than cross-platform frameworks
 - Native platform features and APIs
 - Better design systems (Material 3 Expressive, Liquid Glass)

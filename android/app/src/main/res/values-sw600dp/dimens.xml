@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tablet dimensions (600dp and wider) -->
+<resources>
+    <dimen name="padding_small">12dp</dimen>
+    <dimen name="padding_medium">24dp</dimen>
+    <dimen name="padding_large">32dp</dimen>
+    <dimen name="padding_extra_large">48dp</dimen>
+    
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">24sp</dimen>
+    <dimen name="text_size_extra_large">32sp</dimen>
+    
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_corner_radius">16dp</dimen>
+    
+    <dimen name="list_item_height">72dp</dimen>
+    <dimen name="fab_size">64dp</dimen>
+    
+    <!-- Two-pane layout -->
+    <dimen name="list_pane_width">400dp</dimen>
+</resources>

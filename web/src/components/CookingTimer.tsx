@@ -1,97 +1,111 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { CookingTimer as Timer } from '@/types/models'
-import { timerService } from '@/lib/services/timerService'
-import { sendTimerComplete } from '@/lib/services/notificationService'
-import { hapticService } from '@/lib/services/hapticService'
+
+interface Timer {
+  id: string
+  name: string
+  duration: number
+  remaining: number
+  isRunning: boolean
+}
 
 export default function CookingTimer() {
   const [timers, setTimers] = useState<Timer[]>([])
-  const [newTimerName, setNewTimerName] = useState('')
-  const [newTimerDuration, setNewTimerDuration] = useState(10)
 
-  const addTimer = () => {
-    const timer: Timer = {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimers((prev) =>
+        prev.map((timer) => {
+          if (timer.isRunning && timer.remaining > 0) {
+            return { ...timer, remaining: timer.remaining - 1 }
+          }
+          return timer
+        })
+      )
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const addTimer = (name: string, duration: number) => {
+    const newTimer: Timer = {
       id: Date.now().toString(),
-      name: newTimerName || 'Timer',
-      duration: newTimerDuration * 60,
-      remainingTime: newTimerDuration * 60,
-      isRunning: false
+      name,
+      duration,
+      remaining: duration,
+      isRunning: false,
     }
-    setTimers([...timers, timer])
-    setNewTimerName('')
-    setNewTimerDuration(10)
-    hapticService.light()
+    setTimers([...timers, newTimer])
   }
 
-  const startTimer = (id: string) => {
-    const timer = timers.find(t => t.id === id)
-    if (!timer) return
-
-    timer.isRunning = true
-    setTimers([...timers])
-
-    timerService.startTimer(
-      timer,
-      (updatedTimer) => {
-        setTimers(prev => prev.map(t => t.id === id ? updatedTimer : t))
-      },
-      () => {
-        sendTimerComplete(timer.name)
-        hapticService.success()
-        setTimers(prev => prev.filter(t => t.id !== id))
-      }
+  const toggleTimer = (id: string) => {
+    setTimers((prev) =>
+      prev.map((timer) =>
+        timer.id === id ? { ...timer, isRunning: !timer.isRunning } : timer
+      )
     )
   }
 
-  const stopTimer = (id: string) => {
-    timerService.stopTimer(id)
-    setTimers(prev => prev.map(t => t.id === id ? { ...t, isRunning: false } : t))
-    hapticService.light()
+  const resetTimer = (id: string) => {
+    setTimers((prev) =>
+      prev.map((timer) =>
+        timer.id === id
+          ? { ...timer, remaining: timer.duration, isRunning: false }
+          : timer
+      )
+    )
+  }
+
+  const deleteTimer = (id: string) => {
+    setTimers((prev) => prev.filter((timer) => timer.id !== id))
   }
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60)
     const secs = seconds % 60
-    return `${mins}:${secs.toString().padStart(2, '0')}`
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
   }
 
   return (
     <div className="space-y-4">
       <div className="flex gap-2">
-        <input
-          type="text"
-          placeholder="Timer name"
-          value={newTimerName}
-          onChange={(e) => setNewTimerName(e.target.value)}
-          className="flex-1 p-2 border rounded-lg"
-        />
-        <input
-          type="number"
-          value={newTimerDuration}
-          onChange={(e) => setNewTimerDuration(Number(e.target.value))}
-          className="w-20 p-2 border rounded-lg"
-          min="1"
-        />
-        <button onClick={addTimer} className="px-4 py-2 bg-orange-500 text-white rounded-lg">
-          Add
+        <button
+          onClick={() => addTimer('Timer', 300)}
+          className="bg-m3-primary-main text-m3-on-primary px-4 py-2 rounded-lg"
+        >
+          Add 5 Min Timer
         </button>
       </div>
 
-      <div className="space-y-2">
-        {timers.map(timer => (
-          <div key={timer.id} className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-            <div>
-              <p className="font-medium">{timer.name}</p>
-              <p className="text-2xl font-bold">{formatTime(timer.remainingTime)}</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {timers.map((timer) => (
+          <div
+            key={timer.id}
+            className="bg-m3-surface-container p-4 rounded-lg shadow-elevation-2"
+          >
+            <h3 className="font-semibold mb-2">{timer.name}</h3>
+            <div className="text-3xl font-bold mb-4">{formatTime(timer.remaining)}</div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => toggleTimer(timer.id)}
+                className="flex-1 bg-m3-primary-main text-m3-on-primary px-3 py-2 rounded-lg"
+              >
+                {timer.isRunning ? 'Pause' : 'Start'}
+              </button>
+              <button
+                onClick={() => resetTimer(timer.id)}
+                className="px-3 py-2 bg-m3-secondary-main text-m3-on-secondary rounded-lg"
+              >
+                Reset
+              </button>
+              <button
+                onClick={() => deleteTimer(timer.id)}
+                className="px-3 py-2 bg-m3-error text-m3-on-error rounded-lg"
+              >
+                Delete
+              </button>
             </div>
-            <button
-              onClick={() => timer.isRunning ? stopTimer(timer.id) : startTimer(timer.id)}
-              className={`px-4 py-2 rounded-lg ${timer.isRunning ? 'bg-red-500' : 'bg-green-500'} text-white`}
-            >
-              {timer.isRunning ? 'Stop' : 'Start'}
-            </button>
           </div>
         ))}
       </div>
