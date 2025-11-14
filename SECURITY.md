@@ -52,7 +52,7 @@ When using Minimal Chef:
 
 4. **Data Privacy**:
    - User data is stored in Firebase Firestore
-   - Images stored in Firebase Storage
+   - Image URLs can be stored as external links (no Firebase Storage used)
    - Review Firebase privacy settings
 
 ## Known Security Considerations

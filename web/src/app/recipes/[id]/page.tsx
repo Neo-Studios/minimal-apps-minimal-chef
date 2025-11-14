@@ -1,15 +1,17 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useParams } from 'next/navigation'
-import { getRecipe, Recipe } from '@/lib/firebase/recipes'
+import { useParams, useRouter } from 'next/navigation'
+import { getRecipe, deleteRecipe, updateRecipe, Recipe } from '@/lib/firebase/recipes'
 import { useAuth } from '@/lib/hooks/useAuth'
 import { useCookbookStore } from '@/lib/stores/cookbookStore'
 import Image from 'next/image'
 import { Icon } from '@/components/ui/Icon'
+import { StarRating } from '@/components/ui/StarRating'
 
 export default function RecipeDetailPage() {
   const params = useParams()
+  const router = useRouter()
   const { user } = useAuth()
   const { cookbooks, fetchCookbooks, addRecipe } = useCookbookStore()
   const [recipe, setRecipe] = useState<Recipe | null>(null)
@@ -59,6 +61,39 @@ export default function RecipeDetailPage() {
     }
   }
 
+  const handleDelete = async () => {
+    if (!recipe?.id) return
+    
+    if (!confirm(`Are you sure you want to delete "${recipe.name}"? This action cannot be undone.`)) {
+      return
+    }
+    
+    try {
+      const success = await deleteRecipe(recipe.id)
+      if (success) {
+        router.push('/recipes')
+      } else {
+        alert('Failed to delete recipe')
+      }
+    } catch (error) {
+      console.error('Failed to delete recipe:', error)
+      alert('Failed to delete recipe')
+    }
+  }
+
+  const handleRating = async (rating: number) => {
+    if (!recipe?.id) return
+    
+    try {
+      const success = await updateRecipe(recipe.id, { rating })
+      if (success) {
+        setRecipe({ ...recipe, rating })
+      }
+    } catch (error) {
+      console.error('Failed to update rating:', error)
+    }
+  }
+
   const scaleAmount = (amount: number) => {
     return (amount * servingMultiplier).toFixed(2).replace(/\.?0+$/, '')
   }
@@ -102,18 +137,49 @@ export default function RecipeDetailPage() {
       <div className="flex justify-between items-start mb-4">
         <h1 className="text-4xl font-bold">{recipe.name}</h1>
         {user && (
-          <button
-            onClick={() => setShowCookbookDialog(true)}
-            className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition"
-          >
-            Add to Cookbook
-          </button>
+          <div className="flex gap-2">
+            {recipe.userId === user.uid && (
+              <>
+                <button
+                  onClick={() => router.push(`/recipes/${recipe.id}/edit`)}
+                  className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition flex items-center gap-2"
+                >
+                  <Icon name="settings" />
+                  Edit
+                </button>
+                <button
+                  onClick={handleDelete}
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition flex items-center gap-2"
+                >
+                  <Icon name="trash" />
+                  Delete
+                </button>
+              </>
+            )}
+            <button
+              onClick={() => setShowCookbookDialog(true)}
+              className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition"
+            >
+              Add to Cookbook
+            </button>
+          </div>
         )}
       </div>
-      <div className="flex gap-4 mb-6 text-sm text-gray-600">
+      <div className="flex gap-4 mb-4 text-sm text-gray-600">
         <span className="flex items-center gap-1"><Icon name="clock" /> Prep: {recipe.prepTime}m</span>
         <span className="flex items-center gap-1"><Icon name="fire" /> Cook: {recipe.cookTime}m</span>
         <span className="flex items-center gap-1"><Icon name="utensils" /> Servings: {recipe.servings}</span>
+      </div>
+
+      {/* Rating */}
+      <div className="mb-6">
+        <label className="block text-sm font-medium mb-2">Rate this recipe:</label>
+        <StarRating
+          value={recipe.rating || 0}
+          onChange={handleRating}
+          readonly={!user || recipe.userId !== user.uid}
+          size="lg"
+        />
       </div>
 
       <div className="mb-6 bg-gray-100 p-4 rounded-lg">

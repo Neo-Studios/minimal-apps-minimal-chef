@@ -5,7 +5,7 @@
 - **Language**: TypeScript 5.4
 - **Styling**: Tailwind CSS 3.4
 - **State Management**: Zustand 4.5
-- **Backend**: Firebase 10.12 (Auth, Firestore, Storage)
+- **Backend**: Firebase 10.12 (Auth, Firestore only - Storage not used)
 - **Testing**: Vitest 4.0, React Testing Library 16.3
 - **Architecture**: Server Components + Client Components, Next.js App Router
 - **Path Aliases**: `@/*` maps to `./src/*`

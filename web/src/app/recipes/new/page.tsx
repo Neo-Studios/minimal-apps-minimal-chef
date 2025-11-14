@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/lib/hooks/useAuth'
 import { createRecipe, Ingredient } from '@/lib/firebase/recipes'
+import { ImageUpload } from '@/components/ui/ImageUpload'
 
 export default function NewRecipePage() {
   const router = useRouter()
@@ -15,6 +16,7 @@ export default function NewRecipePage() {
   const [cookTime, setCookTime] = useState(0)
   const [servings, setServings] = useState(1)
   const [difficulty, setDifficulty] = useState<'Easy' | 'Medium' | 'Hard'>('Medium')
+  const [imageUrl, setImageUrl] = useState<string | undefined>(undefined)
   const [ingredients, setIngredients] = useState<Ingredient[]>([{ name: '', amount: 0, unit: '' }])
   const [instructions, setInstructions] = useState([''])
 
@@ -33,6 +35,7 @@ export default function NewRecipePage() {
       cookTime,
       servings,
       difficulty,
+      imageUrl,
       ingredients: ingredients.filter(i => i.name),
       instructions: instructions.filter(i => i),
       userId: user.uid,
@@ -63,6 +66,12 @@ export default function NewRecipePage() {
           onChange={(e) => setDescription(e.target.value)}
           className="w-full p-3 border rounded-lg"
           rows={3}
+        />
+        
+        <ImageUpload
+          value={imageUrl}
+          onChange={setImageUrl}
+          label="Add Recipe Image"
         />
         <input
           type="text"

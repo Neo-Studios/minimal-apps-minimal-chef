@@ -72,44 +72,11 @@ service cloud.firestore {
 
 Click **"Publish"**
 
-## Step 4: Enable Storage (Optional - Requires Blaze Plan)
+## Step 4: Storage (Not Required)
 
-⚠️ **Note**: Firebase Storage requires the Blaze (pay-as-you-go) plan. If you're on the free Spark plan, **skip this step**. The app will work without Storage - users just won't be able to upload recipe images.
+⚠️ **Note**: This application does NOT use Firebase Storage. Image URLs can be stored as external links in Firestore if needed. Skip any Storage setup.
 
-### If you have Blaze plan:
-
-1. Go to **Build → Storage**
-2. Click **"Get started"**
-3. Click **"Next"** (use default rules)
-4. Select location (same as Firestore)
-5. Click **"Done"**
-
-### Add Storage Rules
-
-Click **"Rules"** tab and paste:
-
-```javascript
-rules_version = '2';
-service firebase.storage {
-  match /b/{bucket}/o {
-    match /recipes/{userId}/{allPaths=**} {
-      allow read: if request.auth != null;
-      allow write: if request.auth.uid == userId;
-    }
-    
-    match /profiles/{userId}/{allPaths=**} {
-      allow read: if request.auth != null;
-      allow write: if request.auth.uid == userId;
-    }
-  }
-}
-```
-
-Click **"Publish"**
-
-### If you skip Storage:
-
-The app will still work! Users can:
+The app works completely without Storage! Users can:
 - ✅ Create and manage recipes
 - ✅ Plan meals
 - ✅ Generate shopping lists
@@ -135,7 +102,6 @@ Create `web/.env.local`:
 NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
 NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 ```
@@ -257,9 +223,8 @@ Already configured in code:
 1. ✅ Firebase project created
 2. ✅ Authentication enabled
 3. ✅ Firestore database created
-4. ⚠️ Storage enabled (optional - requires Blaze plan)
-5. ✅ Web app configured
-6. ✅ Android app configured
+4. ✅ Web app configured
+5. ✅ Android app configured
 7. ✅ iOS app configured
 8. ✅ Security rules added
 9. 🎉 Ready to use!
@@ -269,7 +234,7 @@ Already configured in code:
 - **Authentication**: 10K verifications/month
 - **Firestore**: 1GB storage, 50K reads/day, 20K writes/day
 - **Hosting**: 10GB storage, 360MB/day bandwidth
-- **Storage**: ❌ Not available (requires Blaze plan)
+- **Storage**: ❌ Not used in this application
 
 These limits are generous for development and small-scale use!
 

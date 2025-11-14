@@ -215,3 +215,88 @@ html {
   background: var(--m3-primary-container);
   color: var(--m3-on-primary-container);
 }
+
+
+/* Accessibility Features */
+
+/* Reduced Motion */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* High Contrast Mode */
+.high-contrast {
+  --tw-border-opacity: 1;
+  filter: contrast(1.2);
+}
+
+.high-contrast * {
+  border-width: 2px !important;
+}
+
+/* Color Blind Modes */
+.protanopia {
+  filter: url('#protanopia-filter');
+}
+
+.deuteranopia {
+  filter: url('#deuteranopia-filter');
+}
+
+.tritanopia {
+  filter: url('#tritanopia-filter');
+}
+
+/* Screen Reader Optimizations */
+.screen-reader-optimized {
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+.screen-reader-optimized * {
+  font-family: 'OpenDyslexic', sans-serif;
+}
+
+/* Font Size Classes */
+html.text-sm {
+  font-size: 14px;
+}
+
+html.text-base {
+  font-size: 16px;
+}
+
+html.text-lg {
+  font-size: 18px;
+}
+
+html.text-xl {
+  font-size: 20px;
+}
+
+/* Focus Visible for Keyboard Navigation */
+*:focus-visible {
+  outline: 3px solid var(--m3-primary);
+  outline-offset: 2px;
+}
+
+/* Skip to Main Content Link */
+.skip-to-main {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--m3-primary);
+  color: var(--m3-on-primary);
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-to-main:focus {
+  top: 0;
+}

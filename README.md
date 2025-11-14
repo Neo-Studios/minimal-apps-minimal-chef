@@ -72,7 +72,7 @@ Zest v0.5 is a complete rewrite with native platforms for better performance and
 - **Web**: Node.js 20+, npm
 - **Android**: Android Studio, JDK 17, Gradle
 - **iOS**: Xcode 15+, macOS (for iOS development)
-- **Firebase**: Firebase project with Auth, Firestore, Storage
+- **Firebase**: Firebase project with Auth and Firestore (Storage not required)
 
 ### Installation
 
@@ -101,8 +101,7 @@ open MinimalChef.xcworkspace
 1. Create a Firebase project at [console.firebase.google.com](https://console.firebase.google.com)
 2. Enable Authentication (Google Sign-In)
 3. Enable Firestore Database
-4. Enable Storage
-5. Download configuration files:
+4. Download configuration files:
    - Android: `google-services.json` → `android/app/`
    - iOS: `GoogleService-Info.plist` → `ios/MinimalChef/`
    - Web: Add Firebase config to `.env`

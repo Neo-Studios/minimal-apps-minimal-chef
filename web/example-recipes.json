@@ -1,0 +1,93 @@
+[
+  {
+    "name": "Classic Spaghetti Carbonara",
+    "description": "A traditional Italian pasta dish with eggs, cheese, and pancetta",
+    "imageUrl": "https://images.unsplash.com/photo-1612874742237-6526221588e3",
+    "instructions": [
+      "Bring a large pot of salted water to boil",
+      "Cook spaghetti according to package directions",
+      "Meanwhile, cook pancetta in a large skillet until crispy",
+      "In a bowl, whisk together eggs, Parmesan, and black pepper",
+      "Drain pasta, reserving 1 cup pasta water",
+      "Add hot pasta to pancetta, remove from heat",
+      "Quickly stir in egg mixture, adding pasta water to create a creamy sauce",
+      "Serve immediately with extra Parmesan"
+    ],
+    "ingredients": [
+      {"name": "Spaghetti", "quantity": "1 lb"},
+      {"name": "Pancetta, diced", "quantity": "6 oz"},
+      {"name": "Eggs", "quantity": "4"},
+      {"name": "Parmesan cheese, grated", "quantity": "1 cup"},
+      {"name": "Black pepper", "quantity": "1 tsp"},
+      {"name": "Salt", "quantity": "to taste"}
+    ],
+    "cuisineType": "italian",
+    "mealType": "dinner",
+    "difficultyLevel": "medium",
+    "prepTime": 10,
+    "cookTime": 20,
+    "servings": 4,
+    "tags": ["pasta", "italian", "quick"]
+  },
+  {
+    "name": "Avocado Toast",
+    "description": "Simple and healthy breakfast with mashed avocado on toast",
+    "imageUrl": "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d",
+    "instructions": [
+      "Toast bread until golden brown",
+      "Mash avocado with lime juice, salt, and pepper",
+      "Spread avocado mixture on toast",
+      "Top with cherry tomatoes and red pepper flakes",
+      "Drizzle with olive oil"
+    ],
+    "ingredients": [
+      {"name": "Bread slices", "quantity": "2"},
+      {"name": "Ripe avocado", "quantity": "1"},
+      {"name": "Lime juice", "quantity": "1 tbsp"},
+      {"name": "Cherry tomatoes, halved", "quantity": "1/4 cup"},
+      {"name": "Red pepper flakes", "quantity": "pinch"},
+      {"name": "Olive oil", "quantity": "1 tsp"},
+      {"name": "Salt and pepper", "quantity": "to taste"}
+    ],
+    "cuisineType": "american",
+    "mealType": "breakfast",
+    "difficultyLevel": "easy",
+    "prepTime": 5,
+    "cookTime": 5,
+    "servings": 1,
+    "tags": ["vegetarian", "healthy", "quick", "breakfast"]
+  },
+  {
+    "name": "Chicken Tikka Masala",
+    "description": "Creamy and flavorful Indian curry with tender chicken",
+    "imageUrl": "https://images.unsplash.com/photo-1565557623262-b51c2513a641",
+    "instructions": [
+      "Marinate chicken in yogurt, lemon juice, and spices for 30 minutes",
+      "Grill or pan-fry chicken until cooked through",
+      "In a large pan, sauté onions until golden",
+      "Add garlic, ginger, and spices, cook for 1 minute",
+      "Add tomato sauce and cream, simmer for 10 minutes",
+      "Add cooked chicken, simmer for 5 more minutes",
+      "Garnish with cilantro and serve with rice or naan"
+    ],
+    "ingredients": [
+      {"name": "Chicken breast, cubed", "quantity": "1.5 lb"},
+      {"name": "Plain yogurt", "quantity": "1/2 cup"},
+      {"name": "Lemon juice", "quantity": "2 tbsp"},
+      {"name": "Garam masala", "quantity": "2 tsp"},
+      {"name": "Onion, diced", "quantity": "1 large"},
+      {"name": "Garlic, minced", "quantity": "4 cloves"},
+      {"name": "Ginger, grated", "quantity": "1 tbsp"},
+      {"name": "Tomato sauce", "quantity": "2 cups"},
+      {"name": "Heavy cream", "quantity": "1 cup"},
+      {"name": "Cilantro", "quantity": "1/4 cup"}
+    ],
+    "cuisineType": "indian",
+    "mealType": "dinner",
+    "difficultyLevel": "medium",
+    "prepTime": 40,
+    "cookTime": 30,
+    "servings": 6,
+    "tags": ["indian", "curry", "chicken"]
+  }
+]

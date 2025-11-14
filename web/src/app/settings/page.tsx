@@ -2,20 +2,32 @@
 
 import { useAuthStore } from '@/lib/stores/authStore'
 import { useThemeStore } from '@/lib/stores/themeStore'
+import { useSettingsStore } from '@/lib/stores/settingsStore'
 import { signOut } from '@/lib/firebase/auth'
-import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function SettingsPage() {
+  const router = useRouter()
   const { user } = useAuthStore()
   const { theme, setTheme } = useThemeStore()
-  const [fontSize, setFontSize] = useState('medium')
-  const [notifications, setNotifications] = useState(true)
-  const [reducedMotion, setReducedMotion] = useState(false)
-  const [highContrast, setHighContrast] = useState(false)
-  const [colorBlindMode, setColorBlindMode] = useState('none')
-  const [screenReader, setScreenReader] = useState(false)
-  const [language, setLanguage] = useState('en')
-  const [offlineMode, setOfflineMode] = useState(true)
+  const {
+    fontSize,
+    setFontSize,
+    notifications,
+    setNotifications,
+    reducedMotion,
+    setReducedMotion,
+    highContrast,
+    setHighContrast,
+    colorBlindMode,
+    setColorBlindMode,
+    screenReader,
+    setScreenReader,
+    language,
+    setLanguage,
+    offlineMode,
+    setOfflineMode,
+  } = useSettingsStore()
 
   return (
     <main className="min-h-screen p-8 pb-24">
@@ -146,7 +158,10 @@ export default function SettingsPage() {
               <p className="font-medium">{user?.email}</p>
             </div>
             <button
-              onClick={() => signOut()}
+              onClick={async () => {
+                await signOut()
+                router.push('/login')
+              }}
               className="w-full bg-red-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-red-600 transition"
             >
               Sign Out

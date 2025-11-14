@@ -30,6 +30,13 @@ export default function TimersPage() {
   const [showAddForm, setShowAddForm] = useState(false)
   const isTablet = useIsTablet()
 
+  // Request notification permission on mount
+  useEffect(() => {
+    if ('Notification' in window && Notification.permission === 'default') {
+      Notification.requestPermission()
+    }
+  }, [])
+
   useEffect(() => {
     const interval = setInterval(() => {
       setTimers((prev) =>
