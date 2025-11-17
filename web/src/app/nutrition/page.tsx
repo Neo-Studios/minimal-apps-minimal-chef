@@ -24,7 +24,7 @@ export default function NutritionPage() {
     if (user) {
       loadData()
     }
-  }, [user, selectedDate, selectedPeriod])
+  }, [user, selectedDate, selectedPeriod, loadData])
 
   const loadData = async () => {
     if (!user) return

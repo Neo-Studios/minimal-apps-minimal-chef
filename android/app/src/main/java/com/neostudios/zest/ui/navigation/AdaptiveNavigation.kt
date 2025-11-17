@@ -26,6 +26,8 @@ sealed class Screen(val route: String, val title: String, val icon: Int) {
     object Timers : Screen("timers", "Timers", android.R.drawable.ic_menu_recent_history)
     object AIAssistant : Screen("ai_assistant", "AI Assistant", android.R.drawable.ic_menu_help)
     object Settings : Screen("settings", "Settings", android.R.drawable.ic_menu_preferences)
+    object MealKits : Screen("meal_kits", "Meal Kits", android.R.drawable.ic_menu_gallery)
+    object CollaborativeMealPlans : Screen("collaborative_meal_plans", "Collab Plans", android.R.drawable.ic_menu_share)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,7 +48,9 @@ fun AdaptiveNavigation(
         Screen.Nutrition,
         Screen.Timers,
         Screen.AIAssistant,
-        Screen.Settings
+        Screen.Settings,
+        Screen.MealKits,
+        Screen.CollaborativeMealPlans
     )
 
     when (windowSizeClass.widthSizeClass) {
@@ -136,6 +140,8 @@ private fun CompactLayout(
                         Screen.Recipes,
                         Screen.MealPlan,
                         Screen.Shopping,
+                        Screen.MealKits, // Added MealKits to bottom nav
+                        Screen.CollaborativeMealPlans, // Added CollaborativeMealPlans to bottom nav
                         Screen.Settings
                     )
                     mainScreens.forEach { screen ->
@@ -294,42 +300,12 @@ private fun TabletLayout(
 @Composable
 private fun NavigationHost(
     navController: NavHostController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    authViewModel: AuthViewModel = hiltViewModel()
 ) {
-    NavHost(
-        navController = navController,
-        startDestination = Screen.Recipes.route,
-        modifier = modifier
-    ) {
-        composable(Screen.Recipes.route) { RecipesScreen() }
-        composable(Screen.MealPlan.route) { MealPlanScreen() }
-        composable(Screen.Shopping.route) { ShoppingListScreen() }
-        composable(Screen.Cookbooks.route) { CookbooksScreen() }
-        composable(Screen.Nutrition.route) { NutritionDashboardScreen() }
-        composable(Screen.Timers.route) { TimersScreen() }
-        composable(Screen.AIAssistant.route) { AIAssistantScreen() }
-        composable(Screen.Settings.route) { SettingsScreen() }
-    }
+    NavGraph(navController = navController, authViewModel = authViewModel)
 }
 
 // Placeholder screens for missing features
-@Composable
-fun MealPlanScreen() {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = androidx.compose.ui.Alignment.Center) {
-        Text("Meal Plan Screen", style = MaterialTheme.typography.headlineMedium)
-    }
-}
 
-@Composable
-fun ShoppingListScreen() {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = androidx.compose.ui.Alignment.Center) {
-        Text("Shopping List Screen", style = MaterialTheme.typography.headlineMedium)
-    }
-}
 
-@Composable
-fun CookbooksScreen() {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = androidx.compose.ui.Alignment.Center) {
-        Text("Cookbooks Screen", style = MaterialTheme.typography.headlineMedium)
-    }
-}

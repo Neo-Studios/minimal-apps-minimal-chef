@@ -1,61 +1,146 @@
 import SwiftUI
 
 struct NutritionDashboardView: View {
-    let weeklyData: [DailyNutrition]
-    
-    var averages: NutritionInfo {
-        let total = weeklyData.reduce(NutritionInfo(calories: 0, protein: 0, carbs: 0, fat: 0)) { result, day in
-            NutritionInfo(
-                calories: result.calories + day.nutrition.calories,
-                protein: result.protein + day.nutrition.protein,
-                carbs: result.carbs + day.nutrition.carbs,
-                fat: result.fat + day.nutrition.fat
-            )
-        }
-        
-        let count = Double(weeklyData.count)
-        return NutritionInfo(
-            calories: Int(Double(total.calories) / count),
-            protein: round(total.protein / count * 10) / 10,
-            carbs: round(total.carbs / count * 10) / 10,
-            fat: round(total.fat / count * 10) / 10
-        )
-    }
+    @StateObject private var viewModel = NutritionViewModel()
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                Text("Nutrition Dashboard")
-                    .font(.largeTitle)
-                    .bold()
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-                    NutritionStatCard(label: "Avg Calories", value: "\(averages.calories)", color: .orange)
-                    NutritionStatCard(label: "Avg Protein", value: "\(averages.protein)g", color: .blue)
-                    NutritionStatCard(label: "Avg Carbs", value: "\(averages.carbs)g", color: .green)
-                    NutritionStatCard(label: "Avg Fat", value: "\(averages.fat)g", color: .purple)
-                }
-                
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Weekly Breakdown")
-                        .font(.title2)
-                        .bold()
+        NavigationView {
+            VStack {
+                // Date navigation
+                HStack {
+                    Button {
+                        viewModel.changeDate(by: -1)
+                    } label: {
+                        Image(systemName: "chevron.left")
+                    }
                     
-                    ForEach(weeklyData) { day in
-                        HStack {
-                            Text(day.date)
-                            Spacer()
-                            Text("\(day.nutrition.calories) cal")
-                                .bold()
+                    Spacer()
+                    
+                    Text(viewModel.selectedDate, style: .date)
+                        .font(.headline)
+                    
+                    Spacer()
+                    
+                    Button {
+                        viewModel.changeDate(by: 1)
+                    } label: {
+                        Image(systemName: "chevron.right")
+                    }
+                }
+                .padding()
+                
+                if viewModel.isLoading {
+                    Spacer()
+                    ProgressView("Loading nutrition data...")
+                    Spacer()
+                } else if let errorMessage = viewModel.errorMessage {
+                    Spacer()
+                    VStack {
+                        Image(systemName: "exclamationmark.triangle")
+                            .font(.system(size: 60))
+                            .foregroundColor(.red)
+                        Text("Error")
+                            .font(.title2)
+                        Text(errorMessage)
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                        Button("Retry") {
+                            Task {
+                                await viewModel.loadEntries()
+                            }
                         }
-                        .padding()
-                        .liquidGlass()
+                        .buttonStyle(.bordered)
+                    }
+                    Spacer()
+                } else {
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            // Today's totals
+                            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                                NutritionStatCard(label: "Calories", value: "\(viewModel.totalCalories)", color: .orange)
+                                NutritionStatCard(label: "Protein", value: "\(Int(viewModel.totalProtein))g", color: .blue)
+                                NutritionStatCard(label: "Carbs", value: "\(Int(viewModel.totalCarbs))g", color: .green)
+                                NutritionStatCard(label: "Fat", value: "\(Int(viewModel.totalFat))g", color: .purple)
+                            }
+                            .padding(.horizontal)
+                            
+                            // Today's entries
+                            VStack(alignment: .leading, spacing: 12) {
+                                Text("Today's Meals")
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.horizontal)
+                                
+                                if viewModel.todayEntries.isEmpty {
+                                    Text("No meals logged today")
+                                        .foregroundColor(.gray)
+                                        .padding()
+                                } else {
+                                    ForEach(viewModel.todayEntries) { entry in
+                                        NutritionEntryRow(entry: entry, viewModel: viewModel)
+                                    }
+                                }
+                            }
+                        }
+                        .padding(.vertical)
                     }
                 }
             }
-            .padding()
+            .navigationTitle("Nutrition")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Today") {
+                        viewModel.goToToday()
+                    }
+                }
+            }
         }
+        .task {
+            await viewModel.loadEntries()
+        }
+        .refreshable {
+            await viewModel.loadEntries()
+        }
+    }
+}
+
+struct NutritionEntryRow: View {
+    let entry: NutritionEntry
+    @ObservedObject var viewModel: NutritionViewModel
+    
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(entry.recipeName)
+                    .font(.headline)
+                Text("\(Int(entry.servings)) serving(s)")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+            }
+            
+            Spacer()
+            
+            if let nutrition = entry.nutrition {
+                Text("\(nutrition.calories) cal")
+                    .font(.subheadline)
+                    .bold()
+            }
+            
+            Button {
+                if let id = entry.id {
+                    Task {
+                        await viewModel.deleteEntry(id: id)
+                    }
+                }
+            } label: {
+                Image(systemName: "trash")
+                    .foregroundColor(.red)
+            }
+        }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(12)
+        .padding(.horizontal)
     }
 }
 

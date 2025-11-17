@@ -22,7 +22,7 @@ export default function MealPlanPage() {
     if (user) {
       loadData()
     }
-  }, [user, selectedDate])
+  }, [user, selectedDate, loadData])
 
   const loadData = async () => {
     if (!user) return

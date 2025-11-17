@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Zest</string>
     <string name="recipe_widget_description">A widget that shows you a recipe of the day.</string>
+    <string name="default_web_client_id">YOUR_WEB_CLIENT_ID</string>
 </resources>

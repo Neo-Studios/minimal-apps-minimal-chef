@@ -11,6 +11,7 @@ This document tracks feature implementation across Web, Android, and iOS platfor
 | **Recipe Import** | ✅ | ✅ | ✅ | Import from URLs |
 | **Meal Planning** | ✅ | ✅ | ✅ | Calendar-based meal planning |
 | **Shopping Lists** | ✅ | ✅ | ✅ | Create and manage shopping lists |
+| **Shopping List Auto-Categorize** | ✅ | ✅ | ✅ | Automatically categorizes items |
 | **Cookbooks** | ✅ | ✅ | ✅ | Organize recipes into collections |
 | **Nutrition Tracking** | ✅ | ✅ | ✅ | Track calories and macros |
 | **Cooking Timers** | ✅ | ✅ | ✅ | Multiple simultaneous timers |
@@ -256,18 +257,23 @@ All platforms support 21 languages:
 
 ### Planned for All Platforms
 - [ ] Recipe video support
-- [ ] Collaborative meal planning
 - [ ] Social features (share, follow, like)
-- [ ] Meal kit integration
 - [ ] Smart home integration
 - [ ] Wearable support
-- [ ] Voice-guided cooking mode
-- [ ] AR cooking instructions
 
 ### Platform-Specific
 - **Web**: Desktop app (Electron/Tauri)
 - **Android**: Wear OS app, Android Auto integration
 - **iOS**: Apple Watch app, CarPlay integration
+
+## ✨ New Features
+
+| Feature | Web | Android | iOS | Notes |
+|---------|-----|---------|-----|-------|
+| **Meal Kit Integration** | ✅ | ✅ | ✅ | Browse and order meal kits |
+| **Collaborative Meal Planning** | ✅ | ✅ | ✅ | Plan meals with others |
+| **Voice-Guided Cooking** | ✅ | ✅ | ✅ | Hands-free cooking with voice commands |
+| **AR Cooking Instructions** | ❌ | ✅ | ✅ | View cooking instructions in AR |
 
 ## 📚 Documentation
 

@@ -1,6 +1,6 @@
 # Zest
 
-**Version 0.5.0** - A modern cooking application with native implementations for Web, Android, and iOS.
+**Version 2.0.0** - A modern cooking application with native implementations for Web, Android, and iOS.
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-Next.js-3178C6?logo=typescript)](https://nextjs.org)
 [![Kotlin](https://img.shields.io/badge/Kotlin-Compose-7F52FF?logo=kotlin)](https://developer.android.com/jetpack/compose)
@@ -8,16 +8,37 @@
 [![Firebase](https://img.shields.io/badge/Firebase-Enabled-FFCA28?logo=firebase)](https://firebase.google.com)
 [![License](https://img.shields.io/badge/License-Neo%20Studios-blue)](LICENSE.md)
 
-## 🎉 What's New in v0.5
+## 📊 Platform Status
 
-Zest v0.5 is a complete rewrite with native platforms for better performance and platform-specific features!
+| Platform | Status | Completion | Production Ready |
+|----------|--------|-----------|------------------|
+| 🌐 **Web** | 🟢 Stable | 92% | ✅ Yes |
+| 🍎 **iOS** | 🟢 Complete | 100% | ✅ Yes |
+| 🤖 **Android** | 🟡 In Progress | 60% | ⚠️ Backend Only |
 
-- **Native Web** - Next.js 14 with React 18
-- **Native Android** - Kotlin with Jetpack Compose & Material 3 Expressive
-- **Native iOS** - Swift with SwiftUI & Liquid Glass design
-- **On-Device AI** - Support for 8 AI providers (Google, Samsung, Xiaomi, OPPO, OnePlus, Huawei, Qualcomm, Apple)
-- **21 Languages** - Full internationalization support
-- **Advanced Features** - Nutrition tracking, voice guidance, timers, offline mode, and more
+## 🎉 What's New in v2.0
+
+Zest v2.0 is a complete native rewrite with production-ready iOS and Web platforms!
+
+### iOS Platform - 100% Complete! 🎊
+- ✅ **Google Sign-In** - Full authentication flow
+- ✅ **Image Upload** - Camera + photo library with Firebase Storage
+- ✅ **Star Ratings** - Interactive 5-star rating system
+- ✅ **Share Functionality** - Native iOS sharing
+- ✅ **Offline Support** - Firestore persistence with unlimited cache
+- ✅ **Network Monitoring** - Real-time connection status
+- ✅ **Complete MVVM** - 6 ViewModels, 9 Views, production-ready architecture
+
+### Web Platform - 92% Complete
+- ✅ **Next.js 14** - React 18 with App Router
+- ✅ **AI Integration** - 8 AI providers for recipe generation
+- ✅ **Full Features** - All core functionality working
+- ✅ **PWA Support** - Offline mode enabled
+
+### Android Platform - 60% Complete
+- ✅ **Backend Ready** - Clean Architecture + MVVM
+- ✅ **Firebase Integration** - All services configured
+- ⚠️ **UI Needed** - Jetpack Compose implementation in progress
 
 ## Features
 

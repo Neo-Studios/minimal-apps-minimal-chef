@@ -47,6 +47,17 @@ fun RecipeDetailScreen(
                         }
                     }
                 )
+            },
+            floatingActionButton = {
+                Column {
+                    FloatingActionButton(onClick = { navController.navigate(Screen.CookingMode.createRoute(recipe.id!!)) }) {
+                        Icon(Icons.Default.PlayArrow, contentDescription = "Start Cooking")
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
+                    FloatingActionButton(onClick = { navController.navigate(Screen.ARCooking.createRoute(recipe.id!!)) }) {
+                        Icon(Icons.Default.Camera, contentDescription = "Start AR Cooking")
+                    }
+                }
             }
         ) { paddingValues ->
             Column(

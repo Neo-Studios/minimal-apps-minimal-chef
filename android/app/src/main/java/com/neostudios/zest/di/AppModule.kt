@@ -24,4 +24,20 @@ object AppModule {
     @Provides
     @Singleton
     fun provideFirebaseStorage(): FirebaseStorage = FirebaseStorage.getInstance()
+
+    @Provides
+    @Singleton
+    fun provideAuthRepository(authRepositoryImpl: AuthRepositoryImpl): AuthRepository = authRepositoryImpl
+
+    @Provides
+    @Singleton
+    fun provideImageStorageRepository(imageStorageRepositoryImpl: ImageStorageRepositoryImpl): ImageStorageRepository = imageStorageRepositoryImpl
+
+    @Provides
+    @Singleton
+    fun provideMealKitRepository(mealKitRepositoryImpl: MealKitRepositoryImpl): MealKitRepository = mealKitRepositoryImpl
+
+    @Provides
+    @Singleton
+    fun provideCollaborativeMealPlanRepository(collaborativeMealPlanRepositoryImpl: CollaborativeMealPlanRepositoryImpl): CollaborativeMealPlanRepository = collaborativeMealPlanRepositoryImpl
 }

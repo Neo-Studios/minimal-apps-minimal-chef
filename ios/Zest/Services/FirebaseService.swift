@@ -6,7 +6,13 @@ class FirebaseService {
     static let shared = FirebaseService()
     private let db = Firestore.firestore()
     
-    private init() {}
+    private init() {
+        // Enable offline persistence
+        let settings = FirestoreSettings()
+        settings.isPersistenceEnabled = true
+        settings.cacheSizeBytes = FirestoreCacheSizeUnlimited
+        db.settings = settings
+    }
     
     // MARK: - Authentication
     
@@ -199,7 +205,82 @@ class FirebaseService {
             try? doc.data(as: NutritionEntry.self)
         }
     }
-}
+
+    // MARK: - Meal Kits
+
+    func getMealKits() async throws -> [MealKit] {
+        let snapshot = try await db.collection("mealKits").getDocuments()
+        return snapshot.documents.compactMap { doc in
+            try? doc.data(as: MealKit.self)
+        }
+    }
+
+    func getMealKit(id: String) async throws -> MealKit? {
+        let doc = try await db.collection("mealKits").document(id).getDocument()
+        return try? doc.data(as: MealKit.self)
+    }
+
+    func getAvailableMealKits(date: String) async throws -> [MealKit] {
+        let snapshot = try await db.collection("mealKits")
+            .whereField("availableDates", arrayContains: date)
+            .getDocuments()
+        return snapshot.documents.compactMap { doc in
+            try? doc.data(as: MealKit.self)
+        }
+    }
+
+    // MARK: - Collaborative Meal Plans
+
+    func getCollaborativeMealPlans(userId: String) async throws -> [CollaborativeMealPlan] {
+        let snapshot = try await db.collection("collaborativeMealPlans")
+            .whereField("members", arrayContains: ["userId": userId]) // Simplified for now
+            .getDocuments()
+        return snapshot.documents.compactMap { doc in
+            try? doc.data(as: CollaborativeMealPlan.self)
+        }
+    }
+
+    func getCollaborativeMealPlan(id: String) async throws -> CollaborativeMealPlan? {
+        let doc = try await db.collection("collaborativeMealPlans").document(id).getDocument()
+        return try? doc.data(as: CollaborativeMealPlan.self)
+    }
+
+    func createCollaborativeMealPlan(_ plan: CollaborativeMealPlan) async throws -> String {
+        let ref = try db.collection("collaborativeMealPlans").addDocument(from: plan)
+        return ref.documentID
+    }
+
+    func updateCollaborativeMealPlan(id: String, _ plan: CollaborativeMealPlan) async throws {
+        try db.collection("collaborativeMealPlans").document(id).setData(from: plan, merge: true)
+    }
+
+    func deleteCollaborativeMealPlan(id: String) async throws {
+        try await db.collection("collaborativeMealPlans").document(id).delete()
+    }
+
+    func addMemberToCollaborativeMealPlan(planId: String, member: CollaborativeMealPlanMember) async throws {
+        try await db.collection("collaborativeMealPlans").document(planId).updateData([
+            "members": FieldValue.arrayUnion(["userId": member.userId, "role": member.role])
+        ])
+    }
+
+    func removeMemberFromCollaborativeMealPlan(planId: String, member: CollaborativeMealPlanMember) async throws {
+        try await db.collection("collaborativeMealPlans").document(planId).updateData([
+            "members": FieldValue.arrayRemove(["userId": member.userId, "role": member.role])
+        ])
+    }
+
+    func addMealPlanToCollaborativePlan(planId: String, mealPlanId: String) async throws {
+        try await db.collection("collaborativeMealPlans").document(planId).updateData([
+            "mealPlanIds": FieldValue.arrayUnion(mealPlanId)
+        ])
+    }
+
+    func removeMealPlanFromCollaborativePlan(planId: String, mealPlanId: String) async throws {
+        try await db.collection("collaborativeMealPlans").document(planId).updateData([
+            "mealPlanIds": FieldValue.arrayRemove(mealPlanId)
+        ])
+    }
 
 // MARK: - Models
 

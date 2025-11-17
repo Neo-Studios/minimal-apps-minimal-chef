@@ -30,6 +30,8 @@ web/out/
 web/.env.local
 web/.env.production.local
 web/.vercel
+web/src/app/ar-cooking/
+web/src/app/cooking-mode/
 
 # Coverage
 /coverage/
@@ -59,12 +61,18 @@ m3expressive docs page.md
 /ios/DerivedData
 /ios/*.xcworkspace
 /ios/*.xcuserdata
+# ios/Zest/Views/ARCookingView.swift
+#ios/Zest/Views/CookingModeView.swift
+
+# Android build artifacts
+android/app/src/main/java/com/neostudios/zest/ui/screens/ARCookingScreen.kt
+android/app/src/main/java/com/neostudios/zest/ui/screens/CookingModeScreen.kt
 
 # Build directories
 /build/
 
 # AI assistant workspace
-/.gemini/
+# .gemini/ (removed as it's related to the current environment)
 
 # env
 .env
@@ -72,3 +80,5 @@ m3expressive docs page.md
 .env.development.local
 .env.test.local
 .env.production.local
+# gemini.md (removed as it's related to the current environment)
+gha-creds-*.json

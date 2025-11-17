@@ -2,10 +2,13 @@ import SwiftUI
 
 struct RecipeDetailView: View {
     let recipe: Recipe
+    @StateObject private var viewModel = RecipesViewModel()
+    @Environment(\.dismiss) var dismiss
     @State private var servingMultiplier: Double = 1.0
     @State private var showEditSheet = false
     @State private var showDeleteAlert = false
     @State private var showShareSheet = false
+    @State private var currentRating: Double = 0
     
     var body: some View {
         ScrollView {
@@ -25,13 +28,46 @@ struct RecipeDetailView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     
+                    if let description = recipe.description {
+                        Text(description)
+                            .font(.body)
+                            .foregroundColor(.secondary)
+                    }
+                    
                     HStack {
                         Label("\(recipe.prepTime)m", systemImage: "clock")
                         Label("\(recipe.cookTime)m", systemImage: "flame")
                         Label("\(recipe.servings)", systemImage: "person.2")
+                        Spacer()
+                        Text(recipe.difficulty.rawValue)
+                            .font(.caption)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(difficultyColor(recipe.difficulty).opacity(0.2))
+                            .foregroundColor(difficultyColor(recipe.difficulty))
+                            .cornerRadius(8)
                     }
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+                    
+                    // Rating
+                    HStack {
+                        Text("Rating:")
+                            .font(.subheadline)
+                        StarRatingView(rating: $currentRating, maxRating: 5)
+                            .onChange(of: currentRating) { newRating in
+                                if let recipeId = recipe.id {
+                                    Task {
+                                        await viewModel.updateRating(recipeId: recipeId, rating: newRating)
+                                    }
+                                }
+                            }
+                        if let rating = recipe.rating {
+                            Text(String(format: "%.1f", rating))
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                    }
                 }
                 .padding(.horizontal)
                 
@@ -120,18 +156,26 @@ struct RecipeDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Menu {
-                    Button(action: { showShareSheet = true }) {
-                        Label("Share", systemImage: "square.and.arrow.up")
+                HStack {
+                    NavigationLink(destination: CookingModeView(recipe: recipe)) {
+                        Image(systemName: "play.circle.fill")
                     }
-                    Button(action: { showEditSheet = true }) {
-                        Label("Edit", systemImage: "pencil")
+                    NavigationLink(destination: ARCookingView(recipe: recipe)) {
+                        Image(systemName: "camera.viewfinder")
                     }
-                    Button(role: .destructive, action: { showDeleteAlert = true }) {
-                        Label("Delete", systemImage: "trash")
+                    Menu {
+                        Button(action: { showShareSheet = true }) {
+                            Label("Share", systemImage: "square.and.arrow.up")
+                        }
+                        Button(action: { showEditSheet = true }) {
+                            Label("Edit", systemImage: "pencil")
+                        }
+                        Button(role: .destructive, action: { showDeleteAlert = true }) {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
                     }
-                } label: {
-                    Image(systemName: "ellipsis.circle")
                 }
             }
         }
@@ -145,24 +189,37 @@ struct RecipeDetailView: View {
             Button("Cancel", role: .cancel) { }
             Button("Delete", role: .destructive) {
                 Task {
-                    await RecipeService.shared.deleteRecipe(id: recipe.id ?? "")
+                    if let recipeId = recipe.id {
+                        let success = await viewModel.deleteRecipe(id: recipeId)
+                        if success {
+                            dismiss()
+                        }
+                    }
                 }
             }
         } message: {
             Text("Are you sure you want to delete this recipe? This action cannot be undone.")
         }
+        .onAppear {
+            currentRating = recipe.rating ?? 0
+        }
     }
     
-    private func scaleAmount(_ amount: String, multiplier: Double) -> String {
-        if let numericAmount = Double(amount) {
-            let scaled = numericAmount * multiplier
-            if scaled.truncatingRemainder(dividingBy: 1) == 0 {
-                return String(Int(scaled))
-            } else {
-                return String(format: "%.2f", scaled)
-            }
+    private func scaleAmount(_ amount: Double, multiplier: Double) -> String {
+        let scaled = amount * multiplier
+        if scaled.truncatingRemainder(dividingBy: 1) == 0 {
+            return String(Int(scaled))
+        } else {
+            return String(format: "%.1f", scaled)
         }
-        return amount
+    }
+    
+    private func difficultyColor(_ difficulty: Recipe.Difficulty) -> Color {
+        switch difficulty {
+        case .easy: return .green
+        case .medium: return .orange
+        case .hard: return .red
+        }
     }
     
     private func generateShareText() -> String {
