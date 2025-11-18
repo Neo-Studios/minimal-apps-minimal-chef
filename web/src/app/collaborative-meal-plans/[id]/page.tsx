@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useParams } from 'next/navigation'
 import { useAuth } from '@/lib/hooks/useAuth'
 import { getCollaborativeMealPlan, addMemberToCollaborativeMealPlan, removeMemberFromCollaborativeMealPlan, addMealPlanToCollaborativePlan, removeMealPlanFromCollaborativePlan } from '@/lib/firebase/collaborativeMealPlans'
@@ -17,15 +17,7 @@ export default function CollaborativeMealPlanDetailPage() {
   const [newMemberEmail, setNewMemberEmail] = useState('')
   const [mealPlanToAddId, setMealPlanToAddId] = useState('')
 
-  useEffect(() => {
-    if (user) {
-      fetchCollaborativePlan()
-    } else {
-      setLoading(false)
-    }
-  }, [user, params.id, fetchCollaborativePlan])
-
-  const fetchCollaborativePlan = async () => {
+  const fetchCollaborativePlan = useCallback(async () => {
     if (!user || !params.id) return
     setLoading(true)
     try {
@@ -41,7 +33,15 @@ export default function CollaborativeMealPlanDetailPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [user, params.id])
+
+  useEffect(() => {
+    if (user) {
+      fetchCollaborativePlan()
+    } else {
+      setLoading(false)
+    }
+  }, [user, params.id, fetchCollaborativePlan])
 
   const handleAddMember = async () => {
     if (!collaborativePlan || newMemberEmail.trim() === '') return

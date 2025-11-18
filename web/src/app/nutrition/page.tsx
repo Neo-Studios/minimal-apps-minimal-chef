@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@/lib/hooks/useAuth'
 import { getDailyNutrition, getWeeklyNutrition, logRecipeNutrition, DailyNutrition } from '@/lib/firebase/nutrition'
 import { getRecipes, Recipe } from '@/lib/firebase/recipes'
@@ -20,13 +20,7 @@ export default function NutritionPage() {
 
   const dateKey = selectedDate.toISOString().split('T')[0]
 
-  useEffect(() => {
-    if (user) {
-      loadData()
-    }
-  }, [user, selectedDate, selectedPeriod, loadData])
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     if (!user) return
     
     setLoading(true)
@@ -53,7 +47,13 @@ export default function NutritionPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [user, selectedDate, selectedPeriod, dateKey])
+
+  useEffect(() => {
+    if (user) {
+      loadData()
+    }
+  }, [user, selectedDate, selectedPeriod, loadData])
 
   const handleLogRecipe = async (recipe: Recipe, servings: number) => {
     if (!user || !recipe.nutrition || !recipe.id) return

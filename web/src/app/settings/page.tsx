@@ -2,7 +2,7 @@
 
 import { useAuthStore } from '@/lib/stores/authStore'
 import { useThemeStore } from '@/lib/stores/themeStore'
-import { useSettingsStore } from '@/lib/stores/settingsStore'
+import { useSettingsStore, Language, FontSize, ColorBlindMode } from '@/lib/stores/settingsStore'
 import { signOut } from '@/lib/firebase/auth'
 import { useRouter } from 'next/navigation'
 
@@ -54,7 +54,7 @@ export default function SettingsPage() {
               <label className="font-medium">Language</label>
               <select
                 value={language}
-                onChange={(e) => setLanguage(e.target.value)}
+                onChange={(e) => setLanguage(e.target.value as Language)}
                 className="p-2 border rounded-lg bg-white dark:bg-gray-700"
               >
                 <option value="en">English</option>
@@ -93,7 +93,7 @@ export default function SettingsPage() {
               <label className="font-medium">Font Size</label>
               <select
                 value={fontSize}
-                onChange={(e) => setFontSize(e.target.value)}
+                onChange={(e) => setFontSize(e.target.value as FontSize)}
                 className="p-2 border rounded-lg bg-white dark:bg-gray-700"
               >
                 <option value="small">Small</option>
@@ -124,7 +124,7 @@ export default function SettingsPage() {
               <label className="font-medium">Color Blind Mode</label>
               <select
                 value={colorBlindMode}
-                onChange={(e) => setColorBlindMode(e.target.value)}
+                onChange={(e) => setColorBlindMode(e.target.value as ColorBlindMode)}
                 className="p-2 border rounded-lg bg-white dark:bg-gray-700"
               >
                 <option value="none">None</option>

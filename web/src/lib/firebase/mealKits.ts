@@ -1,4 +1,4 @@
-import { db } from '@/lib/firebase/firebase'
+import { db } from '@/lib/firebase/firestore'
 import { collection, getDocs, doc, getDoc, query, where } from 'firebase/firestore'
 import { MealKit } from '@/types/mealKit'
 

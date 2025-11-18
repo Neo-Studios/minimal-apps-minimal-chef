@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@/lib/hooks/useAuth'
 import { getMealPlans, addMealToDate, removeMealFromDate, MealPlan } from '@/lib/firebase/mealPlans'
 import { getRecipes, Recipe } from '@/lib/firebase/recipes'
@@ -18,13 +18,7 @@ export default function MealPlanPage() {
   const dateKey = selectedDate.toISOString().split('T')[0]
   const currentPlan = mealPlans[dateKey]
 
-  useEffect(() => {
-    if (user) {
-      loadData()
-    }
-  }, [user, selectedDate, loadData])
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     if (!user) return
     
     setLoading(true)
@@ -58,7 +52,13 @@ export default function MealPlanPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [user, selectedDate])
+
+  useEffect(() => {
+    if (user) {
+      loadData()
+    }
+  }, [user, selectedDate, loadData])
 
   const handleAddMeal = async (recipeId: string) => {
     if (!user) return

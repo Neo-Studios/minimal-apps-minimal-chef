@@ -1,4 +1,4 @@
-import { db } from '@/lib/firebase/firebase'
+import { db } from '@/lib/firebase/firestore'
 import { collection, getDocs, doc, getDoc, addDoc, updateDoc, deleteDoc, query, where, arrayUnion, arrayRemove, Timestamp } from 'firebase/firestore'
 import { CollaborativeMealPlan, CollaborativeMealPlanMember } from '@/types/collaborativeMealPlan'
 

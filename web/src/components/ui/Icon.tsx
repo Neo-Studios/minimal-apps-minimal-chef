@@ -21,6 +21,14 @@ import {
   faTriangleExclamation,
   faCircleXmark,
   faMobileScreen,
+  faUsers,
+  faLock,
+  faPlus,
+  faArrowLeft, // Added faArrowLeft
+  faMicrophoneSlash, // Added faMicrophoneSlash
+  faMicrophone, // Added faMicrophone
+  faArrowRight, // Added faArrowRight
+  faBox, // Added faBox
 } from '@fortawesome/free-solid-svg-icons'
 
 const iconMap = {
@@ -54,6 +62,14 @@ const iconMap = {
   
   // Misc
   mobile: faMobileScreen,
+  users: faUsers,
+  lock: faLock,
+  plus: faPlus,
+  'arrow-left': faArrowLeft, // Added arrow-left icon
+  'microphone-slash': faMicrophoneSlash, // Added microphone-slash icon
+  microphone: faMicrophone, // Added microphone icon
+  'arrow-right': faArrowRight, // Added arrow-right icon
+  box: faBox, // Added box icon
 }
 
 export type IconName = keyof typeof iconMap

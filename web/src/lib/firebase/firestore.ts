@@ -2,6 +2,8 @@ import { db } from './config'
 import { collection, addDoc, getDocs, getDoc, doc, updateDoc, deleteDoc, query, where } from 'firebase/firestore'
 import { Recipe, MealPlan, ShoppingListItem } from '@/types/models'
 
+export { db }
+
 export const recipesCollection = collection(db, 'recipes')
 export const mealPlansCollection = collection(db, 'mealPlans')
 export const shoppingListsCollection = collection(db, 'shoppingLists')

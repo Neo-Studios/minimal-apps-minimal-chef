@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useAuth } from '@/lib/hooks/useAuth'
 import { getCollaborativeMealPlans, createCollaborativeMealPlan } from '@/lib/firebase/collaborativeMealPlans'
 import { CollaborativeMealPlan } from '@/types/collaborativeMealPlan'
@@ -15,15 +15,7 @@ export default function CollaborativeMealPlansPage() {
   const [showCreateDialog, setShowCreateDialog] = useState(false)
   const [newPlanName, setNewPlanName] = useState('')
 
-  useEffect(() => {
-    if (user) {
-      fetchCollaborativePlans()
-    } else {
-      setLoading(false)
-    }
-  }, [user, fetchCollaborativePlans])
-
-  const fetchCollaborativePlans = async () => {
+  const fetchCollaborativePlans = useCallback(async () => {
     if (!user) return
     setLoading(true)
     try {
@@ -35,7 +27,15 @@ export default function CollaborativeMealPlansPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [user])
+
+  useEffect(() => {
+    if (user) {
+      fetchCollaborativePlans()
+    } else {
+      setLoading(false)
+    }
+  }, [user, fetchCollaborativePlans])
 
   const handleCreatePlan = async () => {
     if (!user || newPlanName.trim() === '') return
