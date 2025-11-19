@@ -1,13 +1,17 @@
 package com.neostudios.zest.ui.screens
 
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -25,12 +29,40 @@ fun RecipesScreen(
     val filteredRecipes = viewModel.getFilteredRecipes()
     val isLoading by viewModel.isLoading.collectAsStateWithLifecycle()
     val error by viewModel.error.collectAsStateWithLifecycle()
+    val listState = rememberLazyListState()
 
     var showAddRecipeDialog by remember { mutableStateOf(false) }
 
+    val scrollOffset = remember { Animatable(0f) }
+
+    LaunchedEffect(listState.firstVisibleItemScrollOffset) {
+        val targetOffset = if (listState.firstVisibleItemIndex == 0) {
+            -listState.firstVisibleItemScrollOffset.toFloat()
+        } else {
+            -listState.firstVisibleItemScrollOffset.toFloat() - (listState.firstVisibleItemIndex * 100) // Rough estimation
+        }
+        scrollOffset.animateTo(
+            targetOffset,
+            animationSpec = spring(dampingRatio = Spring.DampingRatioNoBouncy, stiffness = Spring.StiffnessMedium)
+        )
+    }
+
+    val scale by animateFloatAsState(targetValue = 1f - (scrollOffset.value.coerceAtLeast(-100f) / -100f) * 0.2f) // Shrink to 80%
+    val bounce by animateFloatAsState(targetValue = if (scrollOffset.value < -10f) { (kotlin.math.sin(scrollOffset.value / 20f) * 5f) } else { 0f })
+
+
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Recipes") })
+            TopAppBar(title = {
+                Text(
+                    "Recipes",
+                    modifier = Modifier.graphicsLayer(
+                        scaleX = scale,
+                        scaleY = scale,
+                        translationY = bounce
+                    )
+                )
+            })
         },
         floatingActionButton = {
             FloatingActionButton(onClick = { showAddRecipeDialog = true }) {
@@ -59,7 +91,7 @@ fun RecipesScreen(
                     Text("No recipes found.", style = MaterialTheme.typography.headlineSmall)
                 }
             } else {
-                LazyColumn(modifier = Modifier.fillMaxSize()) {
+                LazyColumn(state = listState, modifier = Modifier.fillMaxSize()) {
                     items(filteredRecipes) { recipe ->
                         HeroCard(
                             onClick = { navController.navigate(Screen.RecipeDetail.createRoute(recipe.id!!)) },

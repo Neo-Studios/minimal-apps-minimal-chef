@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: 'GoogleSansFlex';
+  src: url('/fonts/GoogleSansFlex-VariableFont_GRAD,ROND,opsz,slnt,wdth,wght.ttf') format('truetype');
+  font-weight: 100 1000;
+  font-stretch: 75% 125%; /* wdth axis */
+  font-style: oblique -10deg 0deg; /* slnt axis */
+  font-optical-sizing: auto; /* opsz axis */
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'RobotoFlex';
   src: url('/fonts/RobotoFlex-Variable.ttf') format('truetype');
   font-weight: 100 1000;
@@ -100,8 +110,9 @@
     
     --m3-outline: #938F99;
     --m3-outline-variant: #49454F;
-    
-    /* Legacy support */
+  }
+  /* Legacy support */
+  :root:not(.light) {
     --primary: var(--m3-primary);
     --secondary: var(--m3-secondary);
     --surface: var(--m3-surface);
@@ -110,7 +121,7 @@
 }
 
 body {
-  font-family: 'RobotoFlex', sans-serif;
+  font-family: 'GoogleSansFlex', sans-serif;
   background-color: var(--surface);
   color: var(--on-surface);
 }

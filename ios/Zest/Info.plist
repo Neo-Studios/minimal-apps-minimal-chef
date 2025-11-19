@@ -41,5 +41,9 @@
     <string>We need photo library access to analyze recipe images</string>
     <key>NSAppleIntelligenceUsageDescription</key>
     <string>Zest uses Apple Intelligence to provide recipe suggestions, analyze photos, and generate cooking instructions on-device</string>
+    <key>UIAppFonts</key>
+    <array>
+        <string>GoogleSansFlex.ttf</string>
+    </array>
 </dict>
 </plist>

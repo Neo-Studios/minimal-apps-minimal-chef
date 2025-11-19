@@ -2,6 +2,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseCore
 import GoogleSignIn
+import Combine // Import Combine for @Published
 
 @MainActor
 class AuthViewModel: ObservableObject {
@@ -9,8 +10,10 @@ class AuthViewModel: ObservableObject {
     @Published var isAuthenticated = false
     @Published var isLoading = false
     @Published var errorMessage: String?
+    @Published var showOnboarding: Bool = false // New onboarding state
     
     private let firebaseService = FirebaseService.shared
+    private let userProfileManager = UserProfileManager() // Instantiate UserProfileManager
     
     init() {
         // Check if user is already signed in
@@ -22,6 +25,14 @@ class AuthViewModel: ObservableObject {
             Task { @MainActor in
                 self?.user = user
                 self?.isAuthenticated = user != nil
+                
+                if let userId = user?.uid {
+                    self?.userProfileManager.getOnboardingStatus(userId: userId) { hasCompletedOnboarding in
+                        self?.showOnboarding = !hasCompletedOnboarding
+                    }
+                } else {
+                    self?.showOnboarding = false
+                }
             }
         }
     }
@@ -92,5 +103,11 @@ class AuthViewModel: ObservableObject {
         } catch {
             errorMessage = error.localizedDescription
         }
+    }
+    
+    // New function to complete onboarding
+    func completeOnboarding(userId: String) {
+        userProfileManager.setOnboardingStatus(userId: userId, status: true)
+        showOnboarding = false
     }
 }

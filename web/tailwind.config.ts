@@ -26,7 +26,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['RobotoFlex', 'sans-serif'],
+        sans: ['GoogleSansFlex', 'sans-serif'],
       },
       borderRadius: expressiveShape.corner,
       spacing: expressiveSpacing,

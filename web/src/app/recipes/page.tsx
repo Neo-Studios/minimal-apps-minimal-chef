@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Material3Card } from '@/components/ui/Material3Card'
 import { Material3Button } from '@/components/ui/Material3Button'
 import { Material3FAB } from '@/components/ui/Material3FAB'
@@ -33,7 +33,22 @@ export default function RecipesPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCuisine, setSelectedCuisine] = useState<string>('All')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const [scrollY, setScrollY] = useState(0)
   const isTablet = useIsTablet()
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const scale = Math.max(0.8, 1 - scrollY / 300) // Shrink to 80%
+  const translateY = scrollY > 0 ? Math.sin(scrollY / 50) * 5 : 0 // Bounce effect
 
   const cuisines = ['All', ...Array.from(new Set(SAMPLE_RECIPES.map(r => r.cuisine)))]
   
@@ -48,7 +63,13 @@ export default function RecipesPage() {
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
-          <h1 className="text-4xl font-normal text-m3-on-surface mb-2">
+          <h1 
+            className="text-4xl font-normal text-m3-on-surface mb-2 origin-top-left"
+            style={{ 
+              transform: `scale(${scale}) translateY(${translateY}px)`,
+              transition: 'transform 0.1s ease-out' // Smooth transition for scale and bounce
+            }}
+          >
             Recipes
           </h1>
           <p className="text-m3-on-surface-variant">

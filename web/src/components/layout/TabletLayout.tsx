@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Icon, IconName } from '@/components/ui/Icon'
+import { useAuthStore } from '@/lib/stores/authStore' // Import useAuthStore
 
 interface TabletLayoutProps {
   children: React.ReactNode
@@ -23,6 +24,10 @@ const navigation = [
 export function TabletLayout({ children }: TabletLayoutProps) {
   const pathname = usePathname()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const { user } = useAuthStore() // Access user from auth store
+
+  const userName = user?.displayName || user?.email || 'Guest'
+  const userEmail = user?.email || ''
 
   return (
     <div className="flex h-screen bg-m3-surface">
@@ -74,12 +79,11 @@ export function TabletLayout({ children }: TabletLayoutProps) {
         <div className="p-4 border-t border-m3-outline-variant">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-m3-primary-main flex items-center justify-center text-white font-bold flex-shrink-0">
-              U
+              {userName.charAt(0).toUpperCase()}
             </div>
             {!sidebarCollapsed && (
               <div className="flex-1 min-w-0">
-                <p className="font-medium text-m3-on-surface truncate">User</p>
-                <p className="text-sm text-m3-on-surface-variant truncate">user@example.com</p>
+                <p className="font-medium text-m3-on-surface truncate">{userName}</p>
               </div>
             )}
           </div>

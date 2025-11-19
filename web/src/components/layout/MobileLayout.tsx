@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Icon, IconName } from '@/components/ui/Icon'
+import { useAuthStore } from '@/lib/stores/authStore' // Import useAuthStore
 
 interface MobileLayoutProps {
   children: React.ReactNode
@@ -30,6 +31,10 @@ const allNavigation = [
 export function MobileLayout({ children }: MobileLayoutProps) {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
+  const { user } = useAuthStore() // Access user from auth store
+
+  const userName = user?.displayName || user?.email || 'Guest'
+  const userEmail = user?.email || ''
 
   return (
     <div className="flex flex-col h-screen bg-m3-surface">
@@ -59,7 +64,7 @@ export function MobileLayout({ children }: MobileLayoutProps) {
       <aside
         className={`fixed top-0 left-0 bottom-0 w-72 bg-m3-surface-container z-50 transform transition-transform duration-300 ${
           menuOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        } flex flex-col`} // Added flex flex-col here
       >
         <div className="p-4 border-b border-m3-outline-variant flex items-center justify-between">
           <h2 className="text-2xl font-bold text-m3-primary-main">Zest</h2>
@@ -70,7 +75,7 @@ export function MobileLayout({ children }: MobileLayoutProps) {
             ✕
           </button>
         </div>
-        <nav className="p-4 space-y-2">
+        <nav className="flex-1 p-4 space-y-2 overflow-y-auto"> {/* Added flex-1 and overflow-y-auto */}
           {allNavigation.map((item) => {
             const isActive = pathname.startsWith(item.href)
             return (
@@ -90,6 +95,18 @@ export function MobileLayout({ children }: MobileLayoutProps) {
             )
           })}
         </nav>
+
+        {/* User section for mobile drawer */}
+        <div className="p-4 border-t border-m3-outline-variant">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-m3-primary-main flex items-center justify-center text-white font-bold flex-shrink-0">
+              {userName.charAt(0).toUpperCase()}
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-medium text-m3-on-surface truncate">{userName}</p>
+            </div>
+          </div>
+        </div>
       </aside>
 
       {/* Main content */}

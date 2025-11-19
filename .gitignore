@@ -82,3 +82,4 @@ android/app/src/main/java/com/neostudios/zest/ui/screens/CookingModeScreen.kt
 .env.production.local
 # gemini.md (removed as it's related to the current environment)
 gha-creds-*.json
+font/download/*

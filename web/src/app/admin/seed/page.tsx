@@ -6,18 +6,14 @@ import { db } from '../../../lib/firebase/config';
 
 export default function SeedPage() {
   const [password, setPassword] = useState('');
+  const [gistUrl, setGistUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState('');
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/example-recipes.json')
-      .then(response => response.json())
-      .then(data => setRecipes(data))
-      .catch(error => {
-        console.error('Error fetching recipes:', error);
-        setFeedback('Error fetching recipes. See console for details.');
-      });
+    // No longer fetching from local example-recipes.json by default
+    // Recipes will be fetched from Gist URL
   }, []);
 
   const handleSeed = async () => {
@@ -26,19 +22,45 @@ export default function SeedPage() {
       return;
     }
 
-    if (recipes.length === 0) {
-      setFeedback('No recipes to seed. Make sure example-recipes.json is available.');
+    if (!gistUrl) {
+      setFeedback('Please enter a GitHub Gist URL.');
       return;
     }
 
     setLoading(true);
-    setFeedback('Seeding recipes...');
+    setFeedback('Fetching recipes from Gist...');
+
+    let fetchedRecipes = [];
+    try {
+      const response = await fetch(gistUrl);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      fetchedRecipes = await response.json();
+      if (!Array.isArray(fetchedRecipes)) {
+        throw new Error('Gist content is not a valid JSON array of recipes.');
+      }
+      setRecipes(fetchedRecipes); // Update state with fetched recipes
+    } catch (error: unknown) {
+      console.error('Error fetching or parsing Gist:', error);
+      setFeedback(`Error fetching or parsing Gist: ${error instanceof Error ? error.message : String(error)}`);
+      setLoading(false);
+      return;
+    }
+
+    if (fetchedRecipes.length === 0) {
+      setFeedback('No recipes found in the Gist.');
+      setLoading(false);
+      return;
+    }
+
+    setFeedback(`Seeding ${fetchedRecipes.length} recipes...`);
 
     const recipesCollection = collection(db, 'recipes');
     let successCount = 0;
     let errorCount = 0;
 
-    for (const recipe of recipes) {
+    for (const recipe of fetchedRecipes) {
       try {
         await addDoc(recipesCollection, recipe);
         successCount++;
@@ -54,19 +76,26 @@ export default function SeedPage() {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif', color: '#333' }}>
-      <h1 style={{ borderBottom: '2px solid #eee', paddingBottom: '10px' }}>Seed Recipes</h1>
-      <p>Enter the password to seed the database with recipes from <code>public/example-recipes.json</code>.</p>
+      <h1 style={{ borderBottom: '2px solid #eee', paddingBottom: '10px' }}>Seed Recipes from GitHub Gist</h1>
+      <p>Enter the password and a GitHub Gist URL containing a JSON array of recipes to seed the database.</p>
       <div style={{ margin: '20px 0' }}>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Enter password"
-          style={{ padding: '10px', marginRight: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
+          style={{ padding: '10px', marginRight: '10px', borderRadius: '5px', border: '1px solid #ccc', marginBottom: '10px', display: 'block', width: '100%' }}
+        />
+        <input
+          type="text"
+          value={gistUrl}
+          onChange={(e) => setGistUrl(e.target.value)}
+          placeholder="Enter GitHub Gist URL (e.g., https://gist.githubusercontent.com/.../raw/recipes.json)"
+          style={{ padding: '10px', marginRight: '10px', borderRadius: '5px', border: '1px solid #ccc', marginBottom: '10px', display: 'block', width: '100%' }}
         />
         <button 
           onClick={handleSeed} 
-          disabled={loading || recipes.length === 0}
+          disabled={loading || !gistUrl}
           style={{ padding: '10px 20px', borderRadius: '5px', border: 'none', background: '#0070f3', color: 'white', cursor: 'pointer' }}
         >
           {loading ? 'Seeding...' : 'Seed Database'}
