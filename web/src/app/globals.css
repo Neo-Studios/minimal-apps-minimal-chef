@@ -67,10 +67,10 @@
   --color-outline-variant: 202, 196, 208;
   
   /* Legacy support */
-  --primary: var(--m3-primary);
-  --secondary: var(--m3-secondary);
-  --surface: var(--m3-surface);
-  --on-surface: var(--m3-on-surface);
+  --primary: var(--color-primary-main);
+  --secondary: var(--color-secondary-main);
+  --surface: var(--color-surface-main);
+  --on-surface: var(--color-on-surface);
 }
 
 .dark,
@@ -117,10 +117,10 @@
   }
   /* Legacy support */
   :root:not(.light) {
-    --primary: var(--m3-primary);
-    --secondary: var(--m3-secondary);
-    --surface: var(--m3-surface);
-    --on-surface: var(--m3-on-surface);
+    --primary: var(--color-primary-main);
+    --secondary: var(--color-secondary-main);
+    --surface: var(--color-surface-main);
+    --on-surface: var(--color-on-surface);
   }
 }
 

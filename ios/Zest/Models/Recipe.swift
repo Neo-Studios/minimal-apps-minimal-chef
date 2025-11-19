@@ -21,6 +21,9 @@ struct Recipe: Codable, Identifiable {
     var imageUrl: String?
     var createdAt: Date
     var updatedAt: Date
+    var isFavorite: Bool = false
+    var lastCooked: Date?
+    var rating: Int = 0
     
     func toDict() -> [String: Any] {
         return [
@@ -35,7 +38,10 @@ struct Recipe: Codable, Identifiable {
             "mealType": mealType,
             "imageUrl": imageUrl as Any,
             "createdAt": Timestamp(date: createdAt),
-            "updatedAt": Timestamp(date: updatedAt)
+            "updatedAt": Timestamp(date: updatedAt),
+            "isFavorite": isFavorite,
+            "lastCooked": lastCooked as Any,
+            "rating": rating
         ]
     }
 }

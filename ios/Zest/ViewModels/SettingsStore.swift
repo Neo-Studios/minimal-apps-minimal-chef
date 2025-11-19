@@ -62,6 +62,12 @@ class SettingsStore: ObservableObject {
         }
     }
     
+    @Published var enableAI: Bool {
+        didSet {
+            UserDefaults.standard.set(enableAI, forKey: "enableAI")
+        }
+    }
+    
     init() {
         self.themeMode = UserDefaults.standard.string(forKey: "themeMode") ?? "Automatic"
         self.notifications = UserDefaults.standard.bool(forKey: "notifications")
@@ -73,5 +79,6 @@ class SettingsStore: ObservableObject {
         self.highContrast = UserDefaults.standard.bool(forKey: "highContrast")
         self.colorBlindMode = UserDefaults.standard.string(forKey: "colorBlindMode") ?? "None"
         self.voiceOverOptimized = UserDefaults.standard.bool(forKey: "voiceOverOptimized")
+        self.enableAI = UserDefaults.standard.bool(forKey: "enableAI")
     }
 }

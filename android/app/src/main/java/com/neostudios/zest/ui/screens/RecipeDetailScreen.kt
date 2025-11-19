@@ -41,6 +41,11 @@ fun RecipeDetailScreen(
                     },
                     actions = {
                         IconButton(onClick = { 
+                            viewModel.toggleFavorite(recipe)
+                        }) {
+                            Icon(if (recipe.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder, contentDescription = "Favorite")
+                        }
+                        IconButton(onClick = { 
                             SharingUtils.shareRecipe(context, recipe.name, "https://zest.com/recipe/${recipe.id}")
                         }) {
                             Icon(Icons.Default.Share, contentDescription = "Share")
@@ -67,17 +72,19 @@ fun RecipeDetailScreen(
                     .padding(paddingValues)
                     .padding(16.dp)
             ) {
-                Row(modifier = Modifier.padding(vertical = 8.dp)) {
-                    Text("⏱️ ${recipe.prepTime}m", modifier = Modifier.padding(end = 16.dp))
-                    Text("🔥 ${recipe.cookTime}m", modifier = Modifier.padding(end = 16.dp))
-                    Text("🍽️ ${recipe.servings}")
+                Card(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)) {
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        Row(modifier = Modifier.padding(vertical = 8.dp)) {
+                            Text("⏱️ ${recipe.prepTime}m", modifier = Modifier.padding(end = 16.dp))
+                            Text("🔥 ${recipe.cookTime}m", modifier = Modifier.padding(end = 16.dp))
+                            Text("🍽️ ${recipe.servings}")
+                        }
+                    }
                 }
-                
-                Spacer(modifier = Modifier.height(16.dp))
                 
                 // Recipe Scaling Card
                 Card(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
                     colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.surfaceVariant
                     )
@@ -116,24 +123,28 @@ fun RecipeDetailScreen(
                     }
                 }
                 
-                Spacer(modifier = Modifier.height(16.dp))
-                
-                Text("Ingredients", style = MaterialTheme.typography.titleLarge)
-                Spacer(modifier = Modifier.height(8.dp))
-                recipe.ingredients.forEach { ing ->
-                    val scaledAmount = ing.amount.toFloatOrNull()?.let { it * servingMultiplier }
-                    val displayAmount = scaledAmount?.let { 
-                        if (it % 1 == 0f) it.toInt().toString() else String.format("%.2f", it)
-                    } ?: ing.amount
-                    Text("• $displayAmount ${ing.unit} ${ing.name}")
+                Card(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)) {
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        Text("Ingredients", style = MaterialTheme.typography.titleLarge)
+                        Spacer(modifier = Modifier.height(8.dp))
+                        recipe.ingredients.forEach { ing ->
+                            val scaledAmount = ing.amount.toFloatOrNull()?.let { it * servingMultiplier }
+                            val displayAmount = scaledAmount?.let { 
+                                if (it % 1 == 0f) it.toInt().toString() else String.format("%.2f", it)
+                            } ?: ing.amount
+                            Text("• $displayAmount ${ing.unit} ${ing.name}")
+                        }
+                    }
                 }
                 
-                Spacer(modifier = Modifier.height(16.dp))
-                
-                Text("Instructions", style = MaterialTheme.typography.titleLarge)
-                Spacer(modifier = Modifier.height(8.dp))
-                recipe.instructions.forEachIndexed { i, step ->
-                    Text("${i + 1}. $step", modifier = Modifier.padding(bottom = 8.dp))
+                Card(modifier = Modifier.fillMaxWidth()) {
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        Text("Instructions", style = MaterialTheme.typography.titleLarge)
+                        Spacer(modifier = Modifier.height(8.dp))
+                        recipe.instructions.forEachIndexed { i, step ->
+                            Text("${i + 1}. $step", modifier = Modifier.padding(bottom = 8.dp))
+                        }
+                    }
                 }
             }
         }

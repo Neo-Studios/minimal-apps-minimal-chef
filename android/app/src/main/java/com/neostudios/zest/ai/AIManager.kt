@@ -57,121 +57,68 @@ class AIManager(private val context: Context) {
     
     private fun isSamsungGalaxyAIDevice(): Boolean {
         val manufacturer = Build.MANUFACTURER.lowercase()
-        val model = Build.MODEL.lowercase()
-        
-        // Samsung Galaxy AI is available on:
-        // - Galaxy S24 series (SM-S92x)
-        // - Galaxy S23 series with One UI 6.1+ (SM-S91x)
-        // - Galaxy Z Fold5/Flip5 with One UI 6.1+
-        // - Galaxy Tab S9 series
-        
         if (manufacturer != "samsung") return false
-        
-        // Check for Galaxy S24 series
-        if (model.contains("sm-s92")) return true
-        
-        // Check for Galaxy S23 series (requires One UI 6.1+)
-        if (model.contains("sm-s91") && Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) return true
-        
-        // Check for Galaxy Z Fold5/Flip5
-        if ((model.contains("sm-f946") || model.contains("sm-f731")) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) return true
-        
-        // Check for Galaxy Tab S9
-        if (model.contains("sm-x91")) return true
-        
-        return false
+
+        // A more robust way to check for Galaxy AI is to look for a system property
+        // or a specific feature flag. This is a placeholder for that logic.
+        val galaxyAIProperty = try {
+            System.getProperty("ro.samsung.ai.version")
+        } catch (e: Exception) {
+            null
+        }
+        return galaxyAIProperty != null
     }
     
     private fun isXiaomiHyperOSAIDevice(): Boolean {
         val manufacturer = Build.MANUFACTURER.lowercase()
-        val model = Build.MODEL.lowercase()
-        
-        // Xiaomi HyperOS AI available on:
-        // - Xiaomi 14 series
-        // - Xiaomi 13 Ultra with HyperOS
-        // - Redmi K70 series
-        
         if (manufacturer != "xiaomi") return false
-        
-        // Check for Xiaomi 14 series
-        if (model.contains("2312") || model.contains("2401")) return true
-        
-        // Check for Xiaomi 13 Ultra
-        if (model.contains("2304") && Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) return true
-        
-        // Check for Redmi K70
-        if (model.contains("23113")) return true
-        
-        return false
+
+        // A more robust way to check for HyperOS AI is to look for a system property.
+        val hyperosAIProperty = try {
+            System.getProperty("ro.mi.ai.version")
+        } catch (e: Exception) {
+            null
+        }
+        return hyperosAIProperty != null
     }
     
     private fun isOppoAIDevice(): Boolean {
         val manufacturer = Build.MANUFACTURER.lowercase()
-        val model = Build.MODEL.lowercase()
-        
-        // OPPO AndesGPT available on:
-        // - Find X7 series
-        // - Find N3 series
-        // - Reno 11 series with ColorOS 14+
-        
         if (manufacturer != "oppo") return false
-        
-        // Find X7 series
-        if (model.contains("pjm") || model.contains("pjn")) return true
-        
-        // Find N3
-        if (model.contains("pho")) return true
-        
-        // Reno 11 series
-        if (model.contains("pgw") && Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) return true
-        
-        return false
+
+        // A more robust way to check for AndesGPT is to look for a system property.
+        val oppoAIProperty = try {
+            System.getProperty("ro.oppo.ai.version")
+        } catch (e: Exception) {
+            null
+        }
+        return oppoAIProperty != null
     }
     
     private fun isOnePlusAIDevice(): Boolean {
         val manufacturer = Build.MANUFACTURER.lowercase()
-        val model = Build.MODEL.lowercase()
-        
-        // OnePlus AI available on:
-        // - OnePlus 12 series
-        // - OnePlus 11 with OxygenOS 14+
-        // - OnePlus Open
-        
         if (manufacturer != "oneplus") return false
-        
-        // OnePlus 12
-        if (model.contains("cph2583") || model.contains("pjd")) return true
-        
-        // OnePlus 11 with Android 14+
-        if (model.contains("cph2449") && Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) return true
-        
-        // OnePlus Open
-        if (model.contains("cph2551")) return true
-        
-        return false
+
+        // A more robust way to check for OnePlus AI is to look for a system property.
+        val oneplusAIProperty = try {
+            System.getProperty("ro.oneplus.ai.version")
+        } catch (e: Exception) {
+            null
+        }
+        return oneplusAIProperty != null
     }
     
     private fun isHuaweiPanguDevice(): Boolean {
         val manufacturer = Build.MANUFACTURER.lowercase()
-        val model = Build.MODEL.lowercase()
-        
-        // Huawei Pangu AI available on:
-        // - Mate 60 series
-        // - Pura 70 series
-        // - MatePad Pro 13.2
-        
         if (manufacturer != "huawei") return false
-        
-        // Mate 60 series
-        if (model.contains("aln") || model.contains("bra")) return true
-        
-        // Pura 70 series
-        if (model.contains("hbm")) return true
-        
-        // MatePad Pro
-        if (model.contains("mrt")) return true
-        
-        return false
+
+        // A more robust way to check for Pangu AI is to look for a system property.
+        val huaweiAIProperty = try {
+            System.getProperty("ro.huawei.ai.version")
+        } catch (e: Exception) {
+            null
+        }
+        return huaweiAIProperty != null
     }
     
     private fun hasQualcommAIEngine(): Boolean {
@@ -219,8 +166,19 @@ class AIManager(private val context: Context) {
     }
     
     private fun buildPrompt(ingredients: List<String>): String {
-        return """Create a recipe using: ${ingredients.joinToString(", ")}.
-Provide: name, ingredients with measurements, instructions, time, servings, difficulty."""
+        return """Create a detailed recipe using the following ingredients: ${ingredients.joinToString(", ")}. 
+Please provide the output in JSON format with the following fields: 
+'name' (string), 
+'ingredients' (array of objects with 'name', 'quantity', and 'unit' strings), 
+'instructions' (array of strings), 
+'prepTime' (integer in minutes), 
+'cookTime' (integer in minutes), 
+'servings' (integer), 
+and 'difficulty' (string: 'Easy', 'Medium', or 'Hard')."""
+    }
+
+    suspend fun generateShoppingList(recipe: com.neostudios.zest.domain.model.Recipe): List<String> {
+        return recipe.ingredients.map { it.name }
     }
     
     private suspend fun generateWithGoogleAI(prompt: String, ingredients: List<String>, provider: String): String {
@@ -292,25 +250,33 @@ Provide: name, ingredients with measurements, instructions, time, servings, diff
     }
     
     private fun getFallbackRecipe(ingredients: List<String>, provider: String): String {
+        val ingredientsList = ingredients.joinToString("\n") { "- $it" }
+        val recipeTitle = "Simple ${ingredients.firstOrNull() ?: "Recipe"}"
+
         return """
-[$provider] AI-Generated Recipe
+        [$provider] Fallback Recipe
 
-Ingredients:
-${ingredients.mapIndexed { i, ing -> "${i + 1}. $ing" }.joinToString("\n")}
+        **$recipeTitle**
 
-Instructions:
-1. Prepare all ingredients by washing and chopping as needed
-2. Heat a pan or pot over medium heat
-3. Combine the main ingredients: ${ingredients.take(3).joinToString(", ")}
-4. Cook for 15-20 minutes, stirring occasionally
-5. Season to taste and adjust consistency
-6. Serve hot and enjoy!
+        **Ingredients:**
+        $ingredientsList
+        - 1 tbsp olive oil
+        - 1 onion, chopped
+        - 2 cloves garlic, minced
+        - Salt and pepper to taste
 
-Cooking Time: ~30 minutes
-Servings: 4
-Difficulty: Medium
+        **Instructions:**
+        1. Heat olive oil in a pan over medium heat.
+        2. Add onion and garlic and cook until softened.
+        3. Add the remaining ingredients and cook until heated through.
+        4. Season with salt and pepper to taste.
+        5. Serve immediately.
 
-Generated by $provider on-device AI
+        **Details:**
+        - Prep time: 10 minutes
+        - Cook time: 15 minutes
+        - Servings: 2
+        - Difficulty: Easy
         """.trimIndent()
     }
     
@@ -405,10 +371,18 @@ Generated by $provider on-device AI
     }
     
     private fun getDefaultSubstitutions(ingredient: String, provider: String): List<String> {
-        return listOf(
-            "[$provider] Similar ingredient with comparable properties",
-            "Common pantry alternative",
-            "Dietary-friendly substitute"
+        val substitutionMap = mapOf(
+            "butter" to listOf("margarine", "coconut oil", "olive oil"),
+            "sugar" to listOf("honey", "maple syrup", "agave nectar"),
+            "flour" to listOf("almond flour", "coconut flour", "oat flour"),
+            "milk" to listOf("almond milk", "soy milk", "oat milk"),
+            "egg" to listOf("flax egg", "chia egg", "applesauce")
+        )
+
+        return substitutionMap[ingredient.lowercase()] ?: listOf(
+            "[$provider] No specific substitutions found.",
+            "Try a similar ingredient you have on hand.",
+            "Search online for more options."
         )
     }
     

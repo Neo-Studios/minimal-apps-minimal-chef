@@ -12,7 +12,7 @@ struct RecipeDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 0) {
                 if let imageUrl = recipe.imageUrl, let url = URL(string: imageUrl) {
                     AsyncImage(url: url) { image in
                         image.resizable().aspectRatio(contentMode: .fill)
@@ -23,32 +23,35 @@ struct RecipeDetailView: View {
                     .clipped()
                 }
                 
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(recipe.name)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    
-                    if let description = recipe.description {
-                        Text(description)
-                            .font(.body)
-                            .foregroundColor(.secondary)
+                VStack(alignment: .leading, spacing: 16) {
+                    // Header
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(recipe.name)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                        
+                        if let description = recipe.description {
+                            Text(description)
+                                .font(.body)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                        HStack {
+                            Label("\(recipe.prepTime)m", systemImage: "clock")
+                            Label("\(recipe.cookTime)m", systemImage: "flame")
+                            Label("\(recipe.servings)", systemImage: "person.2")
+                            Spacer()
+                            Text(recipe.difficulty.rawValue)
+                                .font(.caption)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(difficultyColor(recipe.difficulty).opacity(0.2))
+                                .foregroundColor(difficultyColor(recipe.difficulty))
+                                .cornerRadius(8)
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
                     }
-                    
-                    HStack {
-                        Label("\(recipe.prepTime)m", systemImage: "clock")
-                        Label("\(recipe.cookTime)m", systemImage: "flame")
-                        Label("\(recipe.servings)", systemImage: "person.2")
-                        Spacer()
-                        Text(recipe.difficulty.rawValue)
-                            .font(.caption)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(difficultyColor(recipe.difficulty).opacity(0.2))
-                            .foregroundColor(difficultyColor(recipe.difficulty))
-                            .cornerRadius(8)
-                    }
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
                     
                     // Rating
                     HStack {
@@ -68,88 +71,97 @@ struct RecipeDetailView: View {
                                 .foregroundColor(.secondary)
                         }
                     }
-                }
-                .padding(.horizontal)
-                
-                // Recipe Scaling Card
-                LiquidGlassCard {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Scale Recipe")
-                            .font(.headline)
-                        
-                        HStack {
-                            Button(action: {
-                                if servingMultiplier > 0.5 {
-                                    servingMultiplier -= 0.5
-                                }
-                            }) {
-                                Image(systemName: "minus.circle.fill")
-                                    .font(.title2)
-                            }
-                            
-                            Spacer()
-                            
-                            VStack {
-                                Text("\(Int(Double(recipe.servings) * servingMultiplier)) servings")
-                                    .font(.headline)
-                                Text("×\(String(format: "%.1f", servingMultiplier))")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                servingMultiplier += 0.5
-                            }) {
-                                Image(systemName: "plus.circle.fill")
-                                    .font(.title2)
-                            }
-                        }
-                        
-                        if servingMultiplier != 1.0 {
-                            Button("Reset") {
-                                withAnimation {
-                                    servingMultiplier = 1.0
-                                }
-                            }
-                            .font(.caption)
-                            .foregroundColor(.orange)
-                        }
-                    }
-                }
-                .padding(.horizontal)
-                
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Ingredients")
-                        .font(.title2)
-                        .fontWeight(.semibold)
                     
-                    ForEach(recipe.ingredients.indices, id: \.self) { i in
-                        HStack {
-                            Text("•")
-                            let scaledAmount = scaleAmount(recipe.ingredients[i].amount, multiplier: servingMultiplier)
-                            Text("\(scaledAmount) \(recipe.ingredients[i].unit) \(recipe.ingredients[i].name)")
+                    // Actions
+                    HStack {
+                        Button(action: {
+                            // Favorite action
+                            viewModel.toggleFavorite(recipe: recipe)
+                        }) {
+                            Label("Favorite", systemImage: recipe.isFavorite ? "heart.fill" : "heart")
                         }
+                        .buttonStyle(.bordered)
+                        
+                        Spacer()
+                        
+                        Button(action: { showShareSheet = true }) {
+                            Label("Share", systemImage: "square.and.arrow.up")
+                        }
+                        .buttonStyle(.bordered)
                     }
-                }
-                .padding(.horizontal)
-                
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Instructions")
-                        .font(.title2)
-                        .fontWeight(.semibold)
                     
-                    ForEach(recipe.instructions.indices, id: \.self) { i in
-                        HStack(alignment: .top) {
-                            Text("\(i + 1).")
-                                .fontWeight(.bold)
-                            Text(recipe.instructions[i])
+                    // Recipe Scaling Card
+                    LiquidGlassCard {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Scale Recipe")
+                                .font(.headline)
+                            
+                            HStack {
+                                Button(action: {
+                                    if servingMultiplier > 0.5 {
+                                        servingMultiplier -= 0.5
+                                    }
+                                }) {
+                                    Image(systemName: "minus.circle.fill")
+                                        .font(.title2)
+                                }
+                                
+                                Spacer()
+                                
+                                VStack {
+                                    Text("\(Int(Double(recipe.servings) * servingMultiplier)) servings")
+                                        .font(.headline)
+                                    Text("×\(String(format: "%.1f", servingMultiplier))")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                }
+                                
+                                Spacer()
+                                
+                                Button(action: {
+                                    servingMultiplier += 0.5
+                                }) {
+                                    Image(systemName: "plus.circle.fill")
+                                        .font(.title2)
+                                }
+                            }
+                            
+                            if servingMultiplier != 1.0 {
+                                Button("Reset") {
+                                    withAnimation {
+                                        servingMultiplier = 1.0
+                                    }
+                                }
+                                .font(.caption)
+                                .foregroundColor(.orange)
+                            }
                         }
-                        .padding(.bottom, 4)
+                    }
+                    
+                    // Ingredients
+                    Section(header: Text("Ingredients").font(.title2).fontWeight(.semibold)) {
+                        ForEach(recipe.ingredients.indices, id: \.self) { i in
+                            HStack {
+                                Text("•")
+                                let scaledAmount = scaleAmount(recipe.ingredients[i].amount, multiplier: servingMultiplier)
+                                Text("\(scaledAmount) \(recipe.ingredients[i].unit) \(recipe.ingredients[i].name)")
+                            }
+                        }
+                    }
+                    
+                    // Instructions
+                    Section(header: Text("Instructions").font(.title2).fontWeight(.semibold)) {
+                        ForEach(recipe.instructions.indices, id: \.self) { i in
+                            HStack(alignment: .top) {
+                                Text("\(i + 1).")
+                                    .fontWeight(.bold)
+                                Text(recipe.instructions[i])
+                            }
+                            .padding(.bottom, 4)
+                        }
                     }
                 }
-                .padding(.horizontal)
+                .padding()
             }
         }
         .navigationTitle("Recipe")

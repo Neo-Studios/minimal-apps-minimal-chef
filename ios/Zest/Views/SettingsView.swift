@@ -45,6 +45,16 @@ struct SettingsView: View {
                 }
                 .liquidGlass()
                 
+                // AI
+                Section("AI") {
+                    HStack {
+                        Label("Enable AI Features", systemImage: "sparkles")
+                        Spacer()
+                        Toggle("", isOn: $settingsStore.enableAI)
+                    }
+                }
+                .liquidGlass()
+
                 // Accessibility
                 Section(LocalizedStringKey("settings.accessibility")) {
                     NavigationLink {

@@ -21,7 +21,10 @@ data class Recipe(
     val mealType: String = "",
     val imageUrl: String? = null,
     val createdAt: Timestamp = Timestamp.now(),
-    val updatedAt: Timestamp = Timestamp.now()
+    val updatedAt: Timestamp = Timestamp.now(),
+    val isFavorite: Boolean = false,
+    val lastCooked: Timestamp? = null,
+    val rating: Int = 0
 ) {
     fun toMap(): Map<String, Any?> = mapOf(
         "name" to name,
@@ -35,6 +38,9 @@ data class Recipe(
         "mealType" to mealType,
         "imageUrl" to imageUrl,
         "createdAt" to createdAt,
-        "updatedAt" to updatedAt
+        "updatedAt" to updatedAt,
+        "isFavorite" to isFavorite,
+        "lastCooked" to lastCooked,
+        "rating" to rating
     )
 }

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    
+    {{ partial "head-meta.html" . }}
+    {{ partial "head-css.html" . }}
+    
+    <!-- Google Fonts - Roboto Flex and JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,75..100,100..1000&family=JetBrains+Mono:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom fonts CSS -->
+    <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}">
+    
+    <!-- Custom styles CSS -->
+    <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}">
+    
+    {{ partial "head-js.html" . }}
+  </head>
+  <body class="td-{{ .Kind }}{{ with .Section }} td-section{{ end }}" data-spy="scroll" data-target="#td-toc">
+    <header>
+      {{ partial "navbar.html" . }}
+    </header>
+    <div class="container-fluid td-default td-navbar-cover">
+      <div class="td-content">
+        {{ block "main" . }}{{ end }}
+      </div>
+    </div>
+    {{ partial "footer.html" . }}
+    {{ partial "scripts.html" . }}
+  </body>
+</html>

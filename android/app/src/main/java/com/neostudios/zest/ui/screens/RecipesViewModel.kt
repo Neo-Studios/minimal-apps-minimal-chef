@@ -101,4 +101,27 @@ class RecipesViewModel @Inject constructor(
             }
         }
     }
+
+    fun toggleFavorite(recipe: Recipe) {
+        viewModelScope.launch {
+            val updatedRecipe = recipe.copy(isFavorite = !recipe.isFavorite)
+            repository.updateRecipe(updatedRecipe)
+            loadRecipes()
+        }
+    }
+
+    fun updateRating(recipe: Recipe, rating: Int) {
+        viewModelScope.launch {
+            val updatedRecipe = recipe.copy(rating = rating)
+            repository.updateRecipe(updatedRecipe)
+            loadRecipes()
+        }
+    }
+
+    fun deleteRecipe(recipe: Recipe) {
+        viewModelScope.launch {
+            repository.deleteRecipe(recipe.id)
+            loadRecipes()
+        }
+    }
 }

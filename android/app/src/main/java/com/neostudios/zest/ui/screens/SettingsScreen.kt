@@ -31,6 +31,7 @@ fun SettingsScreen(
     val highContrast by viewModel.highContrast.collectAsStateWithLifecycle()
     val colorBlindMode by viewModel.colorBlindMode.collectAsStateWithLifecycle()
     val talkBack by viewModel.talkBack.collectAsStateWithLifecycle()
+    val enableAI by viewModel.enableAI.collectAsStateWithLifecycle()
 
     var expandedLanguageMenu by remember { mutableStateOf(false) }
     
@@ -91,6 +92,20 @@ fun SettingsScreen(
             )
         }
         
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // AI
+        SettingsSection(title = "AI") {
+            SettingsItem(
+                icon = Icons.Default.AutoAwesome,
+                title = "Enable AI Features",
+                subtitle = "Allow the app to use AI to generate recipes and more.",
+                trailing = {
+                    Switch(checked = enableAI, onCheckedChange = { viewModel.setEnableAI(it) })
+                }
+            )
+        }
+
         Spacer(modifier = Modifier.height(16.dp))
         
         // Accessibility

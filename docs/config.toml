@@ -1,0 +1,32 @@
+# Hugo configuration overrides for the Docsy theme
+# This file provides additional customization on top of hugo.toml
+
+[outputs]
+home = [ "HTML", "RSS" ]
+page = [ "HTML" ]
+section = [ "HTML", "RSS" ]
+
+[markup]
+# Enable more features in Markdown
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 3
+[markup.highlight]
+# Use Chroma for syntax highlighting
+codeFences = true
+guessSyntax = true
+hl_Lines = ""
+lineNos = true
+style = "dracula"
+
+[imaging]
+# Image processing settings
+quality = 75
+resampleFilter = "box"
+anchor = "smart"
+
+[caches.images]
+maxAge = "720h"
+
+[caches.assets]
+maxAge = "8760h"

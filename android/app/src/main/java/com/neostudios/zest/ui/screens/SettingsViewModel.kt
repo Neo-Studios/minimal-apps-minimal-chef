@@ -47,6 +47,9 @@ class SettingsViewModel @Inject constructor(
     private val _talkBack = MutableStateFlow(preferences.getBoolean("talk_back", false))
     val talkBack: StateFlow<Boolean> = _talkBack
 
+    private val _enableAI = MutableStateFlow(preferences.getBoolean("enable_ai", true))
+    val enableAI: StateFlow<Boolean> = _enableAI
+
     fun setLanguage(newLanguage: Language) {
         viewModelScope.launch {
             _language.value = newLanguage
@@ -107,6 +110,13 @@ class SettingsViewModel @Inject constructor(
         viewModelScope.launch {
             _talkBack.value = enabled
             preferences.edit().putBoolean("talk_back", enabled).apply()
+        }
+    }
+
+    fun setEnableAI(enabled: Boolean) {
+        viewModelScope.launch {
+            _enableAI.value = enabled
+            preferences.edit().putBoolean("enable_ai", enabled).apply()
         }
     }
 }

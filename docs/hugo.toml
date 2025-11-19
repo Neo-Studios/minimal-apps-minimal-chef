@@ -1,0 +1,140 @@
+baseURL = 'https://docs.zest.example.com/'
+languageCode = 'en-us'
+title = 'Zest Documentation'
+theme = "github.com/google/docsy"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+enableGitInfo = true
+enableEmoji = true
+
+[module]
+  [[module.imports]]
+    path = "github.com/google/docsy"
+    disable = false
+  [[module.imports.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.imports.mounts]]
+    source = "layouts"
+    target = "layouts"
+  [[module.imports.mounts]]
+    source = "static"
+    target = "static"
+
+[menu]
+[[menu.main]]
+  name = "User Docs"
+  url = "/user/"
+  weight = 10
+[[menu.main]]
+  name = "Developer Docs"
+  url = "/developer/"
+  weight = 20
+
+[params]
+time_format_blog = "Monday, January 02, 2006"
+time_format_default = "January 2, 2006"
+# The RSS feed sections to be considered for the RSS feed.
+rss_sections = ["blog"]
+
+# Typography and Fonts
+[params.fonts]
+# Using Roboto Flex as the primary font (closest to Google Sans Flex)
+# Using JetBrains Mono as the code font
+name = "Roboto Flex, JetBrains Mono"
+code_name = "JetBrains Mono"
+
+[params.ui]
+# Enable dark mode
+disable_dark_mode = false
+# Show version banner
+show_version_update_banner = true
+
+# Docsy theme parameters
+[params.docsy]
+# Enable "Edit this page" links
+edit_page = true
+# URL base for "Edit this page" links
+edit_page_url = "https://github.com/neostudios/zest/tree/main/docs/content"
+# Enable "Open issue" links
+open_issue = true
+# URL base for "Open issue" links
+open_issue_url = "https://github.com/neostudios/zest/issues/new"
+# Enable "View page source" links
+view_page_source = true
+# URL base for "View page source" links
+view_page_source_url = "https://github.com/neostudios/zest/blob/main/docs/content"
+# Enable "Copy link to this section" links
+copy_section_link = true
+# Enable "Copy link to this page" links
+copy_page_link = true
+# Enable "Print this page" links
+print_page = true
+# Enable "Add to favorites" links
+add_to_favorites = true
+# Enable "Expand all" and "Collapse all" buttons
+expand_all = true
+# Enable "Scroll to top" button
+scroll_to_top = true
+# Enable "Dark mode" toggle
+dark_mode = true
+# Enable "Search" bar
+search = true
+# Enable "Table of contents"
+toc = true
+# Enable "Breadcrumbs"
+breadcrumbs = true
+# Enable "Pagination"
+pagination = true
+# Enable "Last modified" date
+last_modified = true
+# Enable "Git info" (requires git)
+git_info = true
+# Enable "GitHub stars" (requires a GitHub token)
+github_stars = true
+# GitHub repository
+github_repo = "neostudios/zest"
+# GitHub token
+github_token = ""
+# Enable "Twitter" card
+twitter_card = true
+# Twitter handle
+twitter_handle = "@zestrising"
+# Website description
+description = "Zest is a smart meal planning and recipe management application with support for iOS, Android, and Web"
+# Project logo
+logo = "/images/zest-logo.png"
+# Project logo dark mode
+logo_dark = "/images/zest-logo-dark.png"
+# Enable "Open Graph" card
+open_graph_card = true
+# Enable "Schema" metadata
+schema = true
+# Enable "Analytics" (Google Analytics)
+analytics = true
+# Google Analytics ID
+google_analytics = ""
+# Enable "Disqus" comments
+disqus = true
+# Disqus shortname
+disqus_shortname = ""
+# Enable "Syntax highlighting"
+syntax_highlighting = true
+# Syntax highlighting theme
+syntax_highlighting_theme = "dracula"
+# Enable "Mermaid" diagrams
+mermaid = true
+# Mermaid theme
+mermaid_theme = "dark"
+# Enable "KaTeX" math typesetting
+katex = true
+# Enable "Plausible" analytics
+plausible = true
+# Plausible domain
+plausible_domain = ""
+# Enable "Carbon" ads
+carbon = true
+# Carbon placement
+carbon_placement = ""
+# Carbon serve
+carbon_serve = ""
