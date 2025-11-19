@@ -2,4 +2,38 @@
     <string name="app_name">Zest</string>
     <string name="recipe_widget_description">A widget that shows you a recipe of the day.</string>
     <string name="default_web_client_id">YOUR_WEB_CLIENT_ID</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_general">General</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_offline_mode">Offline Mode</string>
+    <string name="settings_offline_mode_subtitle">Enable offline access</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_accessibility">Accessibility</string>
+    <string name="settings_font_size">Font Size</string>
+    <string name="settings_reduce_motion">Reduce Motion</string>
+    <string name="settings_reduce_motion_subtitle">Minimize animations</string>
+    <string name="settings_high_contrast">High Contrast</string>
+    <string name="settings_high_contrast_subtitle">Increase text contrast</string>
+    <string name="settings_color_blind_mode">Color Blind Mode</string>
+    <string name="settings_talk_back_support">TalkBack Support</string>
+    <string name="settings_talk_back_support_subtitle">Optimize for screen readers</string>
+    <string name="settings_account">Account</string>
+    <string name="settings_profile">Profile</string>
+    <string name="settings_sign_out">Sign Out</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version">Version</string>
+    <string name="settings_developer">Developer</string>
+    <string name="settings_license">License</string>
+
+    <string name="recipes_title">Recipes</string>
+    <string name="recipes_add_recipe">Add Recipe</string>
+    <string name="recipes_search_placeholder">Search recipes...</string>
+    <string name="recipes_loading">Loading recipes...</string>
+    <string name="recipes_error">Error: %1$s</string>
+    <string name="recipes_no_recipes_found">No recipes found.</string>
+    <string name="recipes_time_servings">%1$d min • %2$d servings</string>
+    <string name="recipes_add_new_recipe">Add New Recipe</string>
+    <string name="recipes_cancel">Cancel</string>
 </resources>

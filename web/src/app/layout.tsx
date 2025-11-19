@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
 }
 
+import { TranslationProvider } from '@/components/providers/TranslationProvider'
+
 export default function RootLayout({
   children,
 }: {
@@ -57,7 +59,9 @@ export default function RootLayout({
         <AuthProvider>
           <ThemeProvider>
             <SettingsProvider>
-              <ClientLayout>{children}</ClientLayout>
+              <TranslationProvider>
+                <ClientLayout>{children}</ClientLayout>
+              </TranslationProvider>
             </SettingsProvider>
           </ThemeProvider>
         </AuthProvider>

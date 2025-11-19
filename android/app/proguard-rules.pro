@@ -10,4 +10,4 @@
 -keep class androidx.compose.** { *; }
 
 # Models
--keep class com.neostudios.minimalchef.domain.model.** { *; }
+-keep class com.neostudios.zest.domain.model.** { *; }

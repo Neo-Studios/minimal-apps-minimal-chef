@@ -1,6 +1,6 @@
 {
-  "name": "Minimal Chef",
-  "short_name": "Minimal Chef",
+  "name": "Zest",
+  "short_name": "Zest",
   "description": "A minimalist cooking application",
   "start_url": "/",
   "display": "standalone",

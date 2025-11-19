@@ -18,6 +18,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.neostudios.zest.ui.components.HeroCard
 import com.neostudios.zest.ui.navigation.Screen
+import androidx.compose.ui.res.stringResource
+import com.neostudios.zest.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -55,7 +57,7 @@ fun RecipesScreen(
         topBar = {
             TopAppBar(title = {
                 Text(
-                    "Recipes",
+                    stringResource(R.string.recipes_title),
                     modifier = Modifier.graphicsLayer(
                         scaleX = scale,
                         scaleY = scale,
@@ -66,7 +68,7 @@ fun RecipesScreen(
         },
         floatingActionButton = {
             FloatingActionButton(onClick = { showAddRecipeDialog = true }) {
-                Icon(Icons.Default.Add, contentDescription = "Add Recipe")
+                Icon(Icons.Default.Add, contentDescription = stringResource(R.string.recipes_add_recipe))
             }
         }
     ) { paddingValues ->
@@ -74,7 +76,7 @@ fun RecipesScreen(
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { viewModel.updateSearch(it) },
-                placeholder = { Text("Search recipes...") },
+                placeholder = { Text(stringResource(R.string.recipes_search_placeholder)) },
                 modifier = Modifier.fillMaxWidth().padding(16.dp)
             )
 
@@ -84,17 +86,17 @@ fun RecipesScreen(
                 }
             } else if (error != null) {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text("Error: $error", color = MaterialTheme.colorScheme.error)
+                    Text(stringResource(R.string.recipes_error, error ?: ""), color = MaterialTheme.colorScheme.error)
                 }
             } else if (filteredRecipes.isEmpty()) {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text("No recipes found.", style = MaterialTheme.typography.headlineSmall)
+                    Text(stringResource(R.string.recipes_no_recipes_found), style = MaterialTheme.typography.headlineSmall)
                 }
             } else {
                 LazyColumn(state = listState, modifier = Modifier.fillMaxSize()) {
                     items(filteredRecipes) { recipe ->
                         HeroCard(
-                            onClick = { navController.navigate(Screen.RecipeDetail.createRoute(recipe.id!!)) },
+                            onClick = { navController.navigate(Screen.RecipeDetail.createRoute(recipe.id)) },
                             modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)
                         ) {
                             Column(modifier = Modifier.padding(20.dp)) {
@@ -111,7 +113,11 @@ fun RecipesScreen(
                                 )
                                 Spacer(modifier = Modifier.height(8.dp))
                                 Text(
-                                    "${recipe.prepTime + recipe.cookTime} min • ${recipe.servings} servings",
+                                    stringResource(
+                                        R.string.recipes_time_servings,
+                                        recipe.prepTime + recipe.cookTime,
+                                        recipe.servings
+                                    ),
                                     style = MaterialTheme.typography.labelMedium,
                                     color = MaterialTheme.colorScheme.tertiary
                                 )
@@ -126,7 +132,7 @@ fun RecipesScreen(
     if (showAddRecipeDialog) {
         AlertDialog(
             onDismissRequest = { showAddRecipeDialog = false },
-            title = { Text("Add New Recipe") },
+            title = { Text(stringResource(R.string.recipes_add_new_recipe)) },
             text = {
                 AddRecipeScreen(
                     onSave = { name, ingredients, instructions, prepTime, cookTime, servings, imageUrl ->
@@ -138,7 +144,7 @@ fun RecipesScreen(
             confirmButton = { /* Handled by AddRecipeScreen's internal button */ },
             dismissButton = {
                 TextButton(onClick = { showAddRecipeDialog = false }) {
-                    Text("Cancel")
+                    Text(stringResource(R.string.recipes_cancel))
                 }
             }
         )

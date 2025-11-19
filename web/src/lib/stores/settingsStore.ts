@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware'
 
 export type FontSize = 'small' | 'medium' | 'large' | 'xlarge'
 export type ColorBlindMode = 'none' | 'protanopia' | 'deuteranopia' | 'tritanopia'
-export type Language = 'en' | 'es' | 'fr' | 'de' | 'ja' | 'zh' | 'ko' | 'pt' | 'it' | 'ru' | 'ar' | 'hi'
+export type Language = 'en' | 'es' | 'fr' | 'de' | 'ja' | 'zh' | 'ko' | 'pt' | 'it' | 'ru' | 'ar' | 'hi' | 'nl' | 'sv' | 'pl' | 'tr' | 'vi' | 'th' | 'id'
 
 interface SettingsState {
   // Appearance

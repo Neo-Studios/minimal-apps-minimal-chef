@@ -1,120 +1,111 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var themeMode = "Automatic"
-    @State private var notifications = true
-    @State private var language = "English"
-    @State private var offlineMode = true
-    @State private var fontSize = "Medium"
-    @State private var reducedMotion = false
-    @State private var reducedTransparency = false
-    @State private var highContrast = false
-    @State private var colorBlindMode = "None"
-    @State private var voiceOverOptimized = false
     @EnvironmentObject var authService: AuthService
+    @EnvironmentObject var settingsStore: SettingsStore
     
     var body: some View {
         NavigationView {
             List {
                 // General
-                Section("General") {
+                Section(LocalizedStringKey("settings.general")) {
                     NavigationLink {
-                        ThemeModePickerView(themeMode: $themeMode)
+                        ThemeModePickerView(themeMode: $settingsStore.themeMode)
                     } label: {
                         HStack {
-                            Label("Theme", systemImage: "paintbrush.fill")
+                            Label(LocalizedStringKey("settings.theme"), systemImage: "paintbrush.fill")
                             Spacer()
-                            Text(themeMode)
+                            Text(settingsStore.themeMode)
                                 .foregroundColor(.secondary)
                         }
                     }
                     
                     NavigationLink {
-                        LanguagePickerView(language: $language)
+                        LanguagePickerView()
                     } label: {
                         HStack {
-                            Label("Language", systemImage: "globe")
+                            Label(LocalizedStringKey("settings.language"), systemImage: "globe")
                             Spacer()
-                            Text(language)
+                            Text(settingsStore.language.displayName)
                                 .foregroundColor(.secondary)
                         }
                     }
                     
                     HStack {
-                        Label("Notifications", systemImage: "bell.fill")
+                        Label(LocalizedStringKey("settings.notifications"), systemImage: "bell.fill")
                         Spacer()
-                        Toggle("", isOn: $notifications)
+                        Toggle("", isOn: $settingsStore.notifications)
                     }
                     
                     HStack {
-                        Label("Offline Mode", systemImage: "wifi.slash")
+                        Label(LocalizedStringKey("settings.offlineMode"), systemImage: "wifi.slash")
                         Spacer()
-                        Toggle("", isOn: $offlineMode)
+                        Toggle("", isOn: $settingsStore.offlineMode)
                     }
                 }
                 .liquidGlass()
                 
                 // Accessibility
-                Section("Accessibility") {
+                Section(LocalizedStringKey("settings.accessibility")) {
                     NavigationLink {
-                        FontSizePickerView(fontSize: $fontSize)
+                        FontSizePickerView(fontSize: $settingsStore.fontSize)
                     } label: {
                         HStack {
-                            Label("Font Size", systemImage: "textformat.size")
+                            Label(LocalizedStringKey("settings.fontSize"), systemImage: "textformat.size")
                             Spacer()
-                            Text(fontSize)
+                            Text(settingsStore.fontSize)
                                 .foregroundColor(.secondary)
                         }
                     }
                     
                     HStack {
-                        Label("Reduce Motion", systemImage: "figure.walk.motion")
+                        Label(LocalizedStringKey("settings.reduceMotion"), systemImage: "figure.walk.motion")
                         Spacer()
-                        Toggle("", isOn: $reducedMotion)
+                        Toggle("", isOn: $settingsStore.reducedMotion)
                     }
                     
                     HStack {
-                        Label("Reduce Transparency", systemImage: "circle.dotted")
+                        Label(LocalizedStringKey("settings.reduceTransparency"), systemImage: "circle.dotted")
                         Spacer()
-                        Toggle("", isOn: $reducedTransparency)
+                        Toggle("", isOn: $settingsStore.reducedTransparency)
                     }
                     
                     HStack {
-                        Label("High Contrast", systemImage: "circle.lefthalf.filled")
+                        Label(LocalizedStringKey("settings.highContrast"), systemImage: "circle.lefthalf.filled")
                         Spacer()
-                        Toggle("", isOn: $highContrast)
+                        Toggle("", isOn: $settingsStore.highContrast)
                     }
                     
                     NavigationLink {
-                        ColorBlindModePickerView(colorBlindMode: $colorBlindMode)
+                        ColorBlindModePickerView(colorBlindMode: $settingsStore.colorBlindMode)
                     } label: {
                         HStack {
-                            Label("Color Blind Mode", systemImage: "eyeglasses")
+                            Label(LocalizedStringKey("settings.colorBlindMode"), systemImage: "eyeglasses")
                             Spacer()
-                            Text(colorBlindMode)
+                            Text(settingsStore.colorBlindMode)
                                 .foregroundColor(.secondary)
                         }
                     }
                     
                     HStack {
-                        Label("VoiceOver Optimized", systemImage: "speaker.wave.3")
+                        Label(LocalizedStringKey("settings.voiceOverOptimized"), systemImage: "speaker.wave.3")
                         Spacer()
-                        Toggle("", isOn: $voiceOverOptimized)
+                        Toggle("", isOn: $settingsStore.voiceOverOptimized)
                     }
                 }
                 .liquidGlass()
                 
                 // Account
-                Section("Account") {
+                Section(LocalizedStringKey("settings.account")) {
                     HStack {
-                        Label("Name", systemImage: "person.fill")
+                        Label(LocalizedStringKey("settings.account.name"), systemImage: "person.fill")
                         Spacer()
-                        Text(authService.user?.displayName ?? "User")
+                        Text(authService.user?.displayName ?? LocalizedStringKey("settings.account.user"))
                             .foregroundColor(.secondary)
                     }
                     
                     HStack {
-                        Label("Email", systemImage: "envelope.fill")
+                        Label(LocalizedStringKey("settings.account.email"), systemImage: "envelope.fill")
                         Spacer()
                         Text(authService.user?.email ?? "")
                             .foregroundColor(.secondary)
@@ -126,30 +117,30 @@ struct SettingsView: View {
                             await authService.signOut()
                         }
                     }) {
-                        Label("Sign Out", systemImage: "arrow.right.square")
+                        Label(LocalizedStringKey("settings.account.signOut"), systemImage: "arrow.right.square")
                             .foregroundColor(.red)
                     }
                 }
                 .liquidGlass()
                 
                 // About
-                Section("About") {
+                Section(LocalizedStringKey("settings.about")) {
                     HStack {
-                        Label("Version", systemImage: "info.circle")
+                        Label(LocalizedStringKey("settings.about.version"), systemImage: "info.circle")
                         Spacer()
-                        Text("2.0.0")
+                        Text("2.0.0") // TODO: Get actual version
                             .foregroundColor(.secondary)
                     }
                     
                     HStack {
-                        Label("Developer", systemImage: "hammer")
+                        Label(LocalizedStringKey("settings.about.developer"), systemImage: "hammer")
                         Spacer()
                         Text("Neo Studios")
                             .foregroundColor(.secondary)
                     }
                     
                     HStack {
-                        Label("License", systemImage: "doc.text")
+                        Label(LocalizedStringKey("settings.about.license"), systemImage: "doc.text")
                         Spacer()
                         Text("Neo Studios Public Repository License")
                             .foregroundColor(.secondary)
@@ -158,7 +149,7 @@ struct SettingsView: View {
                 }
                 .liquidGlass()
             }
-            .navigationTitle("Settings")
+            .navigationTitle(LocalizedStringKey("settings.title"))
             .scrollContentBackground(.hidden)
             .background(Color(uiColor: .systemGroupedBackground))
         }
@@ -185,7 +176,7 @@ struct FontSizePickerView: View {
             }
             .liquidGlass()
         }
-        .navigationTitle("Font Size")
+        .navigationTitle(LocalizedStringKey("settings.fontSize"))
         .scrollContentBackground(.hidden)
         .background(Color(uiColor: .systemGroupedBackground))
     }
@@ -216,25 +207,25 @@ struct ColorBlindModePickerView: View {
             }
             .liquidGlass()
         }
-        .navigationTitle("Color Blind Mode")
+        .navigationTitle(LocalizedStringKey("settings.colorBlindMode"))
         .scrollContentBackground(.hidden)
         .background(Color(uiColor: .systemGroupedBackground))
     }
 }
 
 struct ThemeModePickerView: View {
-    @Binding var themeMode: String
+    @EnvironmentObject var settingsStore: SettingsStore
     let modes = ["Light", "Dark", "Automatic"]
     
     var body: some View {
         List(modes, id: \.self) { mode in
             Button(action: {
-                themeMode = mode
+                settingsStore.themeMode = mode
             }) {
                 HStack {
-                    Text(mode)
+                    Text(LocalizedStringKey(mode))
                     Spacer()
-                    if themeMode == mode {
+                    if settingsStore.themeMode == mode {
                         Image(systemName: "checkmark")
                             .foregroundColor(.blue)
                     }
@@ -242,25 +233,24 @@ struct ThemeModePickerView: View {
             }
             .liquidGlass()
         }
-        .navigationTitle("Theme")
+        .navigationTitle(LocalizedStringKey("settings.theme"))
         .scrollContentBackground(.hidden)
         .background(Color(uiColor: .systemGroupedBackground))
     }
 }
 
 struct LanguagePickerView: View {
-    @Binding var language: String
-    let languages = ["English", "Español", "Français", "Deutsch", "日本語"]
+    @EnvironmentObject var settingsStore: SettingsStore
     
     var body: some View {
-        List(languages, id: \.self) { lang in
+        List(Language.allCases, id: \.self) { lang in
             Button(action: {
-                language = lang
+                settingsStore.language = lang
             }) {
                 HStack {
-                    Text(lang)
+                    Text(lang.displayName)
                     Spacer()
-                    if language == lang {
+                    if settingsStore.language == lang {
                         Image(systemName: "checkmark")
                             .foregroundColor(.blue)
                     }
@@ -268,7 +258,7 @@ struct LanguagePickerView: View {
             }
             .liquidGlass()
         }
-        .navigationTitle("Language")
+        .navigationTitle(LocalizedStringKey("settings.language"))
         .scrollContentBackground(.hidden)
         .background(Color(uiColor: .systemGroupedBackground))
     }

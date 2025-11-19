@@ -1,0 +1,47 @@
+"Recipes" = "Recipes";
+"Meal Plan" = "Meal Plan";
+"Shopping" = "Shopping";
+"Meal Kits" = "Meal Kits";
+"Collab Plans" = "Collab Plans";
+"Settings" = "Settings";
+
+"settings.title" = "Settings";
+"settings.general" = "General";
+"settings.theme" = "Theme";
+"settings.language" = "Language";
+"settings.notifications" = "Notifications";
+"settings.offlineMode" = "Offline Mode";
+"settings.accessibility" = "Accessibility";
+"settings.fontSize" = "Font Size";
+"settings.reduceMotion" = "Reduce Motion";
+"settings.reduceTransparency" = "Reduce Transparency";
+"settings.highContrast" = "High Contrast";
+"settings.colorBlindMode" = "Color Blind Mode";
+"settings.voiceOverOptimized" = "VoiceOver Optimized";
+"settings.account" = "Account";
+"settings.account.name" = "Name";
+"settings.account.email" = "Email";
+"settings.account.user" = "User";
+"settings.account.signOut" = "Sign Out";
+"settings.about" = "About";
+"settings.about.version" = "Version";
+"settings.about.developer" = "Developer";
+"settings.about.license" = "Neo Studios Public Repository License";
+
+"Light" = "Light";
+"Dark" = "Dark";
+"Automatic" = "Automatic";
+
+"recipes.title" = "Recipes";
+"recipes.addRecipe" = "Add Recipe";
+"recipes.searchPlaceholder" = "Search recipes...";
+"recipes.cuisine" = "Cuisine";
+"recipes.difficulty" = "Difficulty";
+"recipes.loading" = "Loading recipes...";
+"recipes.error" = "Error";
+"recipes.retry" = "Retry";
+"recipes.noRecipesFound" = "No recipes found";
+"recipes.adjustFilters" = "Try adjusting your filters or add a new recipe";
+"recipes.time" = "%lldm";
+"recipes.servings" = "%lld";
+"recipes.rating" = "%.1f";

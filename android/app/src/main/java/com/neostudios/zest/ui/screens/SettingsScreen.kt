@@ -10,20 +10,29 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.neostudios.zest.ui.theme.ExpressiveShapes
+import androidx.compose.ui.res.stringResource
+import com.neostudios.zest.R
+import com.neostudios.zest.util.Language
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen() {
-    var themeMode by remember { mutableStateOf("Automatic") }
-    var notifications by remember { mutableStateOf(true) }
-    var language by remember { mutableStateOf("English") }
-    var offlineMode by remember { mutableStateOf(true) }
-    var fontSize by remember { mutableStateOf("Medium") }
-    var reducedMotion by remember { mutableStateOf(false) }
-    var highContrast by remember { mutableStateOf(false) }
-    var colorBlindMode by remember { mutableStateOf("None") }
-    var talkBack by remember { mutableStateOf(false) }
+fun SettingsScreen(
+    viewModel: SettingsViewModel = hiltViewModel()
+) {
+    val themeMode by viewModel.themeMode.collectAsStateWithLifecycle()
+    val notifications by viewModel.notifications.collectAsStateWithLifecycle()
+    val language by viewModel.language.collectAsStateWithLifecycle()
+    val offlineMode by viewModel.offlineMode.collectAsStateWithLifecycle()
+    val fontSize by viewModel.fontSize.collectAsStateWithLifecycle()
+    val reducedMotion by viewModel.reducedMotion.collectAsStateWithLifecycle()
+    val highContrast by viewModel.highContrast.collectAsStateWithLifecycle()
+    val colorBlindMode by viewModel.colorBlindMode.collectAsStateWithLifecycle()
+    val talkBack by viewModel.talkBack.collectAsStateWithLifecycle()
+
+    var expandedLanguageMenu by remember { mutableStateOf(false) }
     
     Column(
         modifier = Modifier
@@ -32,38 +41,52 @@ fun SettingsScreen() {
             .padding(16.dp)
     ) {
         Text(
-            text = "Settings",
+            text = stringResource(R.string.settings_title),
             style = MaterialTheme.typography.headlineLarge,
             modifier = Modifier.padding(bottom = 24.dp)
         )
         
         // General
-        SettingsSection(title = "General") {
+        SettingsSection(title = stringResource(R.string.settings_general)) {
             SettingsItem(
                 icon = Icons.Default.Palette,
-                title = "Theme",
+                title = stringResource(R.string.settings_theme),
                 subtitle = themeMode,
                 onClick = { /* Show theme picker */ }
             )
             SettingsItem(
                 icon = Icons.Default.Language,
-                title = "Language",
-                subtitle = language,
-                onClick = { /* Show language picker */ }
+                title = stringResource(R.string.settings_language),
+                subtitle = language.displayName,
+                onClick = { expandedLanguageMenu = true }
             )
+            DropdownMenu(
+                expanded = expandedLanguageMenu,
+                onDismissRequest = { expandedLanguageMenu = false }
+            ) {
+                Language.values().forEach { lang ->
+                    DropdownMenuItem(
+                        text = { Text(lang.displayName) },
+                        onClick = {
+                            viewModel.setLanguage(lang)
+                            expandedLanguageMenu = false
+                        }
+                    )
+                }
+            }
             SettingsItem(
                 icon = Icons.Default.Notifications,
-                title = "Notifications",
+                title = stringResource(R.string.settings_notifications),
                 trailing = {
-                    Switch(checked = notifications, onCheckedChange = { notifications = it })
+                    Switch(checked = notifications, onCheckedChange = { viewModel.setNotifications(it) })
                 }
             )
             SettingsItem(
                 icon = Icons.Default.CloudOff,
-                title = "Offline Mode",
-                subtitle = "Enable offline access",
+                title = stringResource(R.string.settings_offline_mode),
+                subtitle = stringResource(R.string.settings_offline_mode_subtitle),
                 trailing = {
-                    Switch(checked = offlineMode, onCheckedChange = { offlineMode = it })
+                    Switch(checked = offlineMode, onCheckedChange = { viewModel.setOfflineMode(it) })
                 }
             )
         }
@@ -71,41 +94,41 @@ fun SettingsScreen() {
         Spacer(modifier = Modifier.height(16.dp))
         
         // Accessibility
-        SettingsSection(title = "Accessibility") {
+        SettingsSection(title = stringResource(R.string.settings_accessibility)) {
             SettingsItem(
                 icon = Icons.Default.TextFields,
-                title = "Font Size",
+                title = stringResource(R.string.settings_font_size),
                 subtitle = fontSize,
                 onClick = { /* Show font size picker */ }
             )
             SettingsItem(
                 icon = Icons.Default.Animation,
-                title = "Reduce Motion",
-                subtitle = "Minimize animations",
+                title = stringResource(R.string.settings_reduce_motion),
+                subtitle = stringResource(R.string.settings_reduce_motion_subtitle),
                 trailing = {
-                    Switch(checked = reducedMotion, onCheckedChange = { reducedMotion = it })
+                    Switch(checked = reducedMotion, onCheckedChange = { viewModel.setReducedMotion(it) })
                 }
             )
             SettingsItem(
                 icon = Icons.Default.Contrast,
-                title = "High Contrast",
-                subtitle = "Increase text contrast",
+                title = stringResource(R.string.settings_high_contrast),
+                subtitle = stringResource(R.string.settings_high_contrast_subtitle),
                 trailing = {
-                    Switch(checked = highContrast, onCheckedChange = { highContrast = it })
+                    Switch(checked = highContrast, onCheckedChange = { viewModel.setHighContrast(it) })
                 }
             )
             SettingsItem(
                 icon = Icons.Default.Palette,
-                title = "Color Blind Mode",
+                title = stringResource(R.string.settings_color_blind_mode),
                 subtitle = colorBlindMode,
                 onClick = { /* Show color blind mode picker */ }
             )
             SettingsItem(
                 icon = Icons.Default.RecordVoiceOver,
-                title = "TalkBack Support",
-                subtitle = "Optimize for screen readers",
+                title = stringResource(R.string.settings_talk_back_support),
+                subtitle = stringResource(R.string.settings_talk_back_support_subtitle),
                 trailing = {
-                    Switch(checked = talkBack, onCheckedChange = { talkBack = it })
+                    Switch(checked = talkBack, onCheckedChange = { viewModel.setTalkBack(it) })
                 }
             )
         }
@@ -113,16 +136,16 @@ fun SettingsScreen() {
         Spacer(modifier = Modifier.height(16.dp))
         
         // Account
-        SettingsSection(title = "Account") {
+        SettingsSection(title = stringResource(R.string.settings_account)) {
             SettingsItem(
                 icon = Icons.Default.Person,
-                title = "Profile",
-                subtitle = "user@example.com",
+                title = stringResource(R.string.settings_profile),
+                subtitle = "user@example.com", // TODO: Replace with actual user email
                 onClick = { /* Navigate to profile */ }
             )
             SettingsItem(
                 icon = Icons.Default.ExitToApp,
-                title = "Sign Out",
+                title = stringResource(R.string.settings_sign_out),
                 onClick = { /* Sign out */ }
             )
         }
@@ -130,20 +153,20 @@ fun SettingsScreen() {
         Spacer(modifier = Modifier.height(16.dp))
         
         // About
-        SettingsSection(title = "About") {
+        SettingsSection(title = stringResource(R.string.settings_about)) {
             SettingsItem(
                 icon = Icons.Default.Info,
-                title = "Version",
-                subtitle = "2.0.0"
+                title = stringResource(R.string.settings_version),
+                subtitle = "2.0.0" // TODO: Get actual version
             )
             SettingsItem(
                 icon = Icons.Default.Code,
-                title = "Developer",
+                title = stringResource(R.string.settings_developer),
                 subtitle = "Neo Studios"
             )
             SettingsItem(
                 icon = Icons.Default.Description,
-                title = "License",
+                title = stringResource(R.string.settings_license),
                 subtitle = "Neo Studios Public Repository License"
             )
         }

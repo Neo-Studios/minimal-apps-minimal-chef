@@ -8,6 +8,10 @@ import { SearchBar } from '@/components/ui/SearchBar'
 import { useIsTablet } from '@/lib/hooks/useMediaQuery'
 import Link from 'next/link'
 import { Icon } from '@/components/ui/Icon'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { db } from '@/lib/firebase/config'
+import { useAuthStore } from '@/lib/stores/authStore'
+import { useTranslation } from '@/components/providers/TranslationProvider'
 
 interface Recipe {
   id: string
@@ -18,23 +22,49 @@ interface Recipe {
   difficulty: 'Easy' | 'Medium' | 'Hard'
   image?: string
   rating: number
+  userId: string // Assuming recipes are associated with a user
 }
 
-const SAMPLE_RECIPES: Recipe[] = [
-  { id: '1', name: 'Spaghetti Carbonara', cuisine: 'Italian', time: 30, servings: 4, difficulty: 'Medium', rating: 4.5 },
-  { id: '2', name: 'Chicken Tikka Masala', cuisine: 'Indian', time: 45, servings: 6, difficulty: 'Medium', rating: 4.8 },
-  { id: '3', name: 'Caesar Salad', cuisine: 'American', time: 15, servings: 2, difficulty: 'Easy', rating: 4.2 },
-  { id: '4', name: 'Pad Thai', cuisine: 'Thai', time: 25, servings: 2, difficulty: 'Medium', rating: 4.6 },
-  { id: '5', name: 'Beef Tacos', cuisine: 'Mexican', time: 20, servings: 4, difficulty: 'Easy', rating: 4.4 },
-  { id: '6', name: 'Sushi Rolls', cuisine: 'Japanese', time: 60, servings: 4, difficulty: 'Hard', rating: 4.9 },
-]
-
 export default function RecipesPage() {
+  const { user } = useAuthStore()
+  const { t } = useTranslation()
+  const [recipes, setRecipes] = useState<Recipe[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCuisine, setSelectedCuisine] = useState<string>('All')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [scrollY, setScrollY] = useState(0)
   const isTablet = useIsTablet()
+
+  useEffect(() => {
+    const fetchRecipes = async () => {
+      if (!user) {
+        setLoading(false)
+        setError('User not logged in.')
+        return
+      }
+
+      setLoading(true)
+      setError(null)
+      try {
+        const q = query(collection(db, 'recipes'), where('userId', '==', user.uid))
+        const querySnapshot = await getDocs(q)
+        const fetchedRecipes: Recipe[] = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data() as Omit<Recipe, 'id'>
+        }))
+        setRecipes(fetchedRecipes)
+      } catch (err: any) {
+        console.error('Error fetching recipes:', err)
+        setError(err.message || 'Failed to fetch recipes.')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchRecipes()
+  }, [user])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,13 +80,29 @@ export default function RecipesPage() {
   const scale = Math.max(0.8, 1 - scrollY / 300) // Shrink to 80%
   const translateY = scrollY > 0 ? Math.sin(scrollY / 50) * 5 : 0 // Bounce effect
 
-  const cuisines = ['All', ...Array.from(new Set(SAMPLE_RECIPES.map(r => r.cuisine)))]
+  const cuisines = ['All', ...Array.from(new Set(recipes.map(r => r.cuisine)))]
   
-  const filteredRecipes = SAMPLE_RECIPES.filter(recipe => {
+  const filteredRecipes = recipes.filter(recipe => {
     const matchesSearch = recipe.name.toLowerCase().includes(searchQuery.toLowerCase())
     const matchesCuisine = selectedCuisine === 'All' || recipe.cuisine === selectedCuisine
     return matchesSearch && matchesCuisine
   })
+
+  if (loading) {
+    return (
+      <div className="p-4 md:p-8 text-center">
+        <p>{t('recipes.loading')}</p>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="p-4 md:p-8 text-center text-red-500">
+        <p>{t('recipes.error')}: {error}</p>
+      </div>
+    )
+  }
 
   return (
     <div className="p-4 md:p-8 space-y-6 pb-24 md:pb-8">
@@ -70,10 +116,10 @@ export default function RecipesPage() {
               transition: 'transform 0.1s ease-out' // Smooth transition for scale and bounce
             }}
           >
-            Recipes
+            {t('recipes.title')}
           </h1>
           <p className="text-m3-on-surface-variant">
-            {filteredRecipes.length} recipes available
+            {t('recipes.count', { count: filteredRecipes.length })}
           </p>
         </div>
         {isTablet && (
@@ -86,7 +132,7 @@ export default function RecipesPage() {
                 </svg>
               }
             >
-              New Recipe
+              {t('recipes.newRecipe')}
             </Material3Button>
           </Link>
         )}
@@ -97,7 +143,7 @@ export default function RecipesPage() {
         <SearchBar
           value={searchQuery}
           onChange={setSearchQuery}
-          placeholder="Search recipes..."
+          placeholder={t('recipes.searchPlaceholder')}
         />
         
         <div className="flex items-center gap-2 overflow-x-auto pb-2">
@@ -108,7 +154,7 @@ export default function RecipesPage() {
               size="small"
               onClick={() => setSelectedCuisine(cuisine)}
             >
-              {cuisine}
+              {cuisine === 'All' ? t('recipes.allCuisines') : cuisine}
             </Material3Button>
           ))}
           
@@ -121,9 +167,7 @@ export default function RecipesPage() {
                   : 'hover:bg-m3-surface-container-high'
               }`}
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-              </svg>
+              <Icon name="chart" />
             </button>
             <button
               onClick={() => setViewMode('list')}
@@ -133,9 +177,7 @@ export default function RecipesPage() {
                   : 'hover:bg-m3-surface-container-high'
               }`}
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+              <Icon name="book" />
             </button>
           </div>
         </div>
@@ -147,16 +189,16 @@ export default function RecipesPage() {
           <div className="p-12 text-center">
             <span className="text-6xl mb-4 block">🔍</span>
             <h3 className="text-xl font-medium text-m3-on-surface mb-2">
-              No recipes found
+              {t('recipes.noRecipesFound')}
             </h3>
             <p className="text-m3-on-surface-variant mb-4">
-              Try adjusting your search or filters
+              {t('recipes.adjustFilters')}
             </p>
             <Material3Button variant="tonal" onClick={() => {
               setSearchQuery('')
               setSelectedCuisine('All')
             }}>
-              Clear Filters
+              {t('recipes.clearFilters')}
             </Material3Button>
           </div>
         </Material3Card>
@@ -188,7 +230,7 @@ export default function RecipesPage() {
                           ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
                           : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
                       }`}>
-                        {recipe.difficulty}
+                        {t(`recipes.difficulty.${recipe.difficulty.toLowerCase()}`)}
                       </span>
                     </div>
                     

@@ -1,8 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#FFB74D</color>
-    <color name="secondary">#4DD0E1</color>
-    <color name="surface">#2A2A2A</color>
-    <color name="background">#1F1F1F</color>
-    <color name="error">#EF5350</color>
+    <!-- Material 3 Expressive - Mediterranean Night Theme (Dark) -->
+    <color name="m3_primary_dark">#5CB3FF</color>
+    <color name="m3_primary_light_dark">#8FCCFF</color>
+    <color name="m3_primary_dark_dark">#3399D6</color>
+    <color name="m3_primary_container_dark">#001F33</color>
+    <color name="m3_on_primary_dark">#001F33</color>
+    <color name="m3_on_primary_container_dark">#D6EFFF</color>
+    
+    <color name="m3_secondary_dark">#4DD4F5</color>
+    <color name="m3_secondary_light_dark">#7DE3FF</color>
+    <color name="m3_secondary_dark_dark">#00A8CC</color>
+    <color name="m3_secondary_container_dark">#003340</color>
+    <color name="m3_on_secondary_dark">#003340</color>
+    <color name="m3_on_secondary_container_dark">#D6F5FF</color>
+    
+    <color name="m3_tertiary_dark">#FFD699</color>
+    <color name="m3_tertiary_container_dark">#4D3300</color>
+    <color name="m3_on_tertiary_dark">#4D3300</color>
+    <color name="m3_on_tertiary_container_dark">#FFF4E0</color>
+
+    <color name="m3_surface_dim_dark">#0A1929</color>
+    <color name="m3_surface_dark">#0D2137</color>
+    <color name="m3_surface_bright_dark">#1A3A52</color>
+    <color name="m3_surface_container_lowest_dark">#061220</color>
+    <color name="m3_surface_container_low_dark">#0D2137</color>
+    <color name="m3_surface_container_dark">#14293D</color>
+    <color name="m3_surface_container_high_dark">#1E3A52</color>
+    <color name="m3_surface_container_highest_dark">#2A4A66</color>
+    <color name="m3_on_surface_dark">#E3F2FD</color>
+    <color name="m3_on_surface_variant_dark">#B3D9F2</color>
+    
+    <color name="m3_error_dark">#FFB4AB</color>
+    <color name="m3_error_container_dark">#93000A</color>
+    <color name="m3_on_error_dark">#690005</color>
+    <color name="m3_on_error_container_dark">#FFDAD6</color>
+    
+    <color name="m3_outline_dark">#938F99</color>
+    <color name="m3_outline_variant_dark">#49454F</color>
 </resources>

@@ -21,6 +21,7 @@
 Zest v2.0 is a complete native rewrite with production-ready iOS and Web platforms!
 
 ### iOS Platform - 100% Complete! 🎊
+
 - ✅ **Google Sign-In** - Full authentication flow
 - ✅ **Image Upload** - Camera + photo library with Firebase Storage
 - ✅ **Star Ratings** - Interactive 5-star rating system
@@ -30,12 +31,14 @@ Zest v2.0 is a complete native rewrite with production-ready iOS and Web platfor
 - ✅ **Complete MVVM** - 6 ViewModels, 9 Views, production-ready architecture
 
 ### Web Platform - 92% Complete
+
 - ✅ **Next.js 14** - React 18 with App Router
 - ✅ **AI Integration** - 8 AI providers for recipe generation
 - ✅ **Full Features** - All core functionality working
 - ✅ **PWA Support** - Offline mode enabled
 
 ### Android Platform - 60% Complete
+
 - ✅ **Backend Ready** - Clean Architecture + MVVM
 - ✅ **Firebase Integration** - All services configured
 - ⚠️ **UI Needed** - Jetpack Compose implementation in progress
@@ -43,6 +46,7 @@ Zest v2.0 is a complete native rewrite with production-ready iOS and Web platfor
 ## Features
 
 ### Core Features
+
 - 📖 **Recipe Management** - Browse, create, import recipes from URLs
 - 📅 **Meal Planning** - Calendar-based meal planning and tracking
 - 🛒 **Shopping Lists** - Smart shopping lists with Instacart integration
@@ -50,6 +54,7 @@ Zest v2.0 is a complete native rewrite with production-ready iOS and Web platfor
 - 🔍 **Advanced Search** - Filter by cuisine, dietary restrictions, time, rating
 
 ### Smart Features
+
 - 🤖 **On-Device AI** - Recipe suggestions, photo analysis, instruction generation
 - 🍎 **Nutrition Tracking** - Calorie counter, macros, nutrition dashboard
 - 🗣️ **Voice-Guided Cooking** - Hands-free cooking mode with voice commands
@@ -58,6 +63,7 @@ Zest v2.0 is a complete native rewrite with production-ready iOS and Web platfor
 - 🔄 **Recipe Scaling** - Adjust serving sizes automatically
 
 ### Accessibility
+
 - 🎨 **Dyslexia-Friendly Font** - OpenDyslexic font option
 - 📱 **Haptic Feedback** - Tactile responses for actions
 - 🔊 **Voice Input** - Dictate recipes and notes
@@ -66,6 +72,7 @@ Zest v2.0 is a complete native rewrite with production-ready iOS and Web platfor
 - 🌈 **Color Blind Modes** - Protanopia, Deuteranopia, Tritanopia support
 
 ### Multi-Platform
+
 - 🌐 **Web** - Progressive Web App with offline support
 - 📱 **Android** - Material 3 Expressive design with dynamic colors
 - 🍎 **iOS** - Liquid Glass design language
@@ -75,6 +82,7 @@ Zest v2.0 is a complete native rewrite with production-ready iOS and Web platfor
 ## Supported AI Devices
 
 ### Android
+
 - Google Pixel 8+ (AICore)
 - Samsung Galaxy S23+, S24, Z Fold5, Z Flip5, Tab S9 (Galaxy AI)
 - Xiaomi 14, 13 Ultra, Redmi K70 (HyperOS AI)
@@ -84,12 +92,14 @@ Zest v2.0 is a complete native rewrite with production-ready iOS and Web platfor
 - Any Snapdragon 8 Gen 3 device (Qualcomm AI Engine)
 
 ### iOS
+
 - iPhone 15 Pro/Pro Max, iPhone 16 series (Apple Intelligence)
 - iPad Pro M1+, iPad Air M1+ (Apple Intelligence)
 
 ## Getting Started
 
 ### Prerequisites
+
 - **Web**: Node.js 20+, npm
 - **Android**: Android Studio, JDK 17, Gradle
 - **iOS**: Xcode 15+, macOS (for iOS development)
@@ -114,7 +124,7 @@ cd android
 # iOS setup (macOS only)
 cd ios
 pod install
-open MinimalChef.xcworkspace
+open Zest.xcworkspace
 ```
 
 ### Firebase Configuration
@@ -124,12 +134,13 @@ open MinimalChef.xcworkspace
 3. Enable Firestore Database
 4. Download configuration files:
    - Android: `google-services.json` → `android/app/`
-   - iOS: `GoogleService-Info.plist` → `ios/MinimalChef/`
+   - iOS: `GoogleService-Info.plist` → `ios/Zest/`
    - Web: Add Firebase config to `.env`
 
 ## Tech Stack
 
-### Web
+### Web Stack
+
 - Next.js 14.2 with React 18
 - TypeScript 5.4
 - Tailwind CSS 3.4 with Material 3 Expressive
@@ -138,7 +149,8 @@ open MinimalChef.xcworkspace
 - Zustand (state management)
 - Dynamic theming (light/dark mode)
 
-### Android
+### Android Stack
+
 - Kotlin with Jetpack Compose
 - Material 3 Expressive design system
 - Hilt (dependency injection)
@@ -146,7 +158,8 @@ open MinimalChef.xcworkspace
 - Coil (image loading)
 - Dynamic color support (Android 12+)
 
-### iOS
+### iOS Stack
+
 - Swift with SwiftUI
 - Liquid Glass design language
 - Translucent materials with depth
@@ -156,7 +169,7 @@ open MinimalChef.xcworkspace
 
 ## Project Structure
 
-```
+```dir
 zest/
 ├── web/                    # Next.js web app
 ├── android/                # Android Kotlin app
@@ -187,12 +200,14 @@ This project is licensed under the Neo Studios Public Repository License - see [
 ## Roadmap
 
 ### v2.1 (Planned)
+
 - Recipe video support
 - Collaborative meal planning
 - Enhanced AI features with official SDKs
 - More language support
 
 ### Future
+
 - Smart home integration (Alexa, Google Home)
 - Wearable support (Apple Watch, Wear OS)
 - Meal kit integration
@@ -201,6 +216,7 @@ This project is licensed under the Neo Studios Public Repository License - see [
 ## Why Native?
 
 This v0.5 native rewrite provides:
+
 - 3x faster performance than cross-platform frameworks
 - Native platform features and APIs
 - Better design systems (Material 3 Expressive, Liquid Glass)
@@ -210,7 +226,7 @@ This v0.5 native rewrite provides:
 
 ## Support
 
-- 📧 Email: support@neo-studios.com
+- 📧 Email: <support@neo-studios.com>
 - 🐛 Issues: [GitHub Issues](https://github.com/neo-studios/zest/issues)
 - 📖 Docs: [docs/](docs/)
 

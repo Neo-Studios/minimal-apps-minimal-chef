@@ -1,8 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#FFA500</color>
-    <color name="secondary">#00B4D8</color>
-    <color name="surface">#FFF8E1</color>
-    <color name="background">#FFFBF5</color>
-    <color name="error">#D32F2F</color>
+    <!-- Material 3 Expressive - Mediterranean Blue Theme (Light) -->
+    <color name="m3_primary">#0077BE</color>
+    <color name="m3_primary_light">#3399D6</color>
+    <color name="m3_primary_dark">#005A94</color>
+    <color name="m3_primary_container">#D6EFFF</color>
+    <color name="m3_on_primary">#FFFFFF</color>
+    <color name="m3_on_primary_container">#001F33</color>
+    
+    <color name="m3_secondary">#00A8CC</color>
+    <color name="m3_secondary_light">#33BFDB</color>
+    <color name="m3_secondary_dark">#0088A8</color>
+    <color name="m3_secondary_container">#D6F5FF</color>
+    <color name="m3_on_secondary">#FFFFFF</color>
+    <color name="m3_on_secondary_container">#003340</color>
+    
+    <color name="m3_tertiary">#FFB84D</color>
+    <color name="m3_tertiary_container">#FFF4E0</color>
+    <color name="m3_on_tertiary">#FFFFFF</color>
+    <color name="m3_on_tertiary_container">#4D3300</color>
+
+    <color name="m3_surface_dim">#E8F4F8</color>
+    <color name="m3_surface">#F5FAFE</color>
+    <color name="m3_surface_bright">#FFFFFF</color>
+    <color name="m3_surface_container_lowest">#FFFFFF</color>
+    <color name="m3_surface_container_low">#F0F9FF</color>
+    <color name="m3_surface_container">#E6F4FF</color>
+    <color name="m3_surface_container_high">#D6EFFF</color>
+    <color name="m3_surface_container_highest">#C2E7FF</color>
+    <color name="m3_on_surface">#0D2137</color>
+    <color name="m3_on_surface_variant">#3A5266</color>
+    
+    <color name="m3_error">#BA1A1A</color>
+    <color name="m3_error_container">#FFDAD6</color>
+    <color name="m3_on_error">#FFFFFF</color>
+    <color name="m3_on_error_container">#410002</color>
+    
+    <color name="m3_outline">#79747E</color>
+    <color name="m3_outline_variant">#CAC4D0</color>
 </resources>

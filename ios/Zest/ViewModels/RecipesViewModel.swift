@@ -4,6 +4,8 @@ import FirebaseAuth
 class RecipesViewModel: ObservableObject {
     @Published var recipes: [Recipe] = []
     @Published var searchText: String = ""
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String? = nil
     
     private let recipeService = RecipeService()
     
@@ -15,11 +17,14 @@ class RecipesViewModel: ObservableObject {
     }
     
     func loadRecipes() async {
-        guard let userId = Auth.auth().currentUser?.uid else { return }
+        isLoading = true
+        errorMessage = nil
         do {
-            recipes = try await recipeService.getRecipes(userId: userId)
+            recipes = try await recipeService.getRecipes(userId: Auth.auth().currentUser?.uid ?? "")
         } catch {
             print("Error loading recipes: \(error)")
+            errorMessage = error.localizedDescription
         }
+        isLoading = false
     }
 }

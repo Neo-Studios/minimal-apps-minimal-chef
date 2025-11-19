@@ -2,7 +2,7 @@
 
 ## Repository Layout
 
-```
+```dir
 zest/
 ├── web/                    # Next.js web application
 ├── android/                # Android Kotlin application
@@ -16,7 +16,7 @@ zest/
 
 ## Web Application (`web/`)
 
-```
+```dir
 web/
 ├── src/
 │   ├── app/                # Next.js App Router pages
@@ -54,7 +54,7 @@ web/
 
 ## Android Application (`android/`)
 
-```
+```dir
 android/
 ├── app/
 │   ├── src/
@@ -75,7 +75,7 @@ android/
 
 ## iOS Application (`ios/`)
 
-```
+```dir
 ios/
 ├── Runner/                 # Main app target
 │   ├── [Swift source files]
@@ -83,17 +83,17 @@ ios/
 │   ├── Info.plist
 │   └── GoogleService-Info.plist # Firebase config (gitignored)
 ├── Zest/                   # Additional app files
-├── MinimalChefTests/       # Unit tests
+├── ZestTests/       # Unit tests
 ├── Flutter/                # Flutter integration (legacy)
 ├── Podfile                 # CocoaPods dependencies
-└── MinimalChef.xcworkspace # Xcode workspace
+└── Zest.xcworkspace # Xcode workspace
 ```
 
 **iOS Architecture**: MVVM with SwiftUI, ObservableObject for state, Combine for reactive programming, and service layer for data.
 
 ## Shared Resources (`shared/`)
 
-```
+```dir
 shared/
 ├── design-tokens/          # Design system tokens (colors, spacing, typography)
 ├── locales/                # Translation files for 21 languages
@@ -110,16 +110,19 @@ Contains architecture docs, setup guides, AI integration docs, health integratio
 ## File Naming Conventions
 
 ### Web (TypeScript)
+
 - **Components**: PascalCase (e.g., `CookingTimer.tsx`)
 - **Utilities/Services**: camelCase (e.g., `recipeImport.ts`)
 - **Types**: PascalCase (e.g., `models.ts`)
 - **Hooks**: camelCase with `use` prefix (e.g., `useNotifications.ts`)
 
 ### Android (Kotlin)
+
 - **Files**: PascalCase matching class name (e.g., `RecipeViewModel.kt`)
 - **Packages**: lowercase with underscores (e.g., `com.neostudios.zest.features.recipe`)
 
 ### iOS (Swift)
+
 - **Files**: PascalCase matching type name (e.g., `RecipeView.swift`)
 
 ## Key Configuration Files
@@ -132,12 +135,14 @@ Contains architecture docs, setup guides, AI integration docs, health integratio
 ## Platform Independence
 
 Each platform (web, Android, iOS) is completely independent with its own:
+
 - Build system and dependencies
 - Source code and architecture
 - Testing framework
 - Configuration files
 
 They share only:
+
 - Firebase backend
 - Design tokens and assets in `shared/`
 - Documentation and project metadata

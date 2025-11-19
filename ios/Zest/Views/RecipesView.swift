@@ -7,8 +7,8 @@ struct RecipesView: View {
     @State private var selectedDifficulty = "All"
     @State private var showingAddRecipe = false
     
-    let cuisines = ["All", "Italian", "Mexican", "Asian", "American", "Mediterranean"]
-    let difficulties = ["All", "Easy", "Medium", "Hard"]
+    let cuisines = ["All", "Italian", "Mexican", "Asian", "American", "Mediterranean"] // TODO: Localize these
+    let difficulties = ["All", "Easy", "Medium", "Hard"] // TODO: Localize these
     
     var filteredRecipes: [Recipe] {
         viewModel.recipes.filter { recipe in
@@ -26,15 +26,15 @@ struct RecipesView: View {
                 
                 // Search and filters
                 VStack(spacing: 12) {
-                    SearchBar(text: $searchText)
+                    SearchBar(text: $searchText, placeholder: LocalizedStringKey("recipes.searchPlaceholder"))
                     HStack {
-                        Picker("Cuisine", selection: $selectedCuisine) {
+                        Picker(LocalizedStringKey("recipes.cuisine"), selection: $selectedCuisine) {
                             ForEach(cuisines, id: \.self) { cuisine in
                                 Text(cuisine).tag(cuisine)
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
-                        Picker("Difficulty", selection: $selectedDifficulty) {
+                        Picker(LocalizedStringKey("recipes.difficulty"), selection: $selectedDifficulty) {
                             ForEach(difficulties, id: \.self) { difficulty in
                                 Text(difficulty).tag(difficulty)
                             }
@@ -47,7 +47,7 @@ struct RecipesView: View {
                 // Content
                 if viewModel.isLoading {
                     Spacer()
-                    ProgressView("Loading recipes...")
+                    ProgressView(LocalizedStringKey("recipes.loading"))
                     Spacer()
                 } else if let errorMessage = viewModel.errorMessage {
                     Spacer()
@@ -55,14 +55,14 @@ struct RecipesView: View {
                         Image(systemName: "exclamationmark.triangle")
                             .font(.system(size: 60))
                             .foregroundColor(.red)
-                        Text("Error")
+                        Text(LocalizedStringKey("recipes.error"))
                             .font(.title2)
                             .foregroundColor(.red)
                         Text(errorMessage)
                             .font(.caption)
                             .foregroundColor(.gray)
                             .multilineTextAlignment(.center)
-                        Button("Retry") {
+                        Button(LocalizedStringKey("recipes.retry")) {
                             Task {
                                 await viewModel.loadRecipes()
                             }
@@ -76,10 +76,10 @@ struct RecipesView: View {
                         Image(systemName: "fork.knife")
                             .font(.system(size: 60))
                             .foregroundColor(.gray)
-                        Text("No recipes found")
+                        Text(LocalizedStringKey("recipes.noRecipesFound"))
                             .font(.title2)
                             .foregroundColor(.gray)
-                        Text("Try adjusting your filters or add a new recipe")
+                        Text(LocalizedStringKey("recipes.adjustFilters"))
                             .font(.caption)
                             .foregroundColor(.gray)
                             .multilineTextAlignment(.center)
@@ -93,7 +93,7 @@ struct RecipesView: View {
                     }
                 }
             }
-            .navigationTitle("Recipes")
+            .navigationTitle(LocalizedStringKey("recipes.title"))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -144,14 +144,14 @@ struct RecipeRowView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(recipe.name)
                     .font(.headline)
-                Text(recipe.cuisine)
+                Text(recipe.cuisine) // TODO: Localize cuisine type
                     .font(.caption)
                     .foregroundColor(.gray)
                 HStack {
-                    Label("\(recipe.prepTime + recipe.cookTime)m", systemImage: "clock")
-                    Label("\(recipe.servings)", systemImage: "person.2")
+                    Label(LocalizedStringKey("recipes.time", arguments: [recipe.prepTime + recipe.cookTime]), systemImage: "clock")
+                    Label(LocalizedStringKey("recipes.servings", arguments: [recipe.servings]), systemImage: "person.2")
                     if let rating = recipe.rating {
-                        Label(String(format: "%.1f", rating), systemImage: "star.fill")
+                        Label(String(format: "%.1f", rating), systemImage: "star.fill") // TODO: Localize rating
                             .foregroundColor(.orange)
                     }
                 }
@@ -165,12 +165,13 @@ struct RecipeRowView: View {
 
 struct SearchBar: View {
     @Binding var text: String
+    var placeholder: LocalizedStringKey
     
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.gray)
-            TextField("Search recipes", text: $text)
+            TextField(placeholder, text: $text)
                 .textFieldStyle(.plain)
             if !text.isEmpty {
                 Button {

@@ -12,17 +12,61 @@ const config: Config = {
     extend: {
       colors: {
         // Legacy support
-        primary: expressiveColors.primary.main,
-        secondary: expressiveColors.secondary.main,
+        primary: 'rgb(var(--color-primary-main) / <alpha-value>)',
+        secondary: 'rgb(var(--color-secondary-main) / <alpha-value>)',
         // Material 3 Expressive colors
         m3: {
-          primary: expressiveColors.primary,
-          secondary: expressiveColors.secondary,
-          tertiary: expressiveColors.tertiary,
-          surface: expressiveColors.surface,
-          error: expressiveColors.error,
-          on: expressiveColors.on,
-          outline: expressiveColors.outline,
+          primary: {
+            main: 'rgb(var(--color-primary-main) / <alpha-value>)',
+            light: 'rgb(var(--color-primary-light) / <alpha-value>)',
+            dark: 'rgb(var(--color-primary-dark) / <alpha-value>)',
+            container: 'rgb(var(--color-primary-container) / <alpha-value>)',
+            onContainer: 'rgb(var(--color-primary-onContainer) / <alpha-value>)',
+          },
+          secondary: {
+            main: 'rgb(var(--color-secondary-main) / <alpha-value>)',
+            light: 'rgb(var(--color-secondary-light) / <alpha-value>)',
+            dark: 'rgb(var(--color-secondary-dark) / <alpha-value>)',
+            container: 'rgb(var(--color-secondary-container) / <alpha-value>)',
+            onContainer: 'rgb(var(--color-secondary-onContainer) / <alpha-value>)',
+          },
+          tertiary: {
+            main: 'rgb(var(--color-tertiary-main) / <alpha-value>)',
+            light: 'rgb(var(--color-tertiary-light) / <alpha-value>)',
+            dark: 'rgb(var(--color-tertiary-dark) / <alpha-value>)',
+            container: 'rgb(var(--color-tertiary-container) / <alpha-value>)',
+            onContainer: 'rgb(var(--color-tertiary-onContainer) / <alpha-value>)',
+          },
+          surface: {
+            dim: 'rgb(var(--color-surface-dim) / <alpha-value>)',
+            main: 'rgb(var(--color-surface-main) / <alpha-value>)',
+            bright: 'rgb(var(--color-surface-bright) / <alpha-value>)',
+            containerLowest: 'rgb(var(--color-surface-containerLowest) / <alpha-value>)',
+            containerLow: 'rgb(var(--color-surface-containerLow) / <alpha-value>)',
+            container: 'rgb(var(--color-surface-container) / <alpha-value>)',
+            containerHigh: 'rgb(var(--color-surface-containerHigh) / <alpha-value>)',
+            containerHighest: 'rgb(var(--color-surface-containerHighest) / <alpha-value>)',
+          },
+          error: {
+            main: 'rgb(var(--color-error-main) / <alpha-value>)',
+            light: 'rgb(var(--color-error-light) / <alpha-value>)',
+            dark: 'rgb(var(--color-error-dark) / <alpha-value>)',
+            container: 'rgb(var(--color-error-container) / <alpha-value>)',
+            onContainer: 'rgb(var(--color-error-onContainer) / <alpha-value>)',
+          },
+          on: {
+            primary: 'rgb(var(--color-on-primary) / <alpha-value>)',
+            secondary: 'rgb(var(--color-on-secondary) / <alpha-value>)',
+            tertiary: 'rgb(var(--color-on-tertiary) / <alpha-value>)',
+            surface: 'rgb(var(--color-on-surface) / <alpha-value>)',
+            surfaceVariant: 'rgb(var(--color-on-surfaceVariant) / <alpha-value>)',
+            error: 'rgb(var(--color-on-error) / <alpha-value>)',
+            background: 'rgb(var(--color-on-background) / <alpha-value>)',
+          },
+          outline: {
+            main: 'rgb(var(--color-outline-main) / <alpha-value>)',
+            variant: 'rgb(var(--color-outline-variant) / <alpha-value>)',
+          },
         },
       },
       fontFamily: {

@@ -2,7 +2,7 @@
 
 ## Repository Organization
 
-```
+```dir
 zest/
 ├── web/                    # Next.js web application
 ├── android/                # Kotlin Android application
@@ -18,7 +18,8 @@ zest/
 ## Platform-Specific Directories
 
 ### Web Application (`web/`)
-```
+
+```dir
 web/
 ├── src/
 │   ├── app/              # Next.js 14 App Router pages
@@ -37,6 +38,7 @@ web/
 ```
 
 **Key Components:**
+
 - App Router for routing and layouts
 - Zustand for state management
 - Firebase SDK for backend services
@@ -44,7 +46,8 @@ web/
 - TypeScript for type safety
 
 ### Android Application (`android/`)
-```
+
+```dir
 android/
 ├── app/
 │   ├── src/
@@ -63,6 +66,7 @@ android/
 ```
 
 **Key Components:**
+
 - Jetpack Compose for UI
 - Material 3 Expressive design system
 - Hilt for dependency injection
@@ -70,7 +74,8 @@ android/
 - Kotlin Coroutines for async operations
 
 ### iOS Application (`ios/`)
-```
+
+```dir
 ios/
 ├── Zest/
 │   ├── AI/               # AI integration (Apple Intelligence)
@@ -81,13 +86,14 @@ ios/
 │   ├── Resources/        # Assets and resources
 │   ├── Performance/      # Performance monitoring
 │   ├── Info.plist        # App configuration
-│   └── MinimalChefApp.swift  # App entry point
-├── MinimalChefTests/     # Unit tests
+│   └── ZestApp.swift  # App entry point
+├── ZestTests/     # Unit tests
 ├── Runner/               # Flutter compatibility layer
 └── Podfile               # CocoaPods dependencies
 ```
 
 **Key Components:**
+
 - SwiftUI for declarative UI
 - Liquid Glass design language
 - Combine framework for reactive programming
@@ -97,21 +103,26 @@ ios/
 ## Shared Resources (`shared/`)
 
 ### Design Tokens (`shared/design-tokens/`)
+
 - `tokens.json` - Unified design system tokens (colors, typography, spacing)
 
 ### Localization (`shared/locales/`)
+
 - 21 language files (.lang format)
 - Consistent translations across platforms
 
 ### Firebase Configuration (`shared/firebase-config/`)
+
 - Setup documentation
 - Firestore schema definitions
 
 ### Assets
+
 - `shared/fonts/` - RobotoFlex variable font
 - `shared/icons/` - Icon assets and guidelines
 
 ## Documentation (`docs/`)
+
 - `ARCHITECTURE.md` - System architecture overview
 - `AI_SUPPORT.md` - AI device compatibility
 - `AI_SDK_INTEGRATION.md` - AI SDK integration guide
@@ -119,7 +130,8 @@ ios/
 - SEO files (robots.txt, sitemap.xml, humans.txt)
 
 ## AI Assistant Workspace (`.gemini/`)
-```
+
+```dir
 .gemini/
 ├── plans/          # Feature planning documents
 ├── tasks/          # Task lists with sub-tasks
@@ -128,6 +140,7 @@ ios/
 ```
 
 ## CI/CD Configuration (`.github/workflows/`)
+
 - `android-build.yml` - Android build pipeline
 - `ios-build.yml` - iOS build pipeline
 - `web-deploy.yml` - Web deployment pipeline
@@ -136,23 +149,27 @@ ios/
 ## Architectural Patterns
 
 ### Multi-Platform Architecture
+
 - **Native Implementations** - Each platform uses native frameworks (Next.js, Kotlin Compose, SwiftUI)
 - **Shared Backend** - Firebase provides unified backend (Auth, Firestore, Storage)
 - **Design Token System** - Shared design tokens ensure visual consistency
 - **Localization Strategy** - Centralized translation files
 
 ### Data Flow
+
 1. **Client Layer** - Platform-specific UI (React, Compose, SwiftUI)
 2. **Service Layer** - Business logic and API calls
 3. **Firebase Backend** - Authentication, database, storage
 4. **Local Storage** - Offline-first with local caching
 
 ### State Management
+
 - **Web:** Zustand for global state
 - **Android:** Hilt + ViewModel + StateFlow
 - **iOS:** Combine + ObservableObject
 
 ### AI Integration
+
 - Platform-specific AI SDKs (AICore, Galaxy AI, Apple Intelligence)
 - On-device processing for privacy
 - Fallback to cloud AI when unavailable
@@ -160,26 +177,31 @@ ios/
 ## Core Component Relationships
 
 ### Recipe Management Flow
-```
+
+```dir
 UI Layer → ViewModel/State → Service Layer → Firebase/Local DB
 ```
 
 ### Authentication Flow
-```
+
+```dir
 Login UI → Firebase Auth → User Session → Firestore User Profile
 ```
 
 ### AI Features Flow
-```
+
+```dir
 User Input → AI Manager → Device AI SDK → Result Processing → UI Update
 ```
 
 ### Offline Sync Flow
-```
+
+```dir
 Local DB ↔ Sync Service ↔ Firebase Firestore
 ```
 
 ## Development Environment
+
 - **IDX Integration** - Firebase Studio environment
 - **Package Management** - `.idx/dev.nix` for system dependencies
 - **Hot Reload** - Supported on all platforms

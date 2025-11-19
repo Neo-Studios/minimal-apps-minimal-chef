@@ -8,7 +8,7 @@
 
 ## Reporting a Vulnerability
 
-We take security seriously. If you discover a security vulnerability in Minimal Chef, please report it responsibly.
+We take security seriously. If you discover a security vulnerability in  Chef, please report it responsibly.
 
 ### How to Report
 
@@ -17,6 +17,7 @@ We take security seriously. If you discover a security vulnerability in Minimal 
 Instead, please email security concerns to: [your-security-email@example.com]
 
 Include in your report:
+
 - Description of the vulnerability
 - Steps to reproduce
 - Potential impact
@@ -34,7 +35,7 @@ Include in your report:
 
 ### Security Best Practices
 
-When using Minimal Chef:
+When using Zest, please follow these security best practices:
 
 1. **Firebase Configuration**:
    - Never commit `firebase_options.dart` to version control
@@ -58,12 +59,15 @@ When using Minimal Chef:
 ## Known Security Considerations
 
 ### Firestore Rules
-Current rules ensure:
+
+Current rules ensure:Minimal
+
 - Users can only read/write their own data
 - Authentication required for all operations
 - User ID validation on create/update operations
 
 ### Dependencies
+
 - Regularly update Flutter and package dependencies
 - Monitor for security advisories
 - Run `flutter pub outdated` periodically

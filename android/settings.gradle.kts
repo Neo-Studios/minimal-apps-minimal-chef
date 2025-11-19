@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MinimalChef"
+rootProject.name = "Zest"
 include(":app")

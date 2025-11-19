@@ -1,6 +1,6 @@
-# Contributing to Minimal Chef
+# Contributing to Zest
 
-Thank you for your interest in contributing to Minimal Chef! This document provides guidelines for contributing to the project.
+Thank you for your interest in contributing to Zest! This document provides guidelines for contributing to the project.
 
 ## Code of Conduct
 
@@ -43,8 +43,8 @@ Thank you for your interest in contributing to Minimal Chef! This document provi
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/minimal-chef.git
-cd minimal-chef
+git clone https://github.com/neo-studios/zest.git
+cd zest
 
 # Install dependencies
 flutter pub get
@@ -61,6 +61,7 @@ flutter run
 ### Follow Project Guidelines
 
 Refer to `.amazonq/rules/memory-bank/guidelines.md` for:
+
 - Naming conventions
 - File organization
 - Widget structure
@@ -87,7 +88,7 @@ Refer to `.amazonq/rules/memory-bank/guidelines.md` for:
 
 ## Project Structure
 
-```
+```dir
 lib/
 ├── features/          # Feature modules
 │   ├── auth/         # Authentication

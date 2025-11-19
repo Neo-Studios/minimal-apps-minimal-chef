@@ -13,7 +13,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct ZestApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var authViewModel = AuthViewModel() // Observe AuthViewModel
+    @StateObject private var settingsStore = SettingsStore() // Observe SettingsStore
     @State private var showAppTour = false // State to manage flow between showcase and tour
+    @State private var appLanguage: String = Locale.current.identifier // Track current app language
     
     var body: some Scene {
         WindowGroup {
@@ -49,33 +51,42 @@ struct ZestApp: App {
                     TabView {
                         RecipesView()
                             .tabItem {
-                                Label("Recipes", systemImage: "book.closed.fill")
+                                Label(LocalizedStringKey("Recipes"), systemImage: "book.closed.fill")
                             }
                         MealPlanView()
                             .tabItem {
-                                Label("Meal Plan", systemImage: "calendar")
+                                Label(LocalizedStringKey("Meal Plan"), systemImage: "calendar")
                             }
                         ShoppingListView()
                             .tabItem {
-                                Label("Shopping", systemImage: "cart.fill")
+                                Label(LocalizedStringKey("Shopping"), systemImage: "cart.fill")
                             }
                         MealKitsView()
                             .tabItem {
-                                Label("Meal Kits", systemImage: "shippingbox.fill")
+                                Label(LocalizedStringKey("Meal Kits"), systemImage: "shippingbox.fill")
                             }
                         CollaborativeMealPlansView()
                             .tabItem {
-                                Label("Collab Plans", systemImage: "person.3.fill")
+                                Label(LocalizedStringKey("Collab Plans"), systemImage: "person.3.fill")
                             }
                         SettingsView()
                             .tabItem {
-                                Label("Settings", systemImage: "gearshape.fill")
+                                Label(LocalizedStringKey("Settings"), systemImage: "gearshape.fill")
                             }
                     }
                     .font(.custom("GoogleSansFlex", size: 16))
                 }
             }
             .environmentObject(authViewModel) // Provide authViewModel to the environment
+            .environmentObject(settingsStore) // Provide settingsStore to the environment
+            .onReceive(settingsStore.$language) { newLanguage in
+                // This is a simplified approach. For a full language change,
+                // the app might need to be restarted or a custom Bundle loaded.
+                // For now, we'll just update the appLanguage state to trigger a view refresh.
+                appLanguage = newLanguage.rawValue
+            }
+            .id(appLanguage) // Key to force view hierarchy refresh on language change
+            .preferredColorScheme(settingsStore.themeMode == "Light" ? .light : settingsStore.themeMode == "Dark" ? .dark : nil)
         }
     }
 }

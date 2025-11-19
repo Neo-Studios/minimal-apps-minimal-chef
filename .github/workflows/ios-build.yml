@@ -26,8 +26,8 @@ jobs:
       - name: Build iOS
         run: |
           cd ios
-          xcodebuild -workspace MinimalChef.xcworkspace \
-            -scheme MinimalChef \
+          xcodebuild -workspace Zest.xcworkspace \
+            -scheme Zest \
             -sdk iphonesimulator \
             -configuration Debug \
             build

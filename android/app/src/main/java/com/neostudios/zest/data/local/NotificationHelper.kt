@@ -9,7 +9,7 @@ import com.neostudios.zest.R
 
 object NotificationHelper {
     private const val CHANNEL_ID = "minimal_chef_notifications"
-    private const val CHANNEL_NAME = "Minimal Chef"
+    private const val CHANNEL_NAME = "Zest"
     
     fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

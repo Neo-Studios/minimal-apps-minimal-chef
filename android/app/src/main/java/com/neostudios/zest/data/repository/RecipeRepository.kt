@@ -36,6 +36,14 @@ class RecipeRepository @Inject constructor(
             doc.toObject(Recipe::class.java)?.copy(id = doc.id)
         }
     }
+
+    suspend fun getRecipes(userId: String): List<Recipe> {
+        val snapshot = recipesCollection.whereEqualTo("userId", userId).get().await()
+        return snapshot.documents.mapNotNull { doc ->
+            doc.toObject(Recipe::class.java)?.copy(id = doc.id)
+        }
+    }
+
     
     suspend fun updateRecipe(id: String, recipe: Recipe, imageUri: Uri?) {
         var imageUrl: String? = recipe.imageUrl

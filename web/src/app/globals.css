@@ -28,41 +28,43 @@
 
 :root {
   /* Material 3 Expressive - Mediterranean Blue Theme */
-  --m3-primary: #0077BE;
-  --m3-primary-light: #3399D6;
-  --m3-primary-dark: #005A94;
-  --m3-primary-container: #D6EFFF;
-  --m3-on-primary: #FFFFFF;
-  --m3-on-primary-container: #001F33;
+  --color-primary-main: 0, 119, 190;
+  --color-primary-light: 51, 153, 214;
+  --color-primary-dark: 0, 90, 148;
+  --color-primary-container: 214, 239, 255;
+  --color-on-primary: 255, 255, 255;
+  --color-primary-onContainer: 0, 31, 51;
   
-  --m3-secondary: #00A8CC;
-  --m3-secondary-light: #33BFDB;
-  --m3-secondary-dark: #0088A8;
-  --m3-secondary-container: #D6F5FF;
-  --m3-on-secondary: #FFFFFF;
-  --m3-on-secondary-container: #003340;
+  --color-secondary-main: 0, 168, 204;
+  --color-secondary-light: 51, 191, 219;
+  --color-secondary-dark: 0, 136, 168;
+  --color-secondary-container: 214, 245, 255;
+  --color-on-secondary: 255, 255, 255;
+  --color-secondary-onContainer: 0, 51, 64;
   
-  --m3-tertiary: #FFB84D;
-  --m3-tertiary-container: #FFF4E0;
-  --m3-on-tertiary: #FFFFFF;
-  --m3-on-tertiary-container: #4D3300;
+  --color-tertiary-main: 255, 184, 77;
+  --color-tertiary-container: 255, 244, 224;
+  --color-on-tertiary: 255, 255, 255;
+  --color-tertiary-onContainer: 77, 51, 0;
   
-  --m3-surface: #F5FAFE;
-  --m3-surface-dim: #E8F4F8;
-  --m3-surface-bright: #FFFFFF;
-  --m3-surface-container: #E6F4FF;
-  --m3-surface-container-high: #D6EFFF;
-  --m3-surface-container-highest: #C2E7FF;
-  --m3-on-surface: #0D2137;
-  --m3-on-surface-variant: #3A5266;
+  --color-surface-dim: 232, 244, 248;
+  --color-surface-main: 245, 250, 254;
+  --color-surface-bright: 255, 255, 255;
+  --color-surface-containerLowest: 255, 255, 255;
+  --color-surface-containerLow: 240, 249, 255;
+  --color-surface-container: 230, 244, 255;
+  --color-surface-containerHigh: 214, 239, 255;
+  --color-surface-containerHighest: 194, 231, 255;
+  --color-on-surface: 13, 33, 55;
+  --color-on-surface-variant: 58, 82, 102;
   
-  --m3-error: #BA1A1A;
-  --m3-error-container: #FFDAD6;
-  --m3-on-error: #FFFFFF;
-  --m3-on-error-container: #410002;
+  --color-error-main: 186, 26, 26;
+  --color-error-container: 255, 218, 214;
+  --color-on-error: 255, 255, 255;
+  --color-error-onContainer: 65, 0, 2;
   
-  --m3-outline: #79747E;
-  --m3-outline-variant: #CAC4D0;
+  --color-outline-main: 121, 116, 126;
+  --color-outline-variant: 202, 196, 208;
   
   /* Legacy support */
   --primary: var(--m3-primary);
@@ -75,41 +77,43 @@
 @media (prefers-color-scheme: dark) {
   :root:not(.light) {
     /* Material 3 Expressive - Mediterranean Night Theme */
-    --m3-primary: #5CB3FF;
-    --m3-primary-light: #8FCCFF;
-    --m3-primary-dark: #3399D6;
-    --m3-primary-container: #001F33;
-    --m3-on-primary: #001F33;
-    --m3-on-primary-container: #D6EFFF;
+    --color-primary-main: 92, 179, 255;
+    --color-primary-light: 143, 204, 255;
+    --color-primary-dark: 51, 153, 214;
+    --color-primary-container: 0, 31, 51;
+    --color-on-primary: 0, 31, 51;
+    --color-primary-onContainer: 214, 239, 255;
     
-    --m3-secondary: #4DD4F5;
-    --m3-secondary-light: #7DE3FF;
-    --m3-secondary-dark: #00A8CC;
-    --m3-secondary-container: #003340;
-    --m3-on-secondary: #003340;
-    --m3-on-secondary-container: #D6F5FF;
+    --color-secondary-main: 77, 212, 245;
+    --color-secondary-light: 125, 227, 255;
+    --color-secondary-dark: 0, 168, 204;
+    --color-secondary-container: 0, 51, 64;
+    --color-on-secondary: 0, 51, 64;
+    --color-secondary-onContainer: 214, 245, 255;
     
-    --m3-tertiary: #FFD699;
-    --m3-tertiary-container: #4D3300;
-    --m3-on-tertiary: #4D3300;
-    --m3-on-tertiary-container: #FFF4E0;
+    --color-tertiary-main: 255, 214, 153;
+    --color-tertiary-container: 77, 51, 0;
+    --color-on-tertiary: 77, 51, 0;
+    --color-tertiary-onContainer: 255, 244, 224;
     
-    --m3-surface: #0D2137;
-    --m3-surface-dim: #0A1929;
-    --m3-surface-bright: #1A3A52;
-    --m3-surface-container: #14293D;
-    --m3-surface-container-high: #1E3A52;
-    --m3-surface-container-highest: #2A4A66;
-    --m3-on-surface: #E3F2FD;
-    --m3-on-surface-variant: #B3D9F2;
+    --color-surface-dim: 10, 25, 41;
+    --color-surface-main: 13, 33, 55;
+    --color-surface-bright: 26, 58, 82;
+    --color-surface-containerLowest: 6, 18, 32;
+    --color-surface-containerLow: 13, 33, 55;
+    --color-surface-container: 20, 41, 61;
+    --color-surface-containerHigh: 30, 58, 82;
+    --color-surface-containerHighest: 42, 74, 102;
+    --color-on-surface: 230, 225, 229;
+    --color-on-surface-variant: 179, 217, 242;
     
-    --m3-error: #FFB4AB;
-    --m3-error-container: #93000A;
-    --m3-on-error: #690005;
-    --m3-on-error-container: #FFDAD6;
+    --color-error-main: 255, 180, 171;
+    --color-error-container: 147, 0, 10;
+    --color-on-error: 105, 0, 5;
+    --color-error-onContainer: 255, 218, 214;
     
-    --m3-outline: #938F99;
-    --m3-outline-variant: #49454F;
+    --color-outline-main: 147, 143, 153;
+    --color-outline-variant: 73, 69, 79;
   }
   /* Legacy support */
   :root:not(.light) {

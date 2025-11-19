@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleName</key>
-    <string>Minimal Chef</string>
+    <string>Zest</string>
     <key>CFBundleDisplayName</key>
-    <string>Minimal Chef</string>
+    <string>Zest</string>
     <key>CFBundleIdentifier</key>
     <string>com.neostudios.minimalchef</string>
     <key>CFBundleVersion</key>

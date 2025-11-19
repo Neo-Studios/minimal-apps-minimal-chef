@@ -1,5 +1,7 @@
 package com.neostudios.zest
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -7,14 +9,18 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.*
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.neostudios.zest.ui.navigation.AdaptiveNavigation
 import com.neostudios.zest.ui.screens.AppTourScreen
 import com.neostudios.zest.ui.screens.AuthViewModel
 import com.neostudios.zest.ui.screens.FeatureShowcaseScreen
+import com.neostudios.zest.ui.screens.SettingsViewModel
 import com.neostudios.zest.ui.theme.Material3ExpressiveTheme
+import com.neostudios.zest.util.Language
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Locale
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -25,8 +31,18 @@ class MainActivity : ComponentActivity() {
         setContent {
             val windowSizeClass = calculateWindowSizeClass(this)
             val authViewModel: AuthViewModel = hiltViewModel()
+            val settingsViewModel: SettingsViewModel = hiltViewModel()
             val showOnboarding by authViewModel.showOnboarding.collectAsStateWithLifecycle()
             val currentUser by authViewModel.currentUser.collectAsStateWithLifecycle()
+            val selectedLanguage by settingsViewModel.language.collectAsStateWithLifecycle()
+
+            val context = LocalContext.current
+
+            LaunchedEffect(selectedLanguage) {
+                setLocale(context, selectedLanguage)
+                // Recreate the activity to apply the new locale
+                recreate()
+            }
 
             var showAppTour by remember { mutableStateOf(false) }
 
@@ -58,4 +74,13 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+}
+
+fun setLocale(context: Context, language: Language) {
+    val locale = Locale(language.code)
+    Locale.setDefault(locale)
+    val resources = context.resources
+    val configuration = Configuration(resources.configuration)
+    configuration.setLocale(locale)
+    resources.updateConfiguration(configuration, resources.displayMetrics)
 }
