@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Web - Zest Documentation</title>
+</head>
+<body>
+    <header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/user/">User Docs</a>
+        <a href="/developer/">Developer Docs</a>
+    </nav>
+    <link rel="stylesheet" href="/css/custom.css">
+</header>
+    <main>
+        <h1>Web</h1>
+        <p>The Zest web app is built with Next.js and React.</p>
+<h2 id="tech-stack">Tech Stack</h2>
+<ul>
+<li><strong>Framework:</strong> Next.js 14 with React 18 (App Router)</li>
+<li><strong>Language:</strong> TypeScript</li>
+<li><strong>Styling:</strong> Tailwind CSS with a custom Material 3 Expressive design system.</li>
+<li><strong>State Management:</strong> Zustand</li>
+<li><strong>Data Fetching:</strong> Firebase SDK</li>
+<li><strong>Testing:</strong>
+<ul>
+<li><strong>Unit/Integration:</strong> Vitest and React Testing Library</li>
+<li><strong>E2E:</strong> Playwright</li>
+</ul>
+</li>
+</ul>
+<h2 id="getting-started">Getting Started</h2>
+<ol>
+<li>Navigate to the <code>web</code> directory:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd web
+</span></span></code></pre></div></li>
+<li>Install dependencies:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install
+</span></span></code></pre></div></li>
+<li>Set up Firebase:
+<ul>
+<li>Create a <code>.env.local</code> file in the <code>web</code> directory.</li>
+<li>Add your Firebase project&rsquo;s credentials to the <code>.env.local</code> file. See <code>web/.env.example</code> for an example.</li>
+</ul>
+</li>
+<li>Run the development server:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm run dev
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="building-and-running-for-production">Building and Running for Production</h2>
+<ul>
+<li><strong>Create a production build:</strong> <code>npm run build</code></li>
+<li><strong>Start the production server:</strong> <code>npm run start</code></li>
+</ul>
+<h2 id="testing">Testing</h2>
+<ul>
+<li><strong>Run unit tests:</strong> <code>npm test</code></li>
+<li><strong>Run E2E tests:</strong> <code>npx playwright test</code></li>
+</ul>
+
+    </main>
+    <footer>
+    <p>© 2025 Zest Documentation</p>
+</footer>
+</body>
+</html>

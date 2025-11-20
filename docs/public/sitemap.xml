@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://example.org/developer/android/</loc>
+  </url><url>
+    <loc>https://example.org/developer/backend/</loc>
+  </url><url>
+    <loc>https://example.org/categories/</loc>
+  </url><url>
+    <loc>https://example.org/developer/</loc>
+  </url><url>
+    <loc>https://example.org/user/getting-started/</loc>
+  </url><url>
+    <loc>https://example.org/developer/ios/</loc>
+  </url><url>
+    <loc>https://example.org/user/meal-planner/</loc>
+  </url><url>
+    <loc>https://example.org/user/recipes/</loc>
+  </url><url>
+    <loc>https://example.org/series/</loc>
+  </url><url>
+    <loc>https://example.org/user/shopping-list/</loc>
+  </url><url>
+    <loc>https://example.org/tags/</loc>
+  </url><url>
+    <loc>https://example.org/developer/web/</loc>
+  </url><url>
+    <loc>https://example.org/user/</loc>
+  </url><url>
+    <loc>https://example.org/</loc>
+  </url>
+</urlset>

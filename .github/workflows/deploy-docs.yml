@@ -28,10 +28,6 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
-      - name: Install Hugo module dependencies
-        working-directory: docs
-        run: hugo mod get -u
-
       - name: Build site
         working-directory: docs
         run: hugo -D -d public
