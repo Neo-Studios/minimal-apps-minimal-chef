@@ -7,11 +7,72 @@
 <body>
     <header>
     <nav>
-        <a href="/">Home</a>
-        <a href="/user/">User Docs</a>
-        <a href="/developer/">Developer Docs</a>
+        <a id="home-link" href="/">Home</a>
+        <a id="user-docs-link" href="/user/">User Docs</a>
+        <a id="developer-docs-link" href="/developer/">Developer Docs</a>
     </nav>
-    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/custom.css"> 
+</header>
+    <style>
+        .active-mode {
+            font-weight: bold;
+            color: blue;  
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userDocsLink = document.getElementById('user-docs-link');
+            const developerDocsLink = document.getElementById('developer-docs-link');
+            const homeLink = document.getElementById('home-link');
+
+            function setActiveMode(mode) {
+                userDocsLink.classList.remove('active-mode');
+                developerDocsLink.classList.remove('active-mode');
+                if (mode === 'user') {
+                    userDocsLink.classList.add('active-mode');
+                } else if (mode === 'developer') {
+                    developerDocsLink.classList.add('active-mode');
+                }
+                localStorage.setItem('docsMode', mode);
+            }
+
+            
+            const currentPath = window.location.pathname;
+            if (currentPath.startsWith('/user')) {
+                setActiveMode('user');
+            } else if (currentPath.startsWith('/developer')) {
+                setActiveMode('developer');
+            } else {
+                const storedMode = localStorage.getItem('docsMode');
+                if (storedMode) {
+                    setActiveMode(storedMode);
+                } else {
+                    setActiveMode('user'); 
+                }
+            }
+
+            
+            userDocsLink.addEventListener('click', function() {
+                setActiveMode('user');
+            });
+
+            developerDocsLink.addEventListener('click', function() {
+                setActiveMode('developer');
+            });
+
+            
+            homeLink.addEventListener('click', function(event) {
+                const storedMode = localStorage.getItem('docsMode');
+                if (storedMode === 'developer') {
+                    event.preventDefault(); 
+                    window.location.href = '/developer/';
+                } else {
+                    event.preventDefault(); 
+                    window.location.href = '/user/';
+                }
+            });
+        });
+    </script>
 </header>
     <main>
         <h1>Shopping List</h1>

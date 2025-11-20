@@ -2,37 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Welcome to Zest on Zest Documentation</title>
-    <link>https://example.org/user/</link>
+    <link>https://neo-studios.github.io/zest/user/</link>
     <description>Recent content in Welcome to Zest on Zest Documentation</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://example.org/user/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://neo-studios.github.io/zest/user/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Getting Started</title>
-      <link>https://example.org/user/getting-started/</link>
+      <link>https://neo-studios.github.io/zest/user/getting-started/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/user/getting-started/</guid>
+      <guid>https://neo-studios.github.io/zest/user/getting-started/</guid>
       <description>&lt;p&gt;This guide will help you get up and running with Zest.&lt;/p&gt;&#xA;&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;&#xA;&lt;p&gt;Zest is available on the following platforms:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Web:&lt;/strong&gt; Access the Zest web app directly from your browser.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;iOS:&lt;/strong&gt; Download the Zest app from the App Store.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Android:&lt;/strong&gt; Download the Zest app from the Google Play Store.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;creating-an-account&#34;&gt;Creating an Account&lt;/h2&gt;&#xA;&lt;p&gt;To get the most out of Zest, you&amp;rsquo;ll need to create an account. This will allow you to save your favorite recipes, create meal plans, and more.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Meal Planner</title>
-      <link>https://example.org/user/meal-planner/</link>
+      <link>https://neo-studios.github.io/zest/user/meal-planner/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/user/meal-planner/</guid>
+      <guid>https://neo-studios.github.io/zest/user/meal-planner/</guid>
       <description>&lt;p&gt;The meal planner is a powerful tool that helps you organize your meals for the week.&lt;/p&gt;&#xA;&lt;h2 id=&#34;adding-recipes-to-your-meal-plan&#34;&gt;Adding Recipes to Your Meal Plan&lt;/h2&gt;&#xA;&lt;p&gt;To add a recipe to your meal plan, follow these steps:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Find the recipe you want to add.&lt;/li&gt;&#xA;&lt;li&gt;On the recipe detail screen, tap the &amp;ldquo;Add to Meal Plan&amp;rdquo; button.&lt;/li&gt;&#xA;&lt;li&gt;Select the day and meal (breakfast, lunch, or dinner) for which you want to schedule the recipe.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;viewing-your-meal-plan&#34;&gt;Viewing Your Meal Plan&lt;/h2&gt;&#xA;&lt;p&gt;You can view your meal plan by tapping on the &amp;ldquo;Meal Plan&amp;rdquo; tab. This will show you a calendar view of your scheduled meals for the week. You can tap on any meal to see the recipe details.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Recipes</title>
-      <link>https://example.org/user/recipes/</link>
+      <link>https://neo-studios.github.io/zest/user/recipes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/user/recipes/</guid>
+      <guid>https://neo-studios.github.io/zest/user/recipes/</guid>
       <description>&lt;p&gt;The heart of Zest is its recipe collection. Here&amp;rsquo;s how to manage and use recipes in the app.&lt;/p&gt;&#xA;&lt;h2 id=&#34;finding-recipes&#34;&gt;Finding Recipes&lt;/h2&gt;&#xA;&lt;p&gt;You can find recipes in a few different ways:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Browse:&lt;/strong&gt; The main screen of the app shows a list of all available recipes. You can scroll through this list to discover new ideas.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Search:&lt;/strong&gt; Use the search bar at the top of the screen to find recipes by name or ingredient.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Filter:&lt;/strong&gt; You can filter the recipe list by cuisine and difficulty to narrow down your options.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;recipe-details&#34;&gt;Recipe Details&lt;/h2&gt;&#xA;&lt;p&gt;When you tap on a recipe, you&amp;rsquo;ll see its detail screen. This screen includes:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Shopping List</title>
-      <link>https://example.org/user/shopping-list/</link>
+      <link>https://neo-studios.github.io/zest/user/shopping-list/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/user/shopping-list/</guid>
+      <guid>https://neo-studios.github.io/zest/user/shopping-list/</guid>
       <description>&lt;p&gt;The shopping list feature helps you keep track of the ingredients you need to buy for your planned meals.&lt;/p&gt;&#xA;&lt;h2 id=&#34;generating-a-shopping-list&#34;&gt;Generating a Shopping List&lt;/h2&gt;&#xA;&lt;p&gt;You can generate a shopping list from your meal plan or from a single recipe.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;From your meal plan:&lt;/strong&gt; Go to the &amp;ldquo;Meal Plan&amp;rdquo; tab and tap the &amp;ldquo;Generate Shopping List&amp;rdquo; button. This will create a shopping list with all the ingredients you need for the week&amp;rsquo;s meals.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;From a recipe:&lt;/strong&gt; On the recipe detail screen, tap the &amp;ldquo;Add to Shopping List&amp;rdquo; button. This will add the ingredients for that recipe to your shopping list.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;managing-your-shopping-list&#34;&gt;Managing Your Shopping List&lt;/h2&gt;&#xA;&lt;p&gt;You can view and manage your shopping list by tapping on the &amp;ldquo;Shopping List&amp;rdquo; tab. Here, you can:&lt;/p&gt;</description>
     </item>
   </channel>
