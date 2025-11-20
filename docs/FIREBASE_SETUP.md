@@ -77,6 +77,7 @@ Click **"Publish"**
 ⚠️ **Note**: This application does NOT use Firebase Storage. Image URLs can be stored as external links in Firestore if needed. Skip any Storage setup.
 
 The app works completely without Storage! Users can:
+
 - ✅ Create and manage recipes
 - ✅ Plan meals
 - ✅ Generate shopping lists
@@ -119,6 +120,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 ### Verify Android Setup
 
 Check `android/app/build.gradle.kts` has:
+
 ```kotlin
 plugins {
     id("com.google.gms.google-services")
@@ -126,6 +128,7 @@ plugins {
 ```
 
 Check `android/build.gradle.kts` has:
+
 ```kotlin
 dependencies {
     classpath("com.google.gms:google-services:4.4.1")
@@ -154,24 +157,30 @@ dependencies {
 ## Step 8: Test Connection
 
 ### Web
+
 ```bash
 cd web
 npm run dev
 ```
-Visit http://localhost:3000 and try signing in
+
+Visit <http://localhost:3000> and try signing in
 
 ### Android
+
 ```bash
 cd android
 ./gradlew assembleDebug
 ```
+
 Install APK and test sign in
 
 ### iOS
+
 ```bash
 cd ios
 pod install
 ```
+
 Open in Xcode, build and run
 
 ## Step 9: Create Indexes (Optional but Recommended)
@@ -189,6 +198,7 @@ Go to **Firestore → Indexes** and create:
 ## Step 10: Enable Offline Persistence
 
 Already configured in code:
+
 - **Web**: Automatic with Firebase SDK
 - **Android**: Enabled in FirebaseApp initialization
 - **iOS**: Enabled in Firebase configuration
@@ -196,24 +206,29 @@ Already configured in code:
 ## Troubleshooting
 
 ### Web: "Firebase not initialized"
+
 - Check `.env.local` exists and has correct values
 - Restart dev server: `npm run dev`
 
 ### Android: "google-services.json not found"
+
 - Verify file is in `android/app/` directory
 - Sync Gradle: `./gradlew clean build`
 
 ### iOS: "GoogleService-Info.plist not found"
+
 - Verify file is added to Xcode project
 - Check file is in target membership
 - Clean build folder: Cmd+Shift+K
 
 ### Authentication not working
+
 - Check Authentication is enabled in Firebase Console
 - Verify package names/bundle IDs match exactly
 - For Google Sign-In, add SHA-1 fingerprint (Android)
 
 ### Firestore permission denied
+
 - Check security rules are published
 - Verify user is authenticated
 - Check userId matches in rules
@@ -225,9 +240,9 @@ Already configured in code:
 3. ✅ Firestore database created
 4. ✅ Web app configured
 5. ✅ Android app configured
-7. ✅ iOS app configured
-8. ✅ Security rules added
-9. 🎉 Ready to use!
+6. ✅ iOS app configured
+7. ✅ Security rules added
+8. 🎉 Ready to use!
 
 ### Free Tier Limits (Spark Plan)
 

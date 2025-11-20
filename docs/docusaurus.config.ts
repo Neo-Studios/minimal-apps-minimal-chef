@@ -12,6 +12,30 @@ const config: Config = {
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/zest/',
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: 'anonymous',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        href: 'https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;700&family=Google+Sans+Mono:wght@400;700&display=swap',
+        rel: 'stylesheet',
+      },
+    },
+  ],
 
   // GitHub pages deployment config.
   organizationName: 'Neo-Studios', // Usually your GitHub org/user name.
@@ -91,19 +115,7 @@ const config: Config = {
             },
           ],
         },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Discord',
-              href: 'https://discord.gg/your-discord-invite',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/your-twitter-handle',
-            },
-          ],
-        },
+
         {
           title: 'More',
           items: [
