@@ -1,1 +1,0 @@
-- [ ] Improve `recipe-batch1.json` with more descriptive and interesting content.
