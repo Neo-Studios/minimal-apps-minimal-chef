@@ -22,20 +22,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Hugo (extended)
-        uses: peaceiris/actions-hugo@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          hugo-version: 'latest'
-          extended: true
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: docs
+        run: npm install
 
       - name: Build site
         working-directory: docs
-        run: hugo -D -d public
+        run: npm run build
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v2
         with:
-          path: docs/public
+          path: docs/build
 
   deploy:
     name: Deploy to GitHub Pages
@@ -43,4 +46,4 @@ jobs:
     needs: build
     steps:
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v2
