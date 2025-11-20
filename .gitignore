@@ -38,7 +38,7 @@ web/src/app/cooking-mode/
 
 # Firebase configuration (contains sensitive API keys)
 android/app/google-services.json
-ios/zest/GoogleService-Info.plist
+ios/Zest/GoogleService-Info.plist
 web/.env
 
 # Symbolication related
