@@ -40,6 +40,7 @@ web/src/app/cooking-mode/
 android/app/google-services.json
 ios/Zest/GoogleService-Info.plist
 web/.env
+node_modules/
 
 # Symbolication related
 app.*.symbols
