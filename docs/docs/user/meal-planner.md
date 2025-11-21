@@ -8,9 +8,9 @@ The meal planner is a powerful tool that helps you organize your meals for the w
 
 To add a recipe to your meal plan, follow these steps:
 
-1.  Find the recipe you want to add.
-2.  On the recipe detail screen, tap the "Add to Meal Plan" button.
-3.  Select the day and meal (breakfast, lunch, or dinner) for which you want to schedule the recipe.
+1. Find the recipe you want to add.
+2. On the recipe detail screen, tap the "Add to Meal Plan" button.
+3. Select the day and meal (breakfast, lunch, or dinner) for which you want to schedule the recipe.
 
 ## Viewing Your Meal Plan
 
